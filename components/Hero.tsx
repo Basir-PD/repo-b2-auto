@@ -4,12 +4,36 @@ import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function Hero() {
   const { t } = useLanguage();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    tl.from(textRef.current?.children || [], {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      delay: 0.2,
+    })
+    .from(imageRef.current, {
+      x: 50,
+      opacity: 0,
+      duration: 1,
+    }, "-=0.8");
+
+  }, { scope: containerRef });
 
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section ref={containerRef} className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl mix-blend-multiply animate-blob" />
@@ -19,7 +43,7 @@ export default function Hero() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
-          <div className="text-center lg:text-left space-y-8">
+          <div ref={textRef} className="text-center lg:text-left space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-100 text-green-700 font-bold text-sm uppercase tracking-wider shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -76,12 +100,13 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative lg:h-[600px] h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl shadow-indigo-500/20 border border-slate-200 bg-white">
+          {/* Hero Image */}
+          <div ref={imageRef} className="relative lg:h-[600px] h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl shadow-green-900/20 border border-slate-200 bg-white -skew-x-3 hover:skew-x-0 transition-transform duration-700">
              <Image
               src="/hero-image.png"
               alt="B2 Auto Recycling Tow Truck"
               fill
-              className="object-cover"
+              className="object-cover skew-x-3 hover:skew-x-0 transition-transform duration-700 scale-105"
               priority
              />
              {/* Overlay gradient for better text contrast if needed, or just style */}

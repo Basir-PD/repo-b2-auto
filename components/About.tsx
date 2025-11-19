@@ -3,16 +3,50 @@
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const { t } = useLanguage();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from(imageRef.current, {
+      scrollTrigger: {
+        trigger: imageRef.current,
+        start: "top 80%",
+      },
+      x: -50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    gsap.from(contentRef.current?.children || [], {
+      scrollTrigger: {
+        trigger: contentRef.current,
+        start: "top 80%",
+      },
+      x: 50,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+    });
+  }, { scope: containerRef });
 
   return (
-    <section id="about" className="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="about" ref={containerRef} className="py-24 bg-slate-50 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative">
-            <div className="aspect-square rounded-2xl bg-gradient-to-br from-green-100 to-emerald-50 relative z-10 overflow-hidden shadow-2xl border-4 border-white -skew-x-3">
+          <div ref={imageRef} className="relative">
+            <div className="aspect-square rounded-2xl bg-gradient-to-br from-green-100 to-emerald-50 relative z-10 overflow-hidden shadow-2xl border-4 border-white -skew-x-3 hover:skew-x-0 transition-transform duration-500">
               {/* Placeholder for About Image */}
               <div className="absolute inset-0 flex items-center justify-center text-green-200 font-black text-4xl uppercase opacity-20 -rotate-12">
                 B2 Auto
@@ -22,7 +56,7 @@ export default function About() {
             <div className="absolute -top-10 -right-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl -z-10" />
           </div>
           
-          <div className="space-y-8">
+          <div ref={contentRef} className="space-y-8">
             <h2 className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter text-slate-900">
               {t.about.title} <span className="text-green-600">{t.about.titleHighlight}</span>
             </h2>

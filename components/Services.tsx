@@ -2,16 +2,51 @@
 
 import { DollarSign, Truck, Clock, ShieldCheck, Leaf, ThumbsUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Services() {
   const { t } = useLanguage();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from(titleRef.current?.children || [], {
+      scrollTrigger: {
+        trigger: titleRef.current,
+        start: "top 80%",
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out",
+    });
+
+    gsap.from(gridRef.current?.children || [], {
+      scrollTrigger: {
+        trigger: gridRef.current,
+        start: "top 80%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power3.out",
+    });
+  }, { scope: containerRef });
 
   const icons = [DollarSign, Truck, Clock, ThumbsUp, Leaf, ShieldCheck];
 
   return (
-    <section id="services" className="py-24 bg-white relative">
+    <section id="services" ref={containerRef} className="py-24 bg-white relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter mb-4 text-slate-900">
             {t.services.title}
           </h2>
@@ -20,7 +55,7 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {t.services.items.map((service, index) => {
             const Icon = icons[index];
             return (
