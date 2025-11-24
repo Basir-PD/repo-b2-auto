@@ -27,17 +27,29 @@ export default function Hero() {
     .from(imageRef.current, {
       x: 50,
       opacity: 0,
-      duration: 1,
+      duration: 1.2,
+      ease: "power2.out",
     }, "-=0.8");
+
+    // Floating animation for the image
+    gsap.to(imageRef.current, {
+      y: -20,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 1,
+    });
 
   }, { scope: containerRef });
 
   return (
     <section ref={containerRef} className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Background Effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl mix-blend-multiply animate-blob" />
-        <div className="absolute top-40 right-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl mix-blend-multiply animate-blob animation-delay-2000" />
+        <div className="absolute top-20 left-10 w-96 h-96 bg-green-500/20 rounded-full blur-[100px] mix-blend-multiply animate-blob" />
+        <div className="absolute top-40 right-10 w-96 h-96 bg-emerald-500/20 rounded-full blur-[100px] mix-blend-multiply animate-blob animation-delay-2000" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">

@@ -11,6 +11,9 @@
   --font-sans: Outfit, sans-serif;
   
   --animate-shimmer: shimmer 2s linear infinite;
+  --animate-blob: blob 7s infinite;
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-zoom-in: zoom-in 0.3s ease-out;
   
   @keyframes shimmer {
     from {
@@ -18,6 +21,41 @@
     }
     to {
       transform: translateX(100%) skewX(-12deg);
+    }
+  }
+
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes zoom-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }
@@ -56,4 +94,28 @@ html {
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Selection Color */
+::selection {
+  background-color: #16a34a; /* Green-600 */
+  color: white;
 }

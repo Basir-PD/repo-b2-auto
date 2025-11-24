@@ -23,6 +23,56 @@ export const translations = {
         paid: "Paid on the Spot",
       }
     },
+    howItWorks: {
+      title: "HOW IT WORKS",
+      subtitle: "Three easy steps to turn your vehicle into instant cash today.",
+      steps: [
+        {
+          number: "1",
+          title: "Request Your Quote",
+          description: "Share basic details about your vehicle with us. Our team will provide you with a competitive cash offer within minutes—no obligations attached.",
+          cta: "Get Started"
+        },
+        {
+          number: "2",
+          title: "Schedule Free Pickup",
+          description: "Choose a convenient time for us to collect your vehicle. Our professional towing service is completely free, and we come to your location anywhere in Montreal.",
+          cta: "Book Pickup"
+        },
+        {
+          number: "3",
+          title: "Get Paid Instantly",
+          description: "Receive immediate payment when we arrive. We handle all paperwork on-site and put cash directly in your hands—simple, fast, and stress-free.",
+          cta: "Start Now"
+        }
+      ],
+      bottomIcons: {
+        call: "Contact",
+        pickup: "Service",
+        cash: "Payment"
+      }
+    },
+    googleReviews: {
+      title: "What Our Customers Say",
+      subtitle: "Rated 5/5 stars by hundreds of satisfied customers across Montreal.",
+      reviews: [
+        {
+          name: "Michael Chen",
+          date: "2 days ago",
+          text: "Incredible service! They came within an hour, paid exactly what they quoted over the phone, and towed my old Civic away for free. Highly recommended!",
+        },
+        {
+          name: "Sarah Tremblay",
+          date: "1 week ago",
+          text: "Best price I found in Montreal. The driver was professional and the whole process took less than 15 minutes. Cash on the spot as promised.",
+        },
+        {
+          name: "David Miller",
+          date: "2 weeks ago",
+          text: "Very transparent and honest. No hidden fees, free towing, and great communication. Turned my scrap car into cash instantly.",
+        }
+      ]
+    },
     services: {
       title: "Why Choose B2 Auto?",
       subtitle: "We make selling your car simple, fast, and profitable. Experience the premium difference.",
@@ -123,6 +173,56 @@ export const translations = {
         towing: "Remorquage Gratuit Inclus",
         paid: "Payé sur Place",
       }
+    },
+    howItWorks: {
+      title: "COMMENT ÇA FONCTIONNE",
+      subtitle: "Trois étapes faciles pour transformer votre véhicule en argent comptant dès aujourd'hui.",
+      steps: [
+        {
+          number: "1",
+          title: "Demandez Votre Soumission",
+          description: "Partagez les détails de base de votre véhicule avec nous. Notre équipe vous fournira une offre comptant compétitive en quelques minutes—sans aucune obligation.",
+          cta: "Commencer"
+        },
+        {
+          number: "2",
+          title: "Planifiez le Remorquage Gratuit",
+          description: "Choisissez un moment qui vous convient pour la collecte de votre véhicule. Notre service de remorquage professionnel est entièrement gratuit, partout à Montréal.",
+          cta: "Réserver"
+        },
+        {
+          number: "3",
+          title: "Recevez Votre Paiement Immédiat",
+          description: "Obtenez votre paiement instantané à notre arrivée. Nous gérons toute la paperasse sur place et vous remettez l'argent directement—simple, rapide et sans stress.",
+          cta: "Débuter Maintenant"
+        }
+      ],
+      bottomIcons: {
+        call: "Contact",
+        pickup: "Service",
+        cash: "Paiement"
+      }
+    },
+    googleReviews: {
+      title: "Ce Que Disent Nos Clients",
+      subtitle: "Noté 5/5 étoiles par des centaines de clients satisfaits à Montréal.",
+      reviews: [
+        {
+          name: "Michael Chen",
+          date: "Il y a 2 jours",
+          text: "Service incroyable ! Ils sont venus en une heure, ont payé exactement ce qu'ils avaient dit au téléphone et ont remorqué ma vieille Civic gratuitement. Hautement recommandé !",
+        },
+        {
+          name: "Sarah Tremblay",
+          date: "Il y a 1 semaine",
+          text: "Meilleur prix trouvé à Montréal. Le chauffeur était professionnel et tout le processus a pris moins de 15 minutes. Argent comptant sur place comme promis.",
+        },
+        {
+          name: "David Miller",
+          date: "Il y a 2 semaines",
+          text: "Très transparent et honnête. Pas de frais cachés, remorquage gratuit et excellente communication. J'ai transformé mon auto en argent instantanément.",
+        }
+      ]
     },
     services: {
       title: "Pourquoi Choisir B2 Auto ?",

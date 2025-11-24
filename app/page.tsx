@@ -1,5 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import HowItWorks from "@/components/HowItWorks";
+import GoogleReviews from "@/components/GoogleReviews";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import FAQ from "@/components/FAQ";
@@ -10,6 +12,8 @@ export default function Home() {
     <main className="min-h-screen bg-white text-slate-900 selection:bg-indigo-500/30">
       <Header />
       <Hero />
+      <HowItWorks />
+      <GoogleReviews />
       <Services />
       <About />
       <FAQ />
