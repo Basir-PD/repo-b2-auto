@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { ThumbsUp, FileCheck, Calendar, Shield } from "lucide-react";
+import { ThumbsUp, FileCheck, Calendar, Shield, CheckCircle2 } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -208,6 +208,30 @@ export default function Stats() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Mission / About Section */}
+        <div className="mt-24 max-w-4xl mx-auto">
+           <div className="text-center mb-12">
+             <h2 className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-6">
+                {t.about.title} <span className="text-green-600">{t.about.titleHighlight}</span>
+             </h2>
+             <div className="space-y-6 text-lg text-slate-600 font-medium leading-relaxed">
+                <p>{t.about.p1}</p>
+                <p>{t.about.p2}</p>
+             </div>
+           </div>
+           
+           <div className="grid sm:grid-cols-2 gap-6">
+              {t.about.list.map((item, index) => (
+                <div key={index} className="flex items-center gap-4 font-bold text-slate-800 bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300">
+                  <div className="bg-green-100 p-2 rounded-full">
+                    <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0" />
+                  </div>
+                  <span>{item}</span>
+                </div>
+              ))}
+           </div>
         </div>
       </div>
     </section>

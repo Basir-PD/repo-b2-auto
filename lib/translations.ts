@@ -125,7 +125,7 @@ export const translations = {
       p1: "At B2 Auto, we're redefining the auto recycling industry. We believe that selling an old car shouldn't be a hassle—it should be a seamless, professional experience.",
       p2: "Our mission is to provide the highest level of service while ensuring every vehicle is recycled in an environmentally responsible manner. We don't just buy cars; we build trust.",
       list: [
-        "Over 10 years of industry experience",
+        "Over 25 years of industry experience",
         "Locally owned and operated",
         "Committed to green recycling practices",
         "Thousands of satisfied customers"
@@ -292,7 +292,7 @@ export const translations = {
       p1: "Chez B2 Auto, nous redéfinissons l'industrie du recyclage automobile. Nous croyons que vendre une vieille voiture ne devrait pas être un casse-tête, mais une expérience fluide et professionnelle.",
       p2: "Notre mission est d'offrir le plus haut niveau de service tout en assurant que chaque véhicule est recyclé de manière écologiquement responsable. Nous n'achetons pas seulement des voitures; nous bâtissons la confiance.",
       list: [
-        "Plus de 10 ans d'expérience dans l'industrie",
+        "Plus de 25 ans d'expérience dans l'industrie",
         "Entreprise locale et opérée localement",
         "Engagés envers des pratiques de recyclage vertes",
         "Des milliers de clients satisfaits"

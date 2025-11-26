@@ -3,8 +3,6 @@ import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import Stats from "@/components/Stats";
 import GoogleReviews from "@/components/GoogleReviews";
-import Services from "@/components/Services";
-import About from "@/components/About";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
@@ -16,8 +14,6 @@ export default function Home() {
       <HowItWorks />
       <Stats />
       <GoogleReviews />
-      <Services />
-      <About />
       <FAQ />
       <Footer />
     </main>
