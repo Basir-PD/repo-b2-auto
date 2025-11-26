@@ -131,6 +131,16 @@ export const translations = {
         "Thousands of satisfied customers"
       ]
     },
+    contact: {
+      title: "Visit Us",
+      titleHighlight: "Today",
+      subtitle: "We're located in Laval, Quebec. Contact us to get your free quote!",
+      phoneTitle: "Call Us",
+      phoneDesc: "Available 7 days a week",
+      emailTitle: "Email Us",
+      emailDesc: "Fast response guaranteed",
+      hoursTitle: "Business Hours",
+    },
     faq: {
       title: "Frequently Asked Questions",
       subtitle: "Got questions? We've got answers. Here's what our customers usually ask.",
@@ -297,6 +307,16 @@ export const translations = {
         "Engagés envers des pratiques de recyclage vertes",
         "Des milliers de clients satisfaits"
       ]
+    },
+    contact: {
+      title: "Visitez-nous",
+      titleHighlight: "Aujourd'hui",
+      subtitle: "Nous sommes situés à Laval, Québec. Contactez-nous pour obtenir votre soumission gratuite!",
+      phoneTitle: "Appelez-nous",
+      phoneDesc: "Disponible 7 jours sur 7",
+      emailTitle: "Écrivez-nous",
+      emailDesc: "Réponse rapide garantie",
+      hoursTitle: "Heures d'ouverture",
     },
     faq: {
       title: "Foire Aux Questions",

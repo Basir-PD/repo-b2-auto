@@ -4,6 +4,7 @@ import HowItWorks from "@/components/HowItWorks";
 import Stats from "@/components/Stats";
 import GoogleReviews from "@/components/GoogleReviews";
 import FAQ from "@/components/FAQ";
+import ContactMap from "@/components/ContactMap";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Stats />
       <GoogleReviews />
       <FAQ />
+      <ContactMap />
       <Footer />
     </main>
   );
