@@ -118,7 +118,7 @@ export default function Hero() {
               src="/hero-image.png"
               alt="B2 Auto Recycling Tow Truck"
               fill
-              className="object-contain sm:object-cover skew-x-3 hover:skew-x-0 transition-transform duration-700 scale-100 sm:scale-105"
+              className="object-cover object-center skew-x-3 hover:skew-x-0 transition-transform duration-700"
               priority
              />
              {/* Overlay gradient for better text contrast if needed, or just style */}
