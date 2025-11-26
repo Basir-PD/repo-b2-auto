@@ -103,6 +103,22 @@ export const translations = {
         }
       ]
     },
+    stats: {
+      title: "WHY ALPHA",
+      titleHighlight: "RECYCLING?",
+      subtitle: "Selling an old scrap car has never been this simple — we take care of everything to make your life easier.",
+      vehiclesPurchased: "VEHICLES PURCHASED PER YEAR",
+      positiveReviews: "POSITIVE CUSTOMER REVIEWS",
+      yearsExperience: "YEARS OF EXPERIENCE",
+      imageAlt: "GUARANTEED PURCHASE, REGARDLESS OF THE CAR'S CONDITION!",
+      guaranteed: "GUARANTEED PURCHASE",
+      noRefusal: "NO VEHICLE REFUSED",
+      noRefusalDesc: "Even those without an engine, without wheels, or declared a total loss.",
+      noTracas: "NO HASSLE",
+      noTracasDesc: "We take care of everything: transfer, SAAQ declaration, etc.",
+      flexible: "7 DAYS A WEEK",
+      flexibleDesc: "Flexible schedule, including weekends and holidays.",
+    },
     about: {
       title: "More Than Just a",
       titleHighlight: "Scrap Yard",
@@ -253,6 +269,22 @@ export const translations = {
           description: "Notre équipe licenciée et assurée offre une expérience sécuritaire, transparente et sans tracas.",
         }
       ]
+    },
+    stats: {
+      title: "POURQUOI ALPHA",
+      titleHighlight: "RECYCLAGE ?",
+      subtitle: "Vendre une vieille voiture scrap n'a jamais été aussi simple — on s'occupe de tout pour vous faciliter la vie.",
+      vehiclesPurchased: "VÉHICULES ACHETÉS PAR ANNÉE",
+      positiveReviews: "AVIS POSITIFS DE NOS CLIENTS",
+      yearsExperience: "ANNÉES D'EXPÉRIENCES",
+      imageAlt: "ACHAT GARANTI, PEU IMPORTE L'ÉTAT DE L'AUTO !",
+      guaranteed: "ACHAT GARANTI",
+      noRefusal: "AUCUN VÉHICULE REFUSÉ",
+      noRefusalDesc: "Même ceux sans moteur, sans roues ou ayant été déclarés perte totale.",
+      noTracas: "AUCUN TRACAS",
+      noTracasDesc: "On s'occupe de tout : transfert, déclaration à la SAAQ, etc.",
+      flexible: "7 JOURS SUR 7",
+      flexibleDesc: "Horaire flexible, y compris les fins de semaine et jours fériés.",
     },
     about: {
       title: "Plus qu'une simple",
