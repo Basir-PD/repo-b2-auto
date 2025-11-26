@@ -58,8 +58,8 @@ export default function ContactMap() {
 
         <div className="space-y-12">
           {/* Map - Centered and Larger */}
-          <div ref={mapRef} className="w-[90vw] mx-auto">
-            <div className="aspect-[16/9] rounded-3xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3),0_10px_30px_-10px_rgba(34,197,94,0.2)] border-4 border-white bg-slate-100 relative group">
+          <div ref={mapRef} className="w-[95vw] sm:w-[90vw] mx-auto">
+            <div className="aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3),0_5px_15px_-5px_rgba(34,197,94,0.2)] sm:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3),0_10px_30px_-10px_rgba(34,197,94,0.2)] border-2 sm:border-4 border-white bg-slate-100 relative group">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89425.35633423!2d-73.79847!3d45.60629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91f8abc7e0d7f%3A0x5040cadec2cc9c0!2sLaval%2C%20QC!5e0!3m2!1sen!2sca!4v1234567890"
                 width="100%"
@@ -76,12 +76,12 @@ export default function ContactMap() {
             </div>
 
             {/* Floating location badge */}
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-br from-green-500 to-emerald-600 text-white px-8 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
-              <div className="flex items-center gap-3">
-                <MapPin className="w-6 h-6" />
+            <div className="absolute -bottom-4 sm:-bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-br from-green-500 to-emerald-600 text-white px-4 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-xl sm:shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wider opacity-90">Location</p>
-                  <p className="text-sm font-black">Laval, QC</p>
+                  <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider opacity-90">Location</p>
+                  <p className="text-xs sm:text-sm font-black">Laval, QC</p>
                 </div>
               </div>
             </div>
