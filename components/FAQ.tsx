@@ -33,14 +33,14 @@ export default function FAQ() {
   }, { scope: containerRef });
 
   return (
-    <section id="faq" className="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="faq" className="py-16 sm:py-24 bg-slate-50 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={containerRef} className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-4">
               {t.faq.title}
             </h2>
-            <p className="text-lg text-slate-600 font-medium">
+            <p className="text-base sm:text-lg text-slate-600 font-medium">
               {t.faq.subtitle}
             </p>
           </div>
@@ -53,9 +53,9 @@ export default function FAQ() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
+                  className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left gap-4"
                 >
-                  <span className="text-lg font-bold text-slate-900">
+                  <span className="text-base sm:text-lg font-bold text-slate-900">
                     {item.question}
                   </span>
                   <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${openIndex === index ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-500'}`}>

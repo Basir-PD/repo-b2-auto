@@ -69,7 +69,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section ref={containerRef} className="py-24 lg:py-32 bg-gradient-to-b from-white via-green-50/30 to-white relative overflow-hidden">
+    <section ref={containerRef} className="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-white via-green-50/30 to-white relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-400/10 rounded-full blur-3xl animate-blob" />
@@ -228,8 +228,8 @@ export default function HowItWorks() {
                 {/* Card */}
                 <div className="relative h-full bg-white rounded-3xl p-8 border-2 border-green-200 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:border-green-400 flex flex-col">
                   {/* Step Number Badge */}
-                  <div className={`absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br ${steps[index].color} rounded-2xl flex items-center justify-center shadow-lg border-4 border-white transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500`}>
-                    <span className="text-3xl font-black text-white">{step.number}</span>
+                  <div className={`absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${steps[index].color} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg border-2 sm:border-4 border-white transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500`}>
+                    <span className="text-xl sm:text-3xl font-black text-white">{step.number}</span>
                   </div>
 
                   {/* Icon Container */}
