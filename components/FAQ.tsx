@@ -33,44 +33,44 @@ export default function FAQ() {
   }, { scope: containerRef });
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-slate-50 relative overflow-hidden">
+    <section id="faq" className="py-12 sm:py-16 md:py-24 bg-slate-50 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={containerRef} className="max-w-3xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-4">
+          <div className="text-center mb-8 sm:mb-10 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4">
               {t.faq.title}
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-medium">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 font-medium px-2">
               {t.faq.subtitle}
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {t.faq.items.map((item, index) => (
-              <div 
+              <div
                 key={index}
-                className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md"
+                className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left gap-4"
+                  className="w-full px-4 sm:px-5 md:px-6 py-3.5 sm:py-4 md:py-5 flex items-center justify-between text-left gap-3 sm:gap-4"
                 >
-                  <span className="text-base sm:text-lg font-bold text-slate-900">
+                  <span className="text-sm sm:text-base md:text-lg font-bold text-slate-900">
                     {item.question}
                   </span>
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${openIndex === index ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                  <div className={`flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${openIndex === index ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-500'}`}>
                     {openIndex === index ? (
-                      <Minus className="w-5 h-5" />
+                      <Minus className="w-4 h-4 sm:w-5 sm:h-5" />
                     ) : (
-                      <Plus className="w-5 h-5" />
+                      <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
                     )}
                   </div>
                 </button>
-                
-                <div 
+
+                <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
                 >
-                  <div className="px-6 pb-6 text-slate-600 font-medium leading-relaxed">
+                  <div className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
                     {item.answer}
                   </div>
                 </div>

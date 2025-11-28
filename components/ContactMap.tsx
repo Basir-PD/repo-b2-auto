@@ -41,25 +41,25 @@ export default function ContactMap() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-16 sm:py-24 bg-white relative overflow-hidden">
+    <section ref={containerRef} className="py-12 sm:py-16 md:py-24 bg-white relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-4">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4">
             {t.contact?.title || "Visitez-nous"} <span className="text-green-600">{t.contact?.titleHighlight || "Aujourd'hui"}</span>
           </h2>
-          <p className="text-lg text-slate-600 font-medium max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto px-2">
             {t.contact?.subtitle || "Nous sommes situés à Laval, Québec. Contactez-nous pour obtenir votre soumission gratuite!"}
           </p>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           {/* Map - Centered and Larger */}
-          <div ref={mapRef} className="w-full sm:w-[90vw] mx-auto">
-            <div className="h-[75vh] sm:h-auto sm:aspect-[16/9] rounded-none sm:rounded-3xl overflow-hidden shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3),0_5px_15px_-5px_rgba(34,197,94,0.2)] sm:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3),0_10px_30px_-10px_rgba(34,197,94,0.2)] border-0 sm:border-4 border-white bg-slate-100 relative group">
+          <div ref={mapRef} className="w-full max-w-6xl mx-auto relative">
+            <div className="h-[50vh] sm:h-[55vh] md:h-auto md:aspect-[16/9] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl md:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3),0_10px_30px_-10px_rgba(34,197,94,0.2)] border-2 sm:border-4 border-white bg-slate-100 relative group">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89425.35633423!2d-73.79847!3d45.60629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91f8abc7e0d7f%3A0x5040cadec2cc9c0!2sLaval%2C%20QC!5e0!3m2!1sen!2sca!4v1234567890"
                 width="100%"
@@ -76,36 +76,36 @@ export default function ContactMap() {
             </div>
 
             {/* Floating location badge */}
-            <div className="absolute bottom-4 sm:-bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-br from-green-500 to-emerald-600 text-white px-4 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-xl sm:shadow-2xl transform hover:scale-105 transition-transform duration-300">
+            <div className="absolute -bottom-4 sm:-bottom-5 md:-bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-br from-green-500 to-emerald-600 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl md:shadow-2xl transform hover:scale-105 transition-transform duration-300">
               <div className="flex items-center gap-2 sm:gap-3">
-                <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 <div>
-                  <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider opacity-90">Location</p>
-                  <p className="text-xs sm:text-sm font-black">Laval, QC</p>
+                  <p className="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider opacity-90">Location</p>
+                  <p className="text-[11px] sm:text-xs md:text-sm font-black">Laval, QC</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contact Info Cards - 3 Column Grid */}
-          <div ref={infoRef} className="grid md:grid-cols-3 gap-6 mt-16">
+          <div ref={infoRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-10 sm:mt-12 md:mt-16">
             {/* Phone */}
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-8 h-8 text-white" />
+            <div className="bg-slate-50 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+              <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
+                <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-black text-slate-900 mb-2 uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-1.5 sm:mb-2 uppercase tracking-tight">
                     {t.contact?.phoneTitle || "Appelez-nous"}
                   </h3>
-                  <a 
-                    href="tel:+15146232787" 
-                    className="text-xl font-black text-green-600 hover:text-green-700 transition-colors block"
+                  <a
+                    href="tel:+15146232787"
+                    className="text-lg sm:text-xl font-black text-green-600 hover:text-green-700 transition-colors block"
                   >
                     +1 (514) 623-2787
                   </a>
-                  <p className="text-slate-600 font-medium mt-2 text-sm">
+                  <p className="text-slate-600 font-medium mt-1.5 sm:mt-2 text-xs sm:text-sm">
                     {t.contact?.phoneDesc || "Disponible 7 jours sur 7"}
                   </p>
                 </div>
@@ -113,22 +113,22 @@ export default function ContactMap() {
             </div>
 
             {/* Email */}
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="w-8 h-8 text-white" />
+            <div className="bg-slate-50 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+              <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
+                <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-black text-slate-900 mb-2 uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-1.5 sm:mb-2 uppercase tracking-tight">
                     {t.contact?.emailTitle || "Écrivez-nous"}
                   </h3>
-                  <a 
-                    href="mailto:info@b2auto.com" 
-                    className="text-lg font-bold text-green-600 hover:text-green-700 transition-colors block break-all"
+                  <a
+                    href="mailto:info@b2auto.com"
+                    className="text-base sm:text-lg font-bold text-green-600 hover:text-green-700 transition-colors block break-all"
                   >
                     info@b2auto.com
                   </a>
-                  <p className="text-slate-600 font-medium mt-2 text-sm">
+                  <p className="text-slate-600 font-medium mt-1.5 sm:mt-2 text-xs sm:text-sm">
                     {t.contact?.emailDesc || "Réponse rapide garantie"}
                   </p>
                 </div>
@@ -136,16 +136,16 @@ export default function ContactMap() {
             </div>
 
             {/* Hours */}
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Clock className="w-8 h-8 text-white" />
+            <div className="bg-slate-50 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1 sm:col-span-2 md:col-span-1">
+              <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
+                <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Clock className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <div className="w-full">
-                  <h3 className="text-lg font-black text-slate-900 mb-4 uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-3 sm:mb-4 uppercase tracking-tight">
                     {t.contact?.hoursTitle || "Heures d'ouverture"}
                   </h3>
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
                     <div className="flex justify-between items-center">
                       <span className="font-bold text-slate-700">{t.footer.days.week}</span>
                       <span className="text-slate-600 font-medium">8AM-8PM</span>

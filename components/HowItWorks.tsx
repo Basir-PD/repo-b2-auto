@@ -69,7 +69,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section ref={containerRef} className="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-white via-green-50/30 to-white relative overflow-hidden">
+    <section ref={containerRef} className="py-12 sm:py-16 md:py-24 lg:py-32 bg-gradient-to-b from-white via-green-50/30 to-white relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-400/10 rounded-full blur-3xl animate-blob" />
@@ -82,15 +82,15 @@ export default function HowItWorks() {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 border border-green-200 text-green-700 font-bold text-sm uppercase tracking-wider mb-6">
-            <Sparkles className="w-4 h-4" />
+        <div className="text-center mb-10 sm:mb-14 md:mb-20">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-green-100 border border-green-200 text-green-700 font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Simple Process</span>
           </div>
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-slate-900 mb-3 sm:mb-4 md:mb-6 tracking-tight">
             {t.howItWorks.title}
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed px-2">
             {t.howItWorks.subtitle}
           </p>
         </div>
@@ -217,46 +217,46 @@ export default function HowItWorks() {
         `}</style>
 
         {/* Steps Cards */}
-        <div ref={cardsRef} className="grid md:grid-cols-3 gap-8 lg:gap-6 max-w-7xl mx-auto relative">
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-6 max-w-7xl mx-auto relative">
           {t.howItWorks.steps.map((step, index) => {
             const StepIcon = steps[index].icon;
             return (
-              <div key={index} className="group relative">
+              <div key={index} className="group relative sm:last:col-span-2 md:last:col-span-1 sm:last:max-w-md sm:last:mx-auto md:last:max-w-none">
                 {/* Glow Effect */}
-                <div className={`absolute -inset-1 ${steps[index].bgGlow} rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                
+                <div className={`absolute -inset-1 ${steps[index].bgGlow} rounded-2xl sm:rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
                 {/* Card */}
-                <div className="relative h-full bg-white rounded-3xl p-8 border-2 border-green-200 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:border-green-400 flex flex-col">
+                <div className="relative h-full bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border-2 border-green-200 shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:border-green-400 flex flex-col">
                   {/* Step Number Badge */}
-                  <div className={`absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${steps[index].color} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg border-2 sm:border-4 border-white transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500`}>
-                    <span className="text-xl sm:text-3xl font-black text-white">{step.number}</span>
+                  <div className={`absolute -top-3 -right-3 sm:-top-4 sm:-right-4 md:-top-6 md:-right-6 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gradient-to-br ${steps[index].color} rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg border-2 sm:border-2 md:border-4 border-white transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500`}>
+                    <span className="text-lg sm:text-xl md:text-3xl font-black text-white">{step.number}</span>
                   </div>
 
                   {/* Icon Container */}
-                  <div className="mb-6 relative">
-                    <div className={`w-24 h-24 bg-gradient-to-br ${steps[index].color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 relative overflow-hidden`}>
+                  <div className="mb-4 sm:mb-5 md:mb-6 relative">
+                    <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br ${steps[index].color} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 relative overflow-hidden`}>
                       {/* Shine effect */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                      <StepIcon className="w-12 h-12 text-white relative z-10" strokeWidth={2.5} />
+                      <StepIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white relative z-10" strokeWidth={2.5} />
                     </div>
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-2xl lg:text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight leading-tight">
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-slate-900 mb-2 sm:mb-3 md:mb-4 uppercase tracking-tight leading-tight">
                     {step.title}
                   </h3>
-                  <p className="text-slate-600 font-medium leading-relaxed mb-6 flex-grow">
+                  <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed mb-4 sm:mb-5 md:mb-6 flex-grow">
                     {step.description}
                   </p>
 
                   {/* CTA Link */}
                   <div className="flex items-center gap-2 text-green-600 font-bold group-hover:gap-4 transition-all cursor-pointer">
-                    <span className="uppercase text-sm tracking-wider">{step.cta}</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <span className="uppercase text-xs sm:text-sm tracking-wider">{step.cta}</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                   </div>
 
                   {/* Decorative corner accent */}
-                  <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-green-100/50 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-tl from-green-100/50 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 {/* Connecting Arrow - Desktop only */}
@@ -271,17 +271,17 @@ export default function HowItWorks() {
         </div>
 
         {/* Bottom Stats/Icons Row */}
-        <div className="mt-20 flex flex-wrap justify-center items-center gap-8 lg:gap-12">
+        <div className="mt-10 sm:mt-14 md:mt-20 flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
           {[
             { icon: Phone, label: t.howItWorks.bottomIcons.call },
             { icon: Truck, label: t.howItWorks.bottomIcons.pickup },
             { icon: DollarSign, label: t.howItWorks.bottomIcons.cash },
           ].map((item, index) => (
-            <div key={index} className="flex items-center gap-3 group cursor-pointer">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <item.icon className="w-7 h-7 text-white" strokeWidth={2.5} />
+            <div key={index} className="flex items-center gap-2 sm:gap-3 group cursor-pointer">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <item.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" strokeWidth={2.5} />
               </div>
-              <span className="text-base font-black uppercase text-slate-700 group-hover:text-green-600 transition-colors tracking-wide">
+              <span className="text-xs sm:text-sm md:text-base font-black uppercase text-slate-700 group-hover:text-green-600 transition-colors tracking-wide">
                 {item.label}
               </span>
             </div>

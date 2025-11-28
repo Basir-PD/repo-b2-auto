@@ -160,64 +160,64 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div 
+      <div
         ref={menuRef}
         className="fixed inset-0 bg-slate-950 z-40 translate-x-full md:hidden"
       >
-        <div className="flex flex-col h-full pt-32 px-8 pb-10">
-          <div ref={menuItemsRef} className="flex flex-col gap-8 text-center">
-            <Link 
-              href="#services" 
+        <div className="flex flex-col h-full pt-20 sm:pt-24 px-6 sm:px-8 pb-8 sm:pb-10">
+          <div ref={menuItemsRef} className="flex flex-col gap-5 sm:gap-6 text-center">
+            <Link
+              href="#services"
               onClick={() => setIsMenuOpen(false)}
-              className="text-3xl font-black uppercase italic tracking-tighter text-white hover:text-green-500 transition-colors"
+              className="text-2xl sm:text-3xl font-black uppercase italic tracking-tighter text-white hover:text-green-500 transition-colors"
             >
               {t.header.services}
             </Link>
-            <Link 
-              href="#about" 
+            <Link
+              href="#about"
               onClick={() => setIsMenuOpen(false)}
-              className="text-3xl font-black uppercase italic tracking-tighter text-white hover:text-green-500 transition-colors"
+              className="text-2xl sm:text-3xl font-black uppercase italic tracking-tighter text-white hover:text-green-500 transition-colors"
             >
               {t.header.about}
             </Link>
-            <Link 
-              href="#faq" 
+            <Link
+              href="#faq"
               onClick={() => setIsMenuOpen(false)}
-              className="text-3xl font-black uppercase italic tracking-tighter text-white hover:text-green-500 transition-colors"
+              className="text-2xl sm:text-3xl font-black uppercase italic tracking-tighter text-white hover:text-green-500 transition-colors"
             >
               {t.header.faq}
             </Link>
 
-            <div className="w-full h-px bg-white/10 my-4" />
+            <div className="w-full h-px bg-white/10 my-2 sm:my-4" />
 
             <div className="flex justify-center gap-4">
-              <button 
+              <button
                 onClick={() => setLanguage('en')}
-                className={`text-lg font-bold ${language === 'en' ? 'text-green-400' : 'text-slate-500'}`}
+                className={`text-base sm:text-lg font-bold ${language === 'en' ? 'text-green-400' : 'text-slate-500'}`}
               >
                 EN
               </button>
               <span className="text-slate-700">/</span>
-              <button 
+              <button
                 onClick={() => setLanguage('fr')}
-                className={`text-lg font-bold ${language === 'fr' ? 'text-green-400' : 'text-slate-500'}`}
+                className={`text-base sm:text-lg font-bold ${language === 'fr' ? 'text-green-400' : 'text-slate-500'}`}
               >
                 FR
               </button>
             </div>
 
-            <a 
-              href="tel:+15146232787" 
-              className="flex items-center justify-center gap-3 text-xl font-bold text-white hover:text-green-400 transition-colors"
+            <a
+              href="tel:+15146232787"
+              className="flex items-center justify-center gap-2 sm:gap-3 text-lg sm:text-xl font-bold text-white hover:text-green-400 transition-colors"
             >
-              <Phone className="w-6 h-6" />
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
               <span>+1 (514) 623-2787</span>
             </a>
 
-            <Link 
+            <Link
               href="#contact"
               onClick={() => setIsMenuOpen(false)}
-              className="mt-4 w-full py-4 bg-green-600 text-white font-black uppercase tracking-wider text-xl rounded-lg shadow-lg shadow-green-900/50"
+              className="mt-2 sm:mt-4 w-full py-3 sm:py-4 bg-green-600 text-white font-black uppercase tracking-wider text-base sm:text-xl rounded-lg shadow-lg shadow-green-900/50"
             >
               {t.header.getOffer}
             </Link>
