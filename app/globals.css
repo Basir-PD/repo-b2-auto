@@ -1,20 +1,102 @@
 @import "tailwindcss";
 
+/* ============================================
+   COLOR PALETTE - Single Source of Truth
+   ============================================
+   To change the entire site's color scheme,
+   simply modify the values below.
+
+   Current Theme: Deep Blue + Amber Gold
+   ============================================ */
+
+:root {
+  /* Primary Colors - Main brand color (Blue/Indigo) */
+  --brand-50: #eef2ff;
+  --brand-100: #e0e7ff;
+  --brand-200: #c7d2fe;
+  --brand-300: #a5b4fc;
+  --brand-400: #818cf8;
+  --brand-500: #6366f1;
+  --brand-600: #4f46e5;
+  --brand-700: #4338ca;
+  --brand-800: #3730a3;
+  --brand-900: #312e81;
+  --brand-950: #1e1b4b;
+
+  /* Accent Colors - Secondary highlight (Amber/Gold) */
+  --accent-50: #fffbeb;
+  --accent-100: #fef3c7;
+  --accent-200: #fde68a;
+  --accent-300: #fcd34d;
+  --accent-400: #fbbf24;
+  --accent-500: #f59e0b;
+  --accent-600: #d97706;
+  --accent-700: #b45309;
+  --accent-800: #92400e;
+  --accent-900: #78350f;
+  --accent-950: #451a03;
+
+  /* Neutral Colors */
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+  --neutral-950: #020617;
+
+  /* Semantic Colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+}
+
 @theme {
   --color-background: #ffffff;
   --color-foreground: #0f172a;
-  --color-primary: #16a34a; /* Green-600 */
+  --color-primary: var(--brand-600);
   --color-primary-foreground: #ffffff;
-  --color-secondary: #64748b;
-  --color-accent: #15803d; /* Green-700 */
-  
+  --color-secondary: var(--neutral-500);
+  --color-accent: var(--accent-500);
+
+  /* Brand color tokens for Tailwind */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+
+  /* Accent color tokens for Tailwind */
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+  --color-accent-950: var(--accent-950);
+
   --font-sans: Outfit, sans-serif;
-  
+
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-blob: blob 7s infinite;
   --animate-fade-in: fade-in 0.5s ease-out;
   --animate-zoom-in: zoom-in 0.3s ease-out;
-  
+
   @keyframes shimmer {
     from {
       transform: translateX(-100%) skewX(-12deg);
@@ -64,19 +146,30 @@
   .glass {
     @apply bg-white/80 backdrop-blur-xl border border-white/20 shadow-lg;
   }
-  
+
   .glass-dark {
     @apply bg-slate-950/80 backdrop-blur-xl border border-white/10 shadow-xl;
   }
-  
+
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-500;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, var(--brand-600), var(--brand-400));
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, var(--accent-500), var(--accent-400));
   }
 
   .skew-button {
-    @apply relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-500/25 active:translate-y-0;
+    @apply relative overflow-hidden transition-all duration-300 hover:-translate-y-1 active:translate-y-0;
+    --tw-shadow-color: var(--brand-500);
   }
-  
+
+  .skew-button:hover {
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.25), 0 4px 6px -4px rgba(79, 70, 229, 0.25);
+  }
+
   .skew-button::before {
     content: '';
     @apply absolute inset-0 bg-white/20 -skew-x-12 -translate-x-full hover:animate-shimmer;
@@ -84,6 +177,39 @@
 
   .container-padding {
     @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Brand color utility classes using CSS variables */
+  .bg-brand {
+    background-color: var(--brand-600);
+  }
+  .bg-brand-light {
+    background-color: var(--brand-100);
+  }
+  .bg-brand-dark {
+    background-color: var(--brand-700);
+  }
+  .text-brand {
+    color: var(--brand-600);
+  }
+  .text-brand-light {
+    color: var(--brand-400);
+  }
+  .text-brand-dark {
+    color: var(--brand-700);
+  }
+  .border-brand {
+    border-color: var(--brand-600);
+  }
+
+  .bg-accent {
+    background-color: var(--accent-500);
+  }
+  .text-accent {
+    color: var(--accent-500);
+  }
+  .border-accent {
+    border-color: var(--accent-500);
   }
 }
 
@@ -102,20 +228,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--neutral-100);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--neutral-300);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--neutral-400);
 }
 
 /* Selection Color */
 ::selection {
-  background-color: #16a34a; /* Green-600 */
+  background-color: var(--brand-600);
   color: white;
 }

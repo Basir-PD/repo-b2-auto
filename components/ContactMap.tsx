@@ -43,13 +43,13 @@ export default function ContactMap() {
   return (
     <section ref={containerRef} className="py-12 sm:py-16 md:py-24 bg-white relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4">
-            {t.contact?.title || "Visitez-nous"} <span className="text-green-600">{t.contact?.titleHighlight || "Aujourd'hui"}</span>
+            {t.contact?.title || "Visitez-nous"} <span className="text-indigo-600">{t.contact?.titleHighlight || "Aujourd'hui"}</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto px-2">
             {t.contact?.subtitle || "Nous sommes situés à Laval, Québec. Contactez-nous pour obtenir votre soumission gratuite!"}
@@ -72,11 +72,11 @@ export default function ContactMap() {
               />
               
               {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-green-600/10 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-indigo-600/10 to-transparent pointer-events-none" />
             </div>
 
             {/* Floating location badge */}
-            <div className="absolute -bottom-4 sm:-bottom-5 md:-bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-br from-green-500 to-emerald-600 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl md:shadow-2xl transform hover:scale-105 transition-transform duration-300">
+            <div className="absolute -bottom-4 sm:-bottom-5 md:-bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-br from-indigo-500 to-violet-600 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl md:shadow-2xl transform hover:scale-105 transition-transform duration-300">
               <div className="flex items-center gap-2 sm:gap-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 <div>
@@ -92,7 +92,7 @@ export default function ContactMap() {
             {/* Phone */}
             <div className="bg-slate-50 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
               <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-gradient-to-br from-indigo-500 to-violet-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Phone className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <div>
@@ -101,7 +101,7 @@ export default function ContactMap() {
                   </h3>
                   <a
                     href="tel:+15146232787"
-                    className="text-lg sm:text-xl font-black text-green-600 hover:text-green-700 transition-colors block"
+                    className="text-lg sm:text-xl font-black text-indigo-600 hover:text-indigo-700 transition-colors block"
                   >
                     +1 (514) 623-2787
                   </a>
@@ -115,7 +115,7 @@ export default function ContactMap() {
             {/* Email */}
             <div className="bg-slate-50 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
               <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-gradient-to-br from-indigo-500 to-violet-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Mail className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <div>
@@ -124,7 +124,7 @@ export default function ContactMap() {
                   </h3>
                   <a
                     href="mailto:info@b2auto.com"
-                    className="text-base sm:text-lg font-bold text-green-600 hover:text-green-700 transition-colors block break-all"
+                    className="text-base sm:text-lg font-bold text-indigo-600 hover:text-indigo-700 transition-colors block break-all"
                   >
                     info@b2auto.com
                   </a>
@@ -138,7 +138,7 @@ export default function ContactMap() {
             {/* Hours */}
             <div className="bg-slate-50 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1 sm:col-span-2 md:col-span-1">
               <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-gradient-to-br from-indigo-500 to-violet-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Clock className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <div className="w-full">

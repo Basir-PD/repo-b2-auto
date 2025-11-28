@@ -52,15 +52,15 @@ export default function GoogleReviews() {
     <section ref={containerRef} className="py-12 sm:py-16 md:py-24 bg-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-50 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-50 rounded-full blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-50 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-50 rounded-full blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative mb-6 sm:mb-8 md:mb-12">
         {/* Header */}
         <div ref={headerRef} className="text-center">
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-green-100 border border-green-200 text-green-700 font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
-            <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-green-700" />
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-700 font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
+            <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-indigo-700" />
             <span>Google Reviews</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3 sm:mb-4 md:mb-6 tracking-tight">
@@ -82,7 +82,7 @@ export default function GoogleReviews() {
           {allReviews.map((review, index) => (
             <div key={index} className="w-[280px] sm:w-[320px] md:w-[380px] lg:w-[400px] flex-shrink-0 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 shadow-lg sm:shadow-xl border border-slate-100 relative group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               {/* Quote Icon */}
-              <div className="absolute top-5 right-5 sm:top-6 sm:right-6 md:top-8 md:right-8 text-green-100 group-hover:text-green-50 transition-colors duration-300">
+              <div className="absolute top-5 right-5 sm:top-6 sm:right-6 md:top-8 md:right-8 text-indigo-100 group-hover:text-indigo-50 transition-colors duration-300">
                 <Quote className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 fill-current" />
               </div>
 
@@ -100,7 +100,7 @@ export default function GoogleReviews() {
 
               {/* User Info */}
               <div className="flex items-center gap-3 sm:gap-4 mt-auto">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg flex-shrink-0">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg flex-shrink-0">
                   {review.name.charAt(0)}
                 </div>
                 <div>

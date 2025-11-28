@@ -53,28 +53,28 @@ export default function HowItWorks() {
   const steps = [
     {
       icon: Phone,
-      color: "from-emerald-500 to-green-600",
-      bgGlow: "bg-emerald-500/20",
+      color: "from-violet-500 to-indigo-600",
+      bgGlow: "bg-violet-500/20",
     },
     {
       icon: Truck,
-      color: "from-green-500 to-emerald-600",
-      bgGlow: "bg-green-500/20",
+      color: "from-indigo-500 to-violet-600",
+      bgGlow: "bg-indigo-500/20",
     },
     {
       icon: DollarSign,
-      color: "from-green-600 to-teal-600",
-      bgGlow: "bg-green-600/20",
+      color: "from-indigo-600 to-violet-700",
+      bgGlow: "bg-indigo-600/20",
     },
   ];
 
   return (
-    <section ref={containerRef} className="py-12 sm:py-16 md:py-24 lg:py-32 bg-gradient-to-b from-white via-green-50/30 to-white relative overflow-hidden">
+    <section ref={containerRef} className="py-12 sm:py-16 md:py-24 lg:py-32 bg-gradient-to-b from-white via-indigo-50/30 to-white relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-green-400/10 rounded-full blur-3xl animate-blob" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-green-300/5 to-emerald-300/5 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-amber-400/10 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-400/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300/5 to-emerald-300/5 rounded-full blur-3xl" />
       </div>
       
       {/* Grid Pattern */}
@@ -83,7 +83,7 @@ export default function HowItWorks() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-14 md:mb-20">
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-green-100 border border-green-200 text-green-700 font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-700 font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
             <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Simple Process</span>
           </div>
@@ -157,9 +157,9 @@ export default function HowItWorks() {
                 
                 {/* Speed lines */}
                 <div className="absolute -left-8 top-1/2 -translate-y-1/2 flex flex-col gap-1 opacity-0 animate-speed-lines">
-                  <div className="w-8 h-0.5 bg-green-300 rounded-full" />
-                  <div className="w-5 h-0.5 bg-green-300 rounded-full ml-2" />
-                  <div className="w-10 h-0.5 bg-green-300 rounded-full" />
+                  <div className="w-8 h-0.5 bg-indigo-300 rounded-full" />
+                  <div className="w-5 h-0.5 bg-indigo-300 rounded-full ml-2" />
+                  <div className="w-10 h-0.5 bg-indigo-300 rounded-full" />
                 </div>
               </div>
             </div>
@@ -226,7 +226,7 @@ export default function HowItWorks() {
                 <div className={`absolute -inset-1 ${steps[index].bgGlow} rounded-2xl sm:rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                 {/* Card */}
-                <div className="relative h-full bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border-2 border-green-200 shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:border-green-400 flex flex-col">
+                <div className="relative h-full bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border-2 border-indigo-200 shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:border-amber-400 flex flex-col">
                   {/* Step Number Badge */}
                   <div className={`absolute -top-3 -right-3 sm:-top-4 sm:-right-4 md:-top-6 md:-right-6 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gradient-to-br ${steps[index].color} rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg border-2 sm:border-2 md:border-4 border-white transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500`}>
                     <span className="text-lg sm:text-xl md:text-3xl font-black text-white">{step.number}</span>
@@ -250,19 +250,19 @@ export default function HowItWorks() {
                   </p>
 
                   {/* CTA Link */}
-                  <div className="flex items-center gap-2 text-green-600 font-bold group-hover:gap-4 transition-all cursor-pointer">
+                  <div className="flex items-center gap-2 text-indigo-600 font-bold group-hover:gap-4 transition-all cursor-pointer">
                     <span className="uppercase text-xs sm:text-sm tracking-wider">{step.cta}</span>
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                   </div>
 
                   {/* Decorative corner accent */}
-                  <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-tl from-green-100/50 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-tl from-indigo-100/50 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 {/* Connecting Arrow - Desktop only */}
                 {index < 2 && (
                   <div className="hidden lg:block absolute top-12 -right-8 z-10">
-                    <ArrowRight className="w-16 h-16 text-green-400 animate-pulse" strokeWidth={3} />
+                    <ArrowRight className="w-16 h-16 text-amber-400 animate-pulse" strokeWidth={3} />
                   </div>
                 )}
               </div>
@@ -278,10 +278,10 @@ export default function HowItWorks() {
             { icon: DollarSign, label: t.howItWorks.bottomIcons.cash },
           ].map((item, index) => (
             <div key={index} className="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <item.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" strokeWidth={2.5} />
               </div>
-              <span className="text-xs sm:text-sm md:text-base font-black uppercase text-slate-700 group-hover:text-green-600 transition-colors tracking-wide">
+              <span className="text-xs sm:text-sm md:text-base font-black uppercase text-slate-700 group-hover:text-indigo-600 transition-colors tracking-wide">
                 {item.label}
               </span>
             </div>

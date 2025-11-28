@@ -48,18 +48,18 @@ export default function Hero() {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-green-500/20 rounded-full blur-[100px] mix-blend-multiply animate-blob" />
-        <div className="absolute top-40 right-10 w-96 h-96 bg-emerald-500/20 rounded-full blur-[100px] mix-blend-multiply animate-blob animation-delay-2000" />
+        <div className="absolute top-20 left-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-[100px] mix-blend-multiply animate-blob" />
+        <div className="absolute top-40 right-10 w-96 h-96 bg-violet-500/20 rounded-full blur-[100px] mix-blend-multiply animate-blob animation-delay-2000" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
           {/* Text Content */}
           <div ref={textRef} className="text-center lg:text-left space-y-4 sm:space-y-6 md:space-y-8">
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-green-50 border border-green-100 text-green-700 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-sm">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-sm">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
               </span>
               {t.hero.badge}
             </div>
@@ -68,7 +68,7 @@ export default function Hero() {
               {t.hero.title} <br />
               <span className="text-gradient relative inline-block">
                 {t.hero.titleHighlight}
-                <svg className="absolute w-full h-2 sm:h-3 -bottom-1 left-0 text-green-400/30 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <svg className="absolute w-full h-2 sm:h-3 -bottom-1 left-0 text-indigo-400/30 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                 </svg>
               </span>
@@ -81,7 +81,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
               <Link
                 href="#contact"
-                className="w-full sm:w-auto px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg bg-green-600 hover:bg-green-500 text-white font-black text-sm sm:text-base md:text-lg uppercase tracking-wide transition-all shadow-lg shadow-green-600/30 hover:shadow-green-600/50 hover:-translate-y-1 flex items-center justify-center gap-2 -skew-x-6 group"
+                className="w-full sm:w-auto px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-black text-sm sm:text-base md:text-lg uppercase tracking-wide transition-all shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:-translate-y-1 flex items-center justify-center gap-2 -skew-x-6 group"
               >
                 <span className="skew-x-6 flex items-center gap-2">
                   {t.hero.cta}
@@ -90,7 +90,7 @@ export default function Hero() {
               </Link>
               <a
                 href="tel:+15146232787"
-                className="w-full sm:w-auto px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg bg-white hover:bg-slate-50 border-2 border-slate-200 hover:border-green-500 text-slate-700 hover:text-green-600 font-bold text-sm sm:text-base md:text-lg transition-all flex items-center justify-center shadow-sm hover:shadow-md -skew-x-6 group"
+                className="w-full sm:w-auto px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg bg-white hover:bg-slate-50 border-2 border-slate-200 hover:border-indigo-500 text-slate-700 hover:text-indigo-600 font-bold text-sm sm:text-base md:text-lg transition-all flex items-center justify-center shadow-sm hover:shadow-md -skew-x-6 group"
               >
                 <span className="skew-x-6">{t.hero.call}</span>
               </a>
@@ -98,22 +98,22 @@ export default function Hero() {
 
             <div className="pt-4 sm:pt-6 md:pt-8 flex flex-wrap justify-center lg:justify-start gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-2 sm:gap-y-3 md:gap-y-4 text-xs sm:text-sm font-bold text-slate-500">
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" />
                 <span>{t.hero.benefits.price}</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" />
                 <span>{t.hero.benefits.towing}</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" />
                 <span>{t.hero.benefits.paid}</span>
               </div>
             </div>
           </div>
 
           {/* Hero Image */}
-          <div ref={imageRef} className="relative h-[280px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[600px] w-full rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl shadow-green-900/20 border border-slate-200 bg-white -skew-x-3 hover:skew-x-0 transition-transform duration-700">
+          <div ref={imageRef} className="relative h-[280px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[600px] w-full rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl shadow-indigo-900/20 border border-slate-200 bg-white -skew-x-3 hover:skew-x-0 transition-transform duration-700">
              <Image
               src="/hero-image.png"
               alt="B2 Auto Recycling Tow Truck"

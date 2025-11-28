@@ -58,7 +58,7 @@ export default function FAQ() {
                   <span className="text-sm sm:text-base md:text-lg font-bold text-slate-900">
                     {item.question}
                   </span>
-                  <div className={`flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${openIndex === index ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                  <div className={`flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${openIndex === index ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-500'}`}>
                     {openIndex === index ? (
                       <Minus className="w-4 h-4 sm:w-5 sm:h-5" />
                     ) : (
