@@ -33,8 +33,8 @@ export default function FAQ() {
   }, { scope: containerRef });
 
   return (
-    <section id="faq" className="py-12 sm:py-16 md:py-24 bg-slate-50 relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-16 sm:py-20 md:py-24 lg:py-28 bg-slate-50 relative overflow-hidden">
+      <div className="container mx-auto px-5 sm:px-6 lg:px-8">
         <div ref={containerRef} className="max-w-3xl mx-auto">
           <div className="text-center mb-8 sm:mb-10 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4">
@@ -76,6 +76,22 @@ export default function FAQ() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* CTA Box */}
+          <div className="mt-8 sm:mt-10 md:mt-12 p-5 sm:p-6 md:p-8 bg-indigo-600 rounded-2xl text-center">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3">
+              {t.faq?.ctaTitle || "Ready to sell your vehicle?"}
+            </h3>
+            <p className="text-indigo-100 text-sm sm:text-base mb-4 sm:mb-5">
+              {t.faq?.ctaSubtitle || "Get your free quote in minutes. We buy all vehicles, any condition."}
+            </p>
+            <a
+              href="tel:+15146232787"
+              className="inline-flex items-center justify-center gap-2 bg-white text-indigo-600 font-bold text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl hover:bg-indigo-50 transition-colors"
+            >
+              {t.faq?.ctaButton || "Call Now: +1 (514) 623-2787"}
+            </a>
           </div>
         </div>
       </div>

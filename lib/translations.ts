@@ -36,7 +36,7 @@ export const translations = {
         {
           number: "2",
           title: "Schedule Free Pickup",
-          description: "Choose a convenient time for us to collect your vehicle. Our professional towing service is completely free, and we come to your location anywhere in Montreal.",
+          description: "Choose a convenient time for us to collect your vehicle. Our professional towing service is completely free, and we come to your location anywhere in Laval.",
           cta: "Book Pickup"
         },
         {
@@ -54,22 +54,22 @@ export const translations = {
     },
     googleReviews: {
       title: "What Our Customers Say",
-      subtitle: "Rated 5/5 stars by hundreds of satisfied customers across Montreal.",
+      subtitle: "Rated 5/5 stars by hundreds of satisfied customers across Laval.",
       reviews: [
         {
           name: "Michael Chen",
           date: "2 days ago",
-          text: "Incredible service! They came within an hour, paid exactly what they quoted over the phone, and towed my old Civic away for free. Highly recommended!",
+          text: "Excellent service from start to finish. They arrived within an hour, paid the exact amount quoted over the phone, and handled all the paperwork. Highly recommended!",
         },
         {
           name: "Sarah Tremblay",
           date: "1 week ago",
-          text: "Best price I found in Montreal. The driver was professional and the whole process took less than 15 minutes. Cash on the spot as promised.",
+          text: "Best price I found in Laval. The driver was courteous and professional. The entire process took less than 15 minutes. Cash on the spot as promised.",
         },
         {
           name: "David Miller",
           date: "2 weeks ago",
-          text: "Very transparent and honest. No hidden fees, free towing, and great communication. Turned my scrap car into cash instantly.",
+          text: "Transparent and honest service. No hidden fees, free towing included, and excellent communication throughout. They turned my old car into cash instantly.",
         }
       ]
     },
@@ -83,7 +83,7 @@ export const translations = {
         },
         {
           title: "Free Towing",
-          description: "We come to you! Enjoy complimentary towing service anywhere in the Greater Montreal area.",
+          description: "We come to you! Enjoy complimentary towing service anywhere in the Greater Laval area.",
         },
         {
           title: "Same-Day Payment",
@@ -213,7 +213,7 @@ export const translations = {
         {
           number: "2",
           title: "Planifiez le Remorquage Gratuit",
-          description: "Choisissez un moment qui vous convient pour la collecte de votre véhicule. Notre service de remorquage professionnel est entièrement gratuit, partout à Montréal.",
+          description: "Choisissez un moment qui vous convient pour la collecte de votre véhicule. Notre service de remorquage professionnel est entièrement gratuit, partout à Laval.",
           cta: "Réserver"
         },
         {
@@ -231,22 +231,22 @@ export const translations = {
     },
     googleReviews: {
       title: "Ce Que Disent Nos Clients",
-      subtitle: "Noté 5/5 étoiles par des centaines de clients satisfaits à Montréal.",
+      subtitle: "Noté 5/5 étoiles par des centaines de clients satisfaits à Laval.",
       reviews: [
         {
           name: "Michael Chen",
           date: "Il y a 2 jours",
-          text: "Service incroyable ! Ils sont venus en une heure, ont payé exactement ce qu'ils avaient dit au téléphone et ont remorqué ma vieille Civic gratuitement. Hautement recommandé !",
+          text: "Excellent service du début à la fin. Ils sont arrivés en une heure, ont payé le montant exact cité au téléphone et ont géré toute la paperasse. Hautement recommandé !",
         },
         {
           name: "Sarah Tremblay",
           date: "Il y a 1 semaine",
-          text: "Meilleur prix trouvé à Montréal. Le chauffeur était professionnel et tout le processus a pris moins de 15 minutes. Argent comptant sur place comme promis.",
+          text: "Meilleur prix trouvé à Laval. Le chauffeur était courtois et professionnel. Le processus entier a pris moins de 15 minutes. Argent comptant sur place comme promis.",
         },
         {
           name: "David Miller",
           date: "Il y a 2 semaines",
-          text: "Très transparent et honnête. Pas de frais cachés, remorquage gratuit et excellente communication. J'ai transformé mon auto en argent instantanément.",
+          text: "Service transparent et honnête. Pas de frais cachés, remorquage gratuit inclus et excellente communication tout au long. Ils ont transformé mon vieux véhicule en argent instantanément.",
         }
       ]
     },
@@ -260,7 +260,7 @@ export const translations = {
         },
         {
           title: "Remorquage Gratuit",
-          description: "Nous venons à vous ! Profitez de notre service de remorquage gratuit partout dans le Grand Montréal.",
+          description: "Nous venons à vous ! Profitez de notre service de remorquage gratuit partout dans la région de Laval.",
         },
         {
           title: "Paiement le Jour Même",

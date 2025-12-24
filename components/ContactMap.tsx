@@ -41,12 +41,12 @@ export default function ContactMap() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-12 sm:py-16 md:py-24 bg-white relative overflow-hidden">
+    <section ref={containerRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-white relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-violet-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+
+      <div className="container mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4">
             {t.contact?.title || "Visitez-nous"} <span className="text-indigo-600">{t.contact?.titleHighlight || "Aujourd'hui"}</span>
@@ -90,13 +90,13 @@ export default function ContactMap() {
           {/* Contact Info Cards - 3 Column Grid */}
           <div ref={infoRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-10 sm:mt-12 md:mt-16">
             {/* Phone */}
-            <div className="bg-slate-50 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+            <div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
               <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                <div className="bg-gradient-to-br from-indigo-500 to-violet-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+                <div className="bg-indigo-50 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center group-hover:bg-indigo-100 transition-colors duration-300">
+                  <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-600" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-1.5 sm:mb-2 uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 sm:mb-2">
                     {t.contact?.phoneTitle || "Appelez-nous"}
                   </h3>
                   <a
@@ -113,13 +113,13 @@ export default function ContactMap() {
             </div>
 
             {/* Email */}
-            <div className="bg-slate-50 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+            <div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
               <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                <div className="bg-gradient-to-br from-indigo-500 to-violet-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+                <div className="bg-indigo-50 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center group-hover:bg-indigo-100 transition-colors duration-300">
+                  <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-600" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-1.5 sm:mb-2 uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 sm:mb-2">
                     {t.contact?.emailTitle || "Écrivez-nous"}
                   </h3>
                   <a
@@ -136,13 +136,13 @@ export default function ContactMap() {
             </div>
 
             {/* Hours */}
-            <div className="bg-slate-50 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1 sm:col-span-2 md:col-span-1">
+            <div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1 sm:col-span-2 md:col-span-1">
               <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                <div className="bg-gradient-to-br from-indigo-500 to-violet-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Clock className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+                <div className="bg-indigo-50 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center group-hover:bg-indigo-100 transition-colors duration-300">
+                  <Clock className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-600" strokeWidth={1.5} />
                 </div>
                 <div className="w-full">
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-3 sm:mb-4 uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4">
                     {t.contact?.hoursTitle || "Heures d'ouverture"}
                   </h3>
                   <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">

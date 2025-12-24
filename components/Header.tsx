@@ -54,22 +54,22 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-0' : 'py-6 px-4 sm:px-6 lg:px-8'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-0' : 'py-3 sm:py-4 md:py-6 px-3 sm:px-4 md:px-6 lg:px-8'}`}>
       <div className={isScrolled ? 'w-full' : 'container mx-auto max-w-5xl'}>
-        <div className={`px-6 sm:px-8 lg:px-12 flex items-center justify-between transition-all duration-300 relative z-50 ${
+        <div className={`px-4 sm:px-6 md:px-8 lg:px-12 flex items-center justify-between transition-all duration-300 relative z-50 ${
           isScrolled
-            ? 'h-16 bg-white/90 backdrop-blur-md shadow-lg border-b border-white/40'
-            : 'h-20 glass-dark rounded-2xl hover:scale-[1.01] hover:shadow-2xl hover:shadow-indigo-900/20'
+            ? 'h-14 sm:h-16 bg-white/90 backdrop-blur-md shadow-lg border-b border-white/40'
+            : 'h-16 sm:h-18 md:h-20 glass-dark rounded-xl sm:rounded-2xl hover:scale-[1.01] hover:shadow-2xl hover:shadow-indigo-900/20'
         }`}>
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className={`rounded-lg -skew-x-6 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:rotate-3 transition-all duration-300 ${
-              isScrolled ? 'w-8 h-8 bg-indigo-600' : 'w-10 h-10 bg-indigo-600'
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+            <div className={`rounded-lg -skew-x-6 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:rotate-3 transition-all duration-300 bg-indigo-600 ${
+              isScrolled ? 'w-7 h-7 sm:w-8 sm:h-8' : 'w-8 h-8 sm:w-10 sm:h-10'
             }`}>
-              <span className={`font-black text-white skew-x-6 ${isScrolled ? 'text-lg' : 'text-xl'}`}>B</span>
+              <span className={`font-black text-white skew-x-6 ${isScrolled ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'}`}>B</span>
             </div>
             <span className={`font-black tracking-tighter uppercase italic transition-all duration-300 ${
-              isScrolled ? 'text-xl text-slate-900' : 'text-2xl text-white'
+              isScrolled ? 'text-lg sm:text-xl text-slate-900' : 'text-xl sm:text-2xl text-white'
             }`}>B2 Auto</span>
           </Link>
 
@@ -93,7 +93,7 @@ export default function Header() {
           </nav>
 
           {/* CTA & Mobile Menu */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             {/* Language Dropdown */}
             <div className="relative hidden md:block">
               <button

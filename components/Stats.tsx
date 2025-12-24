@@ -122,12 +122,12 @@ export default function Stats() {
   ];
 
   return (
-    <section ref={containerRef} className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
+    <section ref={containerRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-violet-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="absolute top-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-violet-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+      <div className="container mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         {/* Main heading */}
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4">
@@ -157,9 +157,9 @@ export default function Stats() {
 
             {/* Experience badge */}
             <div ref={badgeRef} className="flex justify-center">
-              <div className="bg-gradient-to-br from-indigo-500 to-violet-600 text-white px-5 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-indigo-600 text-white px-5 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300">
                 <div className="text-3xl sm:text-4xl md:text-5xl font-black mb-1">25+</div>
-                <div className="text-xs sm:text-sm font-bold uppercase tracking-wider">
+                <div className="text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-90">
                   {t.stats?.yearsExperience || "ANNÉES D'EXPÉRIENCES"}
                 </div>
               </div>
@@ -195,15 +195,15 @@ export default function Stats() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 group hover:-translate-y-2 sm:last:col-span-2 md:last:col-span-1 sm:last:max-w-md sm:last:mx-auto md:last:max-w-none"
+              className="bg-white p-5 sm:p-6 md:p-8 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 group hover:-translate-y-1 sm:last:col-span-2 md:last:col-span-1 sm:last:max-w-md sm:last:mx-auto md:last:max-w-none"
             >
-              <div className="bg-gradient-to-br from-indigo-500 to-violet-600 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-5 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+              <div className="bg-indigo-50 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-4 sm:mb-5 group-hover:bg-indigo-100 transition-colors duration-300">
+                <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-600" strokeWidth={1.5} />
               </div>
-              <h3 className="text-base sm:text-lg md:text-xl font-black text-slate-900 mb-2 sm:mb-3 uppercase tracking-tight">
+              <h3 className="text-base sm:text-lg md:text-xl font-bold text-slate-900 mb-2 sm:mb-3 tracking-tight">
                 {feature.title}
               </h3>
-              <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                 {feature.description}
               </p>
             </div>

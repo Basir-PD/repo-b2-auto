@@ -60,7 +60,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2 sm:gap-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 mt-0.5 sm:mt-1 flex-shrink-0" />
-                <span className="text-sm sm:text-base text-slate-400 font-medium">Montreal, QC</span>
+                <span className="text-sm sm:text-base text-slate-400 font-medium">Laval, QC</span>
               </li>
             </ul>
           </div>

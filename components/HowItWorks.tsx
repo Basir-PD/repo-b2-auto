@@ -51,36 +51,24 @@ export default function HowItWorks() {
   }, { scope: containerRef });
 
   const steps = [
-    {
-      icon: Phone,
-      color: "from-violet-500 to-indigo-600",
-      bgGlow: "bg-violet-500/20",
-    },
-    {
-      icon: Truck,
-      color: "from-indigo-500 to-violet-600",
-      bgGlow: "bg-indigo-500/20",
-    },
-    {
-      icon: DollarSign,
-      color: "from-indigo-600 to-violet-700",
-      bgGlow: "bg-indigo-600/20",
-    },
+    { icon: Phone },
+    { icon: Truck },
+    { icon: DollarSign },
   ];
 
   return (
-    <section ref={containerRef} className="py-12 sm:py-16 md:py-24 lg:py-32 bg-gradient-to-b from-white via-indigo-50/30 to-white relative overflow-hidden">
+    <section ref={containerRef} className="py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-b from-white via-indigo-50/30 to-white relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-amber-400/10 rounded-full blur-3xl animate-blob" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-400/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300/5 to-emerald-300/5 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-amber-400/10 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-violet-400/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-gradient-to-r from-indigo-300/5 to-emerald-300/5 rounded-full blur-3xl" />
       </div>
-      
+
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98108_1px,transparent_1px),linear-gradient(to_bottom,#10b98108_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98108_1px,transparent_1px),linear-gradient(to_bottom,#10b98108_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px] pointer-events-none" />
+
+      <div className="container mx-auto px-5 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-14 md:mb-20">
           <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-700 font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
@@ -217,32 +205,27 @@ export default function HowItWorks() {
         `}</style>
 
         {/* Steps Cards */}
-        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-6 max-w-7xl mx-auto relative">
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-6 lg:gap-6 max-w-7xl mx-auto relative">
           {t.howItWorks.steps.map((step, index) => {
             const StepIcon = steps[index].icon;
             return (
               <div key={index} className="group relative sm:last:col-span-2 md:last:col-span-1 sm:last:max-w-md sm:last:mx-auto md:last:max-w-none">
-                {/* Glow Effect */}
-                <div className={`absolute -inset-1 ${steps[index].bgGlow} rounded-2xl sm:rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-
                 {/* Card */}
-                <div className="relative h-full bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border-2 border-indigo-200 shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:border-amber-400 flex flex-col">
+                <div className="relative h-full bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 flex flex-col">
                   {/* Step Number Badge */}
-                  <div className={`absolute -top-3 -right-3 sm:-top-4 sm:-right-4 md:-top-6 md:-right-6 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gradient-to-br ${steps[index].color} rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg border-2 sm:border-2 md:border-4 border-white transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500`}>
-                    <span className="text-lg sm:text-xl md:text-3xl font-black text-white">{step.number}</span>
+                  <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-8 h-8 sm:w-10 sm:h-10 bg-indigo-600 rounded-full flex items-center justify-center border-2 border-white shadow-md">
+                    <span className="text-sm sm:text-base font-bold text-white">{step.number}</span>
                   </div>
 
                   {/* Icon Container */}
-                  <div className="mb-4 sm:mb-5 md:mb-6 relative">
-                    <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br ${steps[index].color} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 relative overflow-hidden`}>
-                      {/* Shine effect */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                      <StepIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white relative z-10" strokeWidth={2.5} />
+                  <div className="mb-4 sm:mb-5 md:mb-6">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 bg-indigo-50 rounded-2xl flex items-center justify-center group-hover:bg-indigo-100 transition-colors duration-300">
+                      <StepIcon className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 text-indigo-600" strokeWidth={1.5} />
                     </div>
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-slate-900 mb-2 sm:mb-3 md:mb-4 uppercase tracking-tight leading-tight">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-2 sm:mb-3 md:mb-4 leading-tight">
                     {step.title}
                   </h3>
                   <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed mb-4 sm:mb-5 md:mb-6 flex-grow">
@@ -255,8 +238,6 @@ export default function HowItWorks() {
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                   </div>
 
-                  {/* Decorative corner accent */}
-                  <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-tl from-indigo-100/50 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 {/* Connecting Arrow - Desktop only */}
@@ -271,17 +252,17 @@ export default function HowItWorks() {
         </div>
 
         {/* Bottom Stats/Icons Row */}
-        <div className="mt-10 sm:mt-14 md:mt-20 flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
+        <div className="mt-10 sm:mt-14 md:mt-20 flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12">
           {[
             { icon: Phone, label: t.howItWorks.bottomIcons.call },
             { icon: Truck, label: t.howItWorks.bottomIcons.pickup },
             { icon: DollarSign, label: t.howItWorks.bottomIcons.cash },
           ].map((item, index) => (
             <div key={index} className="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <item.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" strokeWidth={2.5} />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-indigo-50 flex items-center justify-center group-hover:bg-indigo-100 transition-colors duration-300">
+                <item.icon className="w-5 h-5 sm:w-5 sm:h-5 text-indigo-600" strokeWidth={1.5} />
               </div>
-              <span className="text-xs sm:text-sm md:text-base font-black uppercase text-slate-700 group-hover:text-indigo-600 transition-colors tracking-wide">
+              <span className="text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600 transition-colors">
                 {item.label}
               </span>
             </div>

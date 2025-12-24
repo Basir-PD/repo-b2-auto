@@ -6,14 +6,12 @@ import GoogleReviews from "@/components/GoogleReviews";
 import FAQ from "@/components/FAQ";
 import ContactMap from "@/components/ContactMap";
 import Footer from "@/components/Footer";
-import ScrollJourney from "@/components/ScrollJourney";
 import SectionConnector from "@/components/SectionConnector";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-900 selection:bg-indigo-500/30">
-      <ScrollJourney />
       <ScrollProgress />
       <Header />
       <Hero />
