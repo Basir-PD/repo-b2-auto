@@ -27,17 +27,6 @@ export default function ContactMap() {
       ease: "power3.out",
     });
 
-    gsap.from(infoRef.current?.children || [], {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-      },
-      x: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power3.out",
-    });
   }, { scope: containerRef });
 
   return (
