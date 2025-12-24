@@ -122,14 +122,14 @@ export default function Stats() {
   ];
 
   return (
-    <section ref={containerRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
+    <section ref={containerRef} className="py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-violet-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
       <div className="container mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         {/* Main heading */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+        <div className="text-center mb-4 sm:mb-8 md:mb-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4">
             {t.stats?.title || "POURQUOI ALPHA"} <span className="text-indigo-600">{t.stats?.titleHighlight || "RECYCLAGE ?"}</span>
           </h2>
@@ -139,7 +139,7 @@ export default function Stats() {
         </div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-12 sm:mb-16 md:mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-2 sm:mb-8 md:mb-14">
           {/* Left side - Stats */}
           <div className="space-y-6 sm:space-y-8 md:space-y-12">
             <AnimatedNumber
@@ -191,7 +191,7 @@ export default function Stats() {
         </div>
 
         {/* Features grid */}
-        <div ref={featuresRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+        <div ref={featuresRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -211,12 +211,12 @@ export default function Stats() {
         </div>
 
         {/* Mission / About Section */}
-        <div className="mt-12 sm:mt-16 md:mt-24 max-w-4xl mx-auto">
-           <div className="text-center mb-8 sm:mb-10 md:mb-12">
-             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-4 sm:mb-5 md:mb-6">
+        <div className="mt-4 sm:mt-8 md:mt-12 max-w-4xl mx-auto">
+           <div className="text-center mb-5 sm:mb-8 md:mb-10">
+             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4 md:mb-5">
                 {t.about.title} <span className="text-indigo-600">{t.about.titleHighlight}</span>
              </h2>
-             <div className="space-y-4 sm:space-y-5 md:space-y-6 text-base sm:text-lg text-slate-600 font-medium leading-relaxed px-2">
+             <div className="space-y-3 sm:space-y-4 md:space-y-5 text-base sm:text-lg text-slate-600 font-medium leading-relaxed px-2">
                 <p>{t.about.p1}</p>
                 <p>{t.about.p2}</p>
              </div>

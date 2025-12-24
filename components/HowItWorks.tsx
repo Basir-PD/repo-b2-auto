@@ -57,7 +57,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section ref={containerRef} className="py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-b from-white via-indigo-50/30 to-white relative overflow-hidden">
+    <section ref={containerRef} className="py-10 sm:py-14 md:py-20 lg:py-24 bg-gradient-to-b from-white via-indigo-50/30 to-white relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-amber-400/10 rounded-full blur-3xl animate-blob" />
@@ -70,7 +70,7 @@ export default function HowItWorks() {
 
       <div className="container mx-auto px-5 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-14 md:mb-20">
+        <div className="text-center mb-6 sm:mb-10 md:mb-14">
           <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-700 font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
             <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Simple Process</span>
@@ -252,7 +252,7 @@ export default function HowItWorks() {
         </div>
 
         {/* Bottom Stats/Icons Row */}
-        <div className="mt-10 sm:mt-14 md:mt-20 flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+        <div className="mt-6 sm:mt-10 md:mt-16 flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12">
           {[
             { icon: Phone, label: t.howItWorks.bottomIcons.call },
             { icon: Truck, label: t.howItWorks.bottomIcons.pickup },

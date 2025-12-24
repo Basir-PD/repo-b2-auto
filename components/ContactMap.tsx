@@ -41,7 +41,7 @@ export default function ContactMap() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-white relative overflow-hidden">
+    <section ref={containerRef} className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-violet-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
@@ -88,7 +88,7 @@ export default function ContactMap() {
           </div>
 
           {/* Contact Info Cards - 3 Column Grid */}
-          <div ref={infoRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-10 sm:mt-12 md:mt-16">
+          <div ref={infoRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-6 sm:mt-8 md:mt-12">
             {/* Phone */}
             <div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
               <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
