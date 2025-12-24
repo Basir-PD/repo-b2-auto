@@ -66,7 +66,7 @@ export default function SectionConnector({
   return (
     <div
       ref={containerRef}
-      className={`relative h-16 sm:h-20 md:h-32 w-full overflow-hidden ${
+      className={`relative h-4 sm:h-8 md:h-16 w-full overflow-hidden ${
         flip ? "rotate-180" : ""
       }`}
       style={{
