@@ -165,7 +165,10 @@ export const translations = {
           question: "How fast can you pick up my car?",
           answer: "We often offer same-day or next-day pickup service depending on your location and our schedule.",
         }
-      ]
+      ],
+      ctaTitle: "Ready to sell your vehicle?",
+      ctaSubtitle: "Get your free quote in minutes. We buy all vehicles, any condition.",
+      ctaButton: "Call Now: +1 (514) 623-2787"
     },
     footer: {
       description: "The modern way to sell your car. Fast, fair, and hassle-free. We turn your vehicle into cash instantly.",
@@ -342,7 +345,10 @@ export const translations = {
           question: "À quelle vitesse pouvez-vous ramasser ma voiture ?",
           answer: "Nous offrons souvent un service de ramassage le jour même ou le lendemain, selon votre emplacement et notre horaire.",
         }
-      ]
+      ],
+      ctaTitle: "Prêt à vendre votre véhicule ?",
+      ctaSubtitle: "Obtenez votre soumission gratuite en quelques minutes. Nous achetons tous les véhicules, peu importe l'état.",
+      ctaButton: "Appelez maintenant : +1 (514) 623-2787"
     },
     footer: {
       description: "La façon moderne de vendre votre voiture. Rapide, juste et sans tracas. Nous transformons votre véhicule en argent instantanément.",
