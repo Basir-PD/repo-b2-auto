@@ -89,18 +89,6 @@ export default function Stats() {
       ease: "power3.out",
     });
 
-    // Animate feature icons
-    gsap.from(featuresRef.current?.children || [], {
-      scrollTrigger: {
-        trigger: featuresRef.current,
-        start: "top 80%",
-      },
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power3.out",
-    });
   }, { scope: containerRef });
 
   const features = [
