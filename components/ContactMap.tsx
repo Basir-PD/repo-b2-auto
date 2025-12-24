@@ -48,18 +48,45 @@ export default function ContactMap() {
         <div className="space-y-8 sm:space-y-12">
           {/* Map - Centered and Larger */}
           <div ref={mapRef} className="w-full max-w-6xl mx-auto relative">
-            <div className="h-[50vh] sm:h-[55vh] md:h-auto md:aspect-[16/9] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl md:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3),0_10px_30px_-10px_rgba(34,197,94,0.2)] border-2 sm:border-4 border-white bg-slate-100 relative group">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89425.35633423!2d-73.79847!3d45.60629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91f8abc7e0d7f%3A0x5040cadec2cc9c0!2sLaval%2C%20QC!5e0!3m2!1sen!2sca!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="grayscale hover:grayscale-0 transition-all duration-500"
-              />
-              
+            <div className="h-[50vh] sm:h-[55vh] md:h-auto md:aspect-[16/9] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl md:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3),0_10px_30px_-10px_rgba(34,197,94,0.2)] border-2 sm:border-4 border-white bg-slate-200 relative group">
+              {/* Static Map Placeholder */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200">
+                {/* Map grid pattern */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] bg-[size:40px_40px]" />
+
+                {/* Roads */}
+                <div className="absolute top-1/4 left-0 right-0 h-3 bg-amber-100 border-y border-amber-200" />
+                <div className="absolute top-1/2 left-0 right-0 h-4 bg-amber-50 border-y border-amber-200" />
+                <div className="absolute top-3/4 left-0 right-0 h-2 bg-amber-100 border-y border-amber-200" />
+                <div className="absolute left-1/4 top-0 bottom-0 w-3 bg-amber-100 border-x border-amber-200" />
+                <div className="absolute left-1/2 top-0 bottom-0 w-5 bg-amber-50 border-x border-amber-200" />
+                <div className="absolute left-3/4 top-0 bottom-0 w-2 bg-amber-100 border-x border-amber-200" />
+
+                {/* Water/River */}
+                <div className="absolute top-[15%] left-[10%] w-[35%] h-[25%] bg-blue-200/60 rounded-[100px] rotate-[-15deg]" />
+
+                {/* Green areas */}
+                <div className="absolute top-[60%] left-[15%] w-16 h-16 bg-green-300/50 rounded-full" />
+                <div className="absolute top-[30%] right-[20%] w-20 h-14 bg-green-300/50 rounded-lg" />
+                <div className="absolute bottom-[20%] right-[30%] w-12 h-12 bg-green-300/50 rounded-full" />
+
+                {/* Location marker */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                  <div className="w-8 h-8 bg-indigo-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center animate-pulse">
+                    <div className="w-2 h-2 bg-white rounded-full" />
+                  </div>
+                  <div className="w-0 h-0 border-l-[8px] border-r-[8px] border-t-[12px] border-l-transparent border-r-transparent border-t-indigo-600 -mt-1" />
+                  <div className="mt-2 bg-white px-3 py-1 rounded-full shadow-md">
+                    <span className="text-xs font-bold text-slate-700">Laval, QC</span>
+                  </div>
+                </div>
+
+                {/* City labels */}
+                <div className="absolute top-[20%] right-[15%] bg-white/80 px-2 py-0.5 rounded text-[10px] font-semibold text-slate-500">Laval-des-Rapides</div>
+                <div className="absolute bottom-[30%] left-[20%] bg-white/80 px-2 py-0.5 rounded text-[10px] font-semibold text-slate-500">Chomedey</div>
+                <div className="absolute top-[45%] right-[25%] bg-white/80 px-2 py-0.5 rounded text-[10px] font-semibold text-slate-500">Vimont</div>
+              </div>
+
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-indigo-600/10 to-transparent pointer-events-none" />
             </div>
