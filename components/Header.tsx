@@ -138,9 +138,9 @@ export default function Header() {
             </a>
             <a
               href="tel:+15146232787"
-              className="hidden md:block skew-button px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-black uppercase tracking-wider -skew-x-6 shadow-lg shadow-indigo-900/50"
+              className="hidden md:block px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-black uppercase tracking-wider rounded-lg shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all hover:-translate-y-0.5"
             >
-              <span className="block skew-x-6">{t.header.getOffer}</span>
+              {t.header.getOffer}
             </a>
 
             {/* Mobile Menu Toggle */}
