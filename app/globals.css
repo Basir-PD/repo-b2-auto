@@ -6,22 +6,22 @@
    To change the entire site's color scheme,
    simply modify the values below.
 
-   Current Theme: Deep Blue + Amber Gold
+   Current Theme: Facebook Blue + Amber Gold
    ============================================ */
 
 :root {
-  /* Primary Colors - Main brand color (Blue/Indigo) */
-  --brand-50: #eef2ff;
-  --brand-100: #e0e7ff;
-  --brand-200: #c7d2fe;
-  --brand-300: #a5b4fc;
-  --brand-400: #818cf8;
-  --brand-500: #6366f1;
-  --brand-600: #4f46e5;
-  --brand-700: #4338ca;
-  --brand-800: #3730a3;
-  --brand-900: #312e81;
-  --brand-950: #1e1b4b;
+  /* Primary Colors - Main brand color (Facebook Blue) */
+  --brand-50: #e7f0fe;
+  --brand-100: #c4d9fc;
+  --brand-200: #9dbffa;
+  --brand-300: #6fa2f7;
+  --brand-400: #4a8bf5;
+  --brand-500: #1877f2;
+  --brand-600: #1565d8;
+  --brand-700: #1054b8;
+  --brand-800: #0b4399;
+  --brand-900: #073279;
+  --brand-950: #041e4a;
 
   /* Accent Colors - Secondary highlight (Amber/Gold) */
   --accent-50: #fffbeb;
@@ -167,7 +167,7 @@
   }
 
   .skew-button:hover {
-    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.25), 0 4px 6px -4px rgba(79, 70, 229, 0.25);
+    box-shadow: 0 10px 15px -3px rgba(24, 119, 242, 0.25), 0 4px 6px -4px rgba(24, 119, 242, 0.25);
   }
 
   .skew-button::before {
