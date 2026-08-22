@@ -104,7 +104,7 @@ export const translations = {
       ]
     },
     stats: {
-      title: "WHY ALPHA",
+      title: "WHY B2 AUTOS",
       titleHighlight: "RECYCLING?",
       subtitle: "Selling an old scrap car has never been this simple — we take care of everything to make your life easier.",
       vehiclesPurchased: "VEHICLES PURCHASED PER YEAR",
@@ -284,7 +284,7 @@ export const translations = {
       ]
     },
     stats: {
-      title: "POURQUOI ALPHA",
+      title: "POURQUOI B2 AUTOS",
       titleHighlight: "RECYCLAGE ?",
       subtitle: "Vendre une vieille voiture scrap n'a jamais été aussi simple — on s'occupe de tout pour vous faciliter la vie.",
       vehiclesPurchased: "VÉHICULES ACHETÉS PAR ANNÉE",
