@@ -25,18 +25,14 @@ export default function Services() {
           {t.services.items.map((service, index) => {
             const Icon = icons[index];
             return (
-              <div key={index} className="group relative rounded-xl border border-slate-200 bg-white p-6 transition-colors hover:border-brand-300 sm:p-7">
-                <div className="hidden" />
-
-                <div className="relative z-10">
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-50">
-                    <Icon className="h-6 w-6 text-brand-600" />
-                  </div>
-                  <h3 className="mb-2 text-lg font-bold text-slate-900">{service.title}</h3>
-                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
-                    {service.description}
-                  </p>
+              <div key={index} className="rounded-xl border border-slate-200 bg-white p-6 sm:p-7">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-50">
+                  <Icon className="h-6 w-6 text-brand-600" />
                 </div>
+                <h3 className="mb-2 text-lg font-bold text-slate-900">{service.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
+                  {service.description}
+                </p>
               </div>
             );
           })}

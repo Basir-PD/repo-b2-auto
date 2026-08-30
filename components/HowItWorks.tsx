@@ -34,17 +34,17 @@ export default function HowItWorks() {
           {t.howItWorks.steps.map((step, index) => {
             const StepIcon = steps[index].icon;
             return (
-              <div key={index} className="group relative sm:last:col-span-2 md:last:col-span-1 sm:last:max-w-md sm:last:mx-auto md:last:max-w-none">
+              <div key={index} className="relative sm:last:col-span-2 md:last:col-span-1 sm:last:max-w-md sm:last:mx-auto md:last:max-w-none">
                 {/* Card */}
-                <div className="relative h-full bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-brand-300 flex flex-col">
+                <div className="relative h-full bg-white rounded-2xl p-5 sm:p-6 md:p-8 border border-slate-200 flex flex-col">
                   {/* Step Number Badge */}
-                  <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-8 h-8 sm:w-10 sm:h-10 bg-brand-600 rounded-full flex items-center justify-center border-2 border-white shadow-md">
+                  <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-8 h-8 sm:w-10 sm:h-10 bg-brand-600 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
                     <span className="text-sm sm:text-base font-bold text-white">{step.number}</span>
                   </div>
 
                   {/* Icon Container */}
                   <div className="mb-4 sm:mb-5 md:mb-6">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 bg-brand-50 rounded-2xl flex items-center justify-center group-hover:bg-brand-100 transition-colors duration-300">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 bg-brand-50 rounded-2xl flex items-center justify-center">
                       <StepIcon className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 text-brand-600" strokeWidth={1.5} />
                     </div>
                   </div>
@@ -58,9 +58,9 @@ export default function HowItWorks() {
                   </p>
 
                   {/* CTA Link */}
-                  <div className="flex items-center gap-2 text-brand-600 font-bold group-hover:gap-4 transition-all cursor-pointer">
+                  <div className="flex items-center gap-2 text-brand-600 font-bold">
                     <span className="uppercase text-xs sm:text-sm tracking-wider">{step.cta}</span>
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
 
                 </div>

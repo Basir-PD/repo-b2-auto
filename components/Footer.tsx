@@ -50,8 +50,8 @@ export default function Footer() {
           {/* Brand + NAP */}
           <div className="space-y-4 sm:col-span-2 sm:space-y-5 lg:col-span-1">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="flex h-8 w-8 -skew-x-6 items-center justify-center rounded-lg bg-brand-600 sm:h-10 sm:w-10">
-                <span className="skew-x-6 text-lg font-black text-white sm:text-xl">B</span>
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 sm:h-10 sm:w-10">
+                <span className="text-lg font-black text-white sm:text-xl">B</span>
               </div>
               <span className="text-xl font-black tracking-tight text-white sm:text-2xl">
                 B2 Autos
@@ -69,7 +69,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-900 transition-all duration-300 hover:-translate-y-1 hover:bg-brand-600 hover:text-white sm:h-10 sm:w-10"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-900 transition-colors hover:bg-brand-600 hover:text-white sm:h-10 sm:w-10"
                   >
                     <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </a>
