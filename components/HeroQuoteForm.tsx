@@ -97,11 +97,11 @@ export default function HeroQuoteForm() {
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <h2 className="text-xl font-black tracking-tight text-slate-900 sm:text-2xl">{f.title}</h2>
       <p className="mt-1.5 text-sm text-slate-600">{f.subtitle}</p>
 
-      <form onSubmit={handleSubmit} noValidate className="mt-5 flex flex-col gap-3.5">
+      <form onSubmit={handleSubmit} noValidate className="mt-6 flex flex-col gap-5">
         {/* Honeypot — hidden from people, irresistible to bots. */}
         <div className="absolute -left-[9999px]" aria-hidden="true">
           <label htmlFor="hero-company">Company</label>
@@ -163,7 +163,7 @@ export default function HeroQuoteForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="mt-1 flex w-full items-center justify-center gap-2 rounded-lg bg-brand-600 px-6 py-4 text-base font-bold text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-brand-600 bg-white px-6 py-4 text-base font-bold text-brand-600 transition-colors hover:bg-brand-50 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "sending" && <Loader2 className="h-5 w-5 animate-spin" />}
           {status === "sending" ? f.submitting : f.submit}

@@ -38,7 +38,7 @@ export default function Hero() {
               href={siteConfig.phone.href}
               onClick={() => trackCall("hero")}
               aria-label={t.header.callAria}
-              className="group mt-8 flex items-center gap-3"
+              className="group mt-8 inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-5 py-3.5 shadow-sm transition-all hover:border-brand-500 hover:bg-brand-50 hover:shadow-md"
             >
               <PhoneBadge className="h-12 w-12 shrink-0" />
               <span className="flex flex-col leading-none">

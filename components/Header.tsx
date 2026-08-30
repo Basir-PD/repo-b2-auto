@@ -1,14 +1,80 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { siteConfig } from "@/lib/site";
 import { trackCall, trackQuoteStart } from "@/lib/analytics";
 import PhoneBadge from "@/components/PhoneBadge";
 
 const NAV = ["services", "about", "faq"] as const;
+const LANG_LABEL: Record<"en" | "fr", string> = { en: "English", fr: "Français" };
+
+function LanguageDropdown({
+  language,
+  setLanguage,
+  ariaLabel,
+  className = "",
+}: {
+  language: "en" | "fr";
+  setLanguage: (lang: "en" | "fr") => void;
+  ariaLabel: string;
+  className?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    window.addEventListener("click", onClick);
+    return () => window.removeEventListener("click", onClick);
+  }, [open]);
+
+  return (
+    <div ref={ref} className={`relative ${className}`}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={ariaLabel}
+        className="flex items-center gap-1.5 rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-bold uppercase text-slate-700 transition-colors hover:bg-slate-200"
+      >
+        {language}
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <ul
+          role="listbox"
+          className="absolute right-0 z-50 mt-1.5 w-36 overflow-hidden rounded-lg border border-slate-200 bg-white py-1 text-sm font-semibold shadow-lg"
+        >
+          {(["fr", "en"] as const).map((lang) => (
+            <li key={lang}>
+              <button
+                type="button"
+                role="option"
+                aria-selected={language === lang}
+                onClick={() => {
+                  setLanguage(lang);
+                  setOpen(false);
+                }}
+                className={`flex w-full items-center px-3.5 py-2 text-left transition-colors ${
+                  language === lang ? "bg-slate-50 text-brand-600" : "text-slate-700 hover:bg-slate-50"
+                }`}
+              >
+                {LANG_LABEL[lang]}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 export default function Header() {
   const { t, language, setLanguage } = useLanguage();
@@ -70,7 +136,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="whitespace-nowrap text-sm font-semibold text-slate-600 transition-colors hover:text-slate-900"
+              className="whitespace-nowrap text-sm font-bold uppercase tracking-wide text-slate-600 transition-colors hover:text-slate-900"
             >
               {item.label}
             </Link>
@@ -79,27 +145,12 @@ export default function Header() {
 
         {/* Right: language · phone · one CTA */}
         <div className="flex shrink-0 items-center gap-3 sm:gap-5">
-          <div
-            role="group"
-            aria-label={t.header.languageAria}
-            className="hidden items-center gap-0.5 rounded-lg bg-slate-100 p-1 text-xs font-bold uppercase sm:flex"
-          >
-            {(["fr", "en"] as const).map((lang) => (
-              <button
-                key={lang}
-                type="button"
-                onClick={() => setLanguage(lang)}
-                aria-pressed={language === lang}
-                className={`rounded-md px-3 py-1.5 transition-colors ${
-                  language === lang
-                    ? "bg-white text-slate-900 shadow-sm"
-                    : "text-slate-500 hover:text-slate-700"
-                }`}
-              >
-                {lang}
-              </button>
-            ))}
-          </div>
+          <LanguageDropdown
+            language={language}
+            setLanguage={setLanguage}
+            ariaLabel={t.header.languageAria}
+            className="hidden sm:block"
+          />
 
           <a
             href={siteConfig.phone.href}
@@ -121,7 +172,7 @@ export default function Header() {
           <Link
             href="#quote"
             onClick={() => trackQuoteStart("header")}
-            className="hidden rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-700 md:inline-flex"
+            className="hidden rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-brand-700 md:inline-flex"
           >
             {t.header.getQuote}
           </Link>
@@ -154,27 +205,15 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="py-4 text-xl font-bold text-slate-900"
+                className="py-4 text-xl font-bold uppercase tracking-wide text-slate-900"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="mt-8 flex items-center gap-2 text-sm font-bold uppercase">
-            {(["fr", "en"] as const).map((lang) => (
-              <button
-                key={lang}
-                type="button"
-                onClick={() => setLanguage(lang)}
-                aria-pressed={language === lang}
-                className={`rounded-md px-4 py-2 transition-colors ${
-                  language === lang ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-500"
-                }`}
-              >
-                {lang}
-              </button>
-            ))}
+          <div className="mt-8">
+            <LanguageDropdown language={language} setLanguage={setLanguage} ariaLabel={t.header.languageAria} />
           </div>
 
           <a
@@ -192,7 +231,7 @@ export default function Header() {
           <Link
             href="#quote"
             onClick={() => { trackQuoteStart("mobile_menu"); setIsMenuOpen(false); }}
-            className="mt-6 rounded-lg bg-brand-600 py-4 text-center text-base font-bold text-white"
+            className="mt-6 rounded-lg bg-brand-600 py-4 text-center text-base font-bold uppercase tracking-wide text-white"
           >
             {t.header.getQuote}
           </Link>
