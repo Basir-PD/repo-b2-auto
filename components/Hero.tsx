@@ -1,130 +1,78 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { siteConfig } from "@/lib/site";
+import { trackCall } from "@/lib/analytics";
+import PhoneBadge from "@/components/PhoneBadge";
+import HeroQuoteForm from "@/components/HeroQuoteForm";
 
 export default function Hero() {
   const { t } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-    tl.from(textRef.current?.children || [], {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.15,
-      delay: 0.2,
-    })
-    .from(imageRef.current, {
-      x: 50,
-      opacity: 0,
-      duration: 1.2,
-      ease: "power2.out",
-    }, "-=0.8");
-
-    // Floating animation for the image
-    gsap.to(imageRef.current, {
-      y: -20,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 1,
-    });
-
-  }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-36 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-500/20 rounded-full blur-[80px] sm:blur-[100px] mix-blend-multiply animate-blob" />
-        <div className="absolute top-40 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-violet-500/20 rounded-full blur-[80px] sm:blur-[100px] mix-blend-multiply animate-blob animation-delay-2000" />
-      </div>
-
-      <div className="container mx-auto px-5 sm:px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
-          {/* Text Content */}
-          <div ref={textRef} className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 sm:space-y-6 md:space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-              </span>
+    <section className="bg-white pb-14 pt-28 sm:pb-16 sm:pt-32 lg:pb-20 lg:pt-36">
+      <div className="container mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="max-w-2xl">
+            {/* Eyebrow */}
+            <p className="flex items-start gap-2 text-xs font-bold uppercase tracking-[0.12em] text-slate-500 sm:text-sm">
+              <span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
               {t.hero.badge}
-            </div>
+            </p>
 
-            <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter text-slate-900 leading-[1.1]">
-              {t.hero.title} <br />
-              <span className="text-gradient relative inline-block">
-                {t.hero.titleHighlight}
-                <svg className="absolute w-full h-2 sm:h-3 -bottom-1 left-0 text-indigo-400/30 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
-                </svg>
-              </span>
+            <h1 className="mt-5 text-[2.4rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.9rem] lg:text-[3.1rem]">
+              {t.hero.title} <span className="text-brand-600">{t.hero.titleHighlight}</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-xl lg:max-w-2xl font-medium leading-relaxed px-2 sm:px-0">
+            <p className="speakable-summary mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
               {t.hero.description}
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full sm:w-auto">
-              <Link
-                href="#contact"
-                className="w-full sm:w-auto min-w-[200px] px-6 sm:px-7 md:px-8 py-3.5 sm:py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-base sm:text-lg uppercase tracking-wide transition-all shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:-translate-y-1 flex items-center justify-center gap-2 group"
-              >
-                <span className="flex items-center gap-2">
-                  {t.hero.cta}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            {/*
+              Calling is still the primary action — the number sits above the
+              form, and on mobile the form falls directly beneath it because
+              the trust strip has been moved below the grid.
+            */}
+            <a
+              href={siteConfig.phone.href}
+              onClick={() => trackCall("hero")}
+              aria-label={t.header.callAria}
+              className="group mt-8 flex items-center gap-3"
+            >
+              <PhoneBadge className="h-12 w-12 shrink-0" />
+              <span className="flex flex-col leading-none">
+                <span className="whitespace-nowrap text-2xl font-black tabular-nums tracking-tight text-slate-900 transition-colors group-hover:text-brand-600 sm:text-3xl">
+                  {siteConfig.phone.display}
                 </span>
-              </Link>
-              <a
-                href="tel:+15146232787"
-                className="w-full sm:w-auto min-w-[200px] px-6 sm:px-7 md:px-8 py-3.5 sm:py-4 rounded-xl bg-white hover:bg-slate-50 border-2 border-slate-200 hover:border-indigo-500 text-slate-700 hover:text-indigo-600 font-bold text-base sm:text-lg transition-all flex items-center justify-center shadow-sm hover:shadow-md group"
-              >
-                <span>{t.hero.call}</span>
-              </a>
-            </div>
-
-            <div className="pt-2 sm:pt-4 md:pt-6 flex flex-row flex-wrap items-center justify-center lg:justify-start gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-2 text-xs sm:text-sm md:text-base font-semibold text-slate-500">
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 flex-shrink-0" />
-                <span>{t.hero.benefits.price}</span>
-              </div>
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 flex-shrink-0" />
-                <span>{t.hero.benefits.towing}</span>
-              </div>
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 flex-shrink-0" />
-                <span>{t.hero.benefits.paid}</span>
-              </div>
-            </div>
+                <span className="mt-1.5 whitespace-nowrap text-xs font-medium text-slate-500">
+                  {t.hero.phoneNote}
+                </span>
+              </span>
+            </a>
           </div>
 
-          {/* Hero Image */}
-          <div ref={imageRef} className="relative h-[280px] sm:h-[380px] md:h-[450px] lg:h-[550px] xl:h-[600px] w-full max-w-md sm:max-w-none mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-2xl shadow-indigo-900/20 border border-slate-200 bg-white">
-             <Image
-              src="/hero-image.png"
-              alt="B2 Auto Recycling Tow Truck"
-              fill
-              className="object-cover object-center"
-              priority
-             />
-             {/* Overlay gradient for better text contrast if needed, or just style */}
-             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent pointer-events-none" />
+          {/* The short form takes the place the photo used to hold. */}
+          <div className="lg:pt-2">
+            <HeroQuoteForm />
           </div>
         </div>
+
+        {/*
+          Full width, below both columns — so when the grid stacks on mobile
+          this lands after the form instead of between it and the phone.
+        */}
+        <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2.5 border-t border-slate-100 pt-7 sm:mt-12">
+          {[t.hero.benefits.price, t.hero.benefits.towing, t.hero.benefits.paid].map((benefit) => (
+            <li key={benefit} className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+              <Check className="h-4 w-4 shrink-0 text-brand-600" strokeWidth={3} />
+              {benefit}
+            </li>
+          ))}
+          <li className="w-full text-xs text-slate-500 sm:w-auto sm:border-l sm:border-slate-200 sm:pl-6">
+            {t.hero.trustLine}
+          </li>
+        </ul>
       </div>
     </section>
   );

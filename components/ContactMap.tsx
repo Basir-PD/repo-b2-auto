@@ -1,186 +1,195 @@
 "use client";
 
-import { useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Phone, MapPin, Mail, Clock } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { Phone, MapPin, Mail, Clock, ExternalLink, MessageCircle } from "lucide-react";
+import { siteConfig, mapsUrl, mapsEmbedUrl } from "@/lib/site";
+import { trackCall, trackEvent } from "@/lib/analytics";
 
 export default function ContactMap() {
   const { t } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<HTMLDivElement>(null);
-  const infoRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(mapRef.current, {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-      },
-      x: -50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-  }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-violet-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+    <section
+     
+      id="location"
+      aria-labelledby="contact-heading"
+      className="bg-slate-50 py-16 sm:py-20 lg:py-24"
+    >
 
-      <div className="container mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4">
-            {t.contact?.title || "Visitez-nous"} <span className="text-indigo-600">{t.contact?.titleHighlight || "Aujourd'hui"}</span>
+      <div className="container relative z-10 mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="mb-8 text-center sm:mb-12">
+          <h2
+            id="contact-heading"
+            className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl"
+          >
+            {t.contact.title} <span className="text-brand-600">{t.contact.titleHighlight}</span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto px-2">
-            {t.contact?.subtitle || "Nous sommes situés à Laval, Québec. Contactez-nous pour obtenir votre soumission gratuite!"}
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            {t.contact.subtitle}
           </p>
         </div>
 
-        <div className="space-y-8 sm:space-y-12">
-          {/* Map - Centered and Larger */}
-          <div ref={mapRef} className="w-full max-w-6xl mx-auto relative">
-            <div className="h-[50vh] sm:h-[55vh] md:h-auto md:aspect-[16/9] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl md:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3),0_10px_30px_-10px_rgba(34,197,94,0.2)] border-2 sm:border-4 border-white bg-slate-200 relative group">
-              {/* Static Map Placeholder */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200">
-                {/* Map grid pattern */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] bg-[size:40px_40px]" />
-
-                {/* Roads */}
-                <div className="absolute top-1/4 left-0 right-0 h-3 bg-amber-100 border-y border-amber-200" />
-                <div className="absolute top-1/2 left-0 right-0 h-4 bg-amber-50 border-y border-amber-200" />
-                <div className="absolute top-3/4 left-0 right-0 h-2 bg-amber-100 border-y border-amber-200" />
-                <div className="absolute left-1/4 top-0 bottom-0 w-3 bg-amber-100 border-x border-amber-200" />
-                <div className="absolute left-1/2 top-0 bottom-0 w-5 bg-amber-50 border-x border-amber-200" />
-                <div className="absolute left-3/4 top-0 bottom-0 w-2 bg-amber-100 border-x border-amber-200" />
-
-                {/* Water/River */}
-                <div className="absolute top-[15%] left-[10%] w-[35%] h-[25%] bg-blue-200/60 rounded-[100px] rotate-[-15deg]" />
-
-                {/* Green areas */}
-                <div className="absolute top-[60%] left-[15%] w-16 h-16 bg-green-300/50 rounded-full" />
-                <div className="absolute top-[30%] right-[20%] w-20 h-14 bg-green-300/50 rounded-lg" />
-                <div className="absolute bottom-[20%] right-[30%] w-12 h-12 bg-green-300/50 rounded-full" />
-
-                {/* Location marker */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                  <div className="w-8 h-8 bg-indigo-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center animate-pulse">
-                    <div className="w-2 h-2 bg-white rounded-full" />
-                  </div>
-                  <div className="w-0 h-0 border-l-[8px] border-r-[8px] border-t-[12px] border-l-transparent border-r-transparent border-t-indigo-600 -mt-1" />
-                  <div className="mt-2 bg-white px-3 py-1 rounded-full shadow-md">
-                    <span className="text-xs font-bold text-slate-700">Laval, QC</span>
-                  </div>
-                </div>
-
-                {/* City labels */}
-                <div className="absolute top-[20%] right-[15%] bg-white/80 px-2 py-0.5 rounded text-[10px] font-semibold text-slate-500">Laval-des-Rapides</div>
-                <div className="absolute bottom-[30%] left-[20%] bg-white/80 px-2 py-0.5 rounded text-[10px] font-semibold text-slate-500">Chomedey</div>
-                <div className="absolute top-[45%] right-[25%] bg-white/80 px-2 py-0.5 rounded text-[10px] font-semibold text-slate-500">Vimont</div>
-              </div>
-
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-indigo-600/10 to-transparent pointer-events-none" />
+        <div className="space-y-8 sm:space-y-10">
+          {/* Real, interactive map of the actual yard. */}
+          <div className="relative mx-auto w-full max-w-6xl">
+            <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+              <iframe
+                src={mapsEmbedUrl}
+                title={t.contact.mapTitle}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                className="h-[45vh] w-full border-0 sm:h-[50vh] md:aspect-[16/9] md:h-auto"
+              />
             </div>
 
-            {/* Floating location badge */}
-            <div className="absolute -bottom-4 sm:-bottom-5 md:-bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-br from-indigo-500 to-violet-600 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl md:shadow-2xl transform hover:scale-105 transition-transform duration-300">
-              <div className="flex items-center gap-2 sm:gap-3">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                <div>
-                  <p className="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider opacity-90">Location</p>
-                  <p className="text-[11px] sm:text-xs md:text-sm font-black">Laval, QC</p>
-                </div>
-              </div>
-            </div>
+            {/* Address pill */}
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("click_directions", { source: "map" })}
+              className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-lg bg-brand-600 px-6 py-3 text-white transition-colors hover:bg-brand-700"
+            >
+              <MapPin className="h-4 w-4 shrink-0 sm:h-5 sm:w-5 md:h-6 md:w-6" />
+              <span className="text-left">
+                <span className="block text-[9px] font-bold uppercase tracking-wider opacity-90 sm:text-[10px] md:text-xs">
+                  {t.contact.addressTitle}
+                </span>
+                <span className="block whitespace-nowrap text-[11px] font-black sm:text-xs md:text-sm">
+                  {siteConfig.address.street}, {siteConfig.address.locality}
+                </span>
+              </span>
+              <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-80" />
+            </a>
           </div>
 
-          {/* Contact Info Cards - 3 Column Grid */}
-          <div ref={infoRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-6 sm:mt-8 md:mt-12">
-            {/* Phone */}
-            <div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
-              <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                <div className="bg-indigo-50 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center group-hover:bg-indigo-100 transition-colors duration-300">
-                  <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-600" strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 sm:mb-2">
-                    {t.contact?.phoneTitle || "Appelez-nous"}
-                  </h3>
-                  <a
-                    href="tel:+15146232787"
-                    className="text-lg sm:text-xl font-black text-indigo-600 hover:text-indigo-700 transition-colors block"
-                  >
-                    +1 (514) 623-2787
-                  </a>
-                  <p className="text-slate-600 font-medium mt-1.5 sm:mt-2 text-xs sm:text-sm">
-                    {t.contact?.phoneDesc || "Disponible 7 jours sur 7"}
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* Contact cards */}
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-4">
+            <ContactCard icon={Phone} title={t.contact.phoneTitle} note={t.contact.phoneDesc}>
+              <a
+                href={siteConfig.phone.href}
+                onClick={() => trackCall("contact_card")}
+                className="block text-lg font-black text-brand-600 transition-colors hover:text-brand-700 sm:text-xl"
+              >
+                {siteConfig.phone.display}
+              </a>
+            </ContactCard>
 
-            {/* Email */}
-            <div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
-              <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                <div className="bg-indigo-50 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center group-hover:bg-indigo-100 transition-colors duration-300">
-                  <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-600" strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 sm:mb-2">
-                    {t.contact?.emailTitle || "Écrivez-nous"}
-                  </h3>
-                  <a
-                    href="mailto:info@b2auto.com"
-                    className="text-base sm:text-lg font-bold text-indigo-600 hover:text-indigo-700 transition-colors block break-all"
-                  >
-                    info@b2auto.com
-                  </a>
-                  <p className="text-slate-600 font-medium mt-1.5 sm:mt-2 text-xs sm:text-sm">
-                    {t.contact?.emailDesc || "Réponse rapide garantie"}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <ContactCard icon={MessageCircle} title={t.header.whatsapp} note={t.header.whatsappTagline}>
+              <a
+                href={siteConfig.whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("click_whatsapp", { source: "contact_card" })}
+                className="block text-lg font-black text-brand-600 transition-colors hover:text-brand-700 sm:text-xl"
+              >
+                {siteConfig.phone.display}
+              </a>
+            </ContactCard>
 
-            {/* Hours */}
-            <div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1 sm:col-span-2 md:col-span-1">
-              <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                <div className="bg-indigo-50 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center group-hover:bg-indigo-100 transition-colors duration-300">
-                  <Clock className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-600" strokeWidth={1.5} />
-                </div>
-                <div className="w-full">
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4">
-                    {t.contact?.hoursTitle || "Heures d'ouverture"}
-                  </h3>
-                  <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
-                    <div className="flex justify-between items-center">
-                      <span className="font-bold text-slate-700">{t.footer.days.week}</span>
-                      <span className="text-slate-600 font-medium">8AM-8PM</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="font-bold text-slate-700">{t.footer.days.sat}</span>
-                      <span className="text-slate-600 font-medium">9AM-5PM</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="font-bold text-slate-700">{t.footer.days.sun}</span>
-                      <span className="text-slate-600 font-medium">Closed</span>
-                    </div>
+            <ContactCard icon={Mail} title={t.contact.emailTitle} note={t.contact.emailDesc}>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                onClick={() => trackEvent("click_email", { source: "contact_card" })}
+                className="block break-all text-base font-bold text-brand-600 transition-colors hover:text-brand-700 sm:text-lg"
+              >
+                {siteConfig.email}
+              </a>
+            </ContactCard>
+
+            <ContactCard icon={MapPin} title={t.contact.addressTitle}>
+              {/* Marked up as a postal address so crawlers and AI agents parse the NAP. */}
+              <address className="not-italic text-sm font-semibold leading-relaxed text-slate-700">
+                {siteConfig.address.street}
+                <br />
+                {siteConfig.address.locality}, {siteConfig.address.region} {siteConfig.address.postalCode}
+              </address>
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("click_directions", { source: "contact_card" })}
+                className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-brand-600 hover:underline"
+              >
+                {t.contact.directions}
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </ContactCard>
+          </div>
+
+          {/* Hours + service areas */}
+          <div className="mx-auto grid max-w-4xl gap-4 sm:gap-6 md:grid-cols-2">
+            <div className="rounded-xl border border-slate-200 bg-white p-6">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-50">
+                  <Clock className="h-5 w-5 text-brand-600" strokeWidth={1.75} />
+                </span>
+                <h3 className="text-base font-bold text-slate-900 sm:text-lg">{t.contact.hoursTitle}</h3>
+              </div>
+              <dl className="space-y-2 text-sm">
+                {[
+                  [t.footer.days.week, "8:00 – 20:00"],
+                  [t.footer.days.sat, "9:00 – 17:00"],
+                  [t.footer.days.sun, t.footer.closed],
+                ].map(([day, hours]) => (
+                  <div key={day} className="flex items-center justify-between border-b border-slate-100 pb-2 last:border-0">
+                    <dt className="font-bold text-slate-700">{day}</dt>
+                    <dd className="font-medium text-slate-600">{hours}</dd>
                   </div>
-                </div>
+                ))}
+              </dl>
+            </div>
+
+            <div className="rounded-xl border border-slate-200 bg-white p-6">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-50">
+                  <MapPin className="h-5 w-5 text-brand-600" strokeWidth={1.75} />
+                </span>
+                <h3 className="text-base font-bold text-slate-900 sm:text-lg">{t.footer.serviceAreas}</h3>
               </div>
+              <ul className="flex flex-wrap gap-2">
+                {siteConfig.serviceAreas.map((area) => (
+                  <li
+                    key={area}
+                    className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700"
+                  >
+                    {area}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ContactCard({
+  icon: Icon,
+  title,
+  note,
+  children,
+}: {
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  title: string;
+  note?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="group rounded-xl border border-slate-200 bg-white p-6 text-center">
+      <div className="flex flex-col items-center gap-3 sm:gap-4">
+        <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-50">
+          <Icon className="h-6 w-6 text-brand-600 sm:h-7 sm:w-7" strokeWidth={1.5} />
+        </span>
+        <div>
+          <h3 className="mb-1.5 text-base font-bold text-slate-900 sm:text-lg">{title}</h3>
+          {children}
+          {note && <p className="mt-1.5 text-xs font-medium text-slate-600 sm:text-sm">{note}</p>}
+        </div>
+      </div>
+    </div>
   );
 }
