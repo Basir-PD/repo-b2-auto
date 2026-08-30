@@ -179,7 +179,7 @@ function ContactCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="group rounded-xl border border-slate-200 bg-white p-6 text-center">
+    <div className="rounded-xl border border-slate-200 bg-white p-6 text-center">
       <div className="flex flex-col items-center gap-3 sm:gap-4">
         <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-50">
           <Icon className="h-6 w-6 text-brand-600 sm:h-7 sm:w-7" strokeWidth={1.5} />
