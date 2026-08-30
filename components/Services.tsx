@@ -2,76 +2,38 @@
 
 import { DollarSign, Truck, Clock, ShieldCheck, Leaf, ThumbsUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Services() {
   const { t } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(titleRef.current?.children || [], {
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 80%",
-      },
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power3.out",
-    });
-
-    gsap.from(gridRef.current?.children || [], {
-      scrollTrigger: {
-        trigger: gridRef.current,
-        start: "top 80%",
-      },
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out",
-    });
-  }, { scope: containerRef });
 
   const icons = [DollarSign, Truck, Clock, ThumbsUp, Leaf, ShieldCheck];
 
   return (
-    <section id="services" ref={containerRef} className="py-12 sm:py-16 md:py-24 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-slate-50 pointer-events-none -z-10" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none -z-10" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
+    <section id="services" className="bg-slate-50 py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter mb-3 sm:mb-4 text-slate-900">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             {t.services.title}
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 font-medium px-2">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
             {t.services.subtitle}
           </p>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
           {t.services.items.map((service, index) => {
             const Icon = icons[index];
             return (
-              <div key={index} className="group p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-white/60 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:shadow-indigo-900/5 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div key={index} className="group relative rounded-xl border border-slate-200 bg-white p-6 transition-colors hover:border-brand-300 sm:p-7">
+                <div className="hidden" />
 
                 <div className="relative z-10">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-indigo-100 to-indigo-50 rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-5 md:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm group-hover:shadow-md">
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-indigo-600 group-hover:text-indigo-700 transition-colors" />
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-50">
+                    <Icon className="h-6 w-6 text-brand-600" />
                   </div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 text-slate-900 group-hover:text-indigo-700 transition-colors">{service.title}</h3>
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium group-hover:text-slate-700 transition-colors">
+                  <h3 className="mb-2 text-lg font-bold text-slate-900">{service.title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
                     {service.description}
                   </p>
                 </div>

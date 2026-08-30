@@ -1,46 +1,27 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Plus, Minus } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function FAQ() {
   const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  useGSAP(() => {
-    gsap.from(containerRef.current?.children || [], {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-      },
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out",
-    });
-  }, { scope: containerRef });
 
   return (
-    <section id="faq" className="py-16 sm:py-20 md:py-24 lg:py-28 bg-slate-50 relative overflow-hidden">
+    <section id="faq" className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-5 sm:px-6 lg:px-8">
-        <div ref={containerRef} className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8 sm:mb-10 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 mb-3 sm:mb-4">
+            <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
               {t.faq.title}
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 font-medium px-2">
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
               {t.faq.subtitle}
             </p>
           </div>
@@ -49,7 +30,7 @@ export default function FAQ() {
             {t.faq.items.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md"
+                className="overflow-hidden rounded-xl border border-slate-200 bg-white"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
@@ -58,7 +39,7 @@ export default function FAQ() {
                   <span className="text-sm sm:text-base md:text-lg font-bold text-slate-900">
                     {item.question}
                   </span>
-                  <div className={`flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${openIndex === index ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                  <div className={`flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${openIndex === index ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-500'}`}>
                     {openIndex === index ? (
                       <Minus className="w-4 h-4 sm:w-5 sm:h-5" />
                     ) : (
@@ -79,16 +60,16 @@ export default function FAQ() {
           </div>
 
           {/* CTA Box */}
-          <div className="mt-8 sm:mt-10 md:mt-12 p-5 sm:p-6 md:p-8 bg-indigo-600 rounded-2xl text-center">
+          <div className="mt-10 rounded-xl bg-brand-600 p-7 text-center sm:p-8">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3">
               {t.faq?.ctaTitle || "Ready to sell your vehicle?"}
             </h3>
-            <p className="text-indigo-100 text-sm sm:text-base mb-4 sm:mb-5">
+            <p className="text-brand-100 text-sm sm:text-base mb-4 sm:mb-5">
               {t.faq?.ctaSubtitle || "Get your free quote in minutes. We buy all vehicles, any condition."}
             </p>
             <a
               href="tel:+15146232787"
-              className="inline-flex items-center justify-center gap-2 bg-white text-indigo-600 font-bold text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl hover:bg-indigo-50 transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-7 py-3.5 text-base font-bold text-brand-600 transition-colors hover:bg-brand-50"
             >
               {t.faq?.ctaButton || "Call Now: +1 (514) 623-2787"}
             </a>
