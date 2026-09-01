@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Check } from "lucide-react";
+import { Check, Phone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { siteConfig } from "@/lib/site";
 import { trackCall } from "@/lib/analytics";
-import PhoneBadge from "@/components/PhoneBadge";
 import HeroQuoteForm from "@/components/HeroQuoteForm";
 
 /**
@@ -78,23 +77,32 @@ export default function Hero() {
               {t.hero.description}
             </p>
 
-            {/* Calling is still the primary action, so the number outranks the form. */}
-            <a
-              href={siteConfig.phone.href}
-              onClick={() => trackCall("hero")}
-              aria-label={t.header.callAria}
-              className="group mt-8 inline-flex items-center gap-3.5"
-            >
-              <PhoneBadge className="h-12 w-12 shrink-0" />
-              <span className="flex flex-col leading-none">
-                <span className="whitespace-nowrap text-2xl font-black tabular-nums tracking-tight text-white transition-colors group-hover:text-brand-400 sm:text-3xl">
+            {/*
+              Calling is the primary action, so the number is a filled button
+              rather than a bare line of text — plain type beside an icon reads
+              as a heading, not as something you can tap.
+            */}
+            <div className="mt-8">
+              <a
+                href={siteConfig.phone.href}
+                onClick={() => trackCall("hero")}
+                aria-label={t.header.callAria}
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-xl bg-brand-600 px-6 py-4 shadow-lg shadow-brand-950/40 transition-all hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:translate-y-0 sm:w-auto sm:px-7"
+              >
+                <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15">
+                  {/* The ring keeps pulsing behind the icon to say "we're open now". */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 rounded-full bg-white/25 motion-safe:animate-phone-ring"
+                  />
+                  <Phone className="relative h-5 w-5 text-white" strokeWidth={2.5} fill="currentColor" />
+                </span>
+                <span className="whitespace-nowrap text-2xl font-black tabular-nums tracking-tight text-white sm:text-[1.75rem]">
                   {siteConfig.phone.display}
                 </span>
-                <span className="mt-1.5 whitespace-nowrap text-xs font-medium text-slate-400">
-                  {t.hero.phoneNote}
-                </span>
-              </span>
-            </a>
+              </a>
+              <p className="mt-2.5 text-xs font-medium text-slate-400 sm:text-sm">{t.hero.phoneNote}</p>
+            </div>
 
             {/* Benefits as chips — they hold their contrast over the photo. */}
             <ul className="mt-8 flex flex-wrap gap-2.5">
