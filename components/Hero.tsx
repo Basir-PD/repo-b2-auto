@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { siteConfig } from "@/lib/site";
@@ -7,72 +8,119 @@ import { trackCall } from "@/lib/analytics";
 import PhoneBadge from "@/components/PhoneBadge";
 import HeroQuoteForm from "@/components/HeroQuoteForm";
 
+/**
+ * The hero is a photograph, not a colour block: our own flatbed with a load
+ * on the deck is the fastest proof that we really do the towing ourselves.
+ * Copy sits on the dark side of the scrim; the short form keeps its place on
+ * the right so the page still opens on a conversion path.
+ */
 export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="bg-white pb-14 pt-28 sm:pb-16 sm:pt-32 lg:pb-20 lg:pt-36">
-      <div className="container mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="max-w-2xl">
+    <section className="relative isolate overflow-hidden bg-slate-950 pb-14 pt-28 sm:pb-16 sm:pt-32 lg:pb-24 lg:pt-36">
+      {/*
+        One photo, two jobs. A phone screen is far taller than the frame, so
+        cropping it to full height would leave a sliver of sheet metal nobody
+        can read — there it becomes a band across the top instead. From lg up
+        the layout is wide enough to carry the whole frame as the backdrop.
+      */}
+      <div className="absolute inset-x-0 top-0 -z-10 h-[19rem] sm:h-[24rem] lg:bottom-0 lg:h-auto">
+        {/* LCP element, so it loads eagerly. */}
+        <Image
+          src={siteConfig.heroBackground}
+          alt={t.hero.imageAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[62%_center]"
+        />
+
+        {/*
+          Scrims, one per axis. Stacked layouts read top-to-bottom, so the dark
+          has to close off the bottom of the band; side-by-side layouts only
+          need the left protected, which leaves the truck lit on the right.
+        */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-slate-950/55 via-slate-950/65 via-55% to-slate-950 lg:hidden"
+        />
+        {/*
+          The scrim loosens as the viewport widens. A 1024px column crops the
+          frame down to the cab, so the copy needs most of the width covered;
+          past 1280 there is room for the whole truck and the same cover would
+          just black it out.
+        */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 hidden bg-gradient-to-r from-slate-950 from-30% via-slate-950/88 via-64% to-slate-950/15 lg:block xl:from-18% xl:via-slate-950/70 xl:via-55% xl:to-slate-950/5"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 hidden h-32 bg-gradient-to-t from-slate-950 to-transparent lg:block"
+        />
+      </div>
+
+      <div className="container relative mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-7 lg:max-w-xl">
             {/* Eyebrow */}
-            <p className="flex items-start gap-2 text-xs font-bold uppercase tracking-[0.12em] text-slate-500 sm:text-sm">
-              <span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
+            <p className="inline-flex items-center gap-2.5 rounded-full bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white ring-1 ring-inset ring-white/15 backdrop-blur-sm sm:text-[13px]">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-brand-400" />
               {t.hero.badge}
             </p>
 
-            <h1 className="mt-5 text-[2.4rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.9rem] lg:text-[3.1rem]">
-              {t.hero.title} <span className="text-brand-600">{t.hero.titleHighlight}</span>
+            <h1 className="mt-6 text-[2.5rem] font-black leading-[1.05] tracking-tight text-white sm:text-[3.2rem] lg:text-[3.6rem]">
+              {t.hero.title} <span className="text-brand-400">{t.hero.titleHighlight}</span>
             </h1>
 
-            <p className="speakable-summary mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="speakable-summary mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
               {t.hero.description}
             </p>
 
-            {/*
-              Calling is still the primary action — the number sits above the
-              form, and on mobile the form falls directly beneath it because
-              the trust strip has been moved below the grid.
-            */}
+            {/* Calling is still the primary action, so the number outranks the form. */}
             <a
               href={siteConfig.phone.href}
               onClick={() => trackCall("hero")}
               aria-label={t.header.callAria}
-              className="group mt-8 flex items-center gap-3"
+              className="group mt-8 inline-flex items-center gap-3.5"
             >
               <PhoneBadge className="h-12 w-12 shrink-0" />
               <span className="flex flex-col leading-none">
-                <span className="whitespace-nowrap text-2xl font-black tabular-nums tracking-tight text-slate-900 transition-colors group-hover:text-brand-600 sm:text-3xl">
+                <span className="whitespace-nowrap text-2xl font-black tabular-nums tracking-tight text-white transition-colors group-hover:text-brand-400 sm:text-3xl">
                   {siteConfig.phone.display}
                 </span>
-                <span className="mt-1.5 whitespace-nowrap text-xs font-medium text-slate-500">
+                <span className="mt-1.5 whitespace-nowrap text-xs font-medium text-slate-400">
                   {t.hero.phoneNote}
                 </span>
               </span>
             </a>
+
+            {/* Benefits as chips — they hold their contrast over the photo. */}
+            <ul className="mt-8 flex flex-wrap gap-2.5">
+              {[t.hero.benefits.price, t.hero.benefits.towing, t.hero.benefits.paid].map((benefit) => (
+                <li
+                  key={benefit}
+                  className="flex items-center gap-2 rounded-full bg-white/10 py-2 pl-3 pr-4 text-sm font-semibold text-white ring-1 ring-inset ring-white/15 backdrop-blur-sm"
+                >
+                  <Check className="h-4 w-4 shrink-0 text-brand-400" strokeWidth={3} />
+                  {benefit}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* The short form takes the place the photo used to hold. */}
-          <div className="lg:pt-2">
-            <HeroQuoteForm />
+          {/* The short form keeps the right column, now lifted off the photo. */}
+          <div className="lg:col-span-5">
+            <div className="mx-auto max-w-md sm:max-w-xl lg:ml-auto lg:mr-0 lg:max-w-md">
+              <HeroQuoteForm />
+            </div>
           </div>
         </div>
 
-        {/*
-          Full width, below both columns — so when the grid stacks on mobile
-          this lands after the form instead of between it and the phone.
-        */}
-        <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2.5 border-t border-slate-100 pt-7 sm:mt-12">
-          {[t.hero.benefits.price, t.hero.benefits.towing, t.hero.benefits.paid].map((benefit) => (
-            <li key={benefit} className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-              <Check className="h-4 w-4 shrink-0 text-brand-600" strokeWidth={3} />
-              {benefit}
-            </li>
-          ))}
-          <li className="w-full text-xs text-slate-500 sm:w-auto sm:border-l sm:border-slate-200 sm:pl-6">
-            {t.hero.trustLine}
-          </li>
-        </ul>
+        <p className="mt-10 border-t border-white/10 pt-6 text-xs font-medium text-slate-400 sm:mt-12">
+          {t.hero.trustLine}
+        </p>
       </div>
     </section>
   );

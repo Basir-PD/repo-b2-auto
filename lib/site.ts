@@ -78,10 +78,10 @@ export const siteConfig = {
   ],
 
   /**
-   * Full-bleed hero background. Swap this to "/team.jpg" once the
-   * team photo is dropped into public/ — nothing else needs to change.
+   * Full-bleed hero background — also the Open Graph and schema.org image.
+   * Swap the file here and the hero, share cards and JSON-LD all follow.
    */
-  heroBackground: "/hero-image.jpg",
+  heroBackground: "/hero-tow-truck.jpg",
 
   priceRange: "$$",
   foundingYear: 2000,

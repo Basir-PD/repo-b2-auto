@@ -69,7 +69,7 @@ export default function HeroQuoteForm() {
     return (
       <div
         role="status"
-        className="flex flex-col items-center rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm"
+        className="flex flex-col items-center rounded-2xl bg-white p-8 text-center shadow-2xl shadow-black/40 ring-1 ring-slate-900/5"
       >
         <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-50">
           <CheckCircle2 className="h-8 w-8 text-brand-600" />
@@ -97,7 +97,7 @@ export default function HeroQuoteForm() {
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+    <div className="rounded-2xl bg-white p-6 shadow-2xl shadow-black/40 ring-1 ring-slate-900/5 sm:p-7">
       <h2 className="text-xl font-black tracking-tight text-slate-900 sm:text-2xl">{f.title}</h2>
       <p className="mt-1.5 text-sm text-slate-600">{f.subtitle}</p>
 

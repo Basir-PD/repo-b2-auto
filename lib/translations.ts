@@ -26,6 +26,7 @@ export const translations = {
       call: "Call +1 (514) 623-2787",
       trustBadge: "The team you'll actually meet",
       trustLine: "Licensed, insured and family-run since 2000",
+      imageAlt: "A B2 Autos flatbed truck hauling a vehicle away from a yard",
       benefits: {
         price: "Best Price Guaranteed",
         towing: "Free Towing Included",
@@ -287,6 +288,7 @@ export const translations = {
       call: "Appeler +1 (514) 623-2787",
       trustBadge: "L'équipe que vous allez rencontrer",
       trustLine: "Licenciés, assurés et entreprise familiale depuis 2000",
+      imageAlt: "Un camion plateforme de B2 Autos qui remorque un véhicule hors d'une cour",
       benefits: {
         price: "Meilleur Prix Garanti",
         towing: "Remorquage Gratuit Inclus",
