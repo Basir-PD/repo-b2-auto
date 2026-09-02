@@ -1,119 +1,278 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# B2 Autos — b2autos.com
 
-## Getting Started
+Bilingual (fr-CA / en-CA) lead-generation site for **B2 Autos**, a licensed auto
+recycler and scrap-car buyer at **340 Chemin Pincourt, Mascouche, QC J7L 2W3**.
 
-First, run the development server:
+Next.js 15 (App Router) · TypeScript · Tailwind v4 · Convex (leads + admin) ·
+deployed to Vercel. Every marketing page is statically generated.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Where to change things
+
+Everything below lives in **one** place. Nothing is hardcoded in components.
+
+| What | Where |
+|---|---|
+| Phone number | `config/site.ts` → `siteConfig.phone` |
+| Call-tracking (DNI) number | `config/site.ts` → `siteConfig.trackingPhone` — see below |
+| Email | `config/site.ts` → `siteConfig.email` |
+| Address / postal code | `config/site.ts` → `siteConfig.address` |
+| Map coordinates | `config/site.ts` → `siteConfig.geo` — see below |
+| Opening hours | `config/site.ts` → `siteConfig.hours` |
+| Cash range ($300–$3,000) | `config/site.ts` → `siteConfig.facts.cashMin` / `cashMax` |
+| Years in business, vehicles/year | `config/site.ts` → `siteConfig.facts` |
+| Google review link | `config/site.ts` → `siteConfig.GBP_REVIEW_LINK` — see below |
+| Real Google reviews | `content/reviews.ts` — see below |
+| Where lead emails go | `config/site.ts` → `siteConfig.leadInbox` (env `LEAD_INBOX`) |
+| SMS / WhatsApp webhook | env `LEAD_WEBHOOK_URL` — see below |
+| Page copy | `content/copy/fr.ts` and `content/copy/en.ts` |
+| FAQ | `content/faq.ts` (one source for the FAQ page, the homepage block and the schema) |
+| Service pages | `content/services.ts` |
+| City pages | `content/cities.ts` — see "Adding a city" |
+| Blog articles | `content/blog.ts` |
+| Ad landing pages | `content/landing.ts` |
+| URL slugs, both languages | `config/routes.ts` → `ROUTES` |
+
+---
+
+## Things that are deliberately switched off
+
+These are **not** bugs. Each is waiting on a real value, and each fails safe.
+
+### Call tracking (DNI)
+
+`siteConfig.trackingPhone` is `null`. The `usePhone()` hook returns the real
+number for everyone, on the first render, server and client alike — so there is
+no flash and no layout shift.
+
+**To turn on:** buy a tracking pool, then set
+
+```ts
+trackingPhone: { e164: "+1XXXXXXXXXX", display: "+1 (XXX) XXX-XXXX", href: "tel:+1XXXXXXXXXX" },
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visitors arriving with a `gclid`, `wbraid`, `gbraid` or `fbclid` will then see
+the tracking number. Nothing else needs changing.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Google review link
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`siteConfig.GBP_REVIEW_LINK` is `""`. Any "leave us a review" button stays
+hidden while it is empty. Paste the short link from the Google Business Profile
+("Ask for reviews" → copy link) to switch it on.
 
-## Learn More
+### Reviews and star ratings
 
-To learn more about Next.js, take a look at the following resources:
+`content/reviews.ts` exports an **empty array**. While it is empty:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- the reviews section does not render at all
+- **no `AggregateRating` JSON-LD is emitted**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+That second point is deliberate. Publishing a rating in structured data that a
+visitor cannot see on the page violates Google's reviews-snippet guidelines and
+risks a manual action. The markup follows the data, never the other way round.
 
-## Deploy on Vercel
+**To turn both on:** paste the 5 real reviews into `REVIEWS`, verbatim, with the
+reviewer's name exactly as it appears publicly on Google.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> **Never** invent a review, edit the wording, or add a sixth. The count is 5
+> and the average is 5.0. The site says "5,0 ★ sur 5 avis Google" and nothing
+> more — no "hundreds of customers", no volume language anywhere.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Map coordinates
 
-## Backend and admin (Convex)
+`siteConfig.geo` is `null`, so the `geo` block is omitted from the
+`LocalBusiness` JSON-LD. A guessed pin is worse than no pin for local ranking.
 
-Quote requests are stored in [Convex](https://convex.dev), which also sends the
-notification emails. The lead is written **before** the email is attempted, so a
-mail outage costs a notification and never a lead — failures show up as an
-"Email failed" badge in the admin instead.
+**To fill:** open the Google Business Profile listing in Google Maps,
+right-click the pin, copy the lat/lng, and set
+`geo: { latitude: …, longitude: … }`.
 
-### First-time setup
+---
 
-```bash
-npm install
+## Image slots that still need real photography
 
-# 1. Create the deployment and generate convex/_generated.
-#    Choose "cloud" when asked — a local deployment only exists on this machine.
-npx convex dev
+Stock photos of shiny cars actively hurt credibility for a scrap business. The
+site currently ships **one** real photo and uses icons everywhere else rather
+than filling space with stock.
 
-# 2. Generate the auth signing keys (JWT_PRIVATE_KEY, JWKS, SITE_URL).
-npx @convex-dev/auth --web-server-url http://localhost:3000
+| File | Status | What it should be |
+|---|---|---|
+| `public/hero-tow-truck.jpg` | ✅ real | The company's own flatbed with a load on the deck |
+| `public/scrapyar.jpg` | ⚠️ replace | The actual yard at 340 Chemin Pincourt |
+| `public/b2-tow-truck.png` | ⚠️ unused | Delete or replace |
+| `public/tow-trackinng.webp` | ⚠️ unused | Delete or replace |
+| `public/nano-banana.png` | ⚠️ unused | Delete |
+| _(missing)_ `public/team-mascouche.jpg` | ❌ needed | The team, on site — for `/fr/a-propos/` |
+| _(missing)_ `public/yard-dismantling.jpg` | ❌ needed | Depollution / dismantling, for the recycling section |
 
-# 3. Decide who can sign in at /admin.
-npx convex env set ADMIN_EMAILS "you@b2autos.com"
+Alt text is written in the page's own language and describes the scene, e.g.
+`"Remorqueuse à plateau de B2 Autos chargée d'un véhicule, à Mascouche"`.
 
-# 4. Wire up outgoing email.
-npx convex env set RESEND_API_KEY  re_xxxxxxxx
-npx convex env set QUOTE_FROM      "B2 Autos <quotes@b2autos.com>"
-npx convex env set QUOTE_INBOX     admin@b2autos.com
+---
+
+## Adding a city
+
+One entry in `content/cities.ts`. The route, sitemap entry, hreflang cluster,
+`areaServed` schema, footer link and internal links all follow automatically.
+
+```ts
+{
+  key: "rosemere",
+  name: "Rosemère",
+  slug: { fr: "rachat-auto-rosemere" },     // add `en:` only if you write English copy
+  distanceKm: 22,
+  driveMinutes: 24,
+  sectors: ["…"],
+  landmark: "…",
+  copy: { fr: { lede, worth, towing, vehicles, paperwork, faqQ, faqA } },
+}
 ```
 
-Then run `npx convex dev` and `npm run dev` side by side, open `/admin`, and use
-**First time? Create your account** with an address from `ADMIN_EMAILS`.
+**Write genuinely unique copy.** The six blocks must not be the same paragraph
+with the city name swapped — Google classifies that as doorway content and
+filters the whole set, taking the good pages down with the bad. Each city needs
+its own distance, its own arteries and sectors, its own pickup window.
 
-### Going live
+A city with no `en` slug simply drops out of the English sitemap and emits no
+English hreflang. That is correct: a false alternate breaks the entire cluster,
+not just the missing side.
 
-```bash
-npx convex deploy                                   # push functions to production
-npx @convex-dev/auth --prod --web-server-url https://b2autos.com
-npx convex env set --prod ADMIN_EMAILS   "you@b2autos.com"
-npx convex env set --prod RESEND_API_KEY re_xxxxxxxx
-npx convex env set --prod QUOTE_FROM     "B2 Autos <quotes@b2autos.com>"
-npx convex env set --prod QUOTE_INBOX    admin@b2autos.com
-```
+---
 
-### Email deliverability (why notifications land in spam)
+## Lead delivery
 
-Sending is only half the job — the receiving mail server has to believe the
-message really came from you. That is decided by DNS records on `b2autos.com`,
-not by anything in this repo. Without them Gmail files new-lead notifications
-as spam even though Resend reports them as sent.
+`POST /api/quote` → stored in Convex (which schedules the notification email) →
+optional webhook.
 
-DNS is at Namecheap (`dns1/dns2.registrar-servers.com`). Three records matter:
+Storing first means a mail or webhook outage costs a *notification*, never a
+*lead* — it still appears in `/admin` either way.
 
-| Record | Host | Value | Why |
-|---|---|---|---|
-| `TXT` | `@` | `v=spf1 include:_spf.google.com ~all` | Authorises Google Workspace to send as `b2autos.com`. **Missing entirely** — this affects all outgoing company mail, not just this site. |
-| `TXT` | `_dmarc` | `v=DMARC1; p=none; rua=mailto:admin@b2autos.com` | Tells receivers what to do when checks fail, and sends you reports. Start at `p=none`. |
-| — | — | whatever resend.com/domains generates | Resend's own DKIM + SPF, added when you verify the domain there. |
+Two kinds of submission arrive:
 
-Google Workspace DKIM (`google._domainkey`) is already published — good.
+- **complete** — the form was submitted
+- **partial** — someone typed a valid phone number and left. Sent via
+  `sendBeacon`, stored and flagged `⚠️ FORMULAIRE ABANDONNÉ`. A phone number
+  and a vehicle is enough to call someone back.
 
-Verify a **subdomain** (`send.b2autos.com`) rather than the root in Resend, so
-automated mail can never damage the reputation of the domain your real
-Workspace mail goes out on. Then point the sender at it:
+**Environment variables**
 
 ```bash
-npx convex env set QUOTE_FROM "B2 Autos <quotes@send.b2autos.com>"
+# .env.local (Next)
+NEXT_PUBLIC_SITE_URL=https://b2autos.com
+NEXT_PUBLIC_CONVEX_URL=            # written by `npx convex dev`
+NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX     # unset = no tags load at all
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=
+INGEST_SECRET=                     # optional, must match the Convex var
+LEAD_INBOX=admin@b2autos.com
+LEAD_WEBHOOK_URL=                  # Zapier/Make -> Twilio SMS or WhatsApp
+
+# Convex deployment (`npx convex env set …`)
+RESEND_API_KEY= QUOTE_FROM= QUOTE_INBOX= ADMIN_EMAILS=
 ```
 
-Until DNS is in place, add a Gmail filter on `admin@b2autos.com`
-(from `resend.dev` → **Never send it to Spam**) so leads stay visible. Every
-lead is in `/admin` regardless — email is a notification, never the record.
+`LEAD_WEBHOOK_URL` is what makes a five-minute callback possible. Point it at a
+Zapier or Make hook that fans out to Twilio or WhatsApp. It is called with a
+3-second timeout and its failure is logged, never surfaced — the lead is
+already stored by then.
 
-Environment variables live in two separate places and are not interchangeable:
-anything the browser needs goes in the Next app (`.env.local`), while secrets the
-backend uses go on the Convex deployment via `npx convex env set`. See
-`.env.example`.
+---
 
-### Authorisation
+## The form
 
-`ADMIN_EMAILS` is the whole access model. It is checked when an account is
-created, and again inside every admin query and mutation in `convex/quotes.ts`
-— so the data is safe even if someone calls the backend directly, and removing
-an address revokes access immediately.
+**Four inputs, one step:** vehicle · name · phone · postal code, plus the Law 25
+consent checkbox.
+
+Every field earns its place: the vehicle is what a price is calculated from, the
+phone is the only way to deliver that price, the name is what we open the call
+with, and the postal code confirms the address is inside the free-tow radius.
+Everything else — email, condition, paperwork, whether it runs — is a question
+for the callback, where it costs nothing, instead of a field on the page, where
+it costs leads.
+
+The consent checkbox is **not** a fifth input. Law 25 requires an explicit,
+unchecked opt-in before anyone may be phoned or texted, so it is a legal control
+rather than data being collected. It links to `/fr/politique-de-confidentialite/`.
+
+Spam is handled by an off-screen honeypot plus per-IP rate limiting. There is no
+visible CAPTCHA on purpose — it costs more conversions than the spam it stops.
+
+---
+
+## Tracking
+
+All events go through GTM (`lib/tracking.ts`). Nothing loads until
+`NEXT_PUBLIC_GTM_ID` is set.
+
+`form_start` · `generate_lead` · `click_to_call` · `whatsapp_click` ·
+`email_click` · `scroll_75` · `quote_calculator_used`
+
+On submit the browser **navigates** to `/fr/merci/` (or `/en/thank-you/`), so a
+real pageview conversion fires in Google Ads and Meta rather than relying on an
+event alone. Those pages are `noindex` and disallowed in `robots.txt`.
+
+**Attribution.** `lib/attribution.ts` captures `gclid`, `wbraid`, `gbraid`,
+`fbclid`, `msclkid` and every `utm_*` on first paint and keeps them in
+`sessionStorage`, first-touch wins. They ride along on the lead, which is what
+makes an offline conversion upload possible months later when a deal closes.
+
+### Law 25 consent
+
+`components/site/CookieConsent.tsx` + Google Consent Mode v2.
+
+Order matters and is the point: a **plain inline script** in `<head>` sets every
+storage type to `denied` *before* the GTM container loads. The banner pushes an
+`update` only on an explicit choice. Getting that order backwards is the most
+common Law 25 failure.
+
+"Tout refuser" is the same size, weight and prominence as "Tout accepter". That
+symmetry is a legal requirement in Quebec, not a design preference. Granular
+toggles: Nécessaires (locked on) / Analytiques / Marketing. The decision is
+stored for 6 months, then the question is asked again.
+
+---
+
+## Routing
+
+French is primary. `/` 302-redirects by `Accept-Language`, defaulting to French.
+
+Slugs differ per language on purpose — `/en/rachat-auto-scrap/` would rank for
+nothing. `config/routes.ts` holds the `ROUTES` registry; a stable key pairs the
+two, and that key is what the language switcher and the hreflang tags resolve
+against. The switcher links to the **equivalent page**, and returns `null` when
+a page has no twin rather than dumping the visitor on the homepage.
+
+There is deliberately **no `app/layout.tsx`**. `<html lang>` has to be correct in
+the served HTML for both languages, and only a layout that can see the `[lang]`
+segment can do that — so `app/(public)/[lang]/layout.tsx` is the root layout for
+the site, and `app/(admin)/admin/layout.tsx` is a second one for the dashboard.
+
+`/lp/` pages carry no header nav and no footer links, and are `noindex, follow`.
+`components/site/SiteChrome.tsx` strips the shared chrome on those paths during
+server rendering, so the header and footer are absent from the served HTML, not
+just hidden after hydration.
+
+---
+
+## Commands
+
+```bash
+npm run dev     # http://localhost:3000
+npm run build   # static export of every marketing route
+npm run lint
+npx tsc --noEmit
+```
+
+## Hard constraints — do not break these
+
+- **Never invent** statistics, review counts, ratings or customer names.
+- The review count is **5**, the average is **5.0**. Never round up, never write
+  "hundreds of satisfied customers" or any volume language.
+- The address is **Mascouche**. Laval is a service area, never the address.
+- The email is **admin@b2autos.com**.
+- Hours are **8:00–20:30, seven days a week**, identical on every page and in
+  the schema. They come from `siteConfig.hours`, so they cannot drift.
+- **No social media icons or links** anywhere. `sameAs` is omitted from the
+  JSON-LD entirely — an empty `sameAs` is worse than none.
+- The copyright year is dynamic.
+- No dead `#` links.

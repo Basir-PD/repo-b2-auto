@@ -2,19 +2,33 @@ import { NextResponse } from "next/server";
 import { ConvexHttpClient } from "convex/browser";
 import { ConvexError } from "convex/values";
 import { api } from "@/convex/_generated/api";
+import { siteConfig } from "@/config/site";
 
 /**
  * ============================================================
- * POST /api/quote  —  quote-request lead handler
+ * POST /api/quote  —  lead handler
  * ============================================================
- * Validates, then hands the lead to Convex, which stores it and
- * schedules the notification email. Storing first means a mail
- * outage costs a notification, never a lead — the request shows
- * up in /admin either way.
+ * Validates, stores in Convex (which schedules the notification
+ * email), then fires the SMS/WhatsApp webhook. Storing first
+ * means a mail or webhook outage costs a notification, never a
+ * lead — it still shows up in /admin either way.
+ *
+ * Two kinds of submission arrive here:
+ *
+ *   partial: false  a completed form
+ *   partial: true   someone typed a valid phone number on step 3
+ *                   and left. Sent via sendBeacon, so the response
+ *                   is never read and the payload must be small.
+ *
+ * A partial is a real lead — a phone number and a vehicle is all
+ * anyone needs to call back — so it is stored, flagged, and
+ * notified like any other, just marked so nobody mistakes it for
+ * a finished enquiry.
  *
  * Next app env (.env.local):
  *   NEXT_PUBLIC_CONVEX_URL   written by `npx convex dev`
  *   INGEST_SECRET            optional; must match the Convex var
+ *   LEAD_WEBHOOK_URL         optional; Zapier/Make → Twilio or WhatsApp
  *
  * Convex deployment env (`npx convex env set …`):
  *   RESEND_API_KEY, QUOTE_FROM, QUOTE_INBOX, ADMIN_EMAILS
@@ -24,12 +38,11 @@ import { api } from "@/convex/_generated/api";
 export const runtime = "nodejs";
 
 const MAX_LEN = 2000;
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_RE = /^[+()\d\s.-]{10,20}$/;
 
 /** Crude per-IP throttle. Resets on cold start, which is fine for spam control. */
 const recentSubmissions = new Map<string, number[]>();
-const RATE_LIMIT = 5;
+const RATE_LIMIT = 8;
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 
 function isRateLimited(ip: string) {
@@ -44,6 +57,15 @@ function clean(value: unknown): string {
   return typeof value === "string" ? value.trim().slice(0, MAX_LEN) : "";
 }
 
+/** Flatten the captured click IDs into something readable in an inbox. */
+function describeAttribution(raw: unknown): string {
+  if (!raw || typeof raw !== "object") return "";
+  return Object.entries(raw as Record<string, unknown>)
+    .filter(([, v]) => typeof v === "string" && v)
+    .map(([k, v]) => `${k}=${String(v).slice(0, 200)}`)
+    .join(" · ");
+}
+
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
   try {
@@ -52,28 +74,37 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
 
-  // Honeypot: real people never fill a hidden field.
+  // Honeypot: real people never fill a hidden field. Answer 200 so the bot
+  // records a success and moves on.
   if (clean(body.company)) {
     return NextResponse.json({ ok: true });
   }
 
+  const partial = body.partial === true;
+
   const name = clean(body.name);
   const phone = clean(body.phone);
-  const email = clean(body.email);
-  const vehicle = clean(body.vehicle);
-  const condition = clean(body.condition);
-  const message = clean(body.message);
+  const postal = clean(body.postal);
+  const vehicleInput = clean(body.vehicle);
+  const source = clean(body.source) || "unknown";
   const locale = clean(body.locale) === "en" ? "en" : "fr";
+  const attribution = describeAttribution(body.attribution);
+  const consent = body.consent === true;
 
   const errors: Record<string, string> = {};
-  if (!name) errors.name = "required";
+
+  // A phone number is the one thing that makes a lead actionable, so it is
+  // the only field required on both paths.
   if (!phone) errors.phone = "required";
   else if (!PHONE_RE.test(phone)) errors.phone = "invalid";
-  // Email is optional — the short hero form asks for a phone number only,
-  // which is what we actually need to call someone back. A supplied address
-  // still has to be well formed.
-  if (email && !EMAIL_RE.test(email)) errors.email = "invalid";
-  if (!vehicle) errors.vehicle = "required";
+
+  if (!partial) {
+    if (!name) errors.name = "required";
+    if (!postal) errors.postal = "required";
+    if (!vehicleInput) errors.vehicle = "required";
+    // Law 25: the consent box is not decorative. No consent, no lead.
+    if (!consent) errors.consent = "required";
+  }
 
   if (Object.keys(errors).length) {
     return NextResponse.json({ error: "validation", errors }, { status: 422 });
@@ -88,11 +119,30 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
   }
 
+  const vehicle = vehicleInput || "(non précisé)";
+
+  const message = [
+    partial ? "⚠️ FORMULAIRE ABANDONNÉ — rappeler quand même" : null,
+    postal && `Code postal / ville : ${postal}`,
+    `Source : ${source}`,
+    attribution && `Attribution : ${attribution}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  const lead = {
+    name: name || "(partiel)",
+    phone,
+    vehicle,
+    message: message || undefined,
+    locale,
+  };
+
   const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
   if (!convexUrl) {
     console.error(
       "[quote] NEXT_PUBLIC_CONVEX_URL is not set — lead NOT stored. Captured:",
-      JSON.stringify({ name, phone, email, vehicle, condition, message })
+      JSON.stringify(lead)
     );
     return NextResponse.json({ error: "backend_not_configured" }, { status: 503 });
   }
@@ -100,23 +150,36 @@ export async function POST(request: Request) {
   try {
     const convex = new ConvexHttpClient(convexUrl);
     await convex.mutation(api.quotes.submit, {
-      name,
-      phone,
-      email: email || undefined,
-      vehicle,
-      condition: condition || undefined,
-      message: message || undefined,
-      locale,
+      ...lead,
       secret: process.env.INGEST_SECRET,
     });
   } catch (err) {
-    // Log the whole lead so it is recoverable from the server logs.
+    // Log the whole lead so it stays recoverable from the server logs.
     console.error(
       "[quote] failed to store lead:",
       err instanceof ConvexError ? err.data : err,
-      JSON.stringify({ name, phone, email, vehicle, condition, message })
+      JSON.stringify(lead)
     );
     return NextResponse.json({ error: "store_failed" }, { status: 502 });
+  }
+
+  /*
+   * Fire the SMS/WhatsApp hook. Deliberately not awaited into the response
+   * path beyond a short timeout: the lead is already stored, and a slow
+   * Zapier endpoint must not turn a captured lead into a 502 the browser
+   * shows as an error.
+   */
+  if (siteConfig.leadWebhook) {
+    try {
+      await fetch(siteConfig.leadWebhook, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...lead, partial, source, attribution }),
+        signal: AbortSignal.timeout(3000),
+      });
+    } catch (err) {
+      console.error("[quote] webhook failed (lead is stored):", err);
+    }
   }
 
   return NextResponse.json({ ok: true });
