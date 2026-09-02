@@ -84,45 +84,64 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       />
 
       {/* ---------------------------------------------------------- Hero */}
-      <section className="relative isolate overflow-hidden bg-slate-950">
-        <div className="absolute inset-x-0 top-0 -z-10 h-[19rem] sm:h-[24rem] lg:bottom-0 lg:h-auto">
-          <Image
-            src="/hero-tow-truck.jpg"
-            alt={heroAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[62%_center]"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-b from-slate-950/55 via-55% via-slate-950/65 to-slate-950 lg:hidden"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 hidden bg-gradient-to-r from-slate-950 from-30% via-55% via-slate-950/88 to-slate-950/15 lg:block xl:from-18% xl:via-slate-950/70 xl:to-slate-950/5"
-          />
-        </div>
+      {/*
+        Bright ground, crisp photo.
+        The page opens on near-white with a single green glow rather than a
+        flat colour slab, and the truck runs full-bleed along the bottom as
+        the hero's floor — sharp and full-colour, not ghosted behind the
+        copy. Washing a photo out to make text readable wastes the one asset
+        that proves we own the flatbed; giving it its own band keeps both.
+      */}
+      <section className="relative isolate overflow-hidden bg-white">
+        {/* Soft brand light from the top-left. Two layers, no hard edges. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 -z-10 h-[36rem] bg-gradient-to-b from-brand-50 to-white"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -left-40 -top-56 -z-10 h-[36rem] w-[36rem] rounded-full bg-brand-100/50 blur-3xl"
+        />
 
-        <div className="container mx-auto px-4 pb-14 pt-12 sm:px-6 sm:pb-16 sm:pt-16 lg:px-8 lg:pb-24 lg:pt-20">
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="container mx-auto px-4 pb-10 pt-10 sm:px-6 sm:pb-12 sm:pt-14 lg:px-8 lg:pb-16 lg:pt-16">
+          <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7 lg:max-w-xl">
-              <p className="inline-flex items-center gap-2.5 rounded-full bg-brand-600 px-4 py-2 text-xs font-black uppercase tracking-[0.1em] text-white sm:text-sm">
-                {t.home.priceAnchor}
+              {/* Where we are and when — the two facts a local searcher checks first. */}
+              <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-700 sm:text-[13px]">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-brand-500" />
+                {siteConfig.address.locality}
+                <span className="text-brand-300" aria-hidden="true">
+                  /
+                </span>
+                {t.common.hours}
               </p>
 
-              <h1 className="mt-6 text-[2.1rem] font-black leading-[1.08] tracking-tight text-white sm:text-[2.9rem] lg:text-[3.3rem]">
+              <h1 className="mt-5 text-[2.1rem] font-black leading-[1.06] tracking-tight text-slate-900 sm:text-[2.9rem] lg:text-[3.25rem]">
                 {t.home.h1}
               </h1>
 
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 {t.home.sub}
               </p>
+
+              {/*
+                The money, set as a figure rather than a badge. It is the
+                single number this whole page is about, so it gets the
+                typographic weight instead of a pill that reads as decoration.
+              */}
+              <div className="mt-8 inline-block border-l-4 border-brand-600 pl-4">
+                <p className="text-[2rem] font-black leading-none tracking-tight tabular-nums text-slate-900 sm:text-[2.4rem]">
+                  {t.home.priceFigure}
+                </p>
+                <p className="mt-1.5 text-sm font-semibold text-slate-500">
+                  {t.home.priceCaption}
+                </p>
+              </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Link
                   href={pathFor("quote", lang)}
-                  className="rounded-xl bg-brand-600 px-6 py-4 text-center text-base font-bold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  className="rounded-xl bg-brand-600 px-6 py-4 text-center text-base font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
                 >
                   {t.home.ctaPrimary}
                 </Link>
@@ -130,14 +149,17 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                   source="hero"
                   showIcon
                   label={t.home.ctaSecondary}
-                  className="flex items-center justify-center gap-2.5 rounded-xl border-2 border-white/25 bg-white/10 px-6 py-4 text-base font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  className="flex items-center justify-center gap-2.5 rounded-xl border-2 border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
                 />
               </div>
 
               <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2.5">
                 {t.home.trustStrip.map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm font-semibold text-white">
-                    <Check className="h-4 w-4 shrink-0 text-brand-400" strokeWidth={3} />
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-700"
+                  >
+                    <Check className="h-4 w-4 shrink-0 text-brand-600" strokeWidth={3} />
                     {item}
                   </li>
                 ))}
@@ -150,6 +172,21 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               </div>
             </div>
           </div>
+        </div>
+
+        {/*
+          The photo as the hero's floor: full width, full colour, feathered at
+          the top so it rises out of the page instead of sitting in a box.
+        */}
+        <div className="relative mt-2 h-[13rem] w-full sm:h-[17rem] lg:h-[21rem]">
+          <Image
+            src="/hero-tow-truck.jpg"
+            alt={heroAlt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[58%_62%] [mask-image:linear-gradient(to_bottom,transparent,black_34%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_34%)]"
+          />
         </div>
       </section>
 

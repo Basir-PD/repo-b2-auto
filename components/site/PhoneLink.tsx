@@ -19,6 +19,7 @@ export default function PhoneLink({
   source,
   label,
   className = "",
+  labelClassName,
   showIcon = false,
   children,
 }: {
@@ -27,6 +28,13 @@ export default function PhoneLink({
   /** Overrides the number as the visible text. */
   label?: string;
   className?: string;
+  /**
+   * Applied to the text itself, so a caller can hide the number at narrow
+   * widths and keep the icon. Use `sr-only`, never `hidden`: `display: none`
+   * drops the text out of the accessibility tree and leaves the link with no
+   * name at all.
+   */
+  labelClassName?: string;
   showIcon?: boolean;
   children?: React.ReactNode;
 }) {
@@ -42,7 +50,7 @@ export default function PhoneLink({
       {showIcon && (
         <Phone className="h-5 w-5 shrink-0" strokeWidth={2.5} fill="currentColor" aria-hidden="true" />
       )}
-      {children ?? label ?? phone.display}
+      <span className={labelClassName}>{children ?? label ?? phone.display}</span>
     </a>
   );
 }
