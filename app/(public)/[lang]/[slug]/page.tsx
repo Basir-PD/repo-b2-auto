@@ -390,7 +390,6 @@ export default async function SlugPage({
             <p className="mt-6 text-sm font-semibold text-slate-700">{t.thanks.urgent}</p>
             <PhoneLink
               source="thanks"
-              ariaLabel={t.common.callAria}
               showIcon
               className="mt-3 inline-flex items-center gap-2.5 rounded-xl bg-brand-600 px-7 py-4 text-xl font-black tabular-nums text-white transition-colors hover:bg-brand-500"
             />
@@ -503,7 +502,6 @@ export default async function SlugPage({
                       <dd className="mt-1">
                         <PhoneLink
                           source="contact_page"
-                          ariaLabel={t.common.callAria}
                           className="text-xl font-black tabular-nums text-slate-900 hover:text-brand-600"
                         />
                       </dd>

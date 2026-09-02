@@ -18,12 +18,10 @@ export default function MobileCallBar({
   lang,
   callLabel,
   quoteLabel,
-  callAria,
 }: {
   lang: Lang;
   callLabel: string;
   quoteLabel: string;
-  callAria: string;
 }) {
   return (
     <>
@@ -31,7 +29,6 @@ export default function MobileCallBar({
       <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-brand-800 pb-[env(safe-area-inset-bottom)] md:hidden">
         <PhoneLink
           source="mobile_bar"
-          ariaLabel={callAria}
           className="flex h-16 items-center justify-center gap-2 bg-brand-600 text-base font-black text-white active:bg-brand-700"
         >
           <Phone className="h-5 w-5" strokeWidth={2.5} fill="currentColor" />

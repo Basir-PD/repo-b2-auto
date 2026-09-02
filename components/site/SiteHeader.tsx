@@ -14,7 +14,6 @@ import { pushEvent } from "@/lib/tracking";
 export type HeaderLabels = {
   nav: { href: string; label: string }[];
   quote: string;
-  callAria: string;
   hours: string;
   switchTo: string;
   switchAria: string;
@@ -58,7 +57,6 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
         <Link
           href={pathFor("home", lang)}
           className="flex shrink-0 items-center gap-2.5"
-          aria-label={`${siteConfig.name} — ${siteConfig.address.locality}`}
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-lg font-black text-white">
             B
@@ -90,7 +88,8 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
             <Link
               href={switchHref}
               hrefLang={otherLang(lang)}
-              aria-label={labels.switchAria}
+              lang={otherLang(lang)}
+              title={labels.switchAria}
               className="rounded-md px-2 py-1.5 text-sm font-bold text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
             >
               {labels.switchTo}
@@ -100,7 +99,6 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
           {/* Always visible, every breakpoint. */}
           <PhoneLink
             source="header"
-            ariaLabel={labels.callAria}
             className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black tabular-nums text-white transition-colors hover:bg-brand-500 sm:px-4 sm:text-base"
             showIcon
           />

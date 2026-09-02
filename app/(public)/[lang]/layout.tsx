@@ -107,12 +107,11 @@ export default async function PublicLayout({
           <SiteHeader
             lang={lang}
             labels={{
-            nav,
-            quote: t.nav.quote,
-            callAria: t.common.callAria,
-            hours: t.common.hoursLong,
-            switchTo: t.meta.switchTo,
-            switchAria: t.meta.switchAria,
+              nav,
+              quote: t.nav.quote,
+              hours: t.common.hoursLong,
+              switchTo: t.meta.switchTo,
+              switchAria: t.meta.switchAria,
               menuOpen: lang === "fr" ? "Ouvrir le menu" : "Open menu",
               menuClose: lang === "fr" ? "Fermer le menu" : "Close menu",
             }}
@@ -127,7 +126,6 @@ export default async function PublicLayout({
             lang={lang}
             callLabel={t.common.callShort}
             quoteLabel={t.common.quoteShort}
-            callAria={t.common.callAria}
           />
           <WhatsAppFloat ariaLabel={t.common.whatsappAria} />
         </SiteChrome>
