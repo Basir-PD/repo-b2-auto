@@ -49,11 +49,11 @@ function metaFor(lang: Lang, slug: string): Meta | null {
     return lang === "fr"
       ? {
           title: `Cour à Scrap ${city.name} | Rachat Auto Comptant + Remorquage Gratuit`,
-          description: `Vous vendez une auto scrap à ${city.name} ? B2 Autos achète comptant, remorquage gratuit, enlèvement souvent le jour même. Estimation gratuite : ${siteConfig.phone.display}.`,
+          description: `Vous vendez une auto scrap à ${city.name} ? Autos B2 achète comptant, remorquage gratuit, enlèvement souvent le jour même. Estimation gratuite : ${siteConfig.phone.display}.`,
         }
       : {
           title: `Scrap Car Buyer ${city.name} | Cash Paid + Free Towing`,
-          description: `Selling a scrap car in ${city.name}? B2 Autos pays cash, free towing, pickup often the same day. Free quote: ${siteConfig.phone.display}.`,
+          description: `Selling a scrap car in ${city.name}? Autos B2 pays cash, free towing, pickup often the same day. Free quote: ${siteConfig.phone.display}.`,
         };
   }
 
@@ -66,8 +66,8 @@ function metaFor(lang: Lang, slug: string): Meta | null {
     case "quote":
       return {
         title: lang === "fr"
-          ? "Estimation Gratuite pour Votre Auto Scrap | B2 Autos"
-          : "Free Quote for Your Scrap Car | B2 Autos",
+          ? "Estimation Gratuite pour Votre Auto Scrap | Autos B2"
+          : "Free Quote for Your Scrap Car | Autos B2",
         description: lang === "fr"
           ? "Obtenez un prix ferme pour votre véhicule en moins de deux minutes. Trois étapes, sans obligation, remorquage gratuit inclus."
           : "Get a firm price for your vehicle in under two minutes. Three steps, no obligation, free towing included.",
@@ -86,8 +86,8 @@ function metaFor(lang: Lang, slug: string): Meta | null {
     case "faq":
       return {
         title: lang === "fr"
-          ? "Questions Fréquentes sur le Rachat d'Auto Scrap | B2 Autos"
-          : "Frequently Asked Questions About Scrap Car Buying | B2 Autos",
+          ? "Questions Fréquentes sur le Rachat d'Auto Scrap | Autos B2"
+          : "Frequently Asked Questions About Scrap Car Buying | Autos B2",
         description: lang === "fr"
           ? "Valeur d'une auto scrap, remorquage gratuit, documents SAAQ, délais et paiement comptant : les réponses aux questions qu'on nous pose le plus."
           : "What a scrap car is worth, free towing, SAAQ documents, timing and cash payment: answers to what we're asked most.",
@@ -95,8 +95,8 @@ function metaFor(lang: Lang, slug: string): Meta | null {
     case "blog":
       return {
         title: lang === "fr"
-          ? "Blogue | Vendre son auto scrap au Québec — B2 Autos"
-          : "Blog | Selling your scrap car in Quebec — B2 Autos",
+          ? "Blogue | Vendre son auto scrap au Québec — Autos B2"
+          : "Blog | Selling your scrap car in Quebec — Autos B2",
         description: lang === "fr"
           ? "Guides pratiques sur la valeur d'une auto scrap, la cession SAAQ, les pertes totales et la vente d'un véhicule en fin de vie au Québec."
           : "Practical guides on what a scrap car is worth, SAAQ transfers, write-offs and selling an end-of-life vehicle in Quebec.",

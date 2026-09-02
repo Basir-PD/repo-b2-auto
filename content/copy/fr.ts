@@ -33,12 +33,12 @@ export const fr = {
 
   common: {
     callCta: `Appeler ${PHONE}`,
-    callAria: "Appeler B2 Autos maintenant",
+    callAria: "Appeler Autos B2 maintenant",
     callShort: "Appeler",
     quoteCta: "Obtenir mon estimation gratuite",
     quoteShort: "Estimation",
     whatsapp: "WhatsApp",
-    whatsappAria: "Écrire à B2 Autos sur WhatsApp",
+    whatsappAria: "Écrire à Autos B2 sur WhatsApp",
     whatsappTagline: "Envoyez-nous une photo de votre auto",
     hours: "Ouvert 7 jours, 8 h à 20 h 30",
     hoursLong: "Ouvert 7 jours sur 7, de 8 h à 20 h 30",
@@ -54,7 +54,7 @@ export const fr = {
 
   home: {
     metaTitle:
-      "Rachat Auto Scrap Mascouche | Argent Comptant + Remorquage Gratuit — B2 Autos",
+      "Rachat Auto Scrap Mascouche | Argent Comptant + Remorquage Gratuit — Autos B2",
     metaDescription:
       "Nous achetons votre auto scrap, accidentée ou en panne. Argent comptant sur place, remorquage gratuit partout sur la Rive-Nord. Estimation gratuite en 2 minutes. Ouvert 7 jours, 8h à 20h30.",
 
@@ -65,7 +65,6 @@ export const fr = {
     priceCaption: "comptant, selon le véhicule",
     whatsappCta: "Envoyer une photo sur WhatsApp",
     whatsappPrefill: "Bonjour ! J'aimerais une estimation pour mon véhicule. Voici une photo :",
-    photoChip: "Notre propre plateau — 340 Chemin Pincourt, Mascouche",
     ctaPrimary: "Obtenir mon estimation gratuite",
     ctaSecondary: `Appeler ${PHONE}`,
 
@@ -203,7 +202,7 @@ export const fr = {
     postalPlaceholder: "Ex. : J7L 2W3 ou Terrebonne",
 
     consent:
-      "J'accepte que B2 Autos communique avec moi par téléphone, texto ou courriel au sujet de ma soumission. Consultez notre politique de confidentialité.",
+      "J'accepte qu'Autos B2 communique avec moi par téléphone, texto ou courriel au sujet de ma soumission. Consultez notre politique de confidentialité.",
     consentLinkText: "politique de confidentialité",
 
     submit: "Obtenir mon estimation",
@@ -217,9 +216,9 @@ export const fr = {
   },
 
   thanks: {
-    metaTitle: "Merci — votre demande est reçue | B2 Autos",
+    metaTitle: "Merci — votre demande est reçue | Autos B2",
     metaDescription:
-      "Votre demande d'estimation est reçue. Un membre de l'équipe B2 Autos vous rappelle sous peu.",
+      "Votre demande d'estimation est reçue. Un membre de l'équipe Autos B2 vous rappelle sous peu.",
     h1: "Merci — on vous rappelle sous peu",
     body: "Votre demande est bien reçue. Un membre de l'équipe vous téléphone généralement en moins de 30 minutes pendant nos heures d'ouverture, de 8 h à 20 h 30, 7 jours sur 7.",
     urgent: "Vous êtes pressé ? Appelez-nous directement :",

@@ -68,8 +68,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
   const heroAlt =
     lang === "fr"
-      ? "Remorqueuse à plateau de B2 Autos chargée d'un véhicule, à Mascouche"
-      : "B2 Autos flatbed tow truck loaded with a vehicle, in Mascouche";
+      ? "Remorqueuse à plateau d'Autos B2 chargée d'un véhicule, à Mascouche"
+      : "Autos B2 flatbed tow truck loaded with a vehicle, in Mascouche";
 
   return (
     <>

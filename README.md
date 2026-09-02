@@ -1,6 +1,6 @@
-# B2 Autos — b2autos.com
+# Autos B2 — b2autos.com
 
-Bilingual (fr-CA / en-CA) lead-generation site for **B2 Autos**, a licensed auto
+Bilingual (fr-CA / en-CA) lead-generation site for **Autos B2**, a licensed auto
 recycler and scrap-car buyer at **340 Chemin Pincourt, Mascouche, QC J7L 2W3**.
 
 Next.js 15 (App Router) · TypeScript · Tailwind v4 · Convex (leads + admin) ·
@@ -107,7 +107,7 @@ than filling space with stock.
 | _(missing)_ `public/yard-dismantling.jpg` | ❌ needed | Depollution / dismantling, for the recycling section |
 
 Alt text is written in the page's own language and describes the scene, e.g.
-`"Remorqueuse à plateau de B2 Autos chargée d'un véhicule, à Mascouche"`.
+`"Remorqueuse à plateau de Autos B2 chargée d'un véhicule, à Mascouche"`.
 
 ---
 

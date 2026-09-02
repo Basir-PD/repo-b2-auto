@@ -12,7 +12,7 @@ import { internal } from "./_generated/api";
  *
  * Set on the Convex deployment:
  *   npx convex env set RESEND_API_KEY re_xxxxxxxx
- *   npx convex env set QUOTE_FROM "B2 Autos <quotes@b2autos.com>"
+ *   npx convex env set QUOTE_FROM "Autos B2 <quotes@b2autos.com>"
  *   npx convex env set QUOTE_INBOX admin@b2autos.com
  * ============================================================
  */
@@ -27,8 +27,8 @@ const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const LEAD_INBOX = "admin@b2autos.com";
 
 const BUSINESS = {
-  name: "B2 Autos",
-  legalName: "B2 Autos Recycling",
+  name: "Autos B2",
+  legalName: "Autos B2",
   phoneDisplay: "+1 (514) 623-2787",
   phoneHref: "tel:+15146232787",
   /** Public contact address, shown to customers in the confirmation email. */

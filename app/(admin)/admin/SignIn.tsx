@@ -49,9 +49,9 @@ export default function SignIn() {
       <div className="w-full max-w-sm">
         <div className="mb-7 flex items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600">
-            <span className="text-lg font-black text-white">B</span>
+            <span className="text-sm font-black tracking-tight text-white">B2</span>
           </span>
-          <span className="text-lg font-black tracking-tight text-slate-900">B2 Autos</span>
+          <span className="text-lg font-black tracking-tight text-slate-900">Autos B2</span>
         </div>
 
         <h1 className="text-2xl font-black tracking-tight text-slate-900">

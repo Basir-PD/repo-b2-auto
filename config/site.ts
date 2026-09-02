@@ -18,9 +18,9 @@ export const siteConfig = {
   /** Canonical origin. No trailing slash. */
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://b2autos.com",
 
-  name: "B2 Autos",
-  legalName: "B2 Autos",
-  shortName: "B2 Autos",
+  name: "Autos B2",
+  legalName: "Autos B2",
+  shortName: "Autos B2",
 
   phone: {
     /** E.164 — required by schema.org and tel: links. */
