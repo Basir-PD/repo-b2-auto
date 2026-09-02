@@ -19,9 +19,9 @@ export const fr = {
 
   nav: {
     services: "Nos services",
-    scrapBuying: "Rachat auto scrap",
-    towing: "Remorquage gratuit",
-    damaged: "Auto accidentée",
+    scrapBuying: "Auto scrap",
+    towing: "Remorquage",
+    damaged: "Accidentée",
     trucks: "Camions et VUS",
     cities: "Villes desservies",
     about: "À propos",
