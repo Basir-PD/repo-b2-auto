@@ -30,12 +30,12 @@ export const en: Copy = {
 
   common: {
     callCta: `Call ${PHONE}`,
-    callAria: "Call B2 Autos now",
+    callAria: "Call Autos B2 now",
     callShort: "Call",
     quoteCta: "Get my free quote",
     quoteShort: "Quote",
     whatsapp: "WhatsApp",
-    whatsappAria: "Message B2 Autos on WhatsApp",
+    whatsappAria: "Message Autos B2 on WhatsApp",
     whatsappTagline: "Send us a photo of your car",
     hours: "Open 7 days, 8am–8:30pm",
     hoursLong: "Open 7 days a week, 8:00am to 8:30pm",
@@ -50,7 +50,7 @@ export const en: Copy = {
   },
 
   home: {
-    metaTitle: "Cash for Junk Cars Mascouche & Laval | Free Towing — B2 Autos",
+    metaTitle: "Cash for Junk Cars Mascouche & Laval | Free Towing — Autos B2",
     metaDescription:
       "We buy scrap, damaged and non-running cars for cash. Free towing across the North Shore and Laval, paid on the spot, SAAQ paperwork handled. Open 7 days, 8am to 8:30pm.",
 
@@ -61,7 +61,6 @@ export const en: Copy = {
     priceCaption: "cash, depending on the vehicle",
     whatsappCta: "Send a photo on WhatsApp",
     whatsappPrefill: "Hi! I'd like a quote for my vehicle. Here's a photo:",
-    photoChip: "Our own flatbed — 340 Chemin Pincourt, Mascouche",
     ctaPrimary: "Get my free quote",
     ctaSecondary: `Call ${PHONE}`,
 
@@ -199,7 +198,7 @@ export const en: Copy = {
     postalPlaceholder: "e.g. J7L 2W3 or Terrebonne",
 
     consent:
-      "I agree that B2 Autos may contact me by phone, text or email about my quote. See our privacy policy.",
+      "I agree that Autos B2 may contact me by phone, text or email about my quote. See our privacy policy.",
     consentLinkText: "privacy policy",
 
     submit: "Get my quote",
@@ -213,9 +212,9 @@ export const en: Copy = {
   },
 
   thanks: {
-    metaTitle: "Thank you — we've got your request | B2 Autos",
+    metaTitle: "Thank you — we've got your request | Autos B2",
     metaDescription:
-      "Your quote request has been received. A member of the B2 Autos team will call you shortly.",
+      "Your quote request has been received. A member of the Autos B2 team will call you shortly.",
     h1: "Thanks — we'll call you shortly",
     body: "We've got your request. Someone on the team usually calls within 30 minutes during opening hours, 8am to 8:30pm, 7 days a week.",
     urgent: "In a hurry? Call us directly:",

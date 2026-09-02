@@ -26,8 +26,8 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
           {/* NAP — must match the Google Business Profile character for character. */}
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-lg font-black text-white">
-                B
+              <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-sm font-black tracking-tight text-white">
+                B2
               </span>
               <span className="text-lg font-black tracking-tight text-white">
                 {siteConfig.name}

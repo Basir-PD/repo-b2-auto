@@ -27,7 +27,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "vendre-mon-auto",
     lang: "fr",
-    title: "Vendre mon auto comptant | B2 Autos",
+    title: "Vendre mon auto comptant | Autos B2",
     h1: "Vendez votre auto aujourd'hui — argent comptant, sur place",
     sub: "Peu importe l'état : en panne, accidentée, sans moteur ou déclarée perte totale. On vient la chercher gratuitement et on vous paie à l'enlèvement.",
     badge: `De ${siteConfig.facts.cashMin} $ à ${siteConfig.facts.cashMax.toLocaleString("fr-CA")} $ comptant selon le véhicule`,
@@ -44,7 +44,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "remorquage-gratuit",
     lang: "fr",
-    title: "Remorquage gratuit de votre véhicule | B2 Autos",
+    title: "Remorquage gratuit de votre véhicule | Autos B2",
     h1: "Faites enlever votre véhicule gratuitement — et repartez avec de l'argent",
     sub: "On remorque sans frais partout sur la Rive-Nord, à Laval et dans l'est de Montréal, souvent le jour même. Et on vous paie comptant pour le véhicule.",
     badge: "Remorquage 100 % gratuit — jamais déduit de votre montant",
@@ -61,7 +61,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "offre-facebook",
     lang: "fr",
-    title: "Votre vieux char vaut de l'argent | B2 Autos",
+    title: "Votre vieux char vaut de l'argent | Autos B2",
     h1: "Votre vieux char dort dans l'entrée ? Il vaut de l'argent.",
     sub: "Donnez-nous l'année, la marque et le modèle. On vous rappelle avec un prix ferme en quelques minutes — et si ça vous convient, on vient le chercher gratuitement.",
     badge: `De ${siteConfig.facts.cashMin} $ à ${siteConfig.facts.cashMax.toLocaleString("fr-CA")} $ comptant selon le véhicule`,
@@ -78,7 +78,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "cash-for-junk-cars",
     lang: "en",
-    title: "Cash for Junk Cars | B2 Autos",
+    title: "Cash for Junk Cars | Autos B2",
     h1: "Sell your junk car today — cash, paid on the spot",
     sub: "Any condition: not running, wrecked, no engine, or written off. We pick it up free and pay you at pickup.",
     badge: `$${siteConfig.facts.cashMin} to $${siteConfig.facts.cashMax.toLocaleString("en-CA")} cash depending on the vehicle`,

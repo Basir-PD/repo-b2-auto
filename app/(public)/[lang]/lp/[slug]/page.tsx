@@ -57,8 +57,8 @@ export default async function LandingPage({
       <header className="border-b border-slate-200">
         <div className="container mx-auto flex h-16 items-center justify-between gap-3 px-4 sm:h-20 sm:px-6">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-lg font-black text-white">
-              B
+            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-sm font-black tracking-tight text-white">
+              B2
             </span>
             <span className="text-lg font-black tracking-tight text-slate-900 sm:text-xl">
               {siteConfig.name}
@@ -134,8 +134,8 @@ export default async function LandingPage({
             src="/hero-tow-truck.jpg"
             alt={
               lang === "fr"
-                ? "Remorqueuse à plateau de B2 Autos chargée d'un véhicule, à Mascouche"
-                : "B2 Autos flatbed tow truck loaded with a vehicle, in Mascouche"
+                ? "Remorqueuse à plateau d'Autos B2 chargée d'un véhicule, à Mascouche"
+                : "Autos B2 flatbed tow truck loaded with a vehicle, in Mascouche"
             }
             fill
             priority

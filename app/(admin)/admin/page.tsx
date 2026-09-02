@@ -70,7 +70,7 @@ function Dashboard() {
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-6">
           <div className="flex items-center gap-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-600">
-              <span className="font-black text-white">B</span>
+              <span className="text-sm font-black tracking-tight text-white">B2</span>
             </span>
             <span className="text-base font-black tracking-tight text-slate-900">Quotes</span>
           </div>
