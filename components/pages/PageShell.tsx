@@ -116,7 +116,6 @@ export function CtaBand({ lang }: { lang: Lang }) {
           </Link>
           <PhoneLink
             source="cta_band"
-            ariaLabel={t.common.callAria}
             showIcon
             label={t.home.ctaSecondary}
             className="flex items-center justify-center gap-2.5 rounded-xl border-2 border-white/25 px-7 py-4 text-base font-bold text-white transition-colors hover:bg-white/10"

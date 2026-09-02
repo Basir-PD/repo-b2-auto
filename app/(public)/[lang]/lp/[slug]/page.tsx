@@ -66,7 +66,6 @@ export default async function LandingPage({
           </div>
           <PhoneLink
             source={`lp_${slug}_header`}
-            ariaLabel={t.common.callAria}
             showIcon
             className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black tabular-nums text-white sm:px-4 sm:text-base"
           />
@@ -110,7 +109,6 @@ export default async function LandingPage({
 
               <PhoneLink
                 source={`lp_${slug}_hero`}
-                ariaLabel={t.common.callAria}
                 showIcon
                 label={t.home.ctaSecondary}
                 className="mt-7 flex w-full items-center justify-center gap-3 rounded-xl bg-brand-600 px-6 py-4 text-lg font-black text-white shadow-lg transition-colors hover:bg-brand-500 sm:w-auto"
@@ -139,7 +137,7 @@ export default async function LandingPage({
 
       {/* Minimal footer: legally required identity, no links out. */}
       <footer className="border-t border-white/10 py-6">
-        <div className="container mx-auto px-4 text-center text-xs text-slate-500 sm:px-6">
+        <div className="container mx-auto px-4 text-center text-xs text-slate-400 sm:px-6">
           <p>
             © {new Date().getFullYear()} {siteConfig.name} · {fullAddress} · {t.common.hoursLong}
           </p>

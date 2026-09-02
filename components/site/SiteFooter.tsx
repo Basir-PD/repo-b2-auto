@@ -53,7 +53,6 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
             <div className="mt-5 space-y-2 text-sm">
               <PhoneLink
                 source="footer"
-                ariaLabel={t.common.callAria}
                 className="block font-black tabular-nums text-white hover:text-brand-400"
               />
               <MailLink source="footer" className="block hover:text-white" />
@@ -134,7 +133,7 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-slate-800 pt-6 text-xs text-slate-500">
+        <div className="mt-12 border-t border-slate-800 pt-6 text-xs text-slate-400">
           {/* Dynamic — never a hardcoded year. */}
           <p>
             © {year} {siteConfig.name}. {lang === "fr" ? "Tous droits réservés." : "All rights reserved."}{" "}

@@ -7,11 +7,17 @@ import { trackCall } from "@/lib/tracking";
 /**
  * Every tappable phone number on the site. Centralised so the DNI swap and
  * the click_to_call event can never be forgotten on one of them.
+ *
+ * There is deliberately no `aria-label`. This link always renders visible
+ * text — the number itself when nothing else is given — and an aria-label
+ * that does not contain that text hands voice-control users a name they
+ * cannot say: "Appeler +1 (514) 623-2787" on screen, "Appeler B2 Autos" to
+ * the assistive layer, and no way to match the two. The visible text is
+ * already the better accessible name.
  */
 export default function PhoneLink({
   source,
   label,
-  ariaLabel,
   className = "",
   showIcon = false,
   children,
@@ -20,7 +26,6 @@ export default function PhoneLink({
   source: string;
   /** Overrides the number as the visible text. */
   label?: string;
-  ariaLabel?: string;
   className?: string;
   showIcon?: boolean;
   children?: React.ReactNode;
@@ -31,11 +36,12 @@ export default function PhoneLink({
     <a
       href={phone.href}
       onClick={() => trackCall(source)}
-      aria-label={ariaLabel}
       className={className}
       data-phone={phone.e164}
     >
-      {showIcon && <Phone className="h-5 w-5 shrink-0" strokeWidth={2.5} fill="currentColor" />}
+      {showIcon && (
+        <Phone className="h-5 w-5 shrink-0" strokeWidth={2.5} fill="currentColor" aria-hidden="true" />
+      )}
       {children ?? label ?? phone.display}
     </a>
   );

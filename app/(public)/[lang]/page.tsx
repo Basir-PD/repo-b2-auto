@@ -128,7 +128,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 </Link>
                 <PhoneLink
                   source="hero"
-                  ariaLabel={t.common.callAria}
                   showIcon
                   label={t.home.ctaSecondary}
                   className="flex items-center justify-center gap-2.5 rounded-xl border-2 border-white/25 bg-white/10 px-6 py-4 text-base font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
@@ -333,7 +332,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             </Link>
             <PhoneLink
               source="final_cta"
-              ariaLabel={t.common.callAria}
               showIcon
               label={t.home.ctaSecondary}
               className="flex items-center justify-center gap-2.5 rounded-xl border-2 border-white/25 px-7 py-4 text-base font-bold text-white transition-colors hover:bg-white/10"
