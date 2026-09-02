@@ -76,7 +76,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
             <Link
               key={item.href}
               href={item.href}
-              className="whitespace-nowrap text-sm font-semibold text-slate-600 transition-colors hover:text-slate-900"
+              className="whitespace-nowrap text-[13px] font-bold uppercase tracking-[0.06em] text-slate-600 transition-colors hover:text-slate-900"
             >
               {item.label}
             </Link>
@@ -136,7 +136,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
               <Link
                 key={item.href}
                 href={item.href}
-                className="border-b border-slate-100 py-3.5 text-base font-semibold text-slate-800"
+                className="border-b border-slate-100 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-slate-800"
               >
                 {item.label}
               </Link>
