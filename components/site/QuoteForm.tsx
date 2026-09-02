@@ -272,10 +272,17 @@ export default function QuoteForm({
           {Object.values(errors).filter(Boolean).join(". ")}
         </p>
 
+        {/*
+          Outlined on phones, filled from sm up. On a narrow screen this
+          button stacks close to the green hero CTA and the green sticky call
+          bar; three filled green blocks in one viewport stop reading as a
+          hierarchy. The outline keeps it distinct without demoting it — it is
+          still the only control in the card.
+        */}
         <button
           type="submit"
           disabled={sending}
-          className="flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-6 py-4 text-base font-bold text-white transition-colors hover:bg-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex items-center justify-center gap-2 rounded-lg border-2 border-brand-600 bg-white px-6 py-4 text-base font-bold text-brand-700 transition-colors hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:bg-brand-600 sm:text-white sm:hover:bg-brand-700"
         >
           {sending && <Loader2 className="h-5 w-5 animate-spin" />}
           {sending ? t.submitting : t.submit}
