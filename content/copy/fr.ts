@@ -63,6 +63,9 @@ export const fr = {
     priceAnchor: "De 300 $ à 3 000 $ comptant selon le véhicule",
     priceFigure: "300 $ – 3 000 $",
     priceCaption: "comptant, selon le véhicule",
+    whatsappCta: "Envoyer une photo sur WhatsApp",
+    whatsappPrefill: "Bonjour ! J'aimerais une estimation pour mon véhicule. Voici une photo :",
+    photoChip: "Notre propre plateau — 340 Chemin Pincourt, Mascouche",
     ctaPrimary: "Obtenir mon estimation gratuite",
     ctaSecondary: `Appeler ${PHONE}`,
 

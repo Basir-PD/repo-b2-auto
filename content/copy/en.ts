@@ -59,6 +59,9 @@ export const en: Copy = {
     priceAnchor: "$300 to $3,000 cash depending on the vehicle",
     priceFigure: "$300 – $3,000",
     priceCaption: "cash, depending on the vehicle",
+    whatsappCta: "Send a photo on WhatsApp",
+    whatsappPrefill: "Hi! I'd like a quote for my vehicle. Here's a photo:",
+    photoChip: "Our own flatbed — 340 Chemin Pincourt, Mascouche",
     ctaPrimary: "Get my free quote",
     ctaSecondary: `Call ${PHONE}`,
 
