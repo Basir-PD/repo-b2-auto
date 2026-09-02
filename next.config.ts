@@ -4,6 +4,13 @@ const nextConfig: NextConfig = {
   // Don't advertise the stack.
   poweredByHeader: false,
 
+  /**
+   * One canonical URL shape. Ads send traffic to the trailing-slash form, and
+   * without this every ad click would pay for a redirect hop before the page
+   * even starts loading.
+   */
+  trailingSlash: true,
+
   images: {
     // Modern formats cut hero weight substantially — Core Web Vitals feed
     // both organic ranking and the Google Ads Quality Score.
