@@ -11,6 +11,7 @@ import { homeFaqFor } from "@/content/faq";
 import { CITIES } from "@/content/cities";
 import { hasReviews, REVIEWS } from "@/content/reviews";
 import QuoteForm from "@/components/site/QuoteForm";
+import WhatsAppLink from "@/components/site/WhatsAppLink";
 import PhoneLink from "@/components/site/PhoneLink";
 import { JsonLd, faqSchema, webPageSchema } from "@/components/site/JsonLd";
 
@@ -138,13 +139,18 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 </p>
               </div>
 
+              {/*
+                WhatsApp leads here rather than a second link to the quote
+                page: the form is already in this viewport, and someone
+                standing next to a dead car would rather send a photo than
+                describe it. The chat opens with the first message written.
+              */}
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Link
-                  href={pathFor("quote", lang)}
-                  className="rounded-xl bg-brand-600 px-6 py-4 text-center text-base font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
-                >
-                  {t.home.ctaPrimary}
-                </Link>
+                <WhatsAppLink
+                  source="hero"
+                  label={t.home.whatsappCta}
+                  prefill={t.home.whatsappPrefill}
+                />
                 <PhoneLink
                   source="hero"
                   showIcon
@@ -175,18 +181,28 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </div>
 
         {/*
-          The photo as the hero's floor: full width, full colour, feathered at
-          the top so it rises out of the page instead of sitting in a box.
+          The truck, whole.
+          A full-bleed letterbox strip cropped this 3:2 frame down to wheels
+          and asphalt — the least recognisable part of the vehicle. A
+          contained panel at 5:2 fits the entire truck: deck, load, the B2
+          decal on the door, and the grille. On a phone the panel goes back
+          to the source's own 3:2, so nothing is cropped at all.
         */}
-        <div className="relative mt-2 h-[13rem] w-full sm:h-[17rem] lg:h-[21rem]">
-          <Image
-            src="/hero-tow-truck.jpg"
-            alt={heroAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[58%_62%] [mask-image:linear-gradient(to_bottom,transparent,black_34%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_34%)]"
-          />
+        <div className="container mx-auto px-4 pb-14 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
+          <figure className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-900/10 sm:aspect-[2/1] lg:aspect-[5/2]">
+            <Image
+              src="/hero-tow-truck.jpg"
+              alt={heroAlt}
+              fill
+              priority
+              sizes="(min-width: 1280px) 1216px, 100vw"
+              className="object-cover object-[50%_48%]"
+            />
+            {/* The photo does a job: it names the yard it was taken at. */}
+            <figcaption className="absolute bottom-3 left-3 rounded-lg bg-white/95 px-3.5 py-2 text-xs font-bold text-slate-800 shadow-sm backdrop-blur-sm sm:bottom-4 sm:left-4 sm:text-sm">
+              {t.home.photoChip}
+            </figcaption>
+          </figure>
         </div>
       </section>
 
