@@ -6,7 +6,6 @@ import "@/app/globals.css";
 import { LANGS, HTML_LANG, isLang, pathFor, type Lang } from "@/config/routes";
 import { siteConfig } from "@/config/site";
 import { getCopy } from "@/content/copy";
-import { SERVICES } from "@/content/services";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import MobileCallBar from "@/components/site/MobileCallBar";
@@ -79,7 +78,7 @@ export default async function PublicLayout({
   const t = getCopy(lang);
 
   const nav = [
-    { href: pathFor("scrapBuying", lang), label: SERVICES[0].serviceName[lang] },
+    { href: pathFor("scrapBuying", lang), label: t.nav.scrapBuying },
     { href: pathFor("towing", lang), label: t.nav.towing },
     { href: pathFor("damaged", lang), label: t.nav.damaged },
     { href: pathFor("about", lang), label: t.nav.about },

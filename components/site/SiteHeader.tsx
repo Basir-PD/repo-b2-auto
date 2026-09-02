@@ -71,7 +71,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
           </span>
         </Link>
 
-        <nav className="hidden flex-1 items-center justify-center gap-6 lg:flex" aria-label="Primary">
+        <nav className="hidden flex-1 items-center justify-center gap-5 xl:flex xl:gap-7" aria-label="Primary">
           {labels.nav.map((item) => (
             <Link
               key={item.href}
@@ -90,7 +90,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
               hrefLang={otherLang(lang)}
               lang={otherLang(lang)}
               title={labels.switchAria}
-              className="rounded-md px-2 py-1.5 text-sm font-bold text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
+              className="rounded-md px-2 py-1.5 text-[13px] font-bold uppercase tracking-[0.06em] text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
             >
               {labels.switchTo}
             </Link>
@@ -104,7 +104,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
           */}
           <PhoneLink
             source="header"
-            className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black tabular-nums text-white transition-colors hover:bg-brand-700 sm:px-4 sm:text-base"
+            className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black uppercase tabular-nums tracking-[0.02em] text-white transition-colors hover:bg-brand-700 motion-safe:animate-call-pulse sm:px-4 sm:text-base"
             labelClassName="sr-only sm:not-sr-only"
             showIcon
           />
@@ -112,7 +112,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
           <Link
             href={pathFor("quote", lang)}
             onClick={() => pushEvent("quote_calculator_used", { source: "header" })}
-            className="hidden rounded-lg border-2 border-brand-600 px-4 py-2 text-sm font-bold text-brand-700 transition-colors hover:bg-brand-50 lg:inline-flex"
+            className="hidden rounded-lg border-2 border-brand-600 px-4 py-2 text-[13px] font-bold uppercase tracking-[0.06em] text-brand-700 transition-colors hover:bg-brand-50 xl:inline-flex"
           >
             {labels.quote}
           </Link>
@@ -122,7 +122,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? labels.menuClose : labels.menuOpen}
-            className="rounded-md p-2 text-slate-700 transition-colors hover:bg-slate-100 lg:hidden"
+            className="rounded-md p-2 text-slate-700 transition-colors hover:bg-slate-100 xl:hidden"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -130,7 +130,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
       </div>
 
       {open && (
-        <div className="border-t border-slate-200 bg-white lg:hidden">
+        <div className="border-t border-slate-200 bg-white xl:hidden">
           <nav className="container mx-auto flex flex-col px-4 py-3 sm:px-6" aria-label="Mobile">
             {labels.nav.map((item) => (
               <Link
@@ -143,7 +143,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
             ))}
             <Link
               href={pathFor("quote", lang)}
-              className="mt-4 rounded-lg bg-brand-600 px-5 py-3.5 text-center text-base font-bold text-white"
+              className="mt-4 rounded-lg bg-brand-600 px-5 py-3.5 text-center text-sm font-bold uppercase tracking-[0.06em] text-white"
             >
               {labels.quote}
             </Link>
