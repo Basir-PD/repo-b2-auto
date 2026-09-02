@@ -97,9 +97,15 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
           )}
 
           {/* Always visible, every breakpoint. */}
+          {/*
+            Below sm the number is visually hidden so the menu button still
+            fits, but it stays in the accessibility tree — `sr-only`, not
+            `hidden`, or the link would have no accessible name at all.
+          */}
           <PhoneLink
             source="header"
-            className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black tabular-nums text-white transition-colors hover:bg-brand-500 sm:px-4 sm:text-base"
+            className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black tabular-nums text-white transition-colors hover:bg-brand-700 sm:px-4 sm:text-base"
+            labelClassName="sr-only sm:not-sr-only"
             showIcon
           />
 

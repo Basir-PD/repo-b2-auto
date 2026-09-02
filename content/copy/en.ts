@@ -57,6 +57,8 @@ export const en: Copy = {
     h1: "Cash for junk cars in Mascouche — paid on the spot",
     sub: "We buy your vehicle in any condition: not running, wrecked, engine-less or written off. Free towing, cash on pickup, and we handle the SAAQ paperwork for you.",
     priceAnchor: "$300 to $3,000 cash depending on the vehicle",
+    priceFigure: "$300 – $3,000",
+    priceCaption: "cash, depending on the vehicle",
     ctaPrimary: "Get my free quote",
     ctaSecondary: `Call ${PHONE}`,
 

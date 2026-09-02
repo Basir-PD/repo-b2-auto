@@ -52,28 +52,84 @@ export default async function LandingPage({
   const t = getCopy(lang);
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-white">
       {/* Logo and phone only — no nav. */}
-      <header className="border-b border-white/10">
+      <header className="border-b border-slate-200">
         <div className="container mx-auto flex h-16 items-center justify-between gap-3 px-4 sm:h-20 sm:px-6">
           <div className="flex items-center gap-2.5">
             <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-lg font-black text-white">
               B
             </span>
-            <span className="text-lg font-black tracking-tight text-white sm:text-xl">
+            <span className="text-lg font-black tracking-tight text-slate-900 sm:text-xl">
               {siteConfig.name}
             </span>
           </div>
           <PhoneLink
             source={`lp_${slug}_header`}
             showIcon
-            className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black tabular-nums text-white sm:px-4 sm:text-base"
+            labelClassName="sr-only sm:not-sr-only"
+            className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black tabular-nums text-white transition-colors hover:bg-brand-700 sm:px-4 sm:text-base"
           />
         </div>
       </header>
 
       <main id="main" className="relative isolate overflow-hidden">
-        <div className="absolute inset-x-0 top-0 -z-10 h-[18rem] lg:bottom-0 lg:h-auto">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-gradient-to-b from-brand-50 to-white"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -left-40 -top-56 -z-10 h-[34rem] w-[34rem] rounded-full bg-brand-100/50 blur-3xl"
+        />
+
+        <div className="container mx-auto px-4 pb-10 pt-10 sm:px-6 sm:pb-12 sm:pt-14">
+          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+            <div>
+              <p className="inline-flex rounded-full bg-brand-600 px-4 py-2 text-xs font-black uppercase tracking-[0.08em] text-white sm:text-sm">
+                {lp.badge}
+              </p>
+
+              <h1 className="mt-6 text-[2.1rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.75rem]">
+                {lp.h1}
+              </h1>
+
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                {lp.sub}
+              </p>
+
+              <PhoneLink
+                source={`lp_${slug}_hero`}
+                showIcon
+                label={t.home.ctaSecondary}
+                className="mt-7 flex w-full items-center justify-center gap-3 rounded-xl bg-brand-600 px-6 py-4 text-lg font-black text-white shadow-lg shadow-brand-900/15 transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 sm:w-auto"
+              />
+
+              <ul className="mt-8 space-y-3">
+                {lp.bullets.map((bullet) => (
+                  <li
+                    key={bullet}
+                    className="flex items-start gap-2.5 text-[15px] font-semibold text-slate-800"
+                  >
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" strokeWidth={3} />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-8 border-t border-slate-200 pt-6 text-sm leading-relaxed text-slate-500">
+                {lp.reassurance}
+              </p>
+            </div>
+
+            <div className="mx-auto w-full max-w-md lg:ml-auto lg:mr-0">
+              <QuoteForm lang={lang} source={`lp_${slug}`} />
+            </div>
+          </div>
+        </div>
+
+        {/* The truck as the page's floor — same device as the main hero. */}
+        <div className="relative h-[12rem] w-full sm:h-[16rem] lg:h-[19rem]">
           <Image
             src="/hero-tow-truck.jpg"
             alt={
@@ -84,60 +140,14 @@ export default async function LandingPage({
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[62%_center]"
+            className="object-cover object-[58%_62%] [mask-image:linear-gradient(to_bottom,transparent,black_34%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_34%)]"
           />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/75 to-slate-950 lg:bg-gradient-to-r lg:from-slate-950 lg:from-35% lg:via-slate-950/85 lg:to-slate-950/20"
-          />
-        </div>
-
-        <div className="container mx-auto px-4 py-12 sm:px-6 sm:py-16">
-          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
-            <div>
-              <p className="inline-flex rounded-full bg-brand-600 px-4 py-2 text-xs font-black uppercase tracking-[0.08em] text-white sm:text-sm">
-                {lp.badge}
-              </p>
-
-              <h1 className="mt-6 text-[2.1rem] font-black leading-[1.08] tracking-tight text-white sm:text-[2.75rem]">
-                {lp.h1}
-              </h1>
-
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-                {lp.sub}
-              </p>
-
-              <PhoneLink
-                source={`lp_${slug}_hero`}
-                showIcon
-                label={t.home.ctaSecondary}
-                className="mt-7 flex w-full items-center justify-center gap-3 rounded-xl bg-brand-600 px-6 py-4 text-lg font-black text-white shadow-lg transition-colors hover:bg-brand-500 sm:w-auto"
-              />
-
-              <ul className="mt-8 space-y-3">
-                {lp.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-2.5 text-[15px] font-semibold text-white">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-400" strokeWidth={3} />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-
-              <p className="mt-8 border-t border-white/10 pt-6 text-sm leading-relaxed text-slate-400">
-                {lp.reassurance}
-              </p>
-            </div>
-
-            <div className="mx-auto w-full max-w-md lg:ml-auto lg:mr-0">
-              <QuoteForm lang={lang} source={`lp_${slug}`} />
-            </div>
-          </div>
         </div>
       </main>
 
       {/* Minimal footer: legally required identity, no links out. */}
-      <footer className="border-t border-white/10 py-6">
-        <div className="container mx-auto px-4 text-center text-xs text-slate-400 sm:px-6">
+      <footer className="border-t border-slate-200 py-6">
+        <div className="container mx-auto px-4 text-center text-xs text-slate-500 sm:px-6">
           <p>
             © {new Date().getFullYear()} {siteConfig.name} · {fullAddress} · {t.common.hoursLong}
           </p>
