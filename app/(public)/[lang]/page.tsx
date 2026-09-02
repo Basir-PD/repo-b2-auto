@@ -86,32 +86,45 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
       {/* ---------------------------------------------------------- Hero */}
       {/*
-        Bright ground, crisp photo.
-        The page opens on near-white with a single green glow rather than a
-        flat colour slab, and the truck runs full-bleed along the bottom as
-        the hero's floor — sharp and full-colour, not ghosted behind the
-        copy. Washing a photo out to make text readable wastes the one asset
-        that proves we own the flatbed; giving it its own band keeps both.
+        The truck is the background, not a panel beside the copy.
+        Two things make that work here where it did not before: the section is
+        tall enough that a 3:2 frame is barely cropped, so the whole vehicle
+        is in shot; and the scrim is directional rather than a flat wash — it
+        is nearly opaque behind the headline and clears completely toward the
+        bottom, so the truck is dimmed where words sit and untouched where
+        they do not.
       */}
-      <section className="relative isolate overflow-hidden bg-white">
-        {/* Soft brand light from the top-left. Two layers, no hard edges. */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 -z-10 h-[36rem] bg-gradient-to-b from-brand-50 to-white"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute -left-40 -top-56 -z-10 h-[36rem] w-[36rem] rounded-full bg-brand-100/50 blur-3xl"
+      <section className="relative isolate flex min-h-[42rem] items-center overflow-hidden bg-brand-50 lg:min-h-[46rem]">
+        <Image
+          src="/hero-tow-truck.jpg"
+          alt={heroAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="-z-20 object-cover object-[58%_center]"
         />
 
-        <div className="container mx-auto px-4 pb-10 pt-10 sm:px-6 sm:pb-12 sm:pt-14 lg:px-8 lg:pb-16 lg:pt-16">
-          <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+        {/* Lifts the whole frame toward the page's light key. */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-brand-50/30" />
+        {/* Heavy at the top where the copy sits, gone by the bottom. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 via-50% via-brand-50/70 to-transparent"
+        />
+        {/* Side-by-side layouts also need the left column protected. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-brand-50 from-15% via-58% via-brand-50/60 to-transparent lg:block"
+        />
+
+        <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7 lg:max-w-xl">
               {/* Where we are and when — the two facts a local searcher checks first. */}
               <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-700 sm:text-[13px]">
                 <span className="h-2 w-2 shrink-0 rounded-full bg-brand-500" />
                 {siteConfig.address.locality}
-                <span className="text-brand-300" aria-hidden="true">
+                <span className="text-brand-400" aria-hidden="true">
                   /
                 </span>
                 {t.common.hours}
@@ -121,23 +134,27 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 {t.home.h1}
               </h1>
 
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
                 {t.home.sub}
               </p>
 
               {/*
-                The money, set as a figure rather than a badge. It is the
-                single number this whole page is about, so it gets the
-                typographic weight instead of a pill that reads as decoration.
-              */}
+                The price figure is switched off for now, on request.
+
+                It read: priceFigure ("300 $ – 3 000 $") set large in tabular
+                numerals against a green rule, with priceCaption beneath. The
+                copy keys are still in content/copy/*.ts, so restoring it is
+                just uncommenting this block.
+
               <div className="mt-8 inline-block border-l-4 border-brand-600 pl-4">
                 <p className="text-[2rem] font-black leading-none tracking-tight tabular-nums text-slate-900 sm:text-[2.4rem]">
                   {t.home.priceFigure}
                 </p>
-                <p className="mt-1.5 text-sm font-semibold text-slate-500">
+                <p className="mt-1.5 text-sm font-semibold text-slate-600">
                   {t.home.priceCaption}
                 </p>
               </div>
+              */}
 
               {/*
                 WhatsApp leads here rather than a second link to the quote
@@ -145,7 +162,12 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 standing next to a dead car would rather send a photo than
                 describe it. The chat opens with the first message written.
               */}
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              {/*
+                Stacked and equal width. Side by side, these two labels
+                overflow a 576px column and the phone number breaks across
+                lines — a stack that looks deliberate beats a row that wraps.
+              */}
+              <div className="mt-8 flex max-w-md flex-col gap-3">
                 <WhatsAppLink
                   source="hero"
                   label={t.home.whatsappCta}
@@ -155,7 +177,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                   source="hero"
                   showIcon
                   label={t.home.ctaSecondary}
-                  className="flex items-center justify-center gap-2.5 rounded-xl border-2 border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                  className="flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl border-2 border-slate-300 bg-white px-6 py-4 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
                 />
               </div>
 
@@ -163,7 +185,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 {t.home.trustStrip.map((item) => (
                   <li
                     key={item}
-                    className="flex items-center gap-2 text-sm font-semibold text-slate-700"
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-800"
                   >
                     <Check className="h-4 w-4 shrink-0 text-brand-600" strokeWidth={3} />
                     {item}
@@ -178,31 +200,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               </div>
             </div>
           </div>
-        </div>
-
-        {/*
-          The truck, whole.
-          A full-bleed letterbox strip cropped this 3:2 frame down to wheels
-          and asphalt — the least recognisable part of the vehicle. A
-          contained panel at 5:2 fits the entire truck: deck, load, the B2
-          decal on the door, and the grille. On a phone the panel goes back
-          to the source's own 3:2, so nothing is cropped at all.
-        */}
-        <div className="container mx-auto px-4 pb-14 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
-          <figure className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-900/10 sm:aspect-[2/1] lg:aspect-[5/2]">
-            <Image
-              src="/hero-tow-truck.jpg"
-              alt={heroAlt}
-              fill
-              priority
-              sizes="(min-width: 1280px) 1216px, 100vw"
-              className="object-cover object-[50%_48%]"
-            />
-            {/* The photo does a job: it names the yard it was taken at. */}
-            <figcaption className="absolute bottom-3 left-3 rounded-lg bg-white/95 px-3.5 py-2 text-xs font-bold text-slate-800 shadow-sm backdrop-blur-sm sm:bottom-4 sm:left-4 sm:text-sm">
-              {t.home.photoChip}
-            </figcaption>
-          </figure>
         </div>
       </section>
 
