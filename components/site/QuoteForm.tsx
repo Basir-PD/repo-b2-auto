@@ -28,9 +28,9 @@ function phoneIsValid(value: string) {
   return digitsOf(value).replace(/^1/, "").length === 10;
 }
 
-type Values = { vehicle: string; name: string; phone: string; postal: string };
+type Values = { vehicle: string; name: string; phone: string; postal: string; consent: boolean };
 
-const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "" };
+const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "", consent: false };
 
 /**
  * The quote form. Four inputs, one step.
@@ -119,6 +119,7 @@ export default function QuoteForm({
     if (!values.phone.trim()) next.phone = t.required;
     else if (!phoneIsValid(values.phone)) next.phone = t.invalidPhone;
     if (!values.postal.trim()) next.postal = t.required;
+    if (!values.consent) next.consent = t.consentRequired;
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -234,6 +235,29 @@ export default function QuoteForm({
             className={input}
           />
         </Field>
+
+        {/*
+          Law 25 wants consent that is manifest, free and enlightened, and
+          asked for separately from everything else. So: its own control,
+          unchecked by default, and the submit will not pass without it. The
+          link to the policy sits at the foot of the page rather than inline
+          here — same page, one tap, and the form stays uncluttered.
+        */}
+        <div>
+          <label className="flex items-start gap-3 text-sm leading-relaxed text-slate-700">
+            <input
+              type="checkbox"
+              checked={values.consent}
+              onChange={(e) => set("consent", e.target.checked)}
+              aria-invalid={Boolean(errors.consent)}
+              className="mt-1 h-4 w-4 shrink-0 accent-brand-600"
+            />
+            <span>{t.consent}</span>
+          </label>
+          {errors.consent && (
+            <p className="mt-1.5 text-sm font-semibold text-red-700">{errors.consent}</p>
+          )}
+        </div>
 
         {failed && (
           <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm font-semibold text-red-800">

@@ -89,6 +89,7 @@ export async function POST(request: Request) {
   const source = clean(body.source) || "unknown";
   const locale = clean(body.locale) === "en" ? "en" : "fr";
   const attribution = describeAttribution(body.attribution);
+  const consent = body.consent === true;
 
   const errors: Record<string, string> = {};
 
@@ -102,11 +103,11 @@ export async function POST(request: Request) {
     if (!postal) errors.postal = "required";
     if (!vehicleInput) errors.vehicle = "required";
     /*
-      There is no longer a consent checkbox to validate — it was removed from
-      the form on request, and the notice above the submit button carries the
-      consent wording instead. If a ticked box ever comes back, re-add the
-      check here or the record of consent is only on the client.
+      Checked server-side as well as in the form. A client-side check is a
+      convenience for the visitor; it is not a record, and Law 25 puts the
+      burden of proving consent on us.
     */
+    if (!consent) errors.consent = "required";
   }
 
   if (Object.keys(errors).length) {
@@ -124,8 +125,23 @@ export async function POST(request: Request) {
 
   const vehicle = vehicleInput || "(non précisé)";
 
+  /*
+    The consent line is stamped into the lead itself, with the moment it was
+    given. If anyone ever asks us to show that a person agreed to be called,
+    this is the record — a checkbox that is only enforced in the browser
+    proves nothing after the fact.
+
+    Partial leads are the exception and are labelled as such: that path fires
+    when someone types a valid number and leaves WITHOUT ticking the box, so
+    there is no consent to record. See README before working those.
+  */
+  const consentLine = partial
+    ? "⚠️ AUCUN CONSENTEMENT ENREGISTRÉ — formulaire abandonné avant l'envoi"
+    : `Consentement accordé le ${new Date().toISOString()} (téléphone, texto, courriel)`;
+
   const message = [
-    partial ? "⚠️ FORMULAIRE ABANDONNÉ — rappeler quand même" : null,
+    partial ? "⚠️ FORMULAIRE ABANDONNÉ" : null,
+    consentLine,
     postal && `Code postal / ville : ${postal}`,
     `Source : ${source}`,
     attribution && `Attribution : ${attribution}`,

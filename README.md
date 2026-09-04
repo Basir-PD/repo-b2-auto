@@ -129,15 +129,14 @@ to `.env.local` for dev and set the same keys in Vercel for production.
 - **Meta Conversions API** — specified in the original brief, not
   implemented. `/api/quote` already has the lead server-side and already
   posts to a webhook, so CAPI belongs there; it is a few hours of work.
-- **Consent checkbox removed.** The quote form no longer has a ticked-box
-  consent. The line above the submit button states that submitting is the
-  consent, and the privacy policy is linked at the foot of every page
-  including the landing pages. Quebec's Law 25 asks for consent that is
-  *explicit* and informed — a notice is weaker than a checkbox. This was a
-  deliberate product decision; take legal advice before running paid traffic
-  against it. Restoring it is small: re-add the field in
-  `components/site/QuoteForm.tsx` and the `if (!consent)` check in
-  `app/api/quote/route.ts`.
+- **Partial-lead capture has no consent behind it.** When someone types a
+  valid phone number and leaves without submitting, `sendBeacon` still sends
+  it and it is stored. That person never ticked the consent box, so the lead
+  is stamped `⚠️ AUCUN CONSENTEMENT ENREGISTRÉ` and should be treated as an
+  analytics signal, not a call list. Calling them is the weakest thing on
+  this site legally — weaker than anything the consent checkbox covers. To
+  switch it off, delete the `flushPartial` effect in
+  `components/site/QuoteForm.tsx`.
 
 ## Logo
 
@@ -284,9 +283,17 @@ Everything else — email, condition, paperwork, whether it runs — is a questi
 for the callback, where it costs nothing, instead of a field on the page, where
 it costs leads.
 
-The consent checkbox is **not** a fifth input. Law 25 requires an explicit,
-unchecked opt-in before anyone may be phoned or texted, so it is a legal control
-rather than data being collected. It links to `/fr/politique-de-confidentialite/`.
+The consent checkbox is **not** a fifth input. Law 25 requires consent that is
+manifest, free and enlightened, asked for separately from everything else — so
+it gets its own unchecked control and the submit will not pass without it.
+
+It is enforced **server-side as well**, in `app/api/quote/route.ts`. A check
+that only runs in the browser is a convenience for the visitor, not a record,
+and the burden of proving consent falls on us. Every complete lead is stored
+with a `Consentement accordé le <ISO timestamp>` line, which is that record.
+
+The privacy policy is linked in the last row of the footer on every page,
+including the landing pages, rather than inline in the label.
 
 Spam is handled by an off-screen honeypot plus per-IP rate limiting. There is no
 visible CAPTCHA on purpose — it costs more conversions than the spam it stops.

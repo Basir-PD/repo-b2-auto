@@ -197,14 +197,18 @@ export const en: Copy = {
     postal: "Postal code or city",
     postalPlaceholder: "e.g. J7L 2W3 or Terrebonne",
 
+    consent:
+      "I agree that Autos B2 may contact me by phone, text or email about my quote.",
+
 
     submit: "Get my quote",
     submitting: "Sending…",
 
     required: "This field is required",
     invalidPhone: "Enter a valid phone number",
+    consentRequired: "You need to agree before continuing",
     errorBody: "It didn't go through. Please call us instead:",
-    privacyNote: "By sending this form you agree that Autos B2 may contact you by phone, text or email about your quote. No obligation. We never share your details.",
+    privacyNote: "No obligation. We never share your details.",
   },
 
   thanks: {
