@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Clock } from "lucide-react";
 import type { Lang } from "@/config/routes";
@@ -26,11 +27,17 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
           {/* NAP — must match the Google Business Profile character for character. */}
           <div>
             {/*
-              A wordmark, not the logo image: the logo's navy sits at about
-              1.3:1 against this footer and simply vanishes. A white knockout
-              version would fix it — see README.
+              The real logo, not a wordmark. The previous navy version washed
+              out to about 1.3:1 against this footer; the green holds, so the
+              mark can appear here as well as in the header.
             */}
-            <p className="text-xl font-black tracking-tight text-white">{siteConfig.name}</p>
+            <Image
+              src="/logo-autob2.png"
+              alt={siteConfig.name}
+              width={600}
+              height={214}
+              className="h-12 w-auto"
+            />
 
             <address className="mt-5 space-y-3 not-italic text-sm leading-relaxed">
               <p className="flex items-start gap-2.5">

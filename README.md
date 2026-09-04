@@ -140,29 +140,32 @@ to `.env.local` for dev and set the same keys in Vercel for production.
 
 ## Logo
 
-`public/logo-autob2.png` — derived from the supplied `logo.jpeg` by trimming
-the white surround and keying white to transparent, because a JPEG on solid
-white shows as a white block on any non-white surface.
+`public/logo-autob2.png` — 600x214, transparent, derived from the supplied
+1448x1086 PNG by trimming the empty margin and resizing. The untrimmed master
+is kept at `brand/autos-b2-logo-master.png`, which is outside `public/` so it
+is preserved without being deployed.
 
-Used in the site header and the landing-page header, both of which are white.
-**Not** in the footer: the logo's navy measures about 1.3:1 against the
-near-black footer and disappears. The footer uses a wordmark until a white
-knockout version exists.
+Used in the site header, the landing-page header **and the footer**. The green
+holds its own on the near-black footer, which the earlier navy version did
+not — it measured about 1.3:1 there and disappeared.
 
-`app/icon.svg` is the favicon, in the logo's own navy (`#0A3D82`) sampled from
-the artwork. It is a "B2" mark rather than the full logo because the wordmark
-is illegible at 16px.
+Loaded `eager` rather than `priority` in the headers: it is above the fold so
+it must not wait for an intersection, but a preload would compete with the
+hero image, which is the LCP element. Intrinsic width/height are set, so it
+cannot shift the layout as it decodes.
 
-> **Three identities are currently in play** and they should be reconciled
-> before ads run: the logo says **AUTO B2**, the site and schema say
-> **Autos B2**, and the truck door says **AUTOS B2**. Google cross-checks the
-> site's name against the Google Business Profile, and ad copy has to match
-> the landing page. Pick one and change `siteConfig.name`.
->
-> The logo is also **blue** while the whole UI is **green** (`#206735`).
-> Re-tokenising to the logo's blues is a contained change — every colour comes
-> from `--brand-*` in `app/globals.css` — but it is a brand decision, not a
-> code one.
+Icons, both generated from this artwork:
+
+- `app/icon.svg` — the tab favicon. A "B2" mark on the logo's dark-green
+  gradient, because the full wordmark is illegible at 16px.
+- `app/apple-icon.png` — 180x180 home-screen icon, the real logo centred on
+  the logo's dark green (`#04331A`).
+
+> This logo settled two things that were previously inconsistent: it reads
+> **AUTOS B2**, matching `siteConfig.name`, the truck door and what the ads
+> will say — so there is no longer a name mismatch to trip up ad review or
+> the Google Business Profile check. And it is green, so the `--brand-*`
+> palette stands as-is.
 
 ## Photography
 
