@@ -101,6 +101,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           fill
           priority
           sizes="100vw"
+          quality={50}
           className="-z-20 object-cover object-[58%_center]"
         />
 
