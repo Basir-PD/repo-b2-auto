@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Loader2 } from "lucide-react";
 import type { Lang } from "@/config/routes";
 import { pathFor } from "@/config/routes";
 import { getCopy } from "@/content/copy";
 import { pushEvent } from "@/lib/tracking";
+import { fbqTrack } from "@/components/site/MetaPixel";
 import { readAttribution } from "@/lib/attribution";
 import PhoneLink from "@/components/site/PhoneLink";
 
@@ -28,9 +28,9 @@ function phoneIsValid(value: string) {
   return digitsOf(value).replace(/^1/, "").length === 10;
 }
 
-type Values = { vehicle: string; name: string; phone: string; postal: string; consent: boolean };
+type Values = { vehicle: string; name: string; phone: string; postal: string };
 
-const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "", consent: false };
+const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "" };
 
 /**
  * The quote form. Four inputs, one step.
@@ -97,7 +97,7 @@ export default function QuoteForm({
         attribution: readAttribution(),
       });
       try {
-        navigator.sendBeacon?.("/api/quote", new Blob([payload], { type: "application/json" }));
+        navigator.sendBeacon?.("/api/quote/", new Blob([payload], { type: "application/json" }));
       } catch {
         // A lost partial is not worth throwing over.
       }
@@ -119,7 +119,6 @@ export default function QuoteForm({
     if (!values.phone.trim()) next.phone = t.required;
     else if (!phoneIsValid(values.phone)) next.phone = t.invalidPhone;
     if (!values.postal.trim()) next.postal = t.required;
-    if (!values.consent) next.consent = t.consentRequired;
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -136,7 +135,7 @@ export default function QuoteForm({
     setSending(true);
     setFailed(false);
     try {
-      const res = await fetch("/api/quote", {
+      const res = await fetch("/api/quote/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -152,6 +151,7 @@ export default function QuoteForm({
 
       submittedRef.current = true;
       pushEvent("generate_lead", { source, currency: "CAD", value: 1 });
+      fbqTrack("Lead", { content_name: source, currency: "CAD" });
       // A real navigation, so the thank-you pageview fires a conversion in
       // both Google Ads and Meta rather than relying on an event alone.
       router.push(pathFor("thanks", lang));
@@ -235,32 +235,6 @@ export default function QuoteForm({
           />
         </Field>
 
-        {/* Law 25: explicit, unchecked, and the policy is one tap away. */}
-        <div>
-          <label className="flex items-start gap-3 text-sm leading-relaxed text-slate-700">
-            <input
-              type="checkbox"
-              checked={values.consent}
-              onChange={(e) => set("consent", e.target.checked)}
-              aria-invalid={Boolean(errors.consent)}
-              className="mt-1 h-4 w-4 shrink-0 accent-brand-600"
-            />
-            <span>
-              {t.consent.replace(` ${t.consentLinkText}.`, " ")}
-              <Link
-                href={pathFor("privacy", lang)}
-                className="font-semibold text-brand-700 underline"
-              >
-                {t.consentLinkText}
-              </Link>
-              .
-            </span>
-          </label>
-          {errors.consent && (
-            <p className="mt-1.5 text-sm font-semibold text-red-700">{errors.consent}</p>
-          )}
-        </div>
-
         {failed && (
           <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm font-semibold text-red-800">
             {t.errorBody} <PhoneLink source="quote_form_error" className="font-black underline" />
@@ -288,6 +262,13 @@ export default function QuoteForm({
           {sending ? t.submitting : t.submit}
         </button>
 
+        {/*
+          The consent checkbox was removed on request. This line replaces it:
+          submitting the form is the consent action, and it is stated before
+          the button rather than after. Quebec's Law 25 wants consent that is
+          explicit and informed — a notice is weaker than a ticked box, so
+          see the note in README before running ads on this.
+        */}
         <p className="text-center text-xs leading-relaxed text-slate-500">{t.privacyNote}</p>
       </form>
     </div>

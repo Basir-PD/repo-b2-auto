@@ -44,6 +44,8 @@ function applyConsentMode(state: ConsentState) {
   }
   gtag("consent", "update", toConsentMode(state));
   window.dataLayer.push({ event: "consent_update", ...toConsentMode(state) });
+  // Tags without Consent Mode — the Meta Pixel — listen for this to mount.
+  window.dispatchEvent(new CustomEvent("b2-consent-updated"));
 }
 
 /**

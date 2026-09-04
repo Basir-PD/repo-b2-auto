@@ -229,8 +229,27 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </div>
       </section>
 
-      {/* ------------------------------------------------ What we buy */}
+      {/* --------------------------------------------------- Fleet photos */}
+      {/*
+        Below the fold on purpose. These are proof, not decoration, and they
+        must never compete with the hero for the LCP.
+      */}
       <section className="bg-slate-50 py-16 sm:py-20 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+            {t.home.fleetTitle}
+          </h2>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+            {t.home.fleetSub}
+          </p>
+          <div className="mt-8">
+            <PhotoGrid lang={lang} photos={HOME_PHOTOS} columns={3} />
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------ What we buy */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             {t.home.buyAll.title}
@@ -259,7 +278,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       </section>
 
       {/* ------------------------------------------------------- Why us */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <section className="bg-slate-50 py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="max-w-3xl text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             {t.home.why.title}
@@ -275,27 +294,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </div>
       </section>
 
-      {/* --------------------------------------------------- Fleet photos */}
-      {/*
-        Below the fold on purpose. These are proof, not decoration, and they
-        must never compete with the hero for the LCP.
-      */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-            {t.home.fleetTitle}
-          </h2>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
-            {t.home.fleetSub}
-          </p>
-          <div className="mt-8">
-            <PhotoGrid lang={lang} photos={HOME_PHOTOS} columns={3} />
-          </div>
-        </div>
-      </section>
-
       {/* -------------------------------------------------- Service area */}
-      <section className="bg-slate-50 py-16 sm:py-20 lg:py-24">
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             {t.home.serviceArea.title}
@@ -337,7 +337,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         no section at all.
       */}
       {hasReviews && (
-        <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <section className="bg-slate-50 py-16 sm:py-20 lg:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
               {t.home.reviewsHeading}
@@ -360,7 +360,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       )}
 
       {/* ----------------------------------------------------------- FAQ */}
-      <section className="bg-slate-50 py-16 sm:py-20 lg:py-24">
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             {t.home.faqHeading}

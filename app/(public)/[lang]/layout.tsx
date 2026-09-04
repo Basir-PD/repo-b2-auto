@@ -11,6 +11,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import WhatsAppFloat from "@/components/site/WhatsAppFloat";
 import CookieConsent from "@/components/site/CookieConsent";
 import AttributionBoot from "@/components/site/AttributionBoot";
+import MetaPixel from "@/components/site/MetaPixel";
 import SiteChrome from "@/components/site/SiteChrome";
 import GoogleTagManager, { GoogleTagManagerNoScript } from "@/components/site/GoogleTagManager";
 import { JsonLd, localBusinessSchema } from "@/components/site/JsonLd";
@@ -129,6 +130,7 @@ export default async function PublicLayout({
           }}
         />
         <AttributionBoot />
+        <MetaPixel />
       </body>
     </html>
   );

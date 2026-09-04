@@ -30,14 +30,30 @@ export const siteConfig = {
   },
 
   /**
-   * Call-tracking (DNI) number. NOT SET UP YET.
+   * Call-tracking (DNI) number, driven by env so switching it on is a deploy
+   * variable rather than a code change:
    *
-   * When a call-tracking provider is signed up, put the pool number here in
-   * the same shape as `phone` above. `usePhoneNumber()` swaps it in for
-   * visitors carrying a gclid/fbclid and falls back to `phone` while this is
-   * null — so leaving it null is a supported state, not a broken one.
+   *   NEXT_PUBLIC_TRACKING_PHONE_E164     +15145550123
+   *   NEXT_PUBLIC_TRACKING_PHONE_DISPLAY  +1 (514) 555-0123
+   *
+   * `usePhone()` swaps this in for visitors arriving with a gclid, wbraid,
+   * gbraid or fbclid, and falls back to the real number for everyone else.
+   * Both vars must be set or the fallback stays in force — a half-configured
+   * pool would show a number that does not match what is dialled.
+   *
+   * Set NEXT_PUBLIC_TRACKING_PHONE_DISPLAY to the pool number exactly as it
+   * should read on screen; it is what a visitor sees and what they may write
+   * down, so it cannot be a reformatted guess.
    */
-  trackingPhone: null as null | { e164: string; display: string; href: string },
+  trackingPhone:
+    process.env.NEXT_PUBLIC_TRACKING_PHONE_E164 &&
+    process.env.NEXT_PUBLIC_TRACKING_PHONE_DISPLAY
+      ? {
+          e164: process.env.NEXT_PUBLIC_TRACKING_PHONE_E164,
+          display: process.env.NEXT_PUBLIC_TRACKING_PHONE_DISPLAY,
+          href: `tel:${process.env.NEXT_PUBLIC_TRACKING_PHONE_E164}`,
+        }
+      : null,
 
   email: "admin@b2autos.com",
 

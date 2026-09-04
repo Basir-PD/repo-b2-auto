@@ -90,6 +90,55 @@ right-click the pin, copy the lat/lng, and set
 
 ---
 
+## Before ads can run — what YOU still have to set
+
+Everything below is a value to paste, not code to write. Copy `.env.example`
+to `.env.local` for dev and set the same keys in Vercel for production.
+
+| Variable | Where to get it | What breaks without it |
+|---|---|---|
+| `NEXT_PUBLIC_GTM_ID` | Google Tag Manager → container ID, `GTM-XXXXXXX` | **No tag loads at all.** No GA4, no Google Ads conversions, no events. Ads run blind. |
+| `NEXT_PUBLIC_META_PIXEL_ID` | Meta Events Manager → dataset ID | No Meta pixel, no Lead events, no Advantage+ optimisation. |
+| `NEXT_PUBLIC_TRACKING_PHONE_E164` + `_DISPLAY` | Your call-tracking provider's pool number | DNI stays off; everyone sees the real number and calls cannot be attributed to a click. Both must be set. |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Search Console → HTML tag method | Cannot verify the property. |
+| `LEAD_WEBHOOK_URL` | Zapier/Make hook → Twilio SMS or WhatsApp | Leads still store and email, but nobody gets pinged to call back within five minutes. |
+| `NEXT_PUBLIC_CONVEX_URL`, `INGEST_SECRET` | `npx convex dev` | **The form returns 503 and leads are lost.** |
+
+### Then, inside the ad platforms
+
+**Google Ads**
+1. Create a conversion action of type *Website*, triggered on a pageview of
+   `/fr/merci/` and `/en/thank-you/`. These pages are `noindex` and only
+   reachable after a submit, so they are a clean conversion signal.
+2. Create a second conversion action for `click_to_call`, which the dataLayer
+   already fires from every phone link on the site.
+3. Import both into the campaign and let Smart Bidding see at least ~30
+   conversions before judging it.
+4. Offline conversion import: every lead carries the `gclid` / `wbraid` /
+   `gbraid` captured first-touch, so a closed deal can be uploaded back
+   against the original click months later.
+
+**Meta**
+1. In Events Manager, confirm `PageView`, `Lead` and `Contact` arrive. The
+   pixel fires `Lead` on form submit and `Contact` on a phone tap.
+2. **Conversions API is NOT built.** The pixel alone loses a meaningful share
+   of iOS conversions. This is the one real code gap left — see below.
+
+### Known gaps
+
+- **Meta Conversions API** — specified in the original brief, not
+  implemented. `/api/quote` already has the lead server-side and already
+  posts to a webhook, so CAPI belongs there; it is a few hours of work.
+- **Consent checkbox removed.** The quote form no longer has a ticked-box
+  consent. The line above the submit button states that submitting is the
+  consent, and the privacy policy is linked at the foot of every page
+  including the landing pages. Quebec's Law 25 asks for consent that is
+  *explicit* and informed — a notice is weaker than a checkbox. This was a
+  deliberate product decision; take legal advice before running paid traffic
+  against it. Restoring it is small: re-add the field in
+  `components/site/QuoteForm.tsx` and the `if (!consent)` check in
+  `app/api/quote/route.ts`.
+
 ## Logo
 
 `public/logo-autob2.png` — derived from the supplied `logo.jpeg` by trimming

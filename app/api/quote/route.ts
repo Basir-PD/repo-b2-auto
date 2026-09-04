@@ -89,7 +89,6 @@ export async function POST(request: Request) {
   const source = clean(body.source) || "unknown";
   const locale = clean(body.locale) === "en" ? "en" : "fr";
   const attribution = describeAttribution(body.attribution);
-  const consent = body.consent === true;
 
   const errors: Record<string, string> = {};
 
@@ -102,8 +101,12 @@ export async function POST(request: Request) {
     if (!name) errors.name = "required";
     if (!postal) errors.postal = "required";
     if (!vehicleInput) errors.vehicle = "required";
-    // Law 25: the consent box is not decorative. No consent, no lead.
-    if (!consent) errors.consent = "required";
+    /*
+      There is no longer a consent checkbox to validate — it was removed from
+      the form on request, and the notice above the submit button carries the
+      consent wording instead. If a ticked box ever comes back, re-add the
+      check here or the record of consent is only on the client.
+    */
   }
 
   if (Object.keys(errors).length) {

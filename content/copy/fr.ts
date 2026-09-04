@@ -201,18 +201,14 @@ export const fr = {
     postal: "Code postal ou ville",
     postalPlaceholder: "Ex. : J7L 2W3 ou Terrebonne",
 
-    consent:
-      "J'accepte qu'Autos B2 communique avec moi par téléphone, texto ou courriel au sujet de ma soumission. Consultez notre politique de confidentialité.",
-    consentLinkText: "politique de confidentialité",
 
     submit: "Obtenir mon estimation",
     submitting: "Envoi en cours…",
 
     required: "Ce champ est requis",
     invalidPhone: "Entrez un numéro de téléphone valide",
-    consentRequired: "Vous devez accepter pour continuer",
     errorBody: "Ça n'a pas fonctionné. Appelez-nous plutôt :",
-    privacyNote: "Sans obligation. On ne partage jamais vos coordonnées.",
+    privacyNote: "En envoyant ce formulaire, vous acceptez qu'Autos B2 vous contacte par téléphone, texto ou courriel au sujet de votre soumission. Sans obligation. On ne partage jamais vos coordonnées.",
   },
 
   thanks: {
