@@ -104,7 +104,7 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
           */}
           <PhoneLink
             source="header"
-            className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black uppercase tabular-nums tracking-[0.02em] text-white transition-colors hover:bg-brand-700 motion-safe:animate-call-pulse sm:px-4 sm:text-base"
+            className="flex items-center gap-2 rounded-lg bg-brand-600 px-3 py-2.5 text-sm font-black uppercase tabular-nums tracking-[0.02em] text-white transition-colors hover:bg-brand-700 call-pulse sm:px-4 sm:text-base"
             labelClassName="sr-only sm:not-sr-only"
             showIcon
           />

@@ -78,9 +78,14 @@ export default async function LandingPage({
           aria-hidden="true"
           className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-gradient-to-b from-brand-50 to-white"
         />
+        {/*
+          A radial gradient, not a blurred circle. `blur-3xl` on a 34rem
+          element is a very expensive paint, and this is the page paid traffic
+          lands on — the one place where a wasted frame costs money.
+        */}
         <div
           aria-hidden="true"
-          className="absolute -left-40 -top-56 -z-10 h-[34rem] w-[34rem] rounded-full bg-brand-100/50 blur-3xl"
+          className="absolute inset-x-0 top-0 -z-10 h-[34rem] [background:radial-gradient(60rem_28rem_at_15%_0%,var(--brand-100),transparent_70%)]"
         />
 
         <div className="container mx-auto px-4 pb-10 pt-10 sm:px-6 sm:pb-12 sm:pt-14">
@@ -140,6 +145,7 @@ export default async function LandingPage({
             fill
             priority
             sizes="100vw"
+            quality={50}
             className="object-cover object-[58%_62%] [mask-image:linear-gradient(to_bottom,transparent,black_34%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_34%)]"
           />
         </div>
