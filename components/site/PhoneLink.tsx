@@ -3,6 +3,7 @@
 import { Phone } from "lucide-react";
 import { usePhone } from "@/lib/usePhone";
 import { trackCall } from "@/lib/tracking";
+import { fbqTrack } from "@/components/site/MetaPixel";
 
 /**
  * Every tappable phone number on the site. Centralised so the DNI swap and
@@ -43,7 +44,10 @@ export default function PhoneLink({
   return (
     <a
       href={phone.href}
-      onClick={() => trackCall(source)}
+      onClick={() => {
+        trackCall(source);
+        fbqTrack("Contact", { content_name: source });
+      }}
       className={className}
       data-phone={phone.e164}
     >

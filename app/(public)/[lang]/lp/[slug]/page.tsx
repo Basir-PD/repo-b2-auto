@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 
-import { isLang, type Lang } from "@/config/routes";
+import { isLang, pathFor, type Lang } from "@/config/routes";
 import { siteConfig, fullAddress } from "@/config/site";
 import { getCopy } from "@/content/copy";
 import { LANDING_CONTENT, landingBySlug } from "@/content/landing";
@@ -157,6 +158,16 @@ export default async function LandingPage({
         <div className="container mx-auto px-4 text-center text-xs text-slate-500 sm:px-6">
           <p>
             © {new Date().getFullYear()} {siteConfig.name} · {fullAddress} · {t.common.hoursLong}
+          </p>
+          {/*
+            The only link out of a landing page, and it is here because it
+            has to be: this page collects a phone number, so the privacy
+            policy must be reachable from it.
+          */}
+          <p className="mt-2">
+            <Link href={pathFor("privacy", lang)} className="font-semibold text-slate-600 underline hover:text-slate-900">
+              {lang === "fr" ? "Politique de confidentialité" : "Privacy policy"}
+            </Link>
           </p>
         </div>
       </footer>

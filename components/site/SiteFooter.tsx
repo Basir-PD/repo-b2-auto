@@ -131,11 +131,24 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-slate-800 pt-6 text-xs text-slate-400">
+        {/*
+          The legal links sit in the very last row rather than only in a
+          column above. The quote form no longer links the policy inline, so
+          this is the one place on every page that always reaches it.
+        */}
+        <div className="mt-12 flex flex-col gap-3 border-t border-slate-800 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           {/* Dynamic — never a hardcoded year. */}
           <p>
             © {year} {siteConfig.name}. {lang === "fr" ? "Tous droits réservés." : "All rights reserved."}{" "}
             {fullAddress}.
+          </p>
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <Link href={pathFor("privacy", lang)} className="font-semibold text-white underline hover:text-brand-400">
+              {lang === "fr" ? "Politique de confidentialité" : "Privacy policy"}
+            </Link>
+            <Link href={pathFor("terms", lang)} className="hover:text-white">
+              {lang === "fr" ? "Conditions d'utilisation" : "Terms of use"}
+            </Link>
           </p>
         </div>
       </div>
