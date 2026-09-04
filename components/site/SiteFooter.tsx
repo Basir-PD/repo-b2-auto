@@ -25,14 +25,12 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* NAP — must match the Google Business Profile character for character. */}
           <div>
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-sm font-black tracking-tight text-white">
-                B2
-              </span>
-              <span className="text-lg font-black tracking-tight text-white">
-                {siteConfig.name}
-              </span>
-            </div>
+            {/*
+              A wordmark, not the logo image: the logo's navy sits at about
+              1.3:1 against this footer and simply vanishes. A white knockout
+              version would fix it — see README.
+            */}
+            <p className="text-xl font-black tracking-tight text-white">{siteConfig.name}</p>
 
             <address className="mt-5 space-y-3 not-italic text-sm leading-relaxed">
               <p className="flex items-start gap-2.5">

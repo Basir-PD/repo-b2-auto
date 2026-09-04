@@ -90,6 +90,32 @@ right-click the pin, copy the lat/lng, and set
 
 ---
 
+## Logo
+
+`public/logo-autob2.png` — derived from the supplied `logo.jpeg` by trimming
+the white surround and keying white to transparent, because a JPEG on solid
+white shows as a white block on any non-white surface.
+
+Used in the site header and the landing-page header, both of which are white.
+**Not** in the footer: the logo's navy measures about 1.3:1 against the
+near-black footer and disappears. The footer uses a wordmark until a white
+knockout version exists.
+
+`app/icon.svg` is the favicon, in the logo's own navy (`#0A3D82`) sampled from
+the artwork. It is a "B2" mark rather than the full logo because the wordmark
+is illegible at 16px.
+
+> **Three identities are currently in play** and they should be reconciled
+> before ads run: the logo says **AUTO B2**, the site and schema say
+> **Autos B2**, and the truck door says **AUTOS B2**. Google cross-checks the
+> site's name against the Google Business Profile, and ad copy has to match
+> the landing page. Pick one and change `siteConfig.name`.
+>
+> The logo is also **blue** while the whole UI is **green** (`#206735`).
+> Re-tokenising to the logo's blues is a contained change — every colour comes
+> from `--brand-*` in `app/globals.css` — but it is a brand decision, not a
+> code one.
+
 ## Photography
 
 Six real photographs of the fleet live in `public/photos/`, listed in
@@ -125,7 +151,8 @@ matches the grid. A phone downloads about 5 KB each at those settings.
 
 | Slot | Status |
 |---|---|
-| `app/icon.svg` | Placeholder — a green "B2" square. Replace with the real logo. |
+| Logo, white knockout | The supplied logo is navy on white. Its navy sits at ~1.3:1 on the footer, so the footer uses a wordmark instead. A white/knockout PNG would let the logo appear there too. |
+| Logo, vector | The supplied file is a 500x500 JPEG whose actual artwork is only 289x109. Fine for the header at 44px tall; anything larger needs the original SVG or AI file. |
 | `public/scrapyar.jpg` | Generic yard photo. Replace with the actual Mascouche yard. |
 | `public/b2-tow-truck.png`, `nano-banana.png`, `tow-trackinng.webp`, `hero-image.jpg` | Unused. Safe to delete. |
 

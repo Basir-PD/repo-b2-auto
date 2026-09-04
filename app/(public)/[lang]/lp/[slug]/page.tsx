@@ -56,14 +56,14 @@ export default async function LandingPage({
       {/* Logo and phone only — no nav. */}
       <header className="border-b border-slate-200">
         <div className="container mx-auto flex h-16 items-center justify-between gap-3 px-4 sm:h-20 sm:px-6">
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-sm font-black tracking-tight text-white">
-              B2
-            </span>
-            <span className="text-lg font-black tracking-tight text-slate-900 sm:text-xl">
-              {siteConfig.name}
-            </span>
-          </div>
+          <Image
+            src="/logo-autob2.png"
+            alt={siteConfig.name}
+            width={289}
+            height={109}
+            loading="eager"
+            className="h-8 w-auto sm:h-9"
+          />
           <PhoneLink
             source={`lp_${slug}_header`}
             showIcon
