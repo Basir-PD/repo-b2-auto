@@ -31,9 +31,7 @@ export const en: Copy = {
   common: {
     callCta: `Call ${PHONE}`,
     callAria: "Call Autos B2 now",
-    callShort: "Call",
     quoteCta: "Get my free quote",
-    quoteShort: "Quote",
     whatsapp: "WhatsApp",
     whatsappAria: "Message Autos B2 on WhatsApp",
     whatsappTagline: "Send us a photo of your car",

@@ -8,7 +8,6 @@ import { siteConfig } from "@/config/site";
 import { getCopy } from "@/content/copy";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
-import MobileCallBar from "@/components/site/MobileCallBar";
 import WhatsAppFloat from "@/components/site/WhatsAppFloat";
 import CookieConsent from "@/components/site/CookieConsent";
 import AttributionBoot from "@/components/site/AttributionBoot";
@@ -121,11 +120,6 @@ export default async function PublicLayout({
 
         <SiteChrome>
           <SiteFooter lang={lang} />
-          <MobileCallBar
-            lang={lang}
-            callLabel={t.common.callShort}
-            quoteLabel={t.common.quoteShort}
-          />
           <WhatsAppFloat ariaLabel={t.common.whatsappAria} />
         </SiteChrome>
         <CookieConsent
