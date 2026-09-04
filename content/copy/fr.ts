@@ -34,9 +34,7 @@ export const fr = {
   common: {
     callCta: `Appeler ${PHONE}`,
     callAria: "Appeler Autos B2 maintenant",
-    callShort: "Appeler",
     quoteCta: "Obtenir mon estimation gratuite",
-    quoteShort: "Estimation",
     whatsapp: "WhatsApp",
     whatsappAria: "Écrire à Autos B2 sur WhatsApp",
     whatsappTagline: "Envoyez-nous une photo de votre auto",
