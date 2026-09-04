@@ -13,7 +13,9 @@ import { CITIES, cityByKey, citiesFor } from "@/content/cities";
 import { serviceByKey } from "@/content/services";
 import { ABOUT, PRIVACY, TERMS, CONTACT } from "@/content/pages";
 import { postsFor } from "@/content/blog";
+import { PHOTOS } from "@/content/photos";
 import QuoteForm from "@/components/site/QuoteForm";
+import PhotoGrid from "@/components/site/PhotoGrid";
 import PhoneLink from "@/components/site/PhoneLink";
 import MailLink from "@/components/site/MailLink";
 import { PageHeader, Sections, CtaBand } from "@/components/pages/PageShell";
@@ -460,6 +462,22 @@ export default async function SlugPage({
           <JsonLd id="ld-breadcrumb" data={breadcrumbSchema([{ name: t.common.breadcrumbHome, path: pathFor("home", lang) }, { name: t.nav.about, path }])} />
           <PageHeader lang={lang} trail={crumb(t.nav.about)} h1={ABOUT.h1[lang]} lede={ABOUT.lede[lang]} />
           <Sections sections={ABOUT.sections[lang]} />
+
+          {/*
+            This is the page someone opens when they are deciding whether we
+            are a real yard or a broker with a phone number, so it gets the
+            whole set rather than a sample.
+          */}
+          <div className="container mx-auto max-w-4xl px-4 pb-14 sm:px-6 sm:pb-16 lg:px-8">
+            <h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+              {t.home.fleetTitle}
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-slate-600">{t.home.fleetSub}</p>
+            <div className="mt-8">
+              <PhotoGrid lang={lang} photos={PHOTOS} columns={2} />
+            </div>
+          </div>
+
           <CtaBand lang={lang} />
         </>
       );

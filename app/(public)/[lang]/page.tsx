@@ -9,8 +9,10 @@ import { siteConfig, fullAddress } from "@/config/site";
 import { getCopy } from "@/content/copy";
 import { homeFaqFor } from "@/content/faq";
 import { CITIES } from "@/content/cities";
+import { HOME_PHOTOS } from "@/content/photos";
 import { hasReviews, REVIEWS } from "@/content/reviews";
 import QuoteForm from "@/components/site/QuoteForm";
+import PhotoGrid from "@/components/site/PhotoGrid";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
 import PhoneLink from "@/components/site/PhoneLink";
 import { JsonLd, faqSchema, webPageSchema } from "@/components/site/JsonLd";
@@ -269,6 +271,25 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 <p className="mt-2 text-[15px] leading-relaxed text-slate-600">{point.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --------------------------------------------------- Fleet photos */}
+      {/*
+        Below the fold on purpose. These are proof, not decoration, and they
+        must never compete with the hero for the LCP.
+      */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+            {t.home.fleetTitle}
+          </h2>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+            {t.home.fleetSub}
+          </p>
+          <div className="mt-8">
+            <PhotoGrid lang={lang} photos={HOME_PHOTOS} columns={3} />
           </div>
         </div>
       </section>
