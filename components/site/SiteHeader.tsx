@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -54,21 +55,21 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white">
       <div className="container mx-auto flex h-16 items-center justify-between gap-3 px-4 sm:h-20 sm:px-6 lg:px-8">
-        <Link
-          href={pathFor("home", lang)}
-          className="flex shrink-0 items-center gap-2.5"
-        >
-          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-600 text-sm font-black tracking-tight text-white">
-            B2
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="text-lg font-black tracking-tight text-slate-900 sm:text-xl">
-              {siteConfig.name}
-            </span>
-            <span className="mt-1 hidden text-[10px] font-medium text-slate-500 sm:block">
-              {siteConfig.address.locality}, {siteConfig.address.region}
-            </span>
-          </span>
+        <Link href={pathFor("home", lang)} className="flex shrink-0 items-center">
+          {/*
+            eager, not priority: it is above the fold so it must not wait for
+            an intersection, but a preload would put it in competition with
+            the hero image, which is the LCP element. width/height are the
+            artwork's real pixels, so the row cannot shift as it decodes.
+          */}
+          <Image
+            src="/logo-autob2.png"
+            alt={siteConfig.name}
+            width={289}
+            height={109}
+            loading="eager"
+            className="h-10 w-auto sm:h-11"
+          />
         </Link>
 
         <nav className="hidden flex-1 items-center justify-center gap-5 xl:flex xl:gap-7" aria-label="Primary">
