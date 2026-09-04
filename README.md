@@ -90,26 +90,44 @@ right-click the pin, copy the lat/lng, and set
 
 ---
 
-## Image slots that still need real photography
+## Photography
 
-Stock photos of shiny cars actively hurt credibility for a scrap business. The
-site currently ships **one** real photo and uses icons everywhere else rather
-than filling space with stock.
+Six real photographs of the fleet live in `public/photos/`, listed in
+`content/photos.ts`. Fifteen were supplied; six are used. The rest repeat the
+same truck at the same angle on the same kind of day, and a gallery that
+repeats itself reads as padding rather than evidence.
 
-| File | Status | What it should be |
-|---|---|---|
-| `public/hero-tow-truck.jpg` | ✅ real | The company's own flatbed with a load on the deck |
-| `public/scrapyar.jpg` | ⚠️ replace | The actual yard at 340 Chemin Pincourt |
-| `public/b2-tow-truck.png` | ⚠️ unused | Delete or replace |
-| `public/tow-trackinng.webp` | ⚠️ unused | Delete or replace |
-| `public/nano-banana.png` | ⚠️ unused | Delete |
-| _(missing)_ `public/team-mascouche.jpg` | ❌ needed | The team, on site — for `/fr/a-propos/` |
-| _(missing)_ `public/yard-dismantling.jpg` | ❌ needed | Depollution / dismantling, for the recycling section |
+Each one is there because it **proves a claim the copy makes**:
 
-Alt text is written in the page's own language and describes the scene, e.g.
-`"Remorqueuse à plateau de Autos B2 chargée d'un véhicule, à Mascouche"`.
+| File | Proves |
+|---|---|
+| `attache-vehicule-plateau.jpg` | A real person doing the work — the strongest signal in the set |
+| `transport-multi-vehicules.jpg` | Scale: five cars on one hauler, behind the 2,000/year figure |
+| `enlevement-soir-residentiel.jpg` | The 8:30pm hours are real |
+| `plateau-vus-charge.jpg` | Our own flatbed, not a subcontractor |
+| `remorquage-chariot-elevateur.jpg` | "Any vehicle, no exceptions" |
+| `remorquage-soir-berline.jpg` | Same-day, after-hours pickup |
 
----
+**Where they appear:** three on the homepage, all six on `/a-propos/`,
+both below the fold. **None in the hero and none on a `/lp/` page** — the
+hero image is the LCP element and the landing pages exist to load fast.
+
+**To add one:** drop the file in `public/photos/`, add an entry to
+`content/photos.ts` with alt text and a caption in both languages. Resize to
+1200px wide first — that is DPR-2 for the widest slot these ever render in,
+and anything larger is bytes nobody sees.
+
+Rules that keep them free: lazy (never `priority`), `quality={55}`, a fixed
+aspect-ratio box so they cannot shift the layout, and a `sizes` string that
+matches the grid. A phone downloads about 5 KB each at those settings.
+
+### Still missing
+
+| Slot | Status |
+|---|---|
+| `app/icon.svg` | Placeholder — a green "B2" square. Replace with the real logo. |
+| `public/scrapyar.jpg` | Generic yard photo. Replace with the actual Mascouche yard. |
+| `public/b2-tow-truck.png`, `nano-banana.png`, `tow-trackinng.webp`, `hero-image.jpg` | Unused. Safe to delete. |
 
 ## Adding a city
 

@@ -153,6 +153,8 @@ export const en: Copy = {
       linkLabel: "See your city's page",
     },
 
+    fleetTitle: "Our fleet, at work",
+    fleetSub: "Our own trucks, our own drivers. These are photos from our pickups, not bought from a stock library.",
     reviewsHeading: "5.0 ★ from 5 Google reviews",
 
     faqHeading: "Frequently asked questions",

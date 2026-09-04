@@ -157,6 +157,8 @@ export const fr = {
       linkLabel: "Voir la page de votre ville",
     },
 
+    fleetTitle: "Notre flotte, au travail",
+    fleetSub: "Nos propres camions, nos propres chauffeurs. Ces photos sont prises sur nos ramassages, pas achetées dans une banque d'images.",
     reviewsHeading: "5,0 ★ sur 5 avis Google",
 
     faqHeading: "Questions fréquentes",
