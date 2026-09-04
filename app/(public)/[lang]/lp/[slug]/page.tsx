@@ -144,6 +144,7 @@ export default async function LandingPage({
             }
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             quality={50}
             className="object-cover object-[58%_62%] [mask-image:linear-gradient(to_bottom,transparent,black_34%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_34%)]"
