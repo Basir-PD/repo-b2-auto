@@ -208,6 +208,7 @@ export const en: Copy = {
     invalidPhone: "Enter a valid phone number",
     consentRequired: "You need to agree before continuing",
     errorBody: "It didn't go through. Please call us instead:",
+    tooManyBody: "Too many attempts in a short time. Try again in a few minutes, or just call us:",
     privacyNote: "No obligation. We never share your details.",
   },
 

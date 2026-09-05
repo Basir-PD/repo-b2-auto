@@ -40,16 +40,22 @@ export const runtime = "nodejs";
 const MAX_LEN = 2000;
 const PHONE_RE = /^[+()\d\s.-]{10,20}$/;
 
-/** Crude per-IP throttle. Resets on cold start, which is fine for spam control. */
+/**
+ * Throttle. Resets on cold start, which is fine for spam control.
+ *
+ * 15 in ten minutes: high enough that a real person correcting a typo three
+ * times never sees it, low enough to be useless to a script. The old limit
+ * of 8 was tight enough that ordinary testing tripped it.
+ */
 const recentSubmissions = new Map<string, number[]>();
-const RATE_LIMIT = 8;
+const RATE_LIMIT = 15;
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 
-function isRateLimited(ip: string) {
+function isRateLimited(key: string) {
   const now = Date.now();
-  const hits = (recentSubmissions.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
+  const hits = (recentSubmissions.get(key) || []).filter((t) => now - t < RATE_WINDOW_MS);
   hits.push(now);
-  recentSubmissions.set(ip, hits);
+  recentSubmissions.set(key, hits);
   return hits.length > RATE_LIMIT;
 }
 
@@ -114,12 +120,24 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "validation", errors }, { status: 422 });
   }
 
+  /*
+    Throttle per identified client. Vercel always sets x-forwarded-for, so in
+    production this is a real per-visitor bucket.
+
+    When the header is absent — running locally, or behind a proxy that drops
+    it — the old code fell back to the literal string "unknown", which put
+    EVERY visitor in one shared bucket. Fifteen submissions site-wide would
+    then lock the form for everybody. Falling back to the phone number keeps
+    one person from being throttled by another's attempts, which is the
+    failure that actually costs leads.
+  */
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
     request.headers.get("x-real-ip") ||
-    "unknown";
+    "";
+  const throttleKey = ip || `phone:${phone.replace(/\D/g, "")}`;
 
-  if (isRateLimited(ip)) {
+  if (isRateLimited(throttleKey)) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
   }
 
