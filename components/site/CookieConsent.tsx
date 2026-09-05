@@ -92,13 +92,13 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
       role="dialog"
       aria-modal="false"
       aria-labelledby="consent-title"
-      className="fixed inset-x-0 bottom-0 z-[80] border-t border-slate-700 bg-slate-950 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 text-white shadow-2xl sm:px-6"
+      className="fixed inset-x-0 bottom-0 z-[80] border-t border-slate-700 bg-slate-950 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3.5 text-white shadow-2xl sm:px-6"
     >
       <div className="mx-auto max-w-5xl">
-        <h2 id="consent-title" className="text-base font-black sm:text-lg">
+        <h2 id="consent-title" className="text-sm font-black sm:text-base">
           {labels.title}
         </h2>
-        <p className="mt-2 text-sm leading-relaxed text-slate-300">
+        <p className="mt-1.5 max-w-3xl text-[13px] leading-snug text-slate-300">
           {labels.body}{" "}
           <Link href={labels.privacyHref} className="font-semibold text-white underline">
             {labels.policyLink}
@@ -106,7 +106,7 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
         </p>
 
         {showDetail && (
-          <div className="mt-4 space-y-3 rounded-lg bg-slate-900 p-4">
+          <div className="mt-3 space-y-2.5 rounded-lg bg-slate-900 p-3.5">
             <Toggle
               label={labels.necessary}
               body={labels.necessaryBody}
@@ -130,19 +130,19 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
           </div>
         )}
 
-        <div className="mt-4 flex flex-col gap-2.5 sm:flex-row">
+        <div className="mt-3 flex flex-col gap-2 sm:flex-row">
           {/* Accept and refuse are deliberately identical in weight. */}
           <button
             type="button"
             onClick={() => decide({ analytics: true, marketing: true })}
-            className="flex-1 rounded-lg bg-brand-600 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="flex-1 rounded-lg bg-brand-600 px-4 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             {labels.acceptAll}
           </button>
           <button
             type="button"
             onClick={() => decide({ analytics: false, marketing: false })}
-            className="flex-1 rounded-lg bg-slate-700 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="flex-1 rounded-lg bg-slate-700 px-4 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             {labels.rejectAll}
           </button>
@@ -150,7 +150,7 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
             <button
               type="button"
               onClick={() => decide({ analytics, marketing })}
-              className="flex-1 rounded-lg border border-slate-500 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="flex-1 rounded-lg border border-slate-500 px-4 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               {labels.save}
             </button>
@@ -158,7 +158,7 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
             <button
               type="button"
               onClick={() => setShowDetail(true)}
-              className="flex-1 rounded-lg border border-slate-500 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="flex-1 rounded-lg border border-slate-500 px-4 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               {labels.customise}
             </button>
@@ -194,11 +194,11 @@ function Toggle({
         className="mt-1 h-4 w-4 shrink-0 accent-brand-500 disabled:opacity-60"
       />
       <span>
-        <span className="block text-sm font-bold text-white">
+        <span className="block text-[13px] font-bold text-white">
           {label}
           {hint && <span className="ml-2 text-xs font-medium text-slate-400">{hint}</span>}
         </span>
-        <span className="mt-0.5 block text-xs leading-relaxed text-slate-400">{body}</span>
+        <span className="mt-0.5 block text-xs leading-snug text-slate-400">{body}</span>
       </span>
     </label>
   );
