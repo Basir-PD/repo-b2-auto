@@ -15,8 +15,19 @@
  */
 
 export const siteConfig = {
-  /** Canonical origin. No trailing slash. */
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://b2autos.com",
+  /**
+   * Canonical origin. No trailing slash.
+   *
+   * This is the single most consequential value in the file: it is stamped
+   * into every canonical tag, hreflang, og:url, JSON-LD url and sitemap
+   * entry. If it does not match the domain the site is actually served
+   * from, Google is told the real version lives somewhere else — and if
+   * that somewhere else 404s, nothing gets indexed at all.
+   *
+   * The default is the domain the site is live on. Override per environment
+   * with NEXT_PUBLIC_SITE_URL if that ever changes.
+   */
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.autosb2.com",
 
   name: "Autos B2",
   legalName: "Autos B2",
