@@ -212,6 +212,7 @@ export const fr = {
     invalidPhone: "Entrez un numéro de téléphone valide",
     consentRequired: "Vous devez accepter pour continuer",
     errorBody: "Ça n'a pas fonctionné. Appelez-nous plutôt :",
+    tooManyBody: "Trop de tentatives en peu de temps. Réessayez dans quelques minutes, ou appelez-nous tout de suite :",
     privacyNote: "Sans obligation. On ne partage jamais vos coordonnées.",
   },
 

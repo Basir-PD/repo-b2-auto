@@ -62,7 +62,7 @@ export default function QuoteForm({
   const [values, setValues] = useState<Values>(EMPTY);
   const [errors, setErrors] = useState<Partial<Record<keyof Values, string>>>({});
   const [sending, setSending] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [failed, setFailed] = useState<false | "error" | "throttled">(false);
 
   const startedRef = useRef(false);
   const submittedRef = useRef(false);
@@ -148,6 +148,12 @@ export default function QuoteForm({
           attribution: readAttribution(),
         }),
       });
+      if (res.status === 429) {
+        // Not a failure of ours — say so, rather than "it didn't go through".
+        setFailed("throttled");
+        setSending(false);
+        return;
+      }
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 
       submittedRef.current = true;
@@ -158,7 +164,7 @@ export default function QuoteForm({
       router.push(pathFor("thanks", lang));
     } catch (err) {
       console.error("[quote-form]", err);
-      setFailed(true);
+      setFailed("error");
       setSending(false);
     }
   }
@@ -261,7 +267,8 @@ export default function QuoteForm({
 
         {failed && (
           <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm font-semibold text-red-800">
-            {t.errorBody} <PhoneLink source="quote_form_error" className="font-black underline" />
+            {failed === "throttled" ? t.tooManyBody : t.errorBody}{" "}
+            <PhoneLink source="quote_form_error" className="font-black underline" />
           </p>
         )}
 
