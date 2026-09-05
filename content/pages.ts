@@ -138,7 +138,8 @@ export const PRIVACY: StaticPage = {
       {
         h2: "Avec qui on les partage",
         body: [
-          "On ne vend jamais vos renseignements. Ils sont accessibles à notre équipe et aux fournisseurs qui font fonctionner le site et les communications (hébergement, envoi de courriels, mesure publicitaire). Ces fournisseurs peuvent traiter des données à l'extérieur du Québec.",
+          "On ne vend jamais vos renseignements. Ils sont accessibles à notre équipe et aux fournisseurs qui font fonctionner le site et les communications : Vercel (hébergement), Convex (stockage des demandes), Resend (envoi de courriels), Google (Tag Manager, Analytics et Ads) et Meta (Facebook et Instagram) pour la mesure publicitaire. Ces fournisseurs peuvent traiter des données à l'extérieur du Québec.",
+          "Les outils de Google et de Meta ne sont chargés qu'après votre consentement aux témoins marketing ou analytiques. Tant que vous n'avez pas choisi, aucun témoin publicitaire n'est déposé.",
         ],
       },
       {
@@ -184,7 +185,8 @@ export const PRIVACY: StaticPage = {
       {
         h2: "Who we share it with",
         body: [
-          "We never sell your information. It is accessible to our team and to the providers that run the site and our communications (hosting, email delivery, advertising measurement). Those providers may process data outside Quebec.",
+          "We never sell your information. It is accessible to our team and to the providers that run the site and our communications: Vercel (hosting), Convex (request storage), Resend (email delivery), Google (Tag Manager, Analytics and Ads) and Meta (Facebook and Instagram) for advertising measurement. Those providers may process data outside Quebec.",
+          "The Google and Meta tools load only after you consent to marketing or analytics cookies. Until you choose, no advertising cookie is set.",
         ],
       },
       {
