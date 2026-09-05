@@ -116,7 +116,7 @@ export const PRIVACY: StaticPage = {
         list: [
           "Les renseignements que vous fournissez dans le formulaire d'estimation : nom, numéro de téléphone, code postal ou ville, courriel si vous le donnez, et les informations sur le véhicule.",
           "Des données techniques de navigation : pages consultées, provenance de la visite, type d'appareil.",
-          "Les identifiants publicitaires (gclid, fbclid et paramètres utm) présents dans le lien qui vous a amené ici, lorsque vous avez consenti aux témoins marketing.",
+          "Les identifiants publicitaires (gclid, wbraid, gbraid, fbclid et paramètres utm) présents dans le lien qui vous a amené ici, afin de savoir quelle annonce a mené à votre demande.",
         ],
       },
       {
@@ -124,29 +124,48 @@ export const PRIVACY: StaticPage = {
         list: [
           "Vous rappeler et vous donner un prix pour votre véhicule — c'est la raison principale.",
           "Organiser le remorquage et produire les documents de cession SAAQ.",
-          "Mesurer la performance de nos publicités, uniquement si vous avez accepté les témoins marketing.",
-          "Comprendre quelles pages sont utiles, uniquement si vous avez accepté les témoins analytiques.",
+          "Mesurer la performance de nos publicités Google et Meta.",
+          "Comprendre quelles pages sont utiles et où les visiteurs abandonnent.",
+        ],
+      },
+      {
+        h2: "Témoins (cookies) et outils de mesure",
+        body: [
+          "Ce site utilise Google Tag Manager pour charger ses outils de mesure. Tag Manager ne dépose lui-même aucun témoin ; il sert à gérer les outils suivants :",
+        ],
+        list: [
+          "Google Analytics — mesure d'audience. Témoins _ga et _ga_*, conservés jusqu'à 2 ans.",
+          "Google Ads — mesure de nos publicités et des conversions. Témoins _gcl_*, conservés jusqu'à 90 jours.",
+          "Meta (Facebook et Instagram) — mesure de nos publicités. Témoin _fbp, conservé jusqu'à 90 jours.",
+          "Témoins strictement nécessaires — sécurité, navigation et envoi du formulaire. Sans eux le site ne fonctionne pas.",
+        ],
+      },
+      {
+        h2: "Comment refuser ou limiter le suivi",
+        body: [
+          "Vous pouvez bloquer ou supprimer les témoins directement dans votre navigateur (Chrome, Safari, Firefox et Edge offrent tous ce réglage), ou naviguer en mode privé. Le site continue de fonctionner normalement : le formulaire, le téléphone et le remorquage ne dépendent d'aucun témoin publicitaire.",
+          "Vous pouvez aussi vous désinscrire directement chez les fournisseurs : Google Analytics offre un module complémentaire de désactivation (tools.google.com/dlpage/gaoptout), les préférences publicitaires Google se règlent à myadcenter.google.com, et celles de Meta dans les paramètres de votre compte Facebook ou Instagram.",
+          "Enfin, le signal « Do Not Track » ou « Global Privacy Control » de votre navigateur, s'il est activé, est transmis à ces outils.",
         ],
       },
       {
         h2: "Combien de temps on les garde",
         body: [
           "Les demandes d'estimation sont conservées 24 mois, puis supprimées. Les dossiers liés à une transaction complétée sont conservés plus longtemps quand la loi l'exige, notamment pour les obligations fiscales et les documents de cession de véhicule.",
-          "Les témoins de consentement expirent après 6 mois, après quoi la question vous est reposée.",
         ],
       },
       {
         h2: "Avec qui on les partage",
         body: [
           "On ne vend jamais vos renseignements. Ils sont accessibles à notre équipe et aux fournisseurs qui font fonctionner le site et les communications : Vercel (hébergement), Convex (stockage des demandes), Resend (envoi de courriels), Google (Tag Manager, Analytics et Ads) et Meta (Facebook et Instagram) pour la mesure publicitaire. Ces fournisseurs peuvent traiter des données à l'extérieur du Québec.",
-          "Les outils de Google et de Meta ne sont chargés qu'après votre consentement aux témoins marketing ou analytiques. Tant que vous n'avez pas choisi, aucun témoin publicitaire n'est déposé.",
+          "Ces fournisseurs agissent comme sous-traitants pour notre compte. On ne vend, ne loue et n'échange jamais vos renseignements.",
         ],
       },
       {
         h2: "Vos droits et comment retirer votre consentement",
         body: [
           "Vous pouvez demander l'accès à vos renseignements, leur correction ou leur suppression, et retirer votre consentement en tout temps.",
-          `Pour les témoins : rouvrez la bannière de consentement au bas de cette page ou effacez les témoins de votre navigateur, puis rechargez le site. Pour tout le reste : écrivez à ${siteConfig.email} et on traite la demande dans les 30 jours.`,
+          `Pour les témoins : voyez la section « Comment refuser ou limiter le suivi » ci-dessus. Pour tout le reste : écrivez à ${siteConfig.email} et on traite la demande dans les 30 jours.`,
           "Si notre réponse ne vous satisfait pas, vous pouvez déposer une plainte auprès de la Commission d'accès à l'information du Québec.",
         ],
       },
@@ -163,7 +182,7 @@ export const PRIVACY: StaticPage = {
         list: [
           "What you enter in the quote form: name, phone number, postal code or city, email if you give one, and the vehicle details.",
           "Technical browsing data: pages viewed, where the visit came from, device type.",
-          "Advertising identifiers (gclid, fbclid and utm parameters) present in the link that brought you here, where you consented to marketing cookies.",
+          "Advertising identifiers (gclid, wbraid, gbraid, fbclid and utm parameters) present in the link that brought you here, so we know which ad led to your request.",
         ],
       },
       {
@@ -171,29 +190,48 @@ export const PRIVACY: StaticPage = {
         list: [
           "To call you back and give you a price for your vehicle — that is the main reason.",
           "To arrange towing and produce the SAAQ release documents.",
-          "To measure how our advertising performs, only if you accepted marketing cookies.",
-          "To understand which pages are useful, only if you accepted analytics cookies.",
+          "To measure how our Google and Meta advertising performs.",
+          "To understand which pages are useful and where visitors drop off.",
+        ],
+      },
+      {
+        h2: "Cookies and measurement tools",
+        body: [
+          "This site uses Google Tag Manager to load its measurement tools. Tag Manager sets no cookies of its own; it manages the following:",
+        ],
+        list: [
+          "Google Analytics — audience measurement. _ga and _ga_* cookies, kept up to 2 years.",
+          "Google Ads — advertising and conversion measurement. _gcl_* cookies, kept up to 90 days.",
+          "Meta (Facebook and Instagram) — advertising measurement. _fbp cookie, kept up to 90 days.",
+          "Strictly necessary cookies — security, navigation and form submission. The site does not work without them.",
+        ],
+      },
+      {
+        h2: "How to refuse or limit tracking",
+        body: [
+          "You can block or delete cookies directly in your browser — Chrome, Safari, Firefox and Edge all offer this — or browse in a private window. The site keeps working normally: the form, the phone number and the towing depend on no advertising cookie.",
+          "You can also opt out with the providers themselves: Google Analytics offers a browser opt-out add-on (tools.google.com/dlpage/gaoptout), Google ad preferences are at myadcenter.google.com, and Meta's are in your Facebook or Instagram account settings.",
+          "Your browser's \"Do Not Track\" or \"Global Privacy Control\" signal, if enabled, is passed on to these tools.",
         ],
       },
       {
         h2: "How long we keep it",
         body: [
           "Quote requests are kept for 24 months, then deleted. Records tied to a completed transaction are kept longer where the law requires it, in particular for tax obligations and vehicle transfer documents.",
-          "Consent cookies expire after 6 months, at which point you are asked again.",
         ],
       },
       {
         h2: "Who we share it with",
         body: [
           "We never sell your information. It is accessible to our team and to the providers that run the site and our communications: Vercel (hosting), Convex (request storage), Resend (email delivery), Google (Tag Manager, Analytics and Ads) and Meta (Facebook and Instagram) for advertising measurement. Those providers may process data outside Quebec.",
-          "The Google and Meta tools load only after you consent to marketing or analytics cookies. Until you choose, no advertising cookie is set.",
+          "These providers act as processors on our behalf. We never sell, rent or trade your information.",
         ],
       },
       {
         h2: "Your rights and how to withdraw consent",
         body: [
           "You can request access to your information, its correction or its deletion, and withdraw your consent at any time.",
-          `For cookies: reopen the consent banner at the bottom of this page or clear your browser's cookies and reload the site. For anything else: write to ${siteConfig.email} and we will handle the request within 30 days.`,
+          `For cookies: see "How to refuse or limit tracking" above. For anything else: write to ${siteConfig.email} and we will handle the request within 30 days.`,
           "If our answer does not satisfy you, you may file a complaint with the Commission d'accès à l'information du Québec.",
         ],
       },

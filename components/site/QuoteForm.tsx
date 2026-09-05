@@ -28,9 +28,9 @@ function phoneIsValid(value: string) {
   return digitsOf(value).replace(/^1/, "").length === 10;
 }
 
-type Values = { vehicle: string; name: string; phone: string; postal: string; consent: boolean };
+type Values = { vehicle: string; name: string; phone: string; postal: string };
 
-const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "", consent: false };
+const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "" };
 
 /**
  * The quote form. Four inputs, one step.
@@ -42,9 +42,8 @@ const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "", consent: f
  * runs — is a question for the callback, where it costs nothing, instead of a
  * field on the page, where it costs leads.
  *
- * The consent checkbox is not a fifth input. Law 25 requires an explicit,
- * unchecked opt-in before we may phone or text someone, so it is a legal
- * control rather than a piece of data we are collecting.
+ * There is no consent checkbox: it was removed on request, and the line
+ * above the submit button carries the consent wording instead.
  */
 export default function QuoteForm({
   lang,
@@ -119,7 +118,6 @@ export default function QuoteForm({
     if (!values.phone.trim()) next.phone = t.required;
     else if (!phoneIsValid(values.phone)) next.phone = t.invalidPhone;
     if (!values.postal.trim()) next.postal = t.required;
-    if (!values.consent) next.consent = t.consentRequired;
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -186,6 +184,20 @@ export default function QuoteForm({
       </h2>
       <p className="mt-1.5 text-sm text-slate-600">{t.subtitle}</p>
 
+      {/*
+        The callback promise sits above the first field, not below the button:
+        it is what persuades someone to start typing, so it has to be read
+        before they decide, not after. The hours are part of the sentence
+        because the promise is not true at 2am.
+      */}
+      <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-brand-50 py-1.5 pl-2.5 pr-3.5 text-[13px] font-bold text-brand-800">
+        <span className="relative flex h-2 w-2 shrink-0">
+          <span className="absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-60 motion-safe:animate-ping" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-600" />
+        </span>
+        {t.replyTime}
+      </p>
+
       <form onSubmit={handleSubmit} noValidate className="mt-6 flex flex-col gap-4">
         {/* Honeypot — off-screen, never announced, irresistible to bots. */}
         <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -242,29 +254,6 @@ export default function QuoteForm({
           />
         </Field>
 
-        {/*
-          Law 25 wants consent that is manifest, free and enlightened, and
-          asked for separately from everything else. So: its own control,
-          unchecked by default, and the submit will not pass without it. The
-          link to the policy sits at the foot of the page rather than inline
-          here — same page, one tap, and the form stays uncluttered.
-        */}
-        <div>
-          <label className="flex items-start gap-3 text-sm leading-relaxed text-slate-700">
-            <input
-              type="checkbox"
-              checked={values.consent}
-              onChange={(e) => set("consent", e.target.checked)}
-              aria-invalid={Boolean(errors.consent)}
-              className="mt-1 h-4 w-4 shrink-0 accent-brand-600"
-            />
-            <span>{t.consent}</span>
-          </label>
-          {errors.consent && (
-            <p className="mt-1.5 text-sm font-semibold text-red-700">{errors.consent}</p>
-          )}
-        </div>
-
         {failed && (
           <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm font-semibold text-red-800">
             {failed === "throttled" ? t.tooManyBody : t.errorBody}{" "}
@@ -294,11 +283,13 @@ export default function QuoteForm({
         </button>
 
         {/*
-          The consent checkbox was removed on request. This line replaces it:
-          submitting the form is the consent action, and it is stated before
-          the button rather than after. Quebec's Law 25 wants consent that is
-          explicit and informed — a notice is weaker than a ticked box, so
-          see the note in README before running ads on this.
+          The consent checkbox was removed on request. This line carries the
+          consent instead: sending the form is the consent action, and it is
+          stated where it can be read before the button is pressed.
+
+          Law 25 asks for consent that is manifest and enlightened; a notice
+          is weaker than a ticked box. See README before running paid traffic
+          against this form.
         */}
         <p className="text-center text-xs leading-relaxed text-slate-500">{t.privacyNote}</p>
       </form>

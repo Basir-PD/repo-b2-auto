@@ -1,43 +1,25 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useState } from "react";
-import { CONSENT_COOKIE, parseConsent } from "@/lib/consent";
 
 export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
 
 /**
  * Meta Pixel.
  *
- * Loaded only after the visitor grants MARKETING consent, and never before —
- * the pixel writes `_fbp` the moment it initialises, which under Law 25 is
- * exactly the kind of non-essential storage that requires opt-in first. That
- * is why this is not simply dropped into the layout the way GTM is: GTM has
- * Consent Mode to hold it back, the pixel has nothing equivalent.
+ * This used to wait for marketing consent from the cookie banner. The banner
+ * was removed on request, so the gate had nothing left to read and the pixel
+ * would simply never have loaded. It now loads wherever the ID is set, and
+ * the disclosure lives in the privacy policy instead.
+ *
+ * Note what that means: the pixel writes `_fbp` on init, which is precisely
+ * the non-essential storage Quebec's Law 25 expects opt-in for. See README.
  *
  * Renders nothing until NEXT_PUBLIC_META_PIXEL_ID is set, so local and
  * preview builds stay clean.
  */
 export default function MetaPixel() {
-  const [granted, setGranted] = useState(false);
-
-  useEffect(() => {
-    function read() {
-      const raw = document.cookie
-        .split("; ")
-        .find((c) => c.startsWith(`${CONSENT_COOKIE}=`))
-        ?.split("=")[1];
-      const state = parseConsent(raw ? decodeURIComponent(raw) : null);
-      setGranted(Boolean(state?.marketing));
-    }
-    read();
-    // The banner writes the cookie and pushes this; no reload needed.
-    const onConsent = () => read();
-    window.addEventListener("b2-consent-updated", onConsent);
-    return () => window.removeEventListener("b2-consent-updated", onConsent);
-  }, []);
-
-  if (!META_PIXEL_ID || !granted) return null;
+  if (!META_PIXEL_ID) return null;
 
   return (
     <>

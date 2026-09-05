@@ -9,7 +9,6 @@ import { getCopy } from "@/content/copy";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import WhatsAppFloat from "@/components/site/WhatsAppFloat";
-import CookieConsent from "@/components/site/CookieConsent";
 import AttributionBoot from "@/components/site/AttributionBoot";
 import MetaPixel from "@/components/site/MetaPixel";
 import SiteChrome from "@/components/site/SiteChrome";
@@ -123,12 +122,6 @@ export default async function PublicLayout({
           <SiteFooter lang={lang} />
           <WhatsAppFloat ariaLabel={t.common.whatsappAria} />
         </SiteChrome>
-        <CookieConsent
-          labels={{
-            ...t.consent,
-            privacyHref: pathFor("privacy", lang),
-          }}
-        />
         <AttributionBoot />
         <MetaPixel />
       </body>
