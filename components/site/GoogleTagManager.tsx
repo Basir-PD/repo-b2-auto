@@ -3,10 +3,18 @@ import { GTM_ID } from "@/lib/tracking";
 /**
  * GTM plus the Consent Mode v2 default.
  *
- * Order matters and is the whole point: the default-denied call is a plain
- * inline script that runs BEFORE the container loads, so no tag can fire on
- * a storage type the visitor has not agreed to. The banner later pushes an
- * update. Getting this backwards is the single most common Law 25 failure.
+ * The defaults are GRANTED. They used to be denied, with the cookie banner
+ * as the only thing that could ever grant them. That banner was removed on
+ * request, so leaving these at denied would have blocked GA4, Google Ads and
+ * Meta permanently — and silently, since a blocked tag looks identical to a
+ * working one from the outside. The two changes have to travel together.
+ *
+ * The signals are still declared rather than dropped, which keeps Consent
+ * Mode wired up: if a banner is ever reinstated, flipping these back to
+ * 'denied' is the only change required here.
+ *
+ * The disclosure that now stands in place of the banner lives in the privacy
+ * policy. See README for the Law 25 caveat that comes with that trade.
  */
 export default function GoogleTagManager() {
   if (!GTM_ID) return null;
@@ -18,13 +26,16 @@ export default function GoogleTagManager() {
         execute before the container does, and only a raw tag in <head>
         guarantees that ordering — next/script's beforeInteractive still
         defers past it in the App Router.
+
+        `wait_for_update` is gone with the banner: nothing arrives later to
+        wait for, and leaving it would delay every tag by 500ms for no reason.
       */}
       <script
         id="consent-default"
         dangerouslySetInnerHTML={{
           __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
-gtag('set','url_passthrough',true);gtag('set','ads_data_redaction',true);`,
+gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted',functionality_storage:'granted',security_storage:'granted'});
+gtag('set','url_passthrough',true);`,
         }}
       />
       {/*

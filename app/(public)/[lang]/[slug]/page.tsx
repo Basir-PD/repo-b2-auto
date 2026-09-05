@@ -71,8 +71,8 @@ function metaFor(lang: Lang, slug: string): Meta | null {
           ? "Estimation Gratuite pour Votre Auto Scrap | Autos B2"
           : "Free Quote for Your Scrap Car | Autos B2",
         description: lang === "fr"
-          ? "Obtenez un prix ferme pour votre véhicule en moins de deux minutes. Trois étapes, sans obligation, remorquage gratuit inclus."
-          : "Get a firm price for your vehicle in under two minutes. Three steps, no obligation, free towing included.",
+          ? "Obtenez un prix ferme pour votre véhicule en moins d'une minute. Quatre questions, sans obligation, remorquage gratuit inclus."
+          : "Get a firm price for your vehicle in under a minute. Four questions, no obligation, free towing included.",
       };
     case "thanks":
       // Reachable only after a submit, and never indexed.
@@ -365,8 +365,8 @@ export default async function SlugPage({
             h1={lang === "fr" ? "Estimation gratuite pour votre véhicule" : "Free quote for your vehicle"}
             lede={
               lang === "fr"
-                ? "Trois étapes, moins de deux minutes, aucune obligation. On vous rappelle avec un prix ferme."
-                : "Three steps, under two minutes, no obligation. We call you back with a firm price."
+                ? "Quatre questions, moins d'une minute, aucune obligation. On vous rappelle avec un prix ferme."
+                : "Four questions, under a minute, no obligation. We call you back with a firm price."
             }
           />
           <div className="container mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

@@ -170,27 +170,11 @@ export const fr = {
     },
   },
 
-  consent: {
-    title: "Nous utilisons des témoins (cookies)",
-    body: "Nous utilisons des témoins pour améliorer votre expérience et mesurer la performance de nos publicités Google et Meta. Rien n'est déposé avant votre choix. Vous pouvez accepter, refuser ou personnaliser en tout temps.",
-    acceptAll: "Tout accepter",
-    rejectAll: "Tout refuser",
-    customise: "Personnaliser",
-    save: "Enregistrer mes choix",
-    necessary: "Nécessaires",
-    necessaryBody: "Requis pour le fonctionnement du site : sécurité, navigation, envoi du formulaire et mémorisation de ce choix-ci. Ne déposent aucun témoin publicitaire et ne peuvent pas être désactivés.",
-    analytics: "Analytiques",
-    analyticsBody: "Google Analytics (témoins _ga). Nous aident à comprendre quelles pages sont utiles et où les visiteurs abandonnent. Aucune donnée n'est vendue.",
-    marketing: "Marketing",
-    marketingBody: "Google Ads (témoins _gcl) et Meta/Facebook (témoin _fbp). Permettent de mesurer nos publicités et d'éviter de vous montrer la même annonce inutilement.",
-    alwaysOn: "Toujours actifs",
-    policyLink: "Voir notre politique de confidentialité.",
-  },
-
   form: {
     eyebrow: "Estimation gratuite",
     title: "Combien vaut votre véhicule ?",
     subtitle: "Quatre questions, moins d'une minute. On vous rappelle avec un prix ferme.",
+    replyTime: "On rappelle habituellement en moins de 5 minutes, de 8 h à 20 h 30.",
 
     vehicle: "Année, marque et modèle",
     vehiclePlaceholder: "Ex. : 2011 Honda Civic",
@@ -201,8 +185,6 @@ export const fr = {
     postal: "Code postal ou ville",
     postalPlaceholder: "Ex. : J7L 2W3 ou Terrebonne",
 
-    consent:
-      "J'accepte qu'Autos B2 communique avec moi par téléphone, texto ou courriel au sujet de ma soumission.",
 
 
     submit: "Obtenir mon estimation",
@@ -210,10 +192,9 @@ export const fr = {
 
     required: "Ce champ est requis",
     invalidPhone: "Entrez un numéro de téléphone valide",
-    consentRequired: "Vous devez accepter pour continuer",
     errorBody: "Ça n'a pas fonctionné. Appelez-nous plutôt :",
     tooManyBody: "Trop de tentatives en peu de temps. Réessayez dans quelques minutes, ou appelez-nous tout de suite :",
-    privacyNote: "Sans obligation. On ne partage jamais vos coordonnées.",
+    privacyNote: "En envoyant ce formulaire, vous acceptez qu'Autos B2 vous contacte par téléphone, texto ou courriel au sujet de votre soumission. Sans obligation. On ne partage jamais vos coordonnées.",
   },
 
   thanks: {

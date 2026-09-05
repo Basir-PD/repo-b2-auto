@@ -320,19 +320,39 @@ event alone. Those pages are `noindex` and disallowed in `robots.txt`.
 `sessionStorage`, first-touch wins. They ride along on the lead, which is what
 makes an offline conversion upload possible months later when a deal closes.
 
-### Law 25 consent
+### Law 25 — read this before running paid traffic
 
-`components/site/CookieConsent.tsx` + Google Consent Mode v2.
+**There is no cookie banner and no consent checkbox.** Both were removed on
+request. What replaced them:
 
-Order matters and is the point: a **plain inline script** in `<head>` sets every
-storage type to `denied` *before* the GTM container loads. The banner pushes an
-`update` only on an explicit choice. Getting that order backwards is the most
-common Law 25 failure.
+- Google Consent Mode v2 now defaults every storage type to **granted**. It
+  had to: the defaults were `denied` and the banner was the only thing that
+  ever granted them, so deleting the banner alone would have blocked GA4,
+  Google Ads and Meta permanently — and silently, because a blocked tag looks
+  exactly like a working one from outside.
+- The Meta Pixel no longer waits for consent either, for the same reason.
+- The privacy policy now discloses every tool by name (Google Tag Manager,
+  Analytics, Ads, Meta), the cookies each sets (`_ga`, `_gcl_*`, `_fbp`),
+  their retention, and how to opt out via the browser and the providers'
+  own controls.
+- The quote form states above the submit button that sending it is the
+  consent to be contacted.
 
-"Tout refuser" is the same size, weight and prominence as "Tout accepter". That
-symmetry is a legal requirement in Quebec, not a design preference. Granular
-toggles: Nécessaires (locked on) / Analytiques / Marketing. The decision is
-stored for 6 months, then the question is asked again.
+**The caveat, plainly:** Quebec's Law 25 expects consent for non-essential
+cookies to be *manifest, free and enlightened* — in practice, opt-in before
+the tracking loads. A disclosure in a privacy policy is weaker than that, and
+advertising cookies now set on first paint. This was a deliberate product
+decision; get legal advice before spending on traffic.
+
+**To reverse it**, in order:
+1. Flip the six values in `components/site/GoogleTagManager.tsx` back to
+   `'denied'` and restore `wait_for_update: 500`.
+2. Restore a banner component that pushes `gtag('consent','update',…)`.
+3. Re-gate `components/site/MetaPixel.tsx` behind that choice.
+4. Re-add the checkbox in `QuoteForm.tsx` and the `if (!consent)` check in
+   `app/api/quote/route.ts`.
+
+Git history has all four: `6cd9b44` is the last commit with the banner intact.
 
 ---
 

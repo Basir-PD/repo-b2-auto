@@ -166,27 +166,11 @@ export const en: Copy = {
     },
   },
 
-  consent: {
-    title: "We use cookies",
-    body: "We use cookies to improve your experience and measure how our Google and Meta advertising performs. Nothing is set before you choose. You can accept, refuse or customise at any time.",
-    acceptAll: "Accept all",
-    rejectAll: "Refuse all",
-    customise: "Customise",
-    save: "Save my choices",
-    necessary: "Necessary",
-    necessaryBody: "Required for the site to work: security, navigation, form submission and remembering this very choice. They set no advertising cookies and cannot be turned off.",
-    analytics: "Analytics",
-    analyticsBody: "Google Analytics (_ga cookies). Help us understand which pages are useful and where visitors drop off. No data is ever sold.",
-    marketing: "Marketing",
-    marketingBody: "Google Ads (_gcl cookies) and Meta/Facebook (_fbp cookie). Let us measure our advertising and avoid showing you the same ad needlessly.",
-    alwaysOn: "Always on",
-    policyLink: "See our privacy policy.",
-  },
-
   form: {
     eyebrow: "Free quote",
     title: "What is your vehicle worth?",
     subtitle: "Four questions, under a minute. We call you back with a firm price.",
+    replyTime: "We usually call back within 5 minutes, 8am to 8:30pm.",
 
     vehicle: "Year, make and model",
     vehiclePlaceholder: "e.g. 2011 Honda Civic",
@@ -197,8 +181,6 @@ export const en: Copy = {
     postal: "Postal code or city",
     postalPlaceholder: "e.g. J7L 2W3 or Terrebonne",
 
-    consent:
-      "I agree that Autos B2 may contact me by phone, text or email about my quote.",
 
 
     submit: "Get my quote",
@@ -206,10 +188,9 @@ export const en: Copy = {
 
     required: "This field is required",
     invalidPhone: "Enter a valid phone number",
-    consentRequired: "You need to agree before continuing",
     errorBody: "It didn't go through. Please call us instead:",
     tooManyBody: "Too many attempts in a short time. Try again in a few minutes, or just call us:",
-    privacyNote: "No obligation. We never share your details.",
+    privacyNote: "By sending this form you agree that Autos B2 may contact you by phone, text or email about your quote. No obligation. We never share your details.",
   },
 
   thanks: {

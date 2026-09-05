@@ -95,7 +95,6 @@ export async function POST(request: Request) {
   const source = clean(body.source) || "unknown";
   const locale = clean(body.locale) === "en" ? "en" : "fr";
   const attribution = describeAttribution(body.attribution);
-  const consent = body.consent === true;
 
   const errors: Record<string, string> = {};
 
@@ -109,11 +108,10 @@ export async function POST(request: Request) {
     if (!postal) errors.postal = "required";
     if (!vehicleInput) errors.vehicle = "required";
     /*
-      Checked server-side as well as in the form. A client-side check is a
-      convenience for the visitor; it is not a record, and Law 25 puts the
-      burden of proving consent on us.
+      No consent field is checked here any more: the checkbox was removed
+      from the form, and requiring it server-side would 422 every real
+      submission. The consent statement now sits above the submit button.
     */
-    if (!consent) errors.consent = "required";
   }
 
   if (Object.keys(errors).length) {
@@ -153,9 +151,14 @@ export async function POST(request: Request) {
     when someone types a valid number and leaves WITHOUT ticking the box, so
     there is no consent to record. See README before working those.
   */
+  /*
+    Still recorded, but describing what actually happened. The consent is now
+    given by sending the form, having read the line above the button — not by
+    ticking a box. Partials never reached that line at all.
+  */
   const consentLine = partial
-    ? "⚠️ AUCUN CONSENTEMENT ENREGISTRÉ — formulaire abandonné avant l'envoi"
-    : `Consentement accordé le ${new Date().toISOString()} (téléphone, texto, courriel)`;
+    ? "⚠️ AUCUN CONSENTEMENT — formulaire abandonné avant l'envoi"
+    : `Formulaire envoyé le ${new Date().toISOString()} — avis de consentement affiché (téléphone, texto, courriel)`;
 
   const message = [
     partial ? "⚠️ FORMULAIRE ABANDONNÉ" : null,
