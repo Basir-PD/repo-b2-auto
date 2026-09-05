@@ -172,6 +172,7 @@ export default function QuoteForm({
 
   return (
     <div
+      id="quote"
       className={`rounded-2xl bg-white ${compact ? "p-5 sm:p-6" : "p-6 sm:p-8"} shadow-xl ring-1 ring-slate-900/5`}
     >
       <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand-700">{t.eyebrow}</p>
@@ -198,7 +199,24 @@ export default function QuoteForm({
         {t.replyTime}
       </p>
 
-      <form onSubmit={handleSubmit} noValidate className="mt-6 flex flex-col gap-4">
+      {/*
+        Three handles, each for a different consumer:
+
+        - `id` is unique per instance, matching how the fields are named, so
+          two forms on one page could never collide.
+        - `data-quote-form` is the same on every page, which is what GTM wants:
+          one trigger with a CSS selector rather than a rule per template.
+        - the wrapper carries `id="quote"` so anything can link to #quote and
+          land on the form; globals.css already gives every [id] a
+          scroll-margin so the sticky header does not cover it.
+      */}
+      <form
+        id={`${source}-form`}
+        data-quote-form={source}
+        onSubmit={handleSubmit}
+        noValidate
+        className="mt-6 flex flex-col gap-4"
+      >
         {/* Honeypot — off-screen, never announced, irresistible to bots. */}
         <div className="absolute -left-[9999px]" aria-hidden="true">
           <label htmlFor={`${source}-company`}>Company</label>
