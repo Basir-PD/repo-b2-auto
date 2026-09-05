@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { GTM_ID } from "@/lib/tracking";
 
 /**
@@ -28,15 +27,29 @@ gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personali
 gtag('set','url_passthrough',true);gtag('set','ads_data_redaction',true);`,
         }}
       />
-      <Script id="gtm" strategy="afterInteractive">
-        {`
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','${GTM_ID}');
-        `}
-      </Script>
+      {/*
+        Google's own snippet, verbatim, as a raw tag so it lands in <head> —
+        which is what their install instructions ask for. next/script's
+        afterInteractive injects into <body> instead, and the container then
+        starts several hundred milliseconds later, which costs events from
+        anyone who taps a phone number and leaves quickly.
+
+        It does not block: the snippet's only job is to append an async
+        script tag. It stays AFTER the consent default above, so no tag can
+        fire before consent state is declared.
+      */}
+      {/* eslint-disable-next-line @next/next/next-script-for-ga -- see above:
+          next/script places this in <body>, which is the thing being fixed. */}
+      <script
+        id="gtm"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`,
+        }}
+      />
     </>
   );
 }
