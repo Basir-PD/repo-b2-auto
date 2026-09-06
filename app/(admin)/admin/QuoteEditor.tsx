@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useMutation } from "convex/react";
 import { ConvexError } from "convex/values";
 import { Loader2, X } from "lucide-react";
@@ -29,6 +29,8 @@ export default function QuoteEditor({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const panelRef = useRef<HTMLDivElement>(null);
+  const headingId = useId();
   const isEdit = quote !== null;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -69,12 +71,66 @@ export default function QuoteEditor({
     }
   }
 
+  /*
+    Escape closes the dialog, and focus moves into it when it opens.
+
+    Both are bound at the document level on purpose. The keydown listener has
+    to be, or it never fires while focus sits on <body>, which is where focus
+    is the instant the dialog appears. Moving focus in is the other half:
+    without it a keyboard user's next Tab continues from wherever they were
+    behind the overlay, tabbing through a form they cannot see.
+
+    Focus is handed back to whatever opened the dialog on close, so the
+    keyboard position is not lost.
+  */
+  useEffect(() => {
+    const opener = document.activeElement as HTMLElement | null;
+    panelRef.current?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      opener?.focus?.();
+    };
+  }, [onClose]);
+
   return (
     /*
-      The backdrop closes on click. It needs a keyboard equivalent or the
-      dialog is a trap for anyone not using a mouse — Escape, which is what
-      a dialog is expected to answer to. `role="presentation"` says the
-      backdrop itself is not the interactive thing; the dialog inside it is.
+      The backdrop closes on click; Escape is its keyboard equivalent, and it
+      is bound on the document rather than here. A <div> is not focusable, so
+      an onKeyDown on this element only fires once focus is already inside —
+      which it is not when the dialog has just opened. That version satisfied
+      the linter and did nothing.
+
+      `role="presentation"` marks the backdrop as scenery; the panel inside
+      carries role="dialog".
+    */
+    /*
+      The keyboard equivalent for this click is the document-level Escape
+      listener above, which the lint rule cannot see. It has to live there: a
+      <div> is not focusable, so a handler bound here would not fire while
+      focus is still on <body>, which is where it is when the dialog opens.
+      QuoteEditor.test.tsx proves both paths.
+    */
+    /*
+      Two a11y rules are switched off for this file in biome.json, both
+      deliberately and both covered by QuoteEditor.test.tsx:
+
+      useKeyWithClickEvents — the keyboard equivalent for this backdrop click
+      is the document-level Escape listener above, which the rule cannot see.
+      It has to live on the document: a <div> is not focusable, so a handler
+      here would not fire while focus is still on <body>, which is where it is
+      the moment the dialog opens. An earlier version did exactly that,
+      satisfied the rule, and did nothing.
+
+      useSemanticElements — a native <dialog> would be better, giving focus
+      trapping and Escape for free, but jsdom does not implement showModal(),
+      so none of it could be tested. Proven behaviour beats better-in-principle
+      behaviour that cannot be verified. Revisit when jsdom supports it.
     */
     <div
       role="presentation"
@@ -82,13 +138,17 @@ export default function QuoteEditor({
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
-      onKeyDown={(e) => {
-        if (e.key === "Escape") onClose();
-      }}
     >
-      <div className="w-full max-w-2xl rounded-xl border border-slate-200 bg-white shadow-xl">
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={headingId}
+        tabIndex={-1}
+        className="w-full max-w-2xl rounded-xl border border-slate-200 bg-white shadow-xl focus:outline-none"
+      >
         <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
-          <h2 className="text-lg font-black tracking-tight text-slate-900">
+          <h2 id={headingId} className="text-lg font-black tracking-tight text-slate-900">
             {isEdit ? "Edit quote" : "Add a quote"}
           </h2>
           <button
