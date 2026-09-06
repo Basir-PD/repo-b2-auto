@@ -157,6 +157,13 @@ export const en: Copy = {
     faqHeading: "Frequently asked questions",
     faqAllLink: "See all questions",
 
+    yard: {
+      eyebrow: "Our yard",
+      title: "A real recycler, at a real address",
+      body: "Not a middleman with a phone number. Our yard is open 7 days a week and you are welcome to drop by.",
+      directions: "Get directions",
+      mapAlt: "Map of the Autos B2 yard at 340 Chemin Pincourt, Mascouche",
+    },
     finalCta: {
       title: "Your old car is worth money. Find out how much.",
       sub: "Free quote, no obligation, in under 2 minutes.",

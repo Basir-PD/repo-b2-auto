@@ -650,7 +650,7 @@ export default async function SlugPage({
 
                 <div className="mt-8 overflow-hidden rounded-xl border border-slate-200">
                   <iframe
-                    src={mapsEmbedUrl}
+                    src={mapsEmbedUrl()}
                     title={
                       lang === "fr"
                         ? `Carte — ${siteConfig.name}, ${fullAddress}`
