@@ -162,9 +162,18 @@ export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encode
   `${siteConfig.name}, ${fullAddress}`
 )}`;
 
-export const mapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(
-  fullAddress
-)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+/**
+ * Embeddable map of the yard.
+ *
+ * The zoom is a parameter because the two uses want different things: the
+ * contact page wants enough context to plan a drive, the homepage wants to
+ * show that 340 Chemin Pincourt is a real place with a real lot behind it.
+ */
+export function mapsEmbedUrl(zoom = 14) {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(
+    fullAddress
+  )}&t=&z=${zoom}&ie=UTF8&iwloc=&output=embed`;
+}
 
 /** Route from the yard to a given city — used on every city page. */
 export function routeEmbedUrl(city: string) {

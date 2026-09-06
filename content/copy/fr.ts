@@ -164,6 +164,13 @@ export const fr = {
     faqHeading: "Questions fréquentes",
     faqAllLink: "Voir toutes les questions",
 
+    yard: {
+      eyebrow: "Notre cour",
+      title: "On est un vrai recycleur, à une vraie adresse",
+      body: "Pas un intermédiaire avec un numéro de téléphone. Notre cour est ouverte 7 jours sur 7 et vous êtes bienvenu de passer.",
+      directions: "Obtenir l'itinéraire",
+      mapAlt: "Carte de la cour d'Autos B2 au 340 Chemin Pincourt, Mascouche",
+    },
     finalCta: {
       title: "Votre vieux char vaut de l'argent. Découvrez combien.",
       sub: "Estimation gratuite, sans obligation, en moins de 2 minutes.",
