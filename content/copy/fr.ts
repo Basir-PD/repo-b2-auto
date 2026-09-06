@@ -177,13 +177,9 @@ export const fr = {
     replyTime: "On rappelle habituellement en moins de 5 minutes, de 8 h à 20 h 30.",
 
     vehicle: "Année, marque et modèle",
-    vehiclePlaceholder: "Ex. : 2011 Honda Civic",
     name: "Prénom et nom",
-    namePlaceholder: "Votre nom complet",
     phone: "Téléphone",
-    phonePlaceholder: "(514) 555-1234",
     postal: "Code postal ou ville",
-    postalPlaceholder: "Ex. : J7L 2W3 ou Terrebonne",
 
 
 
