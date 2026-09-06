@@ -173,13 +173,9 @@ export const en: Copy = {
     replyTime: "We usually call back within 5 minutes, 8am to 8:30pm.",
 
     vehicle: "Year, make and model",
-    vehiclePlaceholder: "e.g. 2011 Honda Civic",
     name: "First and last name",
-    namePlaceholder: "Your full name",
     phone: "Phone",
-    phonePlaceholder: "(514) 555-1234",
     postal: "Postal code or city",
-    postalPlaceholder: "e.g. J7L 2W3 or Terrebonne",
 
 
 
