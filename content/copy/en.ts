@@ -32,6 +32,7 @@ export const en: Copy = {
     callCta: `Call ${PHONE}`,
     callAria: "Call Autos B2 now",
     quoteCta: "Get my free quote",
+    callShort: "Call",
     whatsapp: "WhatsApp",
     whatsappAria: "Message Autos B2 on WhatsApp",
     whatsappTagline: "Send us a photo of your car",
