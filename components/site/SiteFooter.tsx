@@ -146,11 +146,14 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
         <div className="mt-12 flex flex-col gap-3 border-t border-slate-800 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           {/* Dynamic — never a hardcoded year. */}
           <p>
-            © {year} {siteConfig.name}. {lang === "fr" ? "Tous droits réservés." : "All rights reserved."}{" "}
-            {fullAddress}.
+            © {year} {siteConfig.name}.{" "}
+            {lang === "fr" ? "Tous droits réservés." : "All rights reserved."} {fullAddress}.
           </p>
           <p className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <Link href={pathFor("privacy", lang)} className="font-semibold text-white underline hover:text-brand-400">
+            <Link
+              href={pathFor("privacy", lang)}
+              className="font-semibold text-white underline hover:text-brand-400"
+            >
               {lang === "fr" ? "Politique de confidentialité" : "Privacy policy"}
             </Link>
             <Link href={pathFor("terms", lang)} className="hover:text-white">

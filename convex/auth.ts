@@ -36,7 +36,9 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
   providers: [
     Password({
       profile(params) {
-        const email = String(params.email ?? "").trim().toLowerCase();
+        const email = String(params.email ?? "")
+          .trim()
+          .toLowerCase();
 
         if (!isAdminEmail(email)) {
           // Deliberately vague: don't confirm which addresses are admins.

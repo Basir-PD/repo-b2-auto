@@ -57,8 +57,7 @@ export const siteConfig = {
    * down, so it cannot be a reformatted guess.
    */
   trackingPhone:
-    process.env.NEXT_PUBLIC_TRACKING_PHONE_E164 &&
-    process.env.NEXT_PUBLIC_TRACKING_PHONE_DISPLAY
+    process.env.NEXT_PUBLIC_TRACKING_PHONE_E164 && process.env.NEXT_PUBLIC_TRACKING_PHONE_DISPLAY
       ? {
           e164: process.env.NEXT_PUBLIC_TRACKING_PHONE_E164,
           display: process.env.NEXT_PUBLIC_TRACKING_PHONE_DISPLAY,

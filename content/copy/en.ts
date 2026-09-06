@@ -99,11 +99,7 @@ export const en: Copy = {
       ],
     },
 
-    stats: [
-      "2,000 vehicles bought per year",
-      "10 years in Mascouche",
-      "Open 7 days, 8am–8:30pm",
-    ],
+    stats: ["2,000 vehicles bought per year", "10 years in Mascouche", "Open 7 days, 8am–8:30pm"],
 
     why: {
       title: "Why people in Mascouche and Terrebonne call us",
@@ -154,7 +150,8 @@ export const en: Copy = {
     },
 
     fleetTitle: "Our fleet, at work",
-    fleetSub: "Our own trucks, our own drivers. These are photos from our pickups, not bought from a stock library.",
+    fleetSub:
+      "Our own trucks, our own drivers. These are photos from our pickups, not bought from a stock library.",
     reviewsHeading: "5.0 ★ from 5 Google reviews",
 
     faqHeading: "Frequently asked questions",
@@ -177,8 +174,6 @@ export const en: Copy = {
     phone: "Phone",
     postal: "Postal code or city",
 
-
-
     submit: "Get my quote",
     submitting: "Sending…",
 
@@ -186,7 +181,8 @@ export const en: Copy = {
     invalidPhone: "Enter a valid phone number",
     errorBody: "It didn't go through. Please call us instead:",
     tooManyBody: "Too many attempts in a short time. Try again in a few minutes, or just call us:",
-    privacyNote: "By sending this form you agree that Autos B2 may contact you by phone, text or email about your quote. No obligation. We never share your details.",
+    privacyNote:
+      "By sending this form you agree that Autos B2 may contact you by phone, text or email about your quote. No obligation. We never share your details.",
   },
 
   thanks: {

@@ -65,14 +65,27 @@ export default function SignIn() {
 
         <form onSubmit={handleSubmit} className="mt-7 space-y-3">
           <div>
-            <label htmlFor="email" className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-600">
+            <label
+              htmlFor="email"
+              className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-600"
+            >
               Email
             </label>
-            <input id="email" name="email" type="email" autoComplete="email" required className={field} />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              className={field}
+            />
           </div>
 
           <div>
-            <label htmlFor="password" className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-600">
+            <label
+              htmlFor="password"
+              className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-600"
+            >
               Password
             </label>
             <input
@@ -91,7 +104,10 @@ export default function SignIn() {
           </div>
 
           {error && (
-            <p role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm font-medium text-red-800">
+            <p
+              role="alert"
+              className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm font-medium text-red-800"
+            >
               {error}
             </p>
           )}
@@ -108,10 +124,15 @@ export default function SignIn() {
 
         <button
           type="button"
-          onClick={() => { setFlow(flow === "signIn" ? "signUp" : "signIn"); setError(null); }}
+          onClick={() => {
+            setFlow(flow === "signIn" ? "signUp" : "signIn");
+            setError(null);
+          }}
           className="mt-5 text-sm font-semibold text-slate-500 underline underline-offset-4 hover:text-slate-800"
         >
-          {flow === "signIn" ? "First time? Create your account" : "Already have an account? Sign in"}
+          {flow === "signIn"
+            ? "First time? Create your account"
+            : "Already have an account? Sign in"}
         </button>
       </div>
     </main>

@@ -381,11 +381,71 @@ just hidden after hydration.
 ## Commands
 
 ```bash
-npm run dev     # http://localhost:3000
-npm run build   # static export of every marketing route
-npm run lint
-npx tsc --noEmit
+npm run dev        # http://localhost:3000
+npm run build      # static export of every marketing route
+
+npm run verify     # everything the pre-commit hook enforces, ~4s
+npm test           # Vitest, once
+npm run test:watch # Vitest, watching
+npm run check      # Biome: format + lint
+npm run check:fix  # Biome: apply what it can fix
+npm run lint       # ESLint (Next.js-specific rules)
+npm run typecheck  # tsc --noEmit
 ```
+
+## Tests
+
+Vitest, 44 specs, all under four seconds. They cover the one path that costs
+money when it breaks:
+
+- `lib/phone.test.ts` — the shared phone rules. Both the form and the API
+  import `lib/phone.ts`, which exists because they used to disagree: the form
+  wanted ten digits while the API accepted any 10–20 characters from
+  `[+()\d\s.-]`, so `"(((((((((("`  passed server-side and produced a lead
+  with nothing dialable in it.
+- `components/site/QuoteForm.test.tsx` — labels resolve for screen readers,
+  validation blocks submission, the phone formats as typed, a success posts
+  to `/api/quote/` and redirects to the thank-you page, `generate_lead` fires
+  **only** after the API confirms, a 429 says "too many attempts" instead of
+  claiming failure, a 502 keeps the typed data, and partial capture beacons
+  once and never after a successful submit.
+- `app/api/quote/route.test.ts` — validation, the consent timestamp that goes
+  into the record, attribution passthrough, honeypot answering 200 without
+  storing, and per-IP throttling that does not affect other visitors.
+
+The suite was mutation-tested rather than assumed: weakening server phone
+validation fails 3 specs, firing `generate_lead` before the API confirms
+fails 1, dropping the trailing slash from the API path fails 2, and breaking
+the country-code strip fails 2.
+
+Not covered here, by choice: end-to-end browser flows. They need a running
+server and a live Convex deployment, which makes them too slow and too
+flaky for a commit hook.
+
+## Pre-commit
+
+Husky + lint-staged, in `.husky/pre-commit`. On every commit:
+
+1. **Biome** formats and fixes the staged files, then re-stages the result.
+2. **ESLint** runs on staged `.ts`/`.tsx` for the Next.js-specific rules
+   Biome has no equivalent for — the `next/script` placement rule and
+   `no-img-element` have both caught real bugs here.
+3. **tsc** typechecks the whole project. It cannot be scoped to staged files
+   and stay meaningful: a change in one file breaks another.
+4. **Vitest** runs only the specs reachable from what changed.
+
+The whole gate is about four seconds. That is deliberate — a hook slow enough
+to tempt people into `--no-verify` is worse than no hook, and
+`.github/workflows/ci.yml` runs the same checks plus a full build on push, so
+a bypassed hook is still caught.
+
+**Biome and ESLint split the work** rather than overlapping: Biome owns
+formatting and general JS/TS rules, ESLint keeps `next/core-web-vitals`. Three
+Biome rules are off with reasons recorded in `biome.json` — non-null
+assertions that sit behind a guard, `dangerouslySetInnerHTML` for JSON-LD and
+the GTM snippet, and `useExhaustiveDependencies`, where Biome's advice is
+wrong and ESLint's version is right. CSS is excluded from the formatter: it
+expands the hand-aligned `@keyframes` into something harder to read.
 
 ## Hard constraints — do not break these
 

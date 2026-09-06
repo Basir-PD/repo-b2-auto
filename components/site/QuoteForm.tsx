@@ -9,24 +9,8 @@ import { getCopy } from "@/content/copy";
 import { pushEvent } from "@/lib/tracking";
 import { fbqTrack } from "@/components/site/MetaPixel";
 import { readAttribution } from "@/lib/attribution";
+import { formatPhone, phoneIsValid } from "@/lib/phone";
 import PhoneLink from "@/components/site/PhoneLink";
-
-/** Ten digits is a North American number; anything else is a typo. */
-function digitsOf(value: string) {
-  return value.replace(/\D/g, "").slice(0, 11);
-}
-
-/** Progressive (514) 555-1234 formatting that never fights the caret. */
-function formatPhone(value: string) {
-  const d = digitsOf(value).replace(/^1/, "");
-  if (d.length <= 3) return d;
-  if (d.length <= 6) return `(${d.slice(0, 3)}) ${d.slice(3)}`;
-  return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6, 10)}`;
-}
-
-function phoneIsValid(value: string) {
-  return digitsOf(value).replace(/^1/, "").length === 10;
-}
 
 type Values = { vehicle: string; name: string; phone: string; postal: string };
 
@@ -269,7 +253,12 @@ export default function QuoteForm({
             />
           </Field>
 
-          <Field id={`${source}-postal`} label={t.postal} error={errors.postal} className="sm:flex-1">
+          <Field
+            id={`${source}-postal`}
+            label={t.postal}
+            error={errors.postal}
+            className="sm:flex-1"
+          >
             <input
               id={`${source}-postal`}
               value={values.postal}

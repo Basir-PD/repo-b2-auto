@@ -1,0 +1,30 @@
+name: CI
+
+# The pre-commit hook can be skipped with --no-verify, and a hook only ever
+# sees the machine it runs on. This is the check that cannot be bypassed.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Format and lint (Biome)
+        run: npm run check
+      - name: Lint (Next.js rules)
+        run: npm run lint
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Tests
+        run: npm test
+      # Last, because it is the slowest and the cheap checks should fail first.
+      - name: Build
+        run: npm run build

@@ -103,9 +103,7 @@ export function otherLang(lang: Lang): Lang {
  * switcher both depend on.
  * ------------------------------------------------------------------ */
 
-export type Resolved =
-  | { type: "page"; key: PageKey }
-  | { type: "city"; cityKey: string };
+export type Resolved = { type: "page"; key: PageKey } | { type: "city"; cityKey: string };
 
 const PAGE_BY_SLUG: Record<Lang, Map<string, PageKey>> = {
   fr: new Map(),
@@ -145,7 +143,9 @@ export function resolveSlug(lang: Lang, slug: string): Resolved | null {
  * would be a false alternate, and Google drops the whole cluster when the
  * return tags don't match.
  */
-export function alternatesFor(resolved: Resolved | { type: "home" }): Partial<Record<Lang, string>> {
+export function alternatesFor(
+  resolved: Resolved | { type: "home" }
+): Partial<Record<Lang, string>> {
   const out: Partial<Record<Lang, string>> = {};
 
   for (const lang of LANGS) {

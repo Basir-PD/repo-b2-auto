@@ -171,9 +171,9 @@ export const SERVICES: ServicePage[] = [
       ],
       en: [
         {
-          h2: "\"Free\" means free",
+          h2: '"Free" means free',
           body: [
-            "Some buyers quote an amount, then take $100 or $150 of \"travel fees\" off it once the tow truck is in the driveway. The price we confirm on the phone is the amount that ends up in your hand, towing included.",
+            'Some buyers quote an amount, then take $100 or $150 of "travel fees" off it once the tow truck is in the driveway. The price we confirm on the phone is the amount that ends up in your hand, towing included.',
             "That holds anywhere in our service area, whether you're five minutes from the yard or up in Saint-Lin-Laurentides.",
           ],
         },
