@@ -161,6 +161,11 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: raw === "fr" ? "fr_CA" : "en_CA",
+      // Only claim the alternate when the page actually has a twin — six of
+      // the nine city pages are French-only.
+      ...(alternates.fr && alternates.en
+        ? { alternateLocale: raw === "fr" ? ["en_CA"] : ["fr_CA"] }
+        : {}),
       url: `${siteConfig.url}/${raw}/${slug}/`,
       siteName: siteConfig.name,
       title: meta.title,

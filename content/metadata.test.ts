@@ -88,6 +88,40 @@ describe("city pages", () => {
   }
 });
 
+describe("heading labels", () => {
+  /*
+    The footer's column label and the page section that lists the same cities
+    were both "Areas we serve" in English, so the homepage shipped two H2s
+    with identical text — an audit flags it, and anyone navigating by heading
+    hears the same label twice for different content. French already
+    distinguished them.
+  */
+  for (const lang of LANGS) {
+    it(`${lang}: the footer's city column does not duplicate the service-area section`, () => {
+      const t = getCopy(lang);
+      expect(t.nav.cities.toLowerCase()).not.toBe(t.home.serviceArea.title.toLowerCase());
+    });
+
+    it(`${lang}: no two homepage section headings share a label`, () => {
+      const t = getCopy(lang);
+      const headings = [
+        t.home.howItWorks.title,
+        t.home.buyAll.title,
+        t.home.why.title,
+        t.home.fleetTitle,
+        t.home.serviceArea.title,
+        t.home.faqHeading,
+        t.home.yard.title,
+        t.home.finalCta.title,
+        // Footer column labels, which sit at the same level.
+        t.nav.services,
+        t.nav.cities,
+      ].map((h) => h.toLowerCase());
+      expect(new Set(headings).size, headings.join(" | ")).toBe(headings.length);
+    });
+  }
+});
+
 describe("blog posts", () => {
   for (const post of POSTS) {
     it(post.slug, () => {
