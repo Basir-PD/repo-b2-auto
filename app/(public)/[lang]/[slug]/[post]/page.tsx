@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ROUTES, isLang, pathFor, type Lang } from "@/config/routes";
-import { siteConfig } from "@/config/site";
+import { siteConfig, fullAddress } from "@/config/site";
 import { getCopy } from "@/content/copy";
 import { POSTS, postBySlug } from "@/content/blog";
 import { PageHeader, Sections, CtaBand } from "@/components/pages/PageShell";
@@ -39,7 +39,16 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       publishedTime: post.date,
+      images: [
+        {
+          url: "/hero-tow-truck.jpg",
+          width: 1536,
+          height: 1024,
+          alt: `${siteConfig.name} — ${fullAddress}`,
+        },
+      ],
     },
+    twitter: { card: "summary_large_image" },
   };
 }
 

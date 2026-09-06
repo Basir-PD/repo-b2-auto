@@ -138,7 +138,19 @@ export async function generateMetadata({
       siteName: siteConfig.name,
       title: meta.title,
       description: meta.description,
+      // Inner pages shipped no og:image at all, so anything sharing one of
+      // these URLs — Slack, WhatsApp, an AI answer, a Google sitelink
+      // preview — had nothing to show and fell back to a generic icon.
+      images: [
+        {
+          url: "/hero-tow-truck.jpg",
+          width: 1536,
+          height: 1024,
+          alt: `${siteConfig.name} — ${fullAddress}`,
+        },
+      ],
     },
+    twitter: { card: "summary_large_image" },
   };
 }
 
