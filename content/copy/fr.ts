@@ -51,9 +51,9 @@ export const fr = {
   },
 
   home: {
-    metaTitle: "Rachat Auto Scrap Mascouche | Argent Comptant + Remorquage Gratuit — Autos B2",
+    metaTitle: "Rachat d'auto scrap Mascouche | Autos B2",
     metaDescription:
-      "Nous achetons votre auto scrap, accidentée ou en panne. Argent comptant sur place, remorquage gratuit partout sur la Rive-Nord. Estimation gratuite en 2 minutes. Ouvert 7 jours, 8h à 20h30.",
+      "On achète votre auto scrap, accidentée ou en panne. Argent comptant sur place, remorquage gratuit sur la Rive-Nord. Ouvert 7 jours, 8 h à 20 h 30.",
 
     h1: "Rachat d'auto scrap à Mascouche — payé comptant, sur place",
     sub: "On achète votre véhicule peu importe son état : en panne, accidenté, sans moteur ou déclaré perte totale. Remorquage gratuit, argent comptant à l'enlèvement, et on s'occupe de la paperasse SAAQ.",

@@ -39,7 +39,12 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(siteConfig.url),
-    title: { default: t.home.metaTitle, template: `%s | ${siteConfig.name}` },
+    /*
+      No `template`. Page titles compose their own with lib/seo's pageTitle(),
+      which appends the brand once and guarantees the 60-char limit. A
+      template here appended it a second time.
+    */
+    title: t.home.metaTitle,
     description: t.home.metaDescription,
     applicationName: siteConfig.name,
     creator: siteConfig.name,

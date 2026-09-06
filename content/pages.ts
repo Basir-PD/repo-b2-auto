@@ -12,8 +12,8 @@ export type StaticPage = {
 
 export const ABOUT: StaticPage = {
   metaTitle: {
-    fr: "À propos d'Autos B2 | Recycleur automobile à Mascouche",
-    en: "About Autos B2 | Auto recycler in Mascouche",
+    fr: "À propos — recycleur à Mascouche",
+    en: "About — auto recycler in Mascouche",
   },
   metaDescription: {
     fr: "Autos B2 est un recycleur automobile licencié établi au 340 Chemin Pincourt à Mascouche depuis 10 ans. Environ 2 000 véhicules achetés par année.",
@@ -91,8 +91,8 @@ export const ABOUT: StaticPage = {
 
 export const PRIVACY: StaticPage = {
   metaTitle: {
-    fr: "Politique de confidentialité | Autos B2",
-    en: "Privacy policy | Autos B2",
+    fr: "Politique de confidentialité",
+    en: "Privacy policy",
   },
   metaDescription: {
     fr: "Comment Autos B2 recueille, utilise et conserve vos renseignements personnels, conformément à la Loi 25 du Québec.",
@@ -241,8 +241,8 @@ export const PRIVACY: StaticPage = {
 
 export const TERMS: StaticPage = {
   metaTitle: {
-    fr: "Conditions d'utilisation | Autos B2",
-    en: "Terms of use | Autos B2",
+    fr: "Conditions d'utilisation",
+    en: "Terms of use",
   },
   metaDescription: {
     fr: "Conditions d'utilisation du site d'Autos B2 et portée des estimations données en ligne ou par téléphone.",
@@ -317,8 +317,8 @@ export const TERMS: StaticPage = {
 
 export const CONTACT: StaticPage = {
   metaTitle: {
-    fr: "Contact | Autos B2 — 340 Chemin Pincourt, Mascouche",
-    en: "Contact | Autos B2 — 340 Chemin Pincourt, Mascouche",
+    fr: "Contact — 340 Chemin Pincourt, Mascouche",
+    en: "Contact — 340 Chemin Pincourt, Mascouche",
   },
   metaDescription: {
     fr: `Joignez Autos B2 au ${siteConfig.phone.display}, 7 jours sur 7 de 8 h à 20 h 30. Notre cour : ${fullAddress}.`,

@@ -48,9 +48,9 @@ export const en: Copy = {
   },
 
   home: {
-    metaTitle: "Cash for Junk Cars Mascouche & Laval | Free Towing — Autos B2",
+    metaTitle: "Cash for Junk Cars Mascouche & Laval | Autos B2",
     metaDescription:
-      "We buy scrap, damaged and non-running cars for cash. Free towing across the North Shore and Laval, paid on the spot, SAAQ paperwork handled. Open 7 days, 8am to 8:30pm.",
+      "We buy scrap, damaged and non-running cars for cash. Free towing across the North Shore and Laval, paid on pickup. Open 7 days, 8am to 8:30pm.",
 
     h1: "Cash for junk cars in Mascouche — paid on the spot",
     sub: "We buy your vehicle in any condition: not running, wrecked, engine-less or written off. Free towing, cash on pickup, and we handle the SAAQ paperwork for you.",

@@ -25,11 +25,11 @@ export const SERVICES: ServicePage[] = [
       en: "Cash for junk cars",
     },
     metaTitle: {
-      fr: "Rachat Auto Scrap | Argent Comptant Sur Place — Autos B2 Mascouche",
-      en: "Cash for Junk Cars | Paid On the Spot — Autos B2 Mascouche",
+      fr: "Rachat d'auto scrap",
+      en: "Cash for junk cars",
     },
     metaDescription: {
-      fr: "Autos B2 rachète votre auto scrap comptant, de 300 $ à 3 000 $ selon le véhicule. Remorquage gratuit, transfert SAAQ inclus, ouvert 7 jours de 8 h à 20 h 30.",
+      fr: "On rachète votre auto scrap comptant, de 300 $ à 3 000 $ selon le véhicule. Remorquage gratuit et transfert SAAQ inclus. Ouvert 7 jours, 8 h à 20 h 30.",
       en: "Autos B2 buys your junk car for cash, $300 to $3,000 depending on the vehicle. Free towing, SAAQ transfer included, open 7 days 8am to 8:30pm.",
     },
     h1: {
@@ -119,11 +119,11 @@ export const SERVICES: ServicePage[] = [
       en: "Free vehicle towing",
     },
     metaTitle: {
-      fr: "Remorquage Gratuit Rive-Nord et Laval | Enlèvement d'Auto — Autos B2",
-      en: "Free Towing North Shore & Laval | Vehicle Removal — Autos B2",
+      fr: "Remorquage gratuit Rive-Nord et Laval",
+      en: "Free towing, North Shore and Laval",
     },
     metaDescription: {
-      fr: "Remorquage gratuit inclus avec chaque rachat de véhicule. Enlèvement partout sur la Rive-Nord, à Laval et dans l'est de Montréal, souvent le jour même. 7 jours sur 7.",
+      fr: "Remorquage gratuit inclus avec chaque rachat. Enlèvement partout sur la Rive-Nord, à Laval et dans l'est de Montréal, souvent le jour même.",
       en: "Free towing included with every vehicle purchase. Pickup across the North Shore, Laval and east-end Montreal, often same day. 7 days a week.",
     },
     h1: {
@@ -213,11 +213,11 @@ export const SERVICES: ServicePage[] = [
       en: "Damaged and written-off vehicle buying",
     },
     metaTitle: {
-      fr: "Achat Auto Accidentée et Perte Totale | Comptant — Autos B2",
-      en: "We Buy Damaged & Written-Off Cars | Cash — Autos B2",
+      fr: "Achat d'auto accidentée et perte totale",
+      en: "We buy damaged and written-off cars",
     },
     metaDescription: {
-      fr: "Votre véhicule est accidenté ou déclaré perte totale ? Autos B2 l'achète comptant, remorquage gratuit inclus. Offre ferme au téléphone, enlèvement souvent le jour même.",
+      fr: "Véhicule accidenté ou perte totale ? On l'achète comptant, remorquage gratuit inclus. Offre ferme au téléphone, enlèvement souvent le jour même.",
       en: "Vehicle wrecked or written off? Autos B2 buys it for cash, free towing included. Firm offer on the phone, pickup often the same day.",
     },
     h1: {
@@ -305,11 +305,11 @@ export const SERVICES: ServicePage[] = [
       en: "Truck, SUV and van buying",
     },
     metaTitle: {
-      fr: "Achat de Camion, VUS et Fourgonnette | Comptant — Autos B2",
-      en: "We Buy Trucks, SUVs & Vans | Cash Paid — Autos B2",
+      fr: "Achat de camion, VUS et fourgonnette",
+      en: "We buy trucks, SUVs and vans",
     },
     metaDescription: {
-      fr: "Autos B2 achète camionnettes, VUS, fourgonnettes et véhicules commerciaux légers, en état ou non. Argent comptant, remorquage gratuit, partout sur la Rive-Nord et à Laval.",
+      fr: "On achète camionnettes, VUS, fourgonnettes et véhicules commerciaux légers, en état ou non. Argent comptant et remorquage gratuit sur la Rive-Nord.",
       en: "Autos B2 buys pickups, SUVs, vans and light commercial vehicles, running or not. Cash paid, free towing, across the North Shore and Laval.",
     },
     h1: {

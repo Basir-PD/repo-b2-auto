@@ -16,6 +16,7 @@ import {
 } from "@/config/routes";
 import { siteConfig, fullAddress, mapsEmbedUrl, routeEmbedUrl } from "@/config/site";
 import { getCopy } from "@/content/copy";
+import { pageTitle } from "@/lib/seo";
 import { faqFor } from "@/content/faq";
 import { CITIES, cityByKey, citiesFor } from "@/content/cities";
 import { serviceByKey } from "@/content/services";
@@ -62,27 +63,32 @@ function metaFor(lang: Lang, slug: string): Meta | null {
     const city = cityByKey(resolved.cityKey)!;
     return lang === "fr"
       ? {
-          title: `Cour à Scrap ${city.name} | Rachat Auto Comptant + Remorquage Gratuit`,
-          description: `Vous vendez une auto scrap à ${city.name} ? Autos B2 achète comptant, remorquage gratuit, enlèvement souvent le jour même. Estimation gratuite : ${siteConfig.phone.display}.`,
+          // pageTitle drops the qualifier for a long name like
+          // Saint-Lin-Laurentides rather than cutting it mid-word.
+          title: pageTitle(`Cour à scrap ${city.name}`, "rachat comptant"),
+          description: `Vendre une auto scrap à ${city.name} ? On achète comptant, remorquage gratuit, enlèvement souvent le jour même.`,
         }
       : {
-          title: `Scrap Car Buyer ${city.name} | Cash Paid + Free Towing`,
-          description: `Selling a scrap car in ${city.name}? Autos B2 pays cash, free towing, pickup often the same day. Free quote: ${siteConfig.phone.display}.`,
+          title: pageTitle(`Scrap car buyer ${city.name}`, "cash paid"),
+          description: `Selling a scrap car in ${city.name}? We pay cash, free towing, and pickup is often the same day.`,
         };
   }
 
   const service = serviceByKey(resolved.key);
   if (service) {
-    return { title: service.metaTitle[lang], description: service.metaDescription[lang] };
+    return {
+      title: pageTitle(service.metaTitle[lang]),
+      description: service.metaDescription[lang],
+    };
   }
 
   switch (resolved.key) {
     case "quote":
       return {
-        title:
-          lang === "fr"
-            ? "Estimation Gratuite pour Votre Auto Scrap | Autos B2"
-            : "Free Quote for Your Scrap Car | Autos B2",
+        title: pageTitle(
+          lang === "fr" ? "Estimation gratuite" : "Free quote",
+          lang === "fr" ? "votre auto scrap" : "your scrap car"
+        ),
         description:
           lang === "fr"
             ? "Obtenez un prix ferme pour votre véhicule en moins d'une minute. Quatre questions, sans obligation, remorquage gratuit inclus."
@@ -92,19 +98,22 @@ function metaFor(lang: Lang, slug: string): Meta | null {
       // Reachable only after a submit, and never indexed.
       return { title: t.thanks.metaTitle, description: t.thanks.metaDescription, noindex: true };
     case "about":
-      return { title: ABOUT.metaTitle[lang], description: ABOUT.metaDescription[lang] };
+      return { title: pageTitle(ABOUT.metaTitle[lang]), description: ABOUT.metaDescription[lang] };
     case "privacy":
-      return { title: PRIVACY.metaTitle[lang], description: PRIVACY.metaDescription[lang] };
+      return {
+        title: pageTitle(PRIVACY.metaTitle[lang]),
+        description: PRIVACY.metaDescription[lang],
+      };
     case "terms":
-      return { title: TERMS.metaTitle[lang], description: TERMS.metaDescription[lang] };
+      return { title: pageTitle(TERMS.metaTitle[lang]), description: TERMS.metaDescription[lang] };
     case "contact":
-      return { title: CONTACT.metaTitle[lang], description: CONTACT.metaDescription[lang] };
+      return {
+        title: pageTitle(CONTACT.metaTitle[lang]),
+        description: CONTACT.metaDescription[lang],
+      };
     case "faq":
       return {
-        title:
-          lang === "fr"
-            ? "Questions Fréquentes sur le Rachat d'Auto Scrap | Autos B2"
-            : "Frequently Asked Questions About Scrap Car Buying | Autos B2",
+        title: pageTitle(lang === "fr" ? "Questions fréquentes" : "Frequently asked questions"),
         description:
           lang === "fr"
             ? "Valeur d'une auto scrap, remorquage gratuit, documents SAAQ, délais et paiement comptant : les réponses aux questions qu'on nous pose le plus."
@@ -112,10 +121,10 @@ function metaFor(lang: Lang, slug: string): Meta | null {
       };
     case "blog":
       return {
-        title:
-          lang === "fr"
-            ? "Blogue | Vendre son auto scrap au Québec — Autos B2"
-            : "Blog | Selling your scrap car in Quebec — Autos B2",
+        title: pageTitle(
+          lang === "fr" ? "Blogue" : "Blog",
+          lang === "fr" ? "vendre son auto scrap" : "selling your scrap car"
+        ),
         description:
           lang === "fr"
             ? "Guides pratiques sur la valeur d'une auto scrap, la cession SAAQ, les pertes totales et la vente d'un véhicule en fin de vie au Québec."
