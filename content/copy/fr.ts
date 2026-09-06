@@ -51,12 +51,12 @@ export const fr = {
   },
 
   home: {
-    metaTitle: "Rachat d'auto scrap Mascouche | Autos B2",
+    metaTitle: "Vendre son auto scrap Laval, Montréal | Autos B2",
     metaDescription:
-      "On achète votre auto scrap, accidentée ou en panne. Argent comptant sur place, remorquage gratuit sur la Rive-Nord. Ouvert 7 jours, 8 h à 20 h 30.",
+      "Acheteur d'auto scrap à Laval, Montréal et la Rive-Nord. On achète accidentée, en panne ou perte totale. Cash pour auto et remorquage gratuit.",
 
-    h1: "Rachat d'auto scrap à Mascouche — payé comptant, sur place",
-    sub: "On achète votre véhicule peu importe son état : en panne, accidenté, sans moteur ou déclaré perte totale. Remorquage gratuit, argent comptant à l'enlèvement, et on s'occupe de la paperasse SAAQ.",
+    h1: "Vendre son auto scrap à Laval et Montréal — payé comptant",
+    sub: "Acheteur d'auto scrap à Laval, Montréal et sur la Rive-Nord. On achète votre véhicule peu importe son état : en panne, accidenté, sans moteur ou perte totale. Remorquage gratuit et cash pour auto à l'enlèvement.",
     priceAnchor: "De 300 $ à 3 000 $ comptant selon le véhicule",
     priceFigure: "300 $ – 3 000 $",
     priceCaption: "comptant, selon le véhicule",
@@ -73,7 +73,7 @@ export const fr = {
     ],
 
     howItWorks: {
-      title: "Comment ça fonctionne — 3 étapes, moins de 24 heures",
+      title: "Vendre son char scrap en 3 étapes, moins de 24 heures",
       steps: [
         {
           title: "Donnez-nous les infos de base",
@@ -91,14 +91,14 @@ export const fr = {
     },
 
     buyAll: {
-      title: "On achète tous les véhicules — aucune exception",
+      title: "Se débarrasser de son auto, peu importe son état",
       items: [
-        "Auto qui ne démarre plus",
-        "Véhicule accidenté ou perte totale",
+        "Vendre char scrap qui ne démarre plus",
+        "Vendre mon auto accidentée ou perte totale",
         "Auto sans moteur ou sans transmission",
-        "Camion, VUS et fourgonnette",
+        "Vendre minoune, camion, VUS ou fourgonnette",
         "Auto trop rouillée pour passer l'inspection",
-        "Véhicule sans papiers ou avec papiers perdus (on vous guide)",
+        "Véhicule sans papiers ou papiers perdus — on vous guide",
       ],
     },
 
@@ -109,7 +109,7 @@ export const fr = {
     ],
 
     why: {
-      title: "Pourquoi les gens de Mascouche et Terrebonne nous appellent",
+      title: "Qui achète les autos scrap à Laval et Montréal ?",
       points: [
         {
           title: "Un vrai recycleur, pas un intermédiaire.",
@@ -131,7 +131,7 @@ export const fr = {
     },
 
     serviceArea: {
-      title: "Notre zone de service",
+      title: "Scrap auto à Laval, Montréal et la Rive-Nord",
       cities: [
         "Mascouche",
         "Terrebonne",
@@ -156,7 +156,7 @@ export const fr = {
       linkLabel: "Voir la page de votre ville",
     },
 
-    fleetTitle: "Notre flotte, au travail",
+    fleetTitle: "Notre flotte de remorquage, au travail",
     fleetSub:
       "Nos propres camions, nos propres chauffeurs. Ces photos sont prises sur nos ramassages, pas achetées dans une banque d'images.",
     reviewsHeading: "5,0 ★ sur 5 avis Google",

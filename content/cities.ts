@@ -174,9 +174,9 @@ export const CITIES: City[] = [
     landmark: "l'autoroute 440 et le boulevard des Laurentides",
     copy: {
       fr: {
-        lede: "Laval est une ville de service pour nous, pas notre adresse : notre cour reste à Mascouche, au 340 Chemin Pincourt. On traverse par la 640 ouest ou la 25, ce qui met la plupart des secteurs lavallois à environ vingt-cinq minutes. C'est un grand territoire, et l'accès n'a rien à voir entre Saint-François et Chomedey.",
+        lede: "Pour du scrap auto à Laval, on se déplace — mais notre cour reste à Mascouche, au 340 Chemin Pincourt. On traverse par la 640 ouest ou la 25, ce qui met la plupart des secteurs lavallois à environ vingt-cinq minutes. C'est un grand territoire, et l'accès n'a rien à voir entre Saint-François et Chomedey.",
         worth:
-          "Le calcul ne change pas d'une ville à l'autre : poids du véhicule, année, convertisseur catalytique, pièces encore bonnes. Les offres vont généralement de 300 $ à 3 000 $. On confirme le montant au téléphone avant de se déplacer, pour que personne ne perde son temps — ni vous à attendre, ni nous à envoyer une remorqueuse pour un véhicule qui n'était pas celui décrit.",
+          "Le recyclage automobile à Laval se calcule comme ailleurs : poids du véhicule, année, convertisseur catalytique, pièces encore bonnes. Les offres vont généralement de 300 $ à 3 000 $. On confirme le montant au téléphone avant de se déplacer, pour que personne ne perde son temps — ni vous à attendre, ni nous à envoyer une remorqueuse pour un véhicule qui n'était pas celui décrit.",
         towing:
           "Dans l'est lavallois — Saint-François, Duvernay, Saint-Vincent-de-Paul — on arrive directement par la 25 et le boulevard Lévesque. Pour Vimont, Auteuil et Sainte-Rose, on passe par la 440 et le boulevard des Laurentides. Chomedey et Laval-des-Rapides, plus denses, demandent souvent un enlèvement planifié en dehors des heures de pointe : le plateau a besoin d'un espace dégagé, ce qui est plus simple en matinée dans les stationnements d'immeubles.",
         vehicles:
@@ -184,14 +184,14 @@ export const CITIES: City[] = [
         paperwork:
           "Même procédure qu'ailleurs : plaque récupérée, cession remplie, reçu officiel remis sur place à l'enlèvement. Vous n'avez pas à vous déplacer dans un point de service, et l'immatriculation cesse de courir à votre nom.",
         faqQ: "Vous ramassez partout à Laval, et dans quel délai ?",
-        faqA: "Oui, dans tous les secteurs, de Sainte-Rose à Saint-François. Le délai typique est de 24 à 48 heures parce qu'on regroupe les ramassages lavallois par secteur plutôt que de traverser la ville plusieurs fois dans la journée. Si c'est urgent, dites-le en appelant : il reste souvent une place le jour même.",
+        faqA: "Oui, dans tous les secteurs, de Sainte-Rose à Saint-François — c'est notre service d'auto recyclage Laval au complet. Le délai typique est de 24 à 48 heures parce qu'on regroupe les ramassages lavallois par secteur plutôt que de traverser la ville plusieurs fois dans la journée. Si c'est urgent, dites-le en appelant : il reste souvent une place le jour même.",
       },
       en: {
-        lede: "Laval is a service area for us, not our address: the yard stays in Mascouche, at 340 Chemin Pincourt. We cross by the 640 west or the 25, which puts most Laval sectors about twenty-five minutes out. It is a large territory, and access is nothing alike between Saint-François and Chomedey.",
+        lede: "Laval is a service area for us, not our address: the yard stays in Mascouche, at 340 Chemin Pincourt, and we are the junk car buyer that drives to you. We cross by the 640 west or the 25, which puts most Laval sectors about twenty-five minutes out. It is a large territory, and access is nothing alike between Saint-François and Chomedey.",
         worth:
           "The maths does not change from one city to the next: vehicle weight, year, catalytic converter, parts still worth pulling. Offers generally run from $300 to $3,000. We confirm the amount on the phone before we drive out, so nobody wastes a trip — not you waiting, and not us sending a tow truck for a vehicle that wasn't the one described.",
         towing:
-          "In east Laval — Saint-François, Duvernay, Saint-Vincent-de-Paul — we come straight in on the 25 and boulevard Lévesque. For Vimont, Auteuil and Sainte-Rose we take the 440 and boulevard des Laurentides. Chomedey and Laval-des-Rapides are denser and often need a pickup scheduled outside rush hour: the flatbed needs clear space, which is easier to find mid-morning in apartment lots.",
+          "Scrap car removal in east Laval — Saint-François, Duvernay, Saint-Vincent-de-Paul — comes straight in on the 25 and boulevard Lévesque. For Vimont, Auteuil and Sainte-Rose we take the 440 and boulevard des Laurentides. Chomedey and Laval-des-Rapides are denser and often need a pickup scheduled outside rush hour: the flatbed needs clear space, which is easier to find mid-morning in apartment lots.",
         vehicles:
           "Cars that no longer start, vehicles wrecked on the 440 or the 15, SUVs and pickups, commercial vans, and a lot of vehicles abandoned in rental-building parking lots. No paperwork in hand, no keys, too rusted for inspection — we look at each case and in the large majority of them we still buy it.",
         paperwork:
@@ -318,7 +318,7 @@ export const CITIES: City[] = [
     landmark: "la rue Notre-Dame et l'autoroute 40",
     copy: {
       fr: {
-        lede: "L'est de Montréal est la limite sud de notre zone de service : environ trente minutes par la 25 puis la 40. On y couvre Montréal-Est comme tel, mais aussi Pointe-aux-Trembles, Rivière-des-Prairies, Anjou et Montréal-Nord, qui sont dans le même corridor.",
+        lede: "Pour du scrap auto à Montréal, l'est de l'île est la limite sud de notre zone de service : environ trente minutes par la 25 puis la 40. On y couvre Montréal-Est comme tel, mais aussi Pointe-aux-Trembles, Rivière-des-Prairies, Anjou et Montréal-Nord, qui sont dans le même corridor.",
         worth:
           "Poids, année, convertisseur catalytique, pièces encore bonnes : le montant se situe généralement entre 300 $ et 3 000 $. On confirme le prix au téléphone avant de descendre, et il ne change pas à l'arrivée de la remorqueuse tant que le véhicule correspond à ce qui a été décrit.",
         towing:

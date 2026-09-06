@@ -21,8 +21,8 @@ export const SERVICES: ServicePage[] = [
   {
     key: "scrapBuying",
     serviceName: {
-      fr: "Rachat d'auto scrap",
-      en: "Cash for junk cars",
+      fr: "Achat auto scrap — acheteur direct",
+      en: "Cash for junk cars — we buy junk cars",
     },
     metaTitle: {
       fr: "Rachat d'auto scrap",
@@ -33,8 +33,8 @@ export const SERVICES: ServicePage[] = [
       en: "Autos B2 buys your junk car for cash, $300 to $3,000 depending on the vehicle. Free towing, SAAQ transfer included, open 7 days 8am to 8:30pm.",
     },
     h1: {
-      fr: "Rachat d'auto scrap — payé comptant, remorquage gratuit",
-      en: "Cash for junk cars — paid on the spot, free towing",
+      fr: "Vendre mon auto scrap — acheteur d'auto scrap, payé comptant",
+      en: "Sell my junk car — junk car buyer paying cash on the spot",
     },
     lede: {
       fr: "On achète les véhicules en fin de vie pour les recycler nous-mêmes, dans notre cour du 340 Chemin Pincourt à Mascouche. Vous n'avez ni transport à organiser, ni paperasse à faire, ni frais à payer.",
@@ -93,7 +93,7 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "What we buy",
           list: [
-            "Cars that no longer start",
+            "Sell non running car — one that no longer starts",
             "Accident-damaged or written-off vehicles",
             "Cars with no engine or no transmission",
             "Vehicles too rusted to pass inspection",
@@ -119,16 +119,16 @@ export const SERVICES: ServicePage[] = [
       en: "Free vehicle towing",
     },
     metaTitle: {
-      fr: "Remorquage gratuit Rive-Nord et Laval",
-      en: "Free towing, North Shore and Laval",
+      fr: "Remorquage gratuit — Laval, Montréal, Rive-Nord",
+      en: "Free scrap car removal — Laval & Montreal",
     },
     metaDescription: {
       fr: "Remorquage gratuit inclus avec chaque rachat. Enlèvement partout sur la Rive-Nord, à Laval et dans l'est de Montréal, souvent le jour même.",
       en: "Free towing included with every vehicle purchase. Pickup across the North Shore, Laval and east-end Montreal, often same day. 7 days a week.",
     },
     h1: {
-      fr: "Remorquage gratuit — inclus, jamais déduit de votre montant",
-      en: "Free towing — included, never deducted from your amount",
+      fr: "Remorquage gratuit et enlèvement d'auto — jamais déduit",
+      en: "Free junk car removal — included, never deducted",
     },
     lede: {
       fr: "Le remorquage fait partie du service. Il n'est pas facturé, pas soustrait du prix convenu, et pas conditionnel à la valeur du véhicule.",
@@ -213,16 +213,16 @@ export const SERVICES: ServicePage[] = [
       en: "Damaged and written-off vehicle buying",
     },
     metaTitle: {
-      fr: "Achat d'auto accidentée et perte totale",
-      en: "We buy damaged and written-off cars",
+      fr: "Vendre auto accidentée — achat perte totale",
+      en: "Sell my damaged car — totaled car buyer",
     },
     metaDescription: {
       fr: "Véhicule accidenté ou perte totale ? On l'achète comptant, remorquage gratuit inclus. Offre ferme au téléphone, enlèvement souvent le jour même.",
       en: "Vehicle wrecked or written off? Autos B2 buys it for cash, free towing included. Firm offer on the phone, pickup often the same day.",
     },
     h1: {
-      fr: "Achat d'auto accidentée et de perte totale",
-      en: "We buy accident-damaged and written-off vehicles",
+      fr: "Vendre son auto accidentée ou sa perte totale",
+      en: "Sell your damaged or totaled car for cash",
     },
     lede: {
       fr: "Après un accident, l'assureur déclare parfois le véhicule perte totale et vous laisse avec une carcasse à faire disparaître. C'est exactement ce qu'on achète.",

@@ -71,11 +71,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const t = getCopy(lang);
   const faq = homeFaqFor(lang);
 
-  const heroAlt =
-    lang === "fr"
-      ? "Remorqueuse à plateau d'Autos B2 chargée d'un véhicule, à Mascouche"
-      : "Autos B2 flatbed tow truck loaded with a vehicle, in Mascouche";
-
   return (
     <>
       <JsonLd id="ld-faq-home" data={faqSchema(faq)} />
@@ -91,46 +86,33 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
       {/* ---------------------------------------------------------- Hero */}
       {/*
-        The truck is the background, not a panel beside the copy.
-        Two things make that work here where it did not before: the section is
-        tall enough that a 3:2 frame is barely cropped, so the whole vehicle
-        is in shot; and the scrim is directional rather than a flat wash — it
-        is nearly opaque behind the headline and clears completely toward the
-        bottom, so the truck is dimmed where words sit and untouched where
-        they do not.
-      */}
-      <section className="relative isolate flex min-h-[42rem] items-center overflow-hidden bg-brand-50 lg:min-h-[46rem]">
-        <Image
-          src="/hero-tow-truck.jpg"
-          alt={heroAlt}
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          quality={50}
-          className="-z-20 object-cover object-[58%_center]"
-        />
+        The truck is our own branded cutout, not a photograph behind a scrim.
+        It sits on the page rather than under it: no dimming, no gradient
+        fighting the copy for contrast, and the Autos b2 livery is legible —
+        which is the whole point of using our truck instead of a stock one.
 
-        {/* Lifts the whole frame toward the page's light key. */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-brand-50/30" />
-        {/* Heavy at the top where the copy sits, gone by the bottom. */}
+        It is decorative here: the headline already says what the business
+        does, so an alt text would only repeat it to a screen reader.
+      */}
+      <section className="relative isolate overflow-hidden bg-gradient-to-b from-brand-50 to-white">
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 via-50% via-brand-50/70 to-transparent"
-        />
-        {/* Side-by-side layouts also need the left column protected. */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-brand-50 from-15% via-58% via-brand-50/60 to-transparent lg:block"
+          className="absolute -left-40 -top-56 -z-10 h-[34rem] w-[34rem] rounded-full bg-brand-100/40 blur-3xl"
         />
 
         <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7 lg:max-w-xl">
-              {/* Where we are and when — the two facts a local searcher checks first. */}
+              {/*
+                The markets served, not the address. The yard is in Mascouche
+                and that is stated in the schema, the footer and the yard
+                section — but a searcher in Laval needs to see Laval, and it
+                would read oddly directly above a headline naming Laval and
+                Montreal.
+              */}
               <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-700 sm:text-[13px]">
                 <span className="h-2 w-2 shrink-0 rounded-full bg-brand-500" />
-                {siteConfig.address.locality}
+                {lang === "fr" ? "Laval · Montréal · Rive-Nord" : "Laval · Montreal · North Shore"}
                 <span className="text-brand-400" aria-hidden="true">
                   /
                 </span>
@@ -206,6 +188,25 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 <QuoteForm lang={lang} source="hero_form" compact />
               </div>
             </div>
+          </div>
+
+          {/*
+            Full width beneath both columns, where it has room to be read.
+            `priority` because it is the LCP element on a wide screen, and the
+            explicit width/height reserve the box so it cannot shift the page.
+          */}
+          <div className="mt-12 lg:mt-16">
+            <Image
+              src="/tow-truck-hero.webp"
+              alt=""
+              width={1600}
+              height={476}
+              priority
+              fetchPriority="high"
+              sizes="(min-width: 1280px) 1216px, 100vw"
+              quality={72}
+              className="mx-auto h-auto w-full max-w-5xl"
+            />
           </div>
         </div>
       </section>
