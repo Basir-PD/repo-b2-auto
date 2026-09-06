@@ -409,14 +409,21 @@ money when it breaks:
   **only** after the API confirms, a 429 says "too many attempts" instead of
   claiming failure, a 502 keeps the typed data, and partial capture beacons
   once and never after a successful submit.
+- `app/(admin)/admin/QuoteEditor.test.tsx` — the lead editor's dialog: Escape
+  closes it *while focus is still on body*, which is the state it opens in,
+  focus moves into the dialog and returns to the opener on close, and the
+  listener is removed on unmount. These exist because an earlier fix bound
+  `onKeyDown` to the backdrop `<div>` — a non-focusable element — which
+  satisfied the linter and left the dialog a keyboard trap.
 - `app/api/quote/route.test.ts` — validation, the consent timestamp that goes
   into the record, attribution passthrough, honeypot answering 200 without
   storing, and per-IP throttling that does not affect other visitors.
 
 The suite was mutation-tested rather than assumed: weakening server phone
 validation fails 3 specs, firing `generate_lead` before the API confirms
-fails 1, dropping the trailing slash from the API path fails 2, and breaking
-the country-code strip fails 2.
+fails 1, dropping the trailing slash from the API path fails 2, breaking the
+country-code strip fails 2, and reverting the dialog to the cosmetic
+`onKeyDown` fix fails 3.
 
 Not covered here, by choice: end-to-end browser flows. They need a running
 server and a live Convex deployment, which makes them too slow and too
