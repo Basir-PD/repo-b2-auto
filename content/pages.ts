@@ -62,7 +62,7 @@ export const ABOUT: StaticPage = {
         h2: "What we do",
         body: [
           `Autos B2 has been buying end-of-life vehicles across the North Shore, Laval and east-end Montreal for ${siteConfig.facts.yearsInBusiness} years. We take in around ${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} of them a year.`,
-          "What separates us from most of the numbers you'll find online is that there is nobody between you and us. A lot of \"we buy cars\" ads are brokers: they take your call, sell your details on to an actual recycler, and the price drops by whatever they keep. We are the recycler.",
+          'What separates us from most of the numbers you\'ll find online is that there is nobody between you and us. A lot of "we buy cars" ads are brokers: they take your call, sell your details on to an actual recycler, and the price drops by whatever they keep. We are the recycler.',
         ],
       },
       {
@@ -211,7 +211,7 @@ export const PRIVACY: StaticPage = {
         body: [
           "You can block or delete cookies directly in your browser — Chrome, Safari, Firefox and Edge all offer this — or browse in a private window. The site keeps working normally: the form, the phone number and the towing depend on no advertising cookie.",
           "You can also opt out with the providers themselves: Google Analytics offers a browser opt-out add-on (tools.google.com/dlpage/gaoptout), Google ad preferences are at myadcenter.google.com, and Meta's are in your Facebook or Instagram account settings.",
-          "Your browser's \"Do Not Track\" or \"Global Privacy Control\" signal, if enabled, is passed on to these tools.",
+          'Your browser\'s "Do Not Track" or "Global Privacy Control" signal, if enabled, is passed on to these tools.',
         ],
       },
       {

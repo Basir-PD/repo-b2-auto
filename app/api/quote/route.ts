@@ -3,6 +3,7 @@ import { ConvexHttpClient } from "convex/browser";
 import { ConvexError } from "convex/values";
 import { api } from "@/convex/_generated/api";
 import { siteConfig } from "@/config/site";
+import { phoneIsValid } from "@/lib/phone";
 
 /**
  * ============================================================
@@ -38,7 +39,6 @@ import { siteConfig } from "@/config/site";
 export const runtime = "nodejs";
 
 const MAX_LEN = 2000;
-const PHONE_RE = /^[+()\d\s.-]{10,20}$/;
 
 /**
  * Throttle. Resets on cold start, which is fine for spam control.
@@ -101,7 +101,7 @@ export async function POST(request: Request) {
   // A phone number is the one thing that makes a lead actionable, so it is
   // the only field required on both paths.
   if (!phone) errors.phone = "required";
-  else if (!PHONE_RE.test(phone)) errors.phone = "invalid";
+  else if (!phoneIsValid(phone)) errors.phone = "invalid";
 
   if (!partial) {
     if (!name) errors.name = "required";

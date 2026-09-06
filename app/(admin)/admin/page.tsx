@@ -4,8 +4,17 @@ import { useState } from "react";
 import { Authenticated, Unauthenticated, AuthLoading, useQuery, useMutation } from "convex/react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import {
-  Loader2, Plus, Phone, Mail, Pencil, Trash2, Archive, ArchiveRestore,
-  AlertTriangle, LogOut, Inbox,
+  Loader2,
+  Plus,
+  Phone,
+  Mail,
+  Pencil,
+  Trash2,
+  Archive,
+  ArchiveRestore,
+  AlertTriangle,
+  LogOut,
+  Inbox,
 } from "lucide-react";
 import { api } from "@/convex/_generated/api";
 import type { Doc } from "@/convex/_generated/dataModel";
@@ -53,10 +62,14 @@ function Dashboard() {
           This account isn&rsquo;t on the admin allowlist.
         </p>
         <p className="max-w-sm text-sm text-slate-600">
-          Add it to <code className="rounded bg-slate-200 px-1.5 py-0.5 text-xs">ADMIN_EMAILS</code> on
-          the Convex deployment, then sign in again.
+          Add it to <code className="rounded bg-slate-200 px-1.5 py-0.5 text-xs">ADMIN_EMAILS</code>{" "}
+          on the Convex deployment, then sign in again.
         </p>
-        <button onClick={() => void signOut()} className="rounded-lg border border-slate-300 px-5 py-2.5 text-sm font-bold text-slate-700 hover:bg-white">
+        <button
+          type="button"
+          onClick={() => void signOut()}
+          className="rounded-lg border border-slate-300 px-5 py-2.5 text-sm font-bold text-slate-700 hover:bg-white"
+        >
           Sign out
         </button>
       </main>
@@ -109,7 +122,9 @@ function Dashboard() {
                   filter === s.value ? "ring-2 ring-inset ring-brand-500" : ""
                 }`}
               >
-                <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{s.label}</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
+                  {s.label}
+                </p>
                 <p className="mt-0.5 text-2xl font-black tabular-nums text-slate-900">
                   {stats.byStatus[s.value] ?? 0}
                 </p>
@@ -123,10 +138,12 @@ function Dashboard() {
             <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
             <p className="text-sm text-amber-900">
               <strong className="font-bold">
-                {stats.emailFailures} notification {stats.emailFailures === 1 ? "email" : "emails"} didn&rsquo;t send.
+                {stats.emailFailures} notification {stats.emailFailures === 1 ? "email" : "emails"}{" "}
+                didn&rsquo;t send.
               </strong>{" "}
               The leads are safe and listed below — only the alert failed. Check{" "}
-              <code className="rounded bg-amber-100 px-1.5 py-0.5 text-xs">RESEND_API_KEY</code> on the Convex deployment.
+              <code className="rounded bg-amber-100 px-1.5 py-0.5 text-xs">RESEND_API_KEY</code> on
+              the Convex deployment.
             </p>
           </div>
         )}
@@ -137,7 +154,9 @@ function Dashboard() {
             type="button"
             onClick={() => setFilter("all")}
             className={`rounded-lg px-3.5 py-1.5 text-sm font-bold transition-colors ${
-              filter === "all" ? "bg-slate-900 text-white" : "border border-slate-300 text-slate-600 hover:bg-white"
+              filter === "all"
+                ? "bg-slate-900 text-white"
+                : "border border-slate-300 text-slate-600 hover:bg-white"
             }`}
           >
             All{stats ? ` (${stats.total})` : ""}
@@ -192,12 +211,16 @@ function QuoteRow({ quote, onEdit }: { quote: Doc<"quotes">; onEdit: () => void 
   const archived = quote.archivedAt !== undefined;
 
   return (
-    <li className={`rounded-xl border border-slate-200 bg-white p-4 sm:p-5 ${archived ? "opacity-60" : ""}`}>
+    <li
+      className={`rounded-xl border border-slate-200 bg-white p-4 sm:p-5 ${archived ? "opacity-60" : ""}`}
+    >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-base font-black tracking-tight text-slate-900">{quote.name}</h3>
-            <span className={`rounded border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${meta.chip}`}>
+            <span
+              className={`rounded border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${meta.chip}`}
+            >
               {meta.label}
             </span>
             {archived && (
@@ -222,14 +245,25 @@ function QuoteRow({ quote, onEdit }: { quote: Doc<"quotes">; onEdit: () => void 
         <div className="flex items-center gap-1.5">
           <select
             value={quote.status}
-            onChange={(e) => void setStatus({ quoteId: quote._id, status: e.target.value as Status })}
+            onChange={(e) =>
+              void setStatus({ quoteId: quote._id, status: e.target.value as Status })
+            }
             aria-label={`Status for ${quote.name}`}
             className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-sm font-semibold text-slate-700 focus:border-brand-500 focus:outline-none"
           >
-            {STATUSES.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
+            {STATUSES.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.label}
+              </option>
+            ))}
           </select>
 
-          <button type="button" onClick={onEdit} aria-label={`Edit ${quote.name}`} className="rounded-md p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900">
+          <button
+            type="button"
+            onClick={onEdit}
+            aria-label={`Edit ${quote.name}`}
+            className="rounded-md p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+          >
             <Pencil className="h-4 w-4" />
           </button>
 
@@ -254,16 +288,24 @@ function QuoteRow({ quote, onEdit }: { quote: Doc<"quotes">; onEdit: () => void 
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-slate-100 pt-3 text-sm">
-        <a href={`tel:${quote.phone.replace(/[^\d+]/g, "")}`} className="flex items-center gap-1.5 font-bold text-brand-600 hover:underline">
+        <a
+          href={`tel:${quote.phone.replace(/[^\d+]/g, "")}`}
+          className="flex items-center gap-1.5 font-bold text-brand-600 hover:underline"
+        >
           <Phone className="h-3.5 w-3.5" /> {quote.phone}
         </a>
         {quote.email && (
-          <a href={`mailto:${quote.email}`} className="flex items-center gap-1.5 text-slate-600 hover:underline">
+          <a
+            href={`mailto:${quote.email}`}
+            className="flex items-center gap-1.5 text-slate-600 hover:underline"
+          >
             <Mail className="h-3.5 w-3.5" /> {quote.email}
           </a>
         )}
         {quote.offerAmount !== undefined && (
-          <span className="font-bold tabular-nums text-slate-900">${quote.offerAmount.toLocaleString()}</span>
+          <span className="font-bold tabular-nums text-slate-900">
+            ${quote.offerAmount.toLocaleString()}
+          </span>
         )}
         <span className="text-slate-400">{sourceLabel(quote.source)}</span>
         <span className="ml-auto text-slate-400">
@@ -277,10 +319,13 @@ function QuoteRow({ quote, onEdit }: { quote: Doc<"quotes">; onEdit: () => void 
 
       {(quote.message || quote.notes) && (
         <div className="mt-3 space-y-2 border-t border-slate-100 pt-3">
-          {quote.message && <p className="text-sm leading-relaxed text-slate-600">{quote.message}</p>}
+          {quote.message && (
+            <p className="text-sm leading-relaxed text-slate-600">{quote.message}</p>
+          )}
           {quote.notes && (
             <p className="rounded-lg bg-slate-50 px-3 py-2 text-sm leading-relaxed text-slate-700">
-              <span className="font-bold">Notes: </span>{quote.notes}
+              <span className="font-bold">Notes: </span>
+              {quote.notes}
             </p>
           )}
         </div>
@@ -292,7 +337,11 @@ function QuoteRow({ quote, onEdit }: { quote: Doc<"quotes">; onEdit: () => void 
             Delete {quote.name} permanently? Archiving keeps it instead.
           </p>
           <div className="ml-auto flex gap-2">
-            <button type="button" onClick={() => setConfirming(false)} className="rounded-lg border border-slate-300 bg-white px-3.5 py-1.5 text-sm font-bold text-slate-700">
+            <button
+              type="button"
+              onClick={() => setConfirming(false)}
+              className="rounded-lg border border-slate-300 bg-white px-3.5 py-1.5 text-sm font-bold text-slate-700"
+            >
               Cancel
             </button>
             <button

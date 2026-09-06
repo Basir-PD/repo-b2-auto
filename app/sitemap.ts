@@ -25,7 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       if (key === "thanks") continue;
 
       const languages: Record<string, string> = {};
-      for (const other of LANGS) languages[other === "fr" ? "fr-CA" : "en-CA"] = abs(pathFor(key, other));
+      for (const other of LANGS)
+        languages[other === "fr" ? "fr-CA" : "en-CA"] = abs(pathFor(key, other));
 
       entries.push({
         url: abs(pathFor(key, lang)),

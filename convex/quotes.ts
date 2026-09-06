@@ -4,8 +4,8 @@ import {
   query,
   internalMutation,
   internalQuery,
-  QueryCtx,
-  MutationCtx,
+  type QueryCtx,
+  type MutationCtx,
 } from "./_generated/server";
 import { internal } from "./_generated/api";
 import { getAuthUserId } from "@convex-dev/auth/server";
@@ -81,7 +81,8 @@ export const submit = mutation({
     if (!name) throw new ConvexError("Name is required.");
     if (!PHONE_RE.test(phone)) throw new ConvexError("A valid phone number is required.");
     // Email is optional, but a malformed one is still worth rejecting.
-    if (email && !EMAIL_RE.test(email)) throw new ConvexError("That email address doesn't look valid.");
+    if (email && !EMAIL_RE.test(email))
+      throw new ConvexError("That email address doesn't look valid.");
     if (!vehicle) throw new ConvexError("Vehicle details are required.");
 
     const quoteId = await ctx.db.insert("quotes", {
@@ -149,7 +150,10 @@ export const list = query({
     await requireAdmin(ctx);
 
     const rows = status
-      ? await ctx.db.query("quotes").withIndex("by_status", (q) => q.eq("status", status)).collect()
+      ? await ctx.db
+          .query("quotes")
+          .withIndex("by_status", (q) => q.eq("status", status))
+          .collect()
       : await ctx.db.query("quotes").collect();
 
     return rows
@@ -176,7 +180,12 @@ export const stats = query({
     const live = rows.filter((r) => r.archivedAt === undefined);
 
     const byStatus: Record<string, number> = {
-      new: 0, contacted: 0, quoted: 0, scheduled: 0, won: 0, lost: 0,
+      new: 0,
+      contacted: 0,
+      quoted: 0,
+      scheduled: 0,
+      won: 0,
+      lost: 0,
     };
     for (const row of live) byStatus[row.status] = (byStatus[row.status] ?? 0) + 1;
 

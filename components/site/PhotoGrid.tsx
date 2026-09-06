@@ -26,9 +26,7 @@ export default function PhotoGrid({
       : "(min-width: 640px) 50vw, 100vw";
 
   return (
-    <ul
-      className={`grid gap-4 sm:grid-cols-2 ${columns === 3 ? "lg:grid-cols-3" : ""} sm:gap-5`}
-    >
+    <ul className={`grid gap-4 sm:grid-cols-2 ${columns === 3 ? "lg:grid-cols-3" : ""} sm:gap-5`}>
       {photos.map((photo) => (
         <li key={photo.file}>
           <figure className="overflow-hidden rounded-xl bg-slate-100 ring-1 ring-slate-900/10">

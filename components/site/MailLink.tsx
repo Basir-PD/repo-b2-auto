@@ -11,11 +11,7 @@ export default function MailLink({
   className?: string;
 }) {
   return (
-    <a
-      href={`mailto:${siteConfig.email}`}
-      onClick={() => trackEmail(source)}
-      className={className}
-    >
+    <a href={`mailto:${siteConfig.email}`} onClick={() => trackEmail(source)} className={className}>
       {siteConfig.email}
     </a>
   );

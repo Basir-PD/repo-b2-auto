@@ -52,7 +52,12 @@ export default function PhoneLink({
       data-phone={phone.e164}
     >
       {showIcon && (
-        <Phone className="h-5 w-5 shrink-0" strokeWidth={2.5} fill="currentColor" aria-hidden="true" />
+        <Phone
+          className="h-5 w-5 shrink-0"
+          strokeWidth={2.5}
+          fill="currentColor"
+          aria-hidden="true"
+        />
       )}
       <span className={labelClassName}>{children ?? label ?? phone.display}</span>
     </a>

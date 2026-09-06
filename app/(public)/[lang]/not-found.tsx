@@ -38,7 +38,10 @@ export default function NotFound() {
         </Link>
       </div>
 
-      <Link href={pathFor("home", "fr")} className="mt-6 text-sm font-bold text-slate-500 underline">
+      <Link
+        href={pathFor("home", "fr")}
+        className="mt-6 text-sm font-bold text-slate-500 underline"
+      >
         Retour à l&apos;accueil / Back to home
       </Link>
     </div>

@@ -165,7 +165,10 @@ export default async function LandingPage({
             policy must be reachable from it.
           */}
           <p className="mt-2">
-            <Link href={pathFor("privacy", lang)} className="font-semibold text-slate-600 underline hover:text-slate-900">
+            <Link
+              href={pathFor("privacy", lang)}
+              className="font-semibold text-slate-600 underline hover:text-slate-900"
+            >
               {lang === "fr" ? "Politique de confidentialité" : "Privacy policy"}
             </Link>
           </p>

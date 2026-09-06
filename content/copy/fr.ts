@@ -51,8 +51,7 @@ export const fr = {
   },
 
   home: {
-    metaTitle:
-      "Rachat Auto Scrap Mascouche | Argent Comptant + Remorquage Gratuit — Autos B2",
+    metaTitle: "Rachat Auto Scrap Mascouche | Argent Comptant + Remorquage Gratuit — Autos B2",
     metaDescription:
       "Nous achetons votre auto scrap, accidentée ou en panne. Argent comptant sur place, remorquage gratuit partout sur la Rive-Nord. Estimation gratuite en 2 minutes. Ouvert 7 jours, 8h à 20h30.",
 
@@ -158,7 +157,8 @@ export const fr = {
     },
 
     fleetTitle: "Notre flotte, au travail",
-    fleetSub: "Nos propres camions, nos propres chauffeurs. Ces photos sont prises sur nos ramassages, pas achetées dans une banque d'images.",
+    fleetSub:
+      "Nos propres camions, nos propres chauffeurs. Ces photos sont prises sur nos ramassages, pas achetées dans une banque d'images.",
     reviewsHeading: "5,0 ★ sur 5 avis Google",
 
     faqHeading: "Questions fréquentes",
@@ -181,16 +181,16 @@ export const fr = {
     phone: "Téléphone",
     postal: "Code postal ou ville",
 
-
-
     submit: "Obtenir mon estimation",
     submitting: "Envoi en cours…",
 
     required: "Ce champ est requis",
     invalidPhone: "Entrez un numéro de téléphone valide",
     errorBody: "Ça n'a pas fonctionné. Appelez-nous plutôt :",
-    tooManyBody: "Trop de tentatives en peu de temps. Réessayez dans quelques minutes, ou appelez-nous tout de suite :",
-    privacyNote: "En envoyant ce formulaire, vous acceptez qu'Autos B2 vous contacte par téléphone, texto ou courriel au sujet de votre soumission. Sans obligation. On ne partage jamais vos coordonnées.",
+    tooManyBody:
+      "Trop de tentatives en peu de temps. Réessayez dans quelques minutes, ou appelez-nous tout de suite :",
+    privacyNote:
+      "En envoyant ce formulaire, vous acceptez qu'Autos B2 vous contacte par téléphone, texto ou courriel au sujet de votre soumission. Sans obligation. On ne partage jamais vos coordonnées.",
   },
 
   thanks: {

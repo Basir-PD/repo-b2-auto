@@ -4,7 +4,15 @@ import { notFound } from "next/navigation";
 import { MapPin, Clock, Phone, Mail, ChevronRight, Check } from "lucide-react";
 
 import {
-  LANGS, ROUTES, isLang, pathFor, cityPathFor, resolveSlug, alternatesFor, type Lang, type PageKey,
+  LANGS,
+  ROUTES,
+  isLang,
+  pathFor,
+  cityPathFor,
+  resolveSlug,
+  alternatesFor,
+  type Lang,
+  type PageKey,
 } from "@/config/routes";
 import { siteConfig, fullAddress, mapsEmbedUrl, routeEmbedUrl } from "@/config/site";
 import { getCopy } from "@/content/copy";
@@ -20,7 +28,11 @@ import PhoneLink from "@/components/site/PhoneLink";
 import MailLink from "@/components/site/MailLink";
 import { PageHeader, Sections, CtaBand } from "@/components/pages/PageShell";
 import {
-  JsonLd, breadcrumbSchema, faqSchema, serviceSchema, webPageSchema,
+  JsonLd,
+  breadcrumbSchema,
+  faqSchema,
+  serviceSchema,
+  webPageSchema,
 } from "@/components/site/JsonLd";
 
 /** Every (lang, slug) pair that exists — this is what makes the site static. */
@@ -67,12 +79,14 @@ function metaFor(lang: Lang, slug: string): Meta | null {
   switch (resolved.key) {
     case "quote":
       return {
-        title: lang === "fr"
-          ? "Estimation Gratuite pour Votre Auto Scrap | Autos B2"
-          : "Free Quote for Your Scrap Car | Autos B2",
-        description: lang === "fr"
-          ? "Obtenez un prix ferme pour votre véhicule en moins d'une minute. Quatre questions, sans obligation, remorquage gratuit inclus."
-          : "Get a firm price for your vehicle in under a minute. Four questions, no obligation, free towing included.",
+        title:
+          lang === "fr"
+            ? "Estimation Gratuite pour Votre Auto Scrap | Autos B2"
+            : "Free Quote for Your Scrap Car | Autos B2",
+        description:
+          lang === "fr"
+            ? "Obtenez un prix ferme pour votre véhicule en moins d'une minute. Quatre questions, sans obligation, remorquage gratuit inclus."
+            : "Get a firm price for your vehicle in under a minute. Four questions, no obligation, free towing included.",
       };
     case "thanks":
       // Reachable only after a submit, and never indexed.
@@ -87,21 +101,25 @@ function metaFor(lang: Lang, slug: string): Meta | null {
       return { title: CONTACT.metaTitle[lang], description: CONTACT.metaDescription[lang] };
     case "faq":
       return {
-        title: lang === "fr"
-          ? "Questions Fréquentes sur le Rachat d'Auto Scrap | Autos B2"
-          : "Frequently Asked Questions About Scrap Car Buying | Autos B2",
-        description: lang === "fr"
-          ? "Valeur d'une auto scrap, remorquage gratuit, documents SAAQ, délais et paiement comptant : les réponses aux questions qu'on nous pose le plus."
-          : "What a scrap car is worth, free towing, SAAQ documents, timing and cash payment: answers to what we're asked most.",
+        title:
+          lang === "fr"
+            ? "Questions Fréquentes sur le Rachat d'Auto Scrap | Autos B2"
+            : "Frequently Asked Questions About Scrap Car Buying | Autos B2",
+        description:
+          lang === "fr"
+            ? "Valeur d'une auto scrap, remorquage gratuit, documents SAAQ, délais et paiement comptant : les réponses aux questions qu'on nous pose le plus."
+            : "What a scrap car is worth, free towing, SAAQ documents, timing and cash payment: answers to what we're asked most.",
       };
     case "blog":
       return {
-        title: lang === "fr"
-          ? "Blogue | Vendre son auto scrap au Québec — Autos B2"
-          : "Blog | Selling your scrap car in Quebec — Autos B2",
-        description: lang === "fr"
-          ? "Guides pratiques sur la valeur d'une auto scrap, la cession SAAQ, les pertes totales et la vente d'un véhicule en fin de vie au Québec."
-          : "Practical guides on what a scrap car is worth, SAAQ transfers, write-offs and selling an end-of-life vehicle in Quebec.",
+        title:
+          lang === "fr"
+            ? "Blogue | Vendre son auto scrap au Québec — Autos B2"
+            : "Blog | Selling your scrap car in Quebec — Autos B2",
+        description:
+          lang === "fr"
+            ? "Guides pratiques sur la valeur d'une auto scrap, la cession SAAQ, les pertes totales et la vente d'un véhicule en fin de vie au Québec."
+            : "Practical guides on what a scrap car is worth, SAAQ transfers, write-offs and selling an end-of-life vehicle in Quebec.",
       };
     default:
       return null;
@@ -190,30 +208,37 @@ export default async function SlugPage({
         ? `Rachat d'auto scrap à ${city.name} — argent comptant, remorquage gratuit`
         : `Cash for scrap cars in ${city.name} — free towing, paid on pickup`;
 
-    const h2 = lang === "fr"
-      ? {
-          worth: `Combien vaut votre auto à ${city.name} ?`,
-          towing: `Notre service de remorquage à ${city.name}`,
-          vehicles: `Quels véhicules on achète à ${city.name}`,
-          paperwork: "La paperasse SAAQ, expliquée simplement",
-          faq: `Questions fréquentes — ${city.name}`,
-          sectors: "Secteurs desservis",
-          distance: `Distance depuis notre cour`,
-        }
-      : {
-          worth: `What is your car worth in ${city.name}?`,
-          towing: `Our towing service in ${city.name}`,
-          vehicles: `What we buy in ${city.name}`,
-          paperwork: "SAAQ paperwork, explained simply",
-          faq: `Frequently asked questions — ${city.name}`,
-          sectors: "Sectors we cover",
-          distance: "Distance from our yard",
-        };
+    const h2 =
+      lang === "fr"
+        ? {
+            worth: `Combien vaut votre auto à ${city.name} ?`,
+            towing: `Notre service de remorquage à ${city.name}`,
+            vehicles: `Quels véhicules on achète à ${city.name}`,
+            paperwork: "La paperasse SAAQ, expliquée simplement",
+            faq: `Questions fréquentes — ${city.name}`,
+            sectors: "Secteurs desservis",
+            distance: "Distance depuis notre cour",
+          }
+        : {
+            worth: `What is your car worth in ${city.name}?`,
+            towing: `Our towing service in ${city.name}`,
+            vehicles: `What we buy in ${city.name}`,
+            paperwork: "SAAQ paperwork, explained simply",
+            faq: `Frequently asked questions — ${city.name}`,
+            sectors: "Sectors we cover",
+            distance: "Distance from our yard",
+          };
 
     return (
       <>
         {common}
-        <JsonLd id="ld-breadcrumb" data={breadcrumbSchema([{ name: t.common.breadcrumbHome, path: pathFor("home", lang) }, { name: city.name, path }])} />
+        <JsonLd
+          id="ld-breadcrumb"
+          data={breadcrumbSchema([
+            { name: t.common.breadcrumbHome, path: pathFor("home", lang) },
+            { name: city.name, path },
+          ])}
+        />
         <JsonLd id="ld-city-faq" data={faqSchema([{ id: "city", q: copy.faqQ, a: copy.faqA }])} />
 
         <PageHeader lang={lang} trail={crumb(city.name)} h1={h1} lede={copy.lede} />
@@ -226,7 +251,9 @@ export default async function SlugPage({
               </dt>
               <dd className="mt-1.5 text-lg font-black text-slate-900">
                 {city.distanceKm === 0
-                  ? lang === "fr" ? "Sur place" : "On site"
+                  ? lang === "fr"
+                    ? "Sur place"
+                    : "On site"
                   : `${city.distanceKm} km`}
               </dd>
             </div>
@@ -234,9 +261,7 @@ export default async function SlugPage({
               <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">
                 {lang === "fr" ? "Temps de route" : "Drive time"}
               </dt>
-              <dd className="mt-1.5 text-lg font-black text-slate-900">
-                ~{city.driveMinutes} min
-              </dd>
+              <dd className="mt-1.5 text-lg font-black text-slate-900">~{city.driveMinutes} min</dd>
             </div>
             <div className="rounded-xl border border-slate-200 p-5">
               <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">
@@ -346,7 +371,13 @@ export default async function SlugPage({
             path,
           })}
         />
-        <JsonLd id="ld-breadcrumb" data={breadcrumbSchema([{ name: t.common.breadcrumbHome, path: pathFor("home", lang) }, { name: service.serviceName[lang], path }])} />
+        <JsonLd
+          id="ld-breadcrumb"
+          data={breadcrumbSchema([
+            { name: t.common.breadcrumbHome, path: pathFor("home", lang) },
+            { name: service.serviceName[lang], path },
+          ])}
+        />
 
         <PageHeader
           lang={lang}
@@ -374,7 +405,11 @@ export default async function SlugPage({
           <PageHeader
             lang={lang}
             trail={crumb(t.nav.quote)}
-            h1={lang === "fr" ? "Estimation gratuite pour votre véhicule" : "Free quote for your vehicle"}
+            h1={
+              lang === "fr"
+                ? "Estimation gratuite pour votre véhicule"
+                : "Free quote for your vehicle"
+            }
             lede={
               lang === "fr"
                 ? "Quatre questions, moins d'une minute, aucune obligation. On vous rappelle avec un prix ferme."
@@ -437,7 +472,13 @@ export default async function SlugPage({
         <>
           {common}
           <JsonLd id="ld-faq" data={faqSchema(items)} />
-          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema([{ name: t.common.breadcrumbHome, path: pathFor("home", lang) }, { name: t.nav.faq, path }])} />
+          <JsonLd
+            id="ld-breadcrumb"
+            data={breadcrumbSchema([
+              { name: t.common.breadcrumbHome, path: pathFor("home", lang) },
+              { name: t.nav.faq, path },
+            ])}
+          />
 
           <PageHeader
             lang={lang}
@@ -471,8 +512,19 @@ export default async function SlugPage({
       return (
         <>
           {common}
-          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema([{ name: t.common.breadcrumbHome, path: pathFor("home", lang) }, { name: t.nav.about, path }])} />
-          <PageHeader lang={lang} trail={crumb(t.nav.about)} h1={ABOUT.h1[lang]} lede={ABOUT.lede[lang]} />
+          <JsonLd
+            id="ld-breadcrumb"
+            data={breadcrumbSchema([
+              { name: t.common.breadcrumbHome, path: pathFor("home", lang) },
+              { name: t.nav.about, path },
+            ])}
+          />
+          <PageHeader
+            lang={lang}
+            trail={crumb(t.nav.about)}
+            h1={ABOUT.h1[lang]}
+            lede={ABOUT.lede[lang]}
+          />
           <Sections sections={ABOUT.sections[lang]} />
 
           {/*
@@ -498,7 +550,12 @@ export default async function SlugPage({
       return (
         <>
           {common}
-          <PageHeader lang={lang} trail={crumb(PRIVACY.h1[lang])} h1={PRIVACY.h1[lang]} lede={PRIVACY.lede[lang]} />
+          <PageHeader
+            lang={lang}
+            trail={crumb(PRIVACY.h1[lang])}
+            h1={PRIVACY.h1[lang]}
+            lede={PRIVACY.lede[lang]}
+          />
           <Sections sections={PRIVACY.sections[lang]} />
         </>
       );
@@ -507,7 +564,12 @@ export default async function SlugPage({
       return (
         <>
           {common}
-          <PageHeader lang={lang} trail={crumb(TERMS.h1[lang])} h1={TERMS.h1[lang]} lede={TERMS.lede[lang]} />
+          <PageHeader
+            lang={lang}
+            trail={crumb(TERMS.h1[lang])}
+            h1={TERMS.h1[lang]}
+            lede={TERMS.lede[lang]}
+          />
           <Sections sections={TERMS.sections[lang]} />
         </>
       );
@@ -516,8 +578,19 @@ export default async function SlugPage({
       return (
         <>
           {common}
-          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema([{ name: t.common.breadcrumbHome, path: pathFor("home", lang) }, { name: t.nav.contact, path }])} />
-          <PageHeader lang={lang} trail={crumb(t.nav.contact)} h1={CONTACT.h1[lang]} lede={CONTACT.lede[lang]} />
+          <JsonLd
+            id="ld-breadcrumb"
+            data={breadcrumbSchema([
+              { name: t.common.breadcrumbHome, path: pathFor("home", lang) },
+              { name: t.nav.contact, path },
+            ])}
+          />
+          <PageHeader
+            lang={lang}
+            trail={crumb(t.nav.contact)}
+            h1={CONTACT.h1[lang]}
+            lede={CONTACT.lede[lang]}
+          />
 
           <div className="container mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
             <div className="grid gap-10 lg:grid-cols-2">
@@ -544,7 +617,10 @@ export default async function SlugPage({
                         {t.common.emailLabel}
                       </dt>
                       <dd className="mt-1">
-                        <MailLink source="contact_page" className="text-base font-semibold text-slate-900 hover:text-brand-600" />
+                        <MailLink
+                          source="contact_page"
+                          className="text-base font-semibold text-slate-900 hover:text-brand-600"
+                        />
                       </dd>
                     </div>
                   </div>
@@ -619,10 +695,11 @@ export default async function SlugPage({
                   <li key={post.slug} className="py-6 first:pt-0">
                     <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
                       <time dateTime={post.date}>
-                        {new Date(post.date).toLocaleDateString(
-                          lang === "fr" ? "fr-CA" : "en-CA",
-                          { year: "numeric", month: "long", day: "numeric" }
-                        )}
+                        {new Date(post.date).toLocaleDateString(lang === "fr" ? "fr-CA" : "en-CA", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
                       </time>
                     </p>
                     <h2 className="mt-2 text-xl font-black tracking-tight text-slate-900 sm:text-2xl">

@@ -1,0 +1,16 @@
+# Fast gate on every commit. Anything slower than a few seconds belongs in
+# CI, not here — a hook people are tempted to skip with --no-verify is worse
+# than no hook.
+
+# 1. Format and lint only what is staged, and re-stage the fixes.
+npx lint-staged
+
+# 2. Types are project-wide: a change in one file can break another, so this
+#    cannot be scoped to staged files and still be meaningful.
+echo "→ typecheck"
+npx tsc --noEmit
+
+# 3. Only the tests reachable from what changed. `--run` because a hook must
+#    never drop into watch mode and hang the commit.
+echo "→ tests"
+npx vitest related --run --passWithNoTests $(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(ts|tsx)$' | tr '\n' ' ')

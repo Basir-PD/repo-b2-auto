@@ -72,7 +72,10 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
           />
         </Link>
 
-        <nav className="hidden flex-1 items-center justify-center gap-5 xl:flex xl:gap-7" aria-label="Primary">
+        <nav
+          className="hidden flex-1 items-center justify-center gap-5 xl:flex xl:gap-7"
+          aria-label="Primary"
+        >
           {labels.nav.map((item) => (
             <Link
               key={item.href}
