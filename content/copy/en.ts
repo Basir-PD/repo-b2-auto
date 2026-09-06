@@ -48,18 +48,18 @@ export const en: Copy = {
   },
 
   home: {
-    metaTitle: "Cash for Junk Cars Mascouche & Laval | Autos B2",
+    metaTitle: "Sell My Junk Car Laval & Montreal | Autos B2",
     metaDescription:
-      "We buy scrap, damaged and non-running cars for cash. Free towing across the North Shore and Laval, paid on pickup. Open 7 days, 8am to 8:30pm.",
+      "Junk car buyer in Laval, Montreal and the North Shore. We buy damaged, totaled and non running cars. Free scrap car removal, cash on pickup.",
 
-    h1: "Cash for junk cars in Mascouche — paid on the spot",
-    sub: "We buy your vehicle in any condition: not running, wrecked, engine-less or written off. Free towing, cash on pickup, and we handle the SAAQ paperwork for you.",
+    h1: "Sell your junk car in Laval & Montreal — cash on the spot",
+    sub: "We buy junk cars across Laval, Montreal and the North Shore, in any condition — not running, wrecked, engine-less or written off. Free scrap car removal and cash on pickup.",
     priceAnchor: "$300 to $3,000 cash depending on the vehicle",
     priceFigure: "$300 – $3,000",
     priceCaption: "cash, depending on the vehicle",
     whatsappCta: "Send a photo on WhatsApp",
     whatsappPrefill: "Hi! I'd like a quote for my vehicle. Here's a photo:",
-    ctaPrimary: "Get my free quote",
+    ctaPrimary: "Sell my scrap car — free quote",
     ctaSecondary: `Call ${PHONE}`,
 
     trustStrip: [
@@ -70,7 +70,7 @@ export const en: Copy = {
     ],
 
     howItWorks: {
-      title: "How it works — 3 steps, under 24 hours",
+      title: "Sell your scrap car in 3 steps, under 24 hours",
       steps: [
         {
           title: "Tell us about the vehicle",
@@ -88,21 +88,21 @@ export const en: Copy = {
     },
 
     buyAll: {
-      title: "We buy every vehicle — no exceptions",
+      title: "Sell a damaged, totaled or non running car",
       items: [
-        "Cars that won't start",
-        "Accident-damaged or total loss",
-        "No engine or no transmission",
-        "Trucks, SUVs and vans",
+        "Sell my non running car — it does not have to start",
+        "Sell my totaled car after an insurance write-off",
+        "Sell damaged car with no engine or transmission",
+        "Sell scrap car, truck, SUV or van",
         "Too rusted to pass inspection",
-        "Missing paperwork (we'll walk you through it)",
+        "Missing paperwork — we walk you through it",
       ],
     },
 
     stats: ["2,000 vehicles bought per year", "10 years in Mascouche", "Open 7 days, 8am–8:30pm"],
 
     why: {
-      title: "Why people in Mascouche and Terrebonne call us",
+      title: "Who buys junk cars in Laval and Montreal?",
       points: [
         {
           title: "A real recycler, not a middleman.",
@@ -124,7 +124,7 @@ export const en: Copy = {
     },
 
     serviceArea: {
-      title: "Areas we serve",
+      title: "Scrap car removal in Laval, Montreal & the North Shore",
       cities: [
         "Mascouche",
         "Terrebonne",
@@ -149,7 +149,7 @@ export const en: Copy = {
       linkLabel: "See your city's page",
     },
 
-    fleetTitle: "Our fleet, at work",
+    fleetTitle: "Our removal fleet, at work",
     fleetSub:
       "Our own trucks, our own drivers. These are photos from our pickups, not bought from a stock library.",
     reviewsHeading: "5.0 ★ from 5 Google reviews",

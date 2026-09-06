@@ -35,6 +35,37 @@ const FR: FaqItem[] = [
     a: "Oui. En panne, sans moteur, accidentée ou déclarée perte totale — on l'achète quand même.",
   },
   {
+    id: "cour-pres-de-moi",
+    q: "Où trouver une cour à scrap près de chez moi ?",
+    a: "Notre cour est au 340 Chemin Pincourt à Mascouche, et comme acheteur auto scrap on se déplace gratuitement à Laval, à Montréal, à Terrebonne et partout sur la Rive-Nord. Vous n'avez pas besoin de trouver une cour près de chez vous : on vient à vous.",
+  },
+  {
+    id: "qui-achete",
+    onHome: true,
+    q: "Qui achète une auto scrap à Laval et à Montréal ?",
+    a: "Nous. Autos B2 est un acheteur d'auto scrap établi au 340 Chemin Pincourt à Mascouche, et on se déplace à Laval, à Montréal et partout sur la Rive-Nord. On achète directement — on n'est pas un intermédiaire qui revend votre appel à un autre ferrailleur.",
+  },
+  {
+    id: "vendre-char-scrap",
+    q: "Comment vendre mon char scrap rapidement ?",
+    a: "Appelez-nous avec l'année, la marque et le modèle, ou remplissez le formulaire. On vous donne un prix ferme en quelques minutes, on planifie l'enlèvement gratuit et vous recevez votre cash pour auto à l'enlèvement. La plupart des ventes se règlent en moins de 24 heures.",
+  },
+  {
+    id: "minoune",
+    q: "Vous achetez les minounes et les vieilles autos non roulantes ?",
+    a: "Oui. Une minoune qui dort dans l'entrée depuis des années a encore de la valeur : le métal, le convertisseur catalytique et les pièces réutilisables. Se débarrasser de son auto ne devrait rien vous coûter, et chez nous ça vous rapporte.",
+  },
+  {
+    id: "recyclage",
+    q: "Que veut dire recycler une voiture au Québec ?",
+    a: "Le recyclage automobile commence par la dépollution : on retire l'huile, l'antigel, l'essence, la batterie et le liquide de climatisation avant tout démontage. Les pièces encore bonnes sont récupérées, et la ferraille automobile qui reste part au broyage pour être refondue.",
+  },
+  {
+    id: "auto-accidentee",
+    q: "Comment vendre une auto accidentée ou déclarée perte totale ?",
+    a: "De la même façon qu'une autre : on l'achète comptant et on la remorque gratuitement. Un véhicule accidenté garde de la valeur — les pièces intactes, le catalyseur et le métal ne disparaissent pas parce que l'avant est enfoncé. Dites-nous où est l'impact et si le véhicule est complet.",
+  },
+  {
     id: "documents",
     q: "Quels documents ça me prend ?",
     a: "Le certificat d'immatriculation du véhicule et une pièce d'identité valide. Si vous avez perdu vos papiers, appelez-nous, on vous explique la marche à suivre.",
@@ -96,6 +127,37 @@ const EN: FaqItem[] = [
     onHome: true,
     q: "Do you buy a car that won't start?",
     a: "Yes. Broken down, no engine, wrecked or written off — we buy it anyway.",
+  },
+  {
+    id: "cour-pres-de-moi",
+    q: "Is there a scrap yard near me?",
+    a: "Our yard is at 340 Chemin Pincourt in Mascouche, and as a scrap car buyer we drive to you for free across Laval, Montreal, Terrebonne and the whole North Shore. You do not need a scrap yard near you — we come to you.",
+  },
+  {
+    id: "qui-achete",
+    onHome: true,
+    q: "Who buys junk cars in Laval and Montreal?",
+    a: "We do. Autos B2 is a junk car buyer based at 340 Chemin Pincourt in Mascouche, and we travel to Laval, Montreal and across the North Shore. We buy directly — we are not a middleman reselling your call to another scrap yard.",
+  },
+  {
+    id: "vendre-char-scrap",
+    q: "How do I sell junk car fast — what is the process?",
+    a: "Call us with the year, make and model, or fill in the form. You get a firm price in minutes, we schedule the free scrap car removal, and you are paid cash on pickup. Most sales are done inside 24 hours.",
+  },
+  {
+    id: "minoune",
+    q: "Will you buy a non running car?",
+    a: "Yes. A car that has sat in a driveway for years still has value: the metal, the catalytic converter and any reusable parts. Getting rid of it should not cost you anything, and with us it pays.",
+  },
+  {
+    id: "recyclage",
+    q: "What does automotive recycling actually involve?",
+    a: "Recycling a car starts with depollution: the oil, coolant, fuel, battery and air-conditioning refrigerant come out before anything is dismantled. Parts worth keeping are pulled and resold, and the shell is shredded so the steel can be melted down.",
+  },
+  {
+    id: "auto-accidentee",
+    q: "Can I sell my damaged or totaled car?",
+    a: "Yes, the same way as any other — we buy it for cash and tow it free. A wrecked vehicle keeps its value: the undamaged parts, the converter and the metal do not disappear because the front end is caved in. Tell us where the impact is and whether the car is complete.",
   },
   {
     id: "documents",
