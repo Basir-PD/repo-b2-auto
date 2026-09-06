@@ -35,6 +35,7 @@ export const fr = {
     callCta: `Appeler ${PHONE}`,
     callAria: "Appeler Autos B2 maintenant",
     quoteCta: "Obtenir mon estimation gratuite",
+    callShort: "Appeler",
     whatsapp: "WhatsApp",
     whatsappAria: "Écrire à Autos B2 sur WhatsApp",
     whatsappTagline: "Envoyez-nous une photo de votre auto",
