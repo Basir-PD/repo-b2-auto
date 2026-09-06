@@ -20,7 +20,7 @@ export const en: Copy = {
     towing: "Towing",
     damaged: "Damaged",
     trucks: "Trucks and SUVs",
-    cities: "Areas we serve",
+    cities: "Cities we serve",
     about: "About",
     faq: "FAQ",
     blog: "Blog",

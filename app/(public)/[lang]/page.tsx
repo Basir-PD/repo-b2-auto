@@ -44,6 +44,9 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: raw === "fr" ? "fr_CA" : "en_CA",
+      // The page exists in both languages; say so, or a share only ever
+      // offers the one it was shared from.
+      alternateLocale: raw === "fr" ? ["en_CA"] : ["fr_CA"],
       url: `${siteConfig.url}/${raw}/`,
       siteName: siteConfig.name,
       title: t.home.metaTitle,
