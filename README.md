@@ -409,6 +409,11 @@ money when it breaks:
   **only** after the API confirms, a 429 says "too many attempts" instead of
   claiming failure, a 502 keeps the typed data, and partial capture beacons
   once and never after a successful submit.
+- `content/metadata.test.ts` — every title and description, checked at its
+  source against what a search result renders (60 and 155 characters). 29 of
+  36 routes were over before this existed and nothing caught it, because
+  nothing was looking. It also asserts no page title carries the brand
+  itself — `lib/seo.ts` appends it once, and both used to.
 - `app/(admin)/admin/QuoteEditor.test.tsx` — the lead editor's dialog: Escape
   closes it *while focus is still on body*, which is the state it opens in,
   focus moves into the dialog and returns to the opener on close, and the
