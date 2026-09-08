@@ -1,4 +1,4 @@
-# Autos B2 — b2autos.com
+# Autos B2 — autosb2.com
 
 Bilingual (fr-CA / en-CA) lead-generation site for **Autos B2**, a licensed auto
 recycler and scrap-car buyer at **340 Chemin Pincourt, Mascouche, QC J7L 2W3**.
@@ -180,7 +180,7 @@ Each one is there because it **proves a claim the copy makes**:
 |---|---|
 | `attache-vehicule-plateau.jpg` | A real person doing the work — the strongest signal in the set |
 | `transport-multi-vehicules.jpg` | Scale: five cars on one hauler, behind the 2,000/year figure |
-| `enlevement-soir-residentiel.jpg` | The 8:30pm hours are real |
+| `enlevement-soir-residentiel.jpg` | The 8pm hours are real |
 | `plateau-vus-charge.jpg` | Our own flatbed, not a subcontractor |
 | `remorquage-chariot-elevateur.jpg` | "Any vehicle, no exceptions" |
 | `remorquage-soir-berline.jpg` | Same-day, after-hours pickup |
@@ -255,7 +255,26 @@ Two kinds of submission arrive:
 
 ```bash
 # .env.local (Next)
-NEXT_PUBLIC_SITE_URL=https://b2autos.com
+
+# ⚠️ The canonical origin. Apex, no www, no trailing slash.
+#
+# This one value is stamped into EVERY canonical tag, hreflang alternate,
+# og:url, JSON-LD `url` and sitemap entry the site emits. Point it at a
+# hostname the site is not actually served from and you tell Google the real
+# version of every page lives somewhere else — and if that somewhere else
+# 404s, nothing gets indexed at all.
+#
+# Change it only when the domain genuinely changes. After changing it, rebuild
+# and confirm that the canonical, hreflang, og:url, JSON-LD url and every
+# <loc> in /sitemap.xml all carry the new host.
+#
+# The 301s from the other hostnames live in `redirects()` in next.config.ts —
+# those also require the domain to be added and pointed at the project in
+# Vercel; code alone will not redirect a hostname that never reaches the app.
+#
+# Note: this is NOT the same domain as the contact mailbox, which is still
+# admin@b2autos.com. That split is deliberate.
+NEXT_PUBLIC_SITE_URL=https://autosb2.com
 NEXT_PUBLIC_CONVEX_URL=            # written by `npx convex dev`
 NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX     # unset = no tags load at all
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=
@@ -466,7 +485,7 @@ expands the hand-aligned `@keyframes` into something harder to read.
   "hundreds of satisfied customers" or any volume language.
 - The address is **Mascouche**. Laval is a service area, never the address.
 - The email is **admin@b2autos.com**.
-- Hours are **8:00–20:30, seven days a week**, identical on every page and in
+- Hours are **8:00–20:00, seven days a week**, identical on every page and in
   the schema. They come from `siteConfig.hours`, so they cannot drift.
 - **No social media icons or links** anywhere. `sameAs` is omitted from the
   JSON-LD entirely — an empty `sameAs` is worse than none.

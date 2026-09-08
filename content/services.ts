@@ -29,8 +29,8 @@ export const SERVICES: ServicePage[] = [
       en: "Cash for junk cars",
     },
     metaDescription: {
-      fr: "On rachète votre auto scrap comptant, de 300 $ à 3 000 $ selon le véhicule. Remorquage gratuit et transfert SAAQ inclus. Ouvert 7 jours, 8 h à 20 h 30.",
-      en: "Autos B2 buys your junk car for cash, $300 to $3,000 depending on the vehicle. Free towing, SAAQ transfer included, open 7 days 8am to 8:30pm.",
+      fr: "On rachète votre auto scrap comptant, de 300 $ à 3 000 $ selon le véhicule. Remorquage gratuit et transfert SAAQ inclus. Ouvert 7 jours, 8 h à 20 h.",
+      en: "Autos B2 buys your junk car for cash, $300 to $3,000 depending on the vehicle. Free towing, SAAQ transfer included, open 7 days 8am to 8pm.",
     },
     h1: {
       fr: "Vendre mon auto scrap — acheteur d'auto scrap, payé comptant",

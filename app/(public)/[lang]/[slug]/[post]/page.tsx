@@ -29,8 +29,19 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
-    // Articles exist in one language, so the cluster is a single self-reference.
-    alternates: { canonical: url },
+    /*
+      Articles exist in one language, so the cluster is a single self-reference
+      — but it still has to be STATED. These four pages were shipping no
+      hreflang at all, not even their own, which leaves a crawler to infer the
+      language rather than being told it.
+    */
+    alternates: {
+      canonical: url,
+      languages: {
+        [raw === "fr" ? "fr-CA" : "en-CA"]: url,
+        "x-default": url,
+      },
+    },
     openGraph: {
       type: "article",
       locale: raw === "fr" ? "fr_CA" : "en_CA",
@@ -81,6 +92,9 @@ export default async function BlogPostPage({
           description: post.description,
           datePublished: post.date,
           dateModified: post.date,
+          // Article rich results require an image. Until posts carry their
+          // own, this is the same asset the OG tags above already use.
+          image: [`${siteConfig.url}/hero-tow-truck.jpg`],
           inLanguage: lang === "fr" ? "fr-CA" : "en-CA",
           mainEntityOfPage: `${siteConfig.url}${path}`,
           author: { "@type": "Organization", name: siteConfig.name },

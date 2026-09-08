@@ -14,7 +14,7 @@ import AttributionBoot from "@/components/site/AttributionBoot";
 import MetaPixel from "@/components/site/MetaPixel";
 import SiteChrome from "@/components/site/SiteChrome";
 import GoogleTagManager, { GoogleTagManagerNoScript } from "@/components/site/GoogleTagManager";
-import { JsonLd, localBusinessSchema } from "@/components/site/JsonLd";
+import { JsonLd, localBusinessSchema, websiteSchema } from "@/components/site/JsonLd";
 
 /** Self-hosted at build time — no request to fonts.gstatic.com, and swap on. */
 const outfit = Outfit({ subsets: ["latin"], display: "swap", variable: "--font-outfit" });
@@ -96,6 +96,7 @@ export default async function PublicLayout({
       <head>
         <GoogleTagManager />
         <JsonLd id="ld-business" data={localBusinessSchema(lang)} />
+        <JsonLd id="ld-website" data={websiteSchema(lang)} />
       </head>
       <body className={`${outfit.className} antialiased bg-white text-slate-900`}>
         <GoogleTagManagerNoScript />

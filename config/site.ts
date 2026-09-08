@@ -24,13 +24,29 @@ export const siteConfig = {
    * from, Google is told the real version lives somewhere else — and if
    * that somewhere else 404s, nothing gets indexed at all.
    *
+   * The canonical host is the APEX, autosb2.com — no www. Everything else
+   * (www.autosb2.com, b2autos.com, www.b2autos.com) 301s here; see the
+   * `redirects()` block in next.config.ts.
+   *
+   * Note the email address is deliberately NOT on this domain: it is still
+   * admin@b2autos.com. That is a mailbox, not a URL, and it is a separate
+   * decision. Do not "fix" it to match this value.
+   *
    * The default is the domain the site is live on. Override per environment
    * with NEXT_PUBLIC_SITE_URL if that ever changes.
    */
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.autosb2.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://autosb2.com",
 
+  /**
+   * `name` is the trading name — what customers say, what the signage reads,
+   * and what belongs in every title, heading and JSON-LD `name`.
+   *
+   * `legalName` is the registered entity and is deliberately different. It is
+   * NOT interchangeable with `name`: putting "Recyclage Autos B2" in a page
+   * title or an H1 would be optimising for a string nobody searches.
+   */
   name: "Autos B2",
-  legalName: "Autos B2",
+  legalName: "Recyclage Autos B2",
   shortName: "Autos B2",
 
   phone: {
@@ -86,22 +102,32 @@ export const siteConfig = {
   /**
    * Yard coordinates.
    *
-   * NOT VERIFIED — left null on purpose. The JSON-LD omits the `geo` block
-   * entirely while this is null rather than shipping a guessed pin, which is
-   * worse than no pin at all for local ranking. To fill it: open the Google
-   * Business Profile listing in Maps, right-click the pin, copy the lat/lng.
+   * Read off the Google Business Profile pin itself, not geocoded from the
+   * address string — so the JSON-LD `geo` and the GBP agree exactly.
+   *
+   * Source: https://maps.app.goo.gl/5Z54QqJqVdyTcXzG9 → the place coordinates
+   * in the resolved Maps URL (`!3d45.7421284!4d-73.6730281`). The listing is
+   * "Recyclage Autos B2", category Auto wrecker, 340 Chem. Pincourt.
+   * Plus code P8RG+VQ Mascouche. Google CID 8774241978892122836
+   * (ftid 0x4cc8dd4c7d410c7b:0x79c45e97852f7ad4).
+   *
+   * Do not "tidy" these to fewer decimal places — the precision is what makes
+   * the pin land on the yard rather than on the street.
    */
-  geo: null as null | { latitude: number; longitude: number },
+  geo: { latitude: 45.7421284, longitude: -73.6730281 } as null | {
+    latitude: number;
+    longitude: number;
+  },
 
   /**
-   * Open every day, 8:00 AM to 8:30 PM. One entry, seven days — the site and
+   * Open every day, 8:00 AM to 8:00 PM. One entry, seven days — the site and
    * the schema both read this, so the hours can never disagree between the
    * body copy and the structured data.
    */
   hours: {
     days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     opens: "08:00",
-    closes: "20:30",
+    closes: "20:00",
   },
 
   /** Verified business figures. Do not add to these without a source. */

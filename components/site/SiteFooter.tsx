@@ -9,6 +9,7 @@ import { SERVICES } from "@/content/services";
 import { getCopy } from "@/content/copy";
 import PhoneLink from "@/components/site/PhoneLink";
 import MailLink from "@/components/site/MailLink";
+import ReviewLink from "@/components/site/ReviewLink";
 
 /**
  * No social icons: there are no accounts. An icon row linking to "#" is a dead
@@ -40,6 +41,14 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
             />
 
             <address className="mt-5 space-y-3 not-italic text-sm leading-relaxed">
+              {/*
+                The registered name in text, not just the logo image. Google's
+                name guideline asks for the name used consistently on the
+                storefront, the website and the stationery — a logo PNG is not
+                readable evidence of any of that, and this is the block a
+                crawler reads as the NAP.
+              */}
+              <p className="font-bold text-white">{siteConfig.legalName}</p>
               <p className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
                 <span>
@@ -61,6 +70,11 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
                 className="block font-black tabular-nums text-white hover:text-brand-400"
               />
               <MailLink source="footer" className="block hover:text-white" />
+              {/* Renders nothing until GBP_REVIEW_LINK is set. */}
+              <ReviewLink
+                lang={lang}
+                className="inline-flex items-center gap-1.5 pt-1 font-semibold text-brand-400 hover:text-brand-300"
+              />
             </div>
           </div>
 
@@ -146,7 +160,7 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
         <div className="mt-12 flex flex-col gap-3 border-t border-slate-800 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           {/* Dynamic — never a hardcoded year. */}
           <p>
-            © {year} {siteConfig.name}.{" "}
+            © {year} {siteConfig.legalName}.{" "}
             {lang === "fr" ? "Tous droits réservés." : "All rights reserved."} {fullAddress}.
           </p>
           <p className="flex flex-wrap items-center gap-x-4 gap-y-2">
