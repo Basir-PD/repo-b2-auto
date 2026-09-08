@@ -1,0 +1,1330 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e4]:
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - link [ref=e11] [cursor=pointer]:
+            - /url: /
+            - img "Visitez PJ.ca lorsque vous recherchez une entreprise canadienne" [ref=e12]
+          - generic [ref=e13]:
+            - text: 
+            - generic [ref=e14]:
+              - generic [ref=e16]:
+                - generic [ref=e17]: Que recherchez-vous?
+                - generic [ref=e18]:
+                  - 'textbox "Quoi? (Ex: plombier)" [ref=e19]'
+                  - 'textbox "Quoi? (Ex: plombier)" [ref=e20]': Recyclage-Automobile
+              - generic [ref=e21]:
+                - generic [ref=e23]:
+                  - generic [ref=e24]: Où recherchez-vous?
+                  - generic [ref=e25]:
+                    - 'textbox "Quoi? (Ex: plombier)" [ref=e26]'
+                    - 'textbox "Quoi? (Ex: plombier)" [ref=e27]':
+                      - /placeholder: "Où? (Ex: Montréal)"
+                      - text: Mascouche QC
+                  - text: 
+                - button "Rechercher" [ref=e30] [cursor=pointer]
+          - list [ref=e34]:
+            - listitem [ref=e35]:
+              - link "Connexion" [ref=e36] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e37]:
+              - link "en Switch to English language / Passer en anglais" [ref=e38] [cursor=pointer]:
+                - /url: https://www.yellowpages.ca/search/si/1/Recyclage-Automobile/Mascouche+QC?theme=yellowpages
+                - text: en
+                - generic [ref=e39]: Switch to English language / Passer en anglais
+        - list [ref=e40]:
+          - listitem [ref=e41]:
+            - link "Restaurants" [ref=e42] [cursor=pointer]:
+              - /url: /search/si/1/Restaurants/Mascouche+QC
+          - listitem [ref=e43]:
+            - link "Dentistes" [ref=e44] [cursor=pointer]:
+              - /url: /search/si/1/Dentistes/Mascouche+QC
+          - listitem [ref=e45]:
+            - link "Cliniques médicales" [ref=e46] [cursor=pointer]:
+              - /url: /search/si/1/Cliniques+medicales/Mascouche+QC
+          - listitem [ref=e47]:
+            - link "Réparation de voitures" [ref=e48] [cursor=pointer]:
+              - /url: /search/si/1/Reparation+de+voitures/Mascouche+QC
+          - listitem [ref=e49]:
+            - link "Épiceries" [ref=e50] [cursor=pointer]:
+              - /url: /search/si/1/Epiceries/Mascouche+QC
+    - generic [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - heading [level=1] [ref=e58] [cursor=pointer]:
+            - generic [ref=e59]:
+              - strong [ref=e60]: Recyclage-Automobile
+              - text: près de
+              - strong [ref=e61]: Mascouche QC
+              - text: (29 Résultat(s))
+          - link [ref=e63] [cursor=pointer]:
+            - /url: "#"
+            - strong [ref=e64]: Pertinence
+        - text: 
+        - generic [ref=e70]:
+          - list [ref=e71]:
+            - listitem [ref=e72]:
+              - link "Ouvert" [ref=e73] [cursor=pointer]:
+                - /url: /search/si/1/Recyclage-Automobile/Mascouche+QC?filter=open
+            - listitem [ref=e74]:
+              - link "24/7" [ref=e75] [cursor=pointer]:
+                - /url: /search/si/1/Recyclage-Automobile/Mascouche+QC?filter=open24Hours
+            - listitem [ref=e76]:
+              - link "Emplacements" [ref=e77] [cursor=pointer]:
+                - /url: "#"
+                - text: Emplacements
+                - strong
+              - text:                            
+            - listitem [ref=e78]:
+              - link "Langue" [ref=e79] [cursor=pointer]:
+                - /url: "#"
+                - text: Langue
+                - strong
+              - text:      
+            - listitem [ref=e80]:
+              - link "Messagerie en ligne" [ref=e81] [cursor=pointer]:
+                - /url: /search/si/1/Recyclage-Automobile/Mascouche+QC?filter=messaging
+          - list [ref=e82]
+        - generic: »
+        - generic [ref=e83]:
+          - generic [ref=e84]:
+            - generic [ref=e88]:
+              - link [ref=e91] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Scrapy-Laval/102790905.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Scrapy Laval - Recyclage et démolition d'autos" [ref=e92]
+              - generic [ref=e93]:
+                - generic [ref=e95]:
+                  - heading [level=3] [ref=e97]:
+                    - link "Scrapy Laval" [ref=e98] [cursor=pointer]:
+                      - /url: /bus/Quebec/Laval/Scrapy-Laval/102790905.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e99]:
+                    - generic [ref=e100]: 2225 Montée Masson, Laval QC H7B 0A7
+                    - link "Itinéraire »" [ref=e101] [cursor=pointer]:
+                      - /url: /merchant/directions/102790905/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - link "Recyclage et démolition d'autos" [ref=e105] [cursor=pointer]:
+                    - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                - list [ref=e108]:
+                  - listitem [ref=e109]:
+                    - link " Téléphone" [ref=e110] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e111]: 
+                      - text: Téléphone
+                  - listitem [ref=e112]:
+                    - link " Itinéraire" [ref=e113] [cursor=pointer]:
+                      - /url: /merchant/directions/102790905/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e114]: 
+                      - text: Itinéraire
+                  - text: 
+            - generic [ref=e118]:
+              - link [ref=e121] [cursor=pointer]:
+                - /url: /bus/Quebec/Sainte-Anne-Des-Plaines/9433-3481-Qc-Inc/102606974.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "9433 3481 Qc Inc - Recyclage et démolition d'autos" [ref=e122]
+              - generic [ref=e123]:
+                - generic [ref=e125]:
+                  - heading [level=3] [ref=e127]:
+                    - link "9433 3481 Qc Inc" [ref=e128] [cursor=pointer]:
+                      - /url: /bus/Quebec/Sainte-Anne-Des-Plaines/9433-3481-Qc-Inc/102606974.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e129]:
+                    - generic [ref=e130]: 206 Ch De La Plaine, Sainte-Anne-Des-Plaines QC J0N 1H0
+                    - link "Itinéraire »" [ref=e131] [cursor=pointer]:
+                      - /url: /merchant/directions/102606974/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - link "Recyclage et démolition d'autos" [ref=e135] [cursor=pointer]:
+                    - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                - list [ref=e138]:
+                  - listitem [ref=e139]:
+                    - link " Téléphone" [ref=e140] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e141]: 
+                      - text: Téléphone
+                  - listitem [ref=e142]:
+                    - link " Itinéraire" [ref=e143] [cursor=pointer]:
+                      - /url: /merchant/directions/102606974/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e144]: 
+                      - text: Itinéraire
+                  - text: 
+            - generic [ref=e148]:
+              - link [ref=e151] [cursor=pointer]:
+                - /url: /bus/Quebec/Repentigny/REMORQUAGE-URGENCE-REPENTIGNY-deverrouillage-survoltage-24-7/102387783.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#gallery
+                - img "REMORQUAGE URGENCE REPENTIGNY déverrouillage survoltage 24/7 - Recyclage et démolition d'autos" [ref=e152]
+              - generic [ref=e153]:
+                - generic [ref=e154]:
+                  - generic [ref=e155]:
+                    - heading [level=3] [ref=e157]:
+                      - link "REMORQUAGE URGENCE REPENTIGNY déverrouillage survoltage 24/7" [ref=e158] [cursor=pointer]:
+                        - /url: /bus/Quebec/Repentigny/REMORQUAGE-URGENCE-REPENTIGNY-deverrouillage-survoltage-24-7/102387783.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e159]:
+                      - generic [ref=e160]: 430 Rue Notre-Dame, Repentigny QC J6A 2T4
+                      - link "Itinéraire »" [ref=e161] [cursor=pointer]:
+                        - /url: /merchant/directions/102387783/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e162]:
+                      - generic [ref=e163]: Remorquage de moto, Service de déverrouillage, Service routier d'urgence, Déverrouillage d'auto, Survoltage d'auto, Remorquage de bateaux, Remorquage de camion, Dépannage de camion, Survoltage de camion, Remorquage de vr, Assistance routière, Dépannage de moto, Déménagement de machinerie
+                      - generic [ref=e166]:
+                        - link "Recyclage et démolition d'autos" [ref=e167] [cursor=pointer]:
+                          - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                        - text: ","
+                        - link "Remorquage de véhicules" [ref=e168] [cursor=pointer]:
+                          - /url: /search/si/1/Remorquage+de+v%C3%A9hicules/Mascouche+QC
+                  - link "Ouvert 24h" [ref=e171] [cursor=pointer]:
+                    - /url: /bus/Quebec/Repentigny/REMORQUAGE-URGENCE-REPENTIGNY-deverrouillage-survoltage-24-7/102387783.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e174]:
+                  - listitem [ref=e175]:
+                    - link " Téléphone" [ref=e176] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e177]: 
+                      - text: Téléphone
+                  - listitem [ref=e178]:
+                    - link " Itinéraire" [ref=e179] [cursor=pointer]:
+                      - /url: /merchant/directions/102387783/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e180]: 
+                      - text: Itinéraire
+                  - listitem [ref=e181]:
+                    - link " Site web" [ref=e182] [cursor=pointer]:
+                      - /url: /gourl/a487bc9237d687c05b1d05d7eb7891e9947d1495?redirect=https%3A%2F%2Fwww.remorquagerepentigny.ca%2F
+                      - generic [ref=e183]: 
+                      - text: Site web
+                  - listitem [ref=e184]:
+                    - link " Message" [ref=e185] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - generic [ref=e186]: 
+                      - text: Message
+                  - text: 
+            - generic [ref=e190]:
+              - link [ref=e193] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal/Recyclage-d-Auto-G-L/100202672.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Recyclage d'Auto G.L. - Accessoires et pièces d'autos d'occasion" [ref=e194]
+              - generic [ref=e195]:
+                - generic [ref=e196]:
+                  - generic [ref=e197]:
+                    - heading [level=3] [ref=e199]:
+                      - link "Recyclage d'Auto G.L." [ref=e200] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal/Recyclage-d-Auto-G-L/100202672.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e201]:
+                      - generic [ref=e202]: 10005, boul Henri-Bourassa E, Montréal QC H1C 1G5
+                      - link "Itinéraire »" [ref=e203] [cursor=pointer]:
+                        - /url: /merchant/directions/100202672/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e204]:
+                      - generic [ref=e205]: Accessoires et pièces usagés et remis à neuf, Achat et vente d'auto usagé, Carosserie, Moteurs, Pneus usagés, Transmission
+                      - link "Accessoires et pièces d'autos d'occasion" [ref=e209] [cursor=pointer]:
+                        - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                  - link "Fermera bientôt" [ref=e212] [cursor=pointer]:
+                    - /url: /bus/Quebec/Montreal/Recyclage-d-Auto-G-L/100202672.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e215]:
+                  - listitem [ref=e216]:
+                    - link " Téléphone" [ref=e217] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e218]: 
+                      - text: Téléphone
+                  - listitem [ref=e219]:
+                    - link " Itinéraire" [ref=e220] [cursor=pointer]:
+                      - /url: /merchant/directions/100202672/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e221]: 
+                      - text: Itinéraire
+                  - listitem [ref=e222]:
+                    - link " Site web" [ref=e223] [cursor=pointer]:
+                      - /url: /gourl/a919a89a2556df71344b3533f932ff33e78ff32f?redirect=http%3A%2F%2Fwww.glrecyclageauto.com%2F
+                      - generic [ref=e224]: 
+                      - text: Site web
+                  - listitem [ref=e225]:
+                    - link " Message" [ref=e226] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - generic [ref=e227]: 
+                      - text: Message
+                  - text: 
+            - generic [ref=e231]:
+              - link [ref=e234] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal/Recyclage-d-Auto-G-L/2491540.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Recyclage d'Auto G.L. - Accessoires et pièces d'autos d'occasion" [ref=e235]
+              - generic [ref=e236]:
+                - generic [ref=e237]:
+                  - generic [ref=e238]:
+                    - heading [level=3] [ref=e240]:
+                      - link "Recyclage d'Auto G.L." [ref=e241] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal/Recyclage-d-Auto-G-L/2491540.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e242]:
+                      - generic [ref=e243]: 10005, boul Henri-Bourassa E, Montréal QC H1C 1G5
+                      - link "Itinéraire »" [ref=e244] [cursor=pointer]:
+                        - /url: /merchant/directions/2491540/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e245]:
+                      - generic [ref=e246]: Accessoires et pièces usagés et remis à neuf, Achat et vente d'auto usagé, Carosserie, Moteurs, Pneus usagés, Transmission
+                      - link "Accessoires et pièces d'autos d'occasion" [ref=e250] [cursor=pointer]:
+                        - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                  - link "Fermera bientôt" [ref=e253] [cursor=pointer]:
+                    - /url: /bus/Quebec/Montreal/Recyclage-d-Auto-G-L/2491540.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e256]:
+                  - listitem [ref=e257]:
+                    - link " Téléphone" [ref=e258] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e259]: 
+                      - text: Téléphone
+                  - listitem [ref=e260]:
+                    - link " Itinéraire" [ref=e261] [cursor=pointer]:
+                      - /url: /merchant/directions/2491540/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e262]: 
+                      - text: Itinéraire
+                  - listitem [ref=e263]:
+                    - link " Site web" [ref=e264] [cursor=pointer]:
+                      - /url: /gourl/1a5477b6f6114879e217bba048b9023ae773740c?redirect=http%3A%2F%2Fwww.facebook.com%2F456704201510048
+                      - generic [ref=e265]: 
+                      - text: Site web
+                  - listitem [ref=e266]:
+                    - link " Message" [ref=e267] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - generic [ref=e268]: 
+                      - text: Message
+                  - text: 
+            - generic [ref=e272]:
+              - link [ref=e275] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal/Auto-Recyclage/7713403.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Auto Recyclage - Accessoires et pièces d'autos d'occasion" [ref=e276]
+              - generic [ref=e277]:
+                - generic [ref=e278]:
+                  - generic [ref=e279]:
+                    - heading [level=3] [ref=e281]:
+                      - link "Auto Recyclage" [ref=e282] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal/Auto-Recyclage/7713403.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e283]:
+                      - generic [ref=e284]: 9685, boul Henri-Bourassa E, Montréal QC H1E 5W9
+                      - link "Itinéraire »" [ref=e285] [cursor=pointer]:
+                        - /url: /merchant/directions/7713403/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - link "Accessoires et pièces d'autos d'occasion" [ref=e289] [cursor=pointer]:
+                      - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                  - link "Ouvert jusqu'à 18:00" [ref=e292] [cursor=pointer]:
+                    - /url: /bus/Quebec/Montreal/Auto-Recyclage/7713403.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e295]:
+                  - listitem [ref=e296]:
+                    - link " Téléphone" [ref=e297] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e298]: 
+                      - text: Téléphone
+                  - listitem [ref=e299]:
+                    - link " Itinéraire" [ref=e300] [cursor=pointer]:
+                      - /url: /merchant/directions/7713403/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e301]: 
+                      - text: Itinéraire
+                  - listitem [ref=e302]:
+                    - link " Site web" [ref=e303] [cursor=pointer]:
+                      - /url: /gourl/7a3e9b6921e7900b8a37ca835e83f836fcbfd154?redirect=http%3A%2F%2Fwww.autopa.ca%2F
+                      - generic [ref=e304]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e308]:
+              - link [ref=e311] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal/Asselin-Pieces-D-Auto-1980-Inc/100778050.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Asselin Pièces D'Auto (1980) Inc - Recyclage et démolition d'autos" [ref=e312]
+              - generic [ref=e313]:
+                - generic [ref=e314]:
+                  - generic [ref=e315]:
+                    - heading [level=3] [ref=e317]:
+                      - link "Asselin Pièces D'Auto (1980) Inc" [ref=e318] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal/Asselin-Pieces-D-Auto-1980-Inc/100778050.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e319]:
+                      - generic [ref=e320]: 9685 Henri-Bourassa E, Montréal QC H1E 5W9
+                      - link "Itinéraire »" [ref=e321] [cursor=pointer]:
+                        - /url: /merchant/directions/100778050/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e323]:
+                      - generic [ref=e324]:
+                        - link "Recyclage et démolition d'autos" [ref=e325] [cursor=pointer]:
+                          - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                        - text: ","
+                        - link "Silencieux et tuyaux d'échappement" [ref=e326] [cursor=pointer]:
+                          - /url: /search/si/1/Silencieux+et+tuyaux+d%27%C3%A9chappement/Mascouche+QC
+                      - generic [ref=e327]:
+                        - text: ","
+                        - link "Plus…" [ref=e328] [cursor=pointer]:
+                          - /url: /bus/Quebec/Montreal/Asselin-Pieces-D-Auto-1980-Inc/100778050.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e329]:
+                    - generic [ref=e331]:
+                      - generic [ref=e332]:
+                        - link "rating 1" [ref=e333] [cursor=pointer]:
+                          - /url: /bus/Quebec/Montreal/Asselin-Pieces-D-Auto-1980-Inc/100778050.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                        - link "(1)" [ref=e340] [cursor=pointer]:
+                          - /url: /bus/Quebec/Montreal/Asselin-Pieces-D-Auto-1980-Inc/100778050.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                      - link "Lire les commentaires" [ref=e342] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal/Asselin-Pieces-D-Auto-1980-Inc/100778050.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                    - link "Fermera bientôt" [ref=e344] [cursor=pointer]:
+                      - /url: /bus/Quebec/Montreal/Asselin-Pieces-D-Auto-1980-Inc/100778050.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e347]:
+                  - listitem [ref=e348]:
+                    - link " Téléphone" [ref=e349] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e350]: 
+                      - text: Téléphone
+                  - listitem [ref=e351]:
+                    - link " Itinéraire" [ref=e352] [cursor=pointer]:
+                      - /url: /merchant/directions/100778050/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e353]: 
+                      - text: Itinéraire
+                  - listitem [ref=e354]:
+                    - link " Message" [ref=e355] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - generic [ref=e356]: 
+                      - text: Message
+                  - text: 
+            - generic [ref=e360]:
+              - link [ref=e363] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal-Est/Recyclage-D-Auto-St-Onge-2000/3627373.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Recyclage D'Auto St-Onge 2000 - Accessoires et pièces d'autos neuves" [ref=e364]
+              - generic [ref=e365]:
+                - generic [ref=e366]:
+                  - generic [ref=e367]:
+                    - heading [level=3] [ref=e369]:
+                      - link "Recyclage D'Auto St-Onge 2000" [ref=e370] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal-Est/Recyclage-D-Auto-St-Onge-2000/3627373.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e371]:
+                      - generic [ref=e372]: 8300, av Broadway N, Montréal-Est QC H1B 5B6
+                      - link "Itinéraire »" [ref=e373] [cursor=pointer]:
+                        - /url: /merchant/directions/3627373/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - link "Accessoires et pièces d'autos neuves" [ref=e377] [cursor=pointer]:
+                      - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+neuves/Mascouche+QC
+                  - link "Ouvert jusqu'à 18:00" [ref=e380] [cursor=pointer]:
+                    - /url: /bus/Quebec/Montreal-Est/Recyclage-D-Auto-St-Onge-2000/3627373.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e383]:
+                  - listitem [ref=e384]:
+                    - link " Téléphone" [ref=e385] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e386]: 
+                      - text: Téléphone
+                  - listitem [ref=e387]:
+                    - link " Itinéraire" [ref=e388] [cursor=pointer]:
+                      - /url: /merchant/directions/3627373/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e389]: 
+                      - text: Itinéraire
+                  - listitem [ref=e390]:
+                    - link " Site web" [ref=e391] [cursor=pointer]:
+                      - /url: /gourl/8cc570d8c70ff79bfc1bc0774b29c9933e94e056?redirect=http%3A%2F%2Fwww.recyclagestonge2000.ca%2F
+                      - generic [ref=e392]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e396]:
+              - link [ref=e399] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Recyclage-Automobiles-S-V-P/100858104.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Recyclage Automobiles S V P - Accessoires et pièces d'autos d'occasion" [ref=e400]
+              - generic [ref=e401]:
+                - generic [ref=e403]:
+                  - heading [level=3] [ref=e405]:
+                    - link "Recyclage Automobiles S V P" [ref=e406] [cursor=pointer]:
+                      - /url: /bus/Quebec/Laval/Recyclage-Automobiles-S-V-P/100858104.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e407]:
+                    - generic [ref=e408]: 6515, boul La Fayette, Laval QC H7C 1M5
+                    - link "Itinéraire »" [ref=e409] [cursor=pointer]:
+                      - /url: /merchant/directions/100858104/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - link "Accessoires et pièces d'autos d'occasion" [ref=e413] [cursor=pointer]:
+                    - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                - list [ref=e416]:
+                  - listitem [ref=e417]:
+                    - link " Téléphone" [ref=e418] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e419]: 
+                      - text: Téléphone
+                  - listitem [ref=e420]:
+                    - link " Itinéraire" [ref=e421] [cursor=pointer]:
+                      - /url: /merchant/directions/100858104/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e422]: 
+                      - text: Itinéraire
+                  - text: 
+            - generic [ref=e426]:
+              - link [ref=e429] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Metrobec-Laval/2667263.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Métrobec Laval - Recyclage et démolition d'autos" [ref=e430]
+              - generic [ref=e431]:
+                - generic [ref=e433]:
+                  - heading [level=3] [ref=e435]:
+                    - link "Métrobec Laval" [ref=e436] [cursor=pointer]:
+                      - /url: /bus/Quebec/Laval/Metrobec-Laval/2667263.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e437]:
+                    - generic [ref=e438]: 1150, Montée Masson, Laval QC H7E 4P2
+                    - link "Itinéraire »" [ref=e439] [cursor=pointer]:
+                      - /url: /merchant/directions/2667263/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - link "Recyclage et démolition d'autos" [ref=e443] [cursor=pointer]:
+                    - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                - list [ref=e446]:
+                  - listitem [ref=e447]:
+                    - link " Téléphone" [ref=e448] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e449]: 
+                      - text: Téléphone
+                  - listitem [ref=e450]:
+                    - link " Itinéraire" [ref=e451] [cursor=pointer]:
+                      - /url: /merchant/directions/2667263/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e452]: 
+                      - text: Itinéraire
+                  - listitem [ref=e453]:
+                    - link " Site web" [ref=e454] [cursor=pointer]:
+                      - /url: /gourl/d06e33d4a8c7c2b0502e4891cd60bead88cdd5d5?redirect=http%3A%2F%2Fwww.metrobec.net%2F
+                      - generic [ref=e455]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e459]:
+              - link [ref=e462] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Laflamme-Auto/102170874.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Laflamme Auto - Recyclage et démolition d'autos" [ref=e463]
+              - generic [ref=e464]:
+                - generic [ref=e465]:
+                  - generic [ref=e466]:
+                    - heading [level=3] [ref=e468]:
+                      - link "Laflamme Auto" [ref=e469] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/Laflamme-Auto/102170874.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e470]:
+                      - generic [ref=e471]: 1446 av De Valleyfield, Laval QC H7C 2P5
+                      - link "Itinéraire »" [ref=e472] [cursor=pointer]:
+                        - /url: /merchant/directions/102170874/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e473]:
+                      - generic [ref=e474]: Feraille, Acheteur d'automobiles à la ferraille, Démolition de camion, Récupération d'auto, Achetons auto Comptant, Feraille Auto, Pièces Auto, Métal Voiture
+                      - generic [ref=e477]:
+                        - link "Recyclage et démolition d'autos" [ref=e478] [cursor=pointer]:
+                          - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                        - text: ","
+                        - link "Remorquage de véhicules" [ref=e479] [cursor=pointer]:
+                          - /url: /search/si/1/Remorquage+de+v%C3%A9hicules/Mascouche+QC
+                  - link "Ouvert 24h" [ref=e482] [cursor=pointer]:
+                    - /url: /bus/Quebec/Laval/Laflamme-Auto/102170874.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e485]:
+                  - listitem [ref=e486]:
+                    - link " Téléphone" [ref=e487] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e488]: 
+                      - text: Téléphone
+                  - listitem [ref=e489]:
+                    - link " Itinéraire" [ref=e490] [cursor=pointer]:
+                      - /url: /merchant/directions/102170874/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e491]: 
+                      - text: Itinéraire
+                  - listitem [ref=e492]:
+                    - link " Site web" [ref=e493] [cursor=pointer]:
+                      - /url: /gourl/ed0273fa94f6f359488c2a3f5a2520e45f0f45d1?redirect=http%3A%2F%2Fwww.laflammeauto.com%2F
+                      - generic [ref=e494]: 
+                      - text: Site web
+                  - listitem [ref=e495]:
+                    - link " Message" [ref=e496] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - generic [ref=e497]: 
+                      - text: Message
+                  - text: 
+            - generic [ref=e501]:
+              - link [ref=e504] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Remorquage-Direct/100455963.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Remorquage Direct - Recyclage et démolition d'autos" [ref=e505]
+              - generic [ref=e506]:
+                - generic [ref=e507]:
+                  - generic [ref=e508]:
+                    - heading [level=3] [ref=e510]:
+                      - link "Remorquage Direct" [ref=e511] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/Remorquage-Direct/100455963.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e512]:
+                      - generic [ref=e513]: 532, crois de Murano, Laval QC H7M 5R6
+                      - link "Itinéraire »" [ref=e514] [cursor=pointer]:
+                        - /url: /merchant/directions/100455963/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e515]:
+                      - generic [ref=e516]: Automobiles-démolition et recyclage
+                      - link "Recyclage et démolition d'autos" [ref=e520] [cursor=pointer]:
+                        - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                  - generic [ref=e523]:
+                    - generic [ref=e524]:
+                      - link "rating 1" [ref=e525] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/Remorquage-Direct/100455963.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                      - link "(1)" [ref=e532] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/Remorquage-Direct/100455963.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                    - link "Lire les commentaires" [ref=e534] [cursor=pointer]:
+                      - /url: /bus/Quebec/Laval/Remorquage-Direct/100455963.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                - list [ref=e537]:
+                  - listitem [ref=e538]:
+                    - link " Téléphone" [ref=e539] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e540]: 
+                      - text: Téléphone
+                  - listitem [ref=e541]:
+                    - link " Itinéraire" [ref=e542] [cursor=pointer]:
+                      - /url: /merchant/directions/100455963/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e543]: 
+                      - text: Itinéraire
+                  - listitem [ref=e544]:
+                    - link " Site web" [ref=e545] [cursor=pointer]:
+                      - /url: /gourl/a0b8372113e31f984338590f94b11ebc79a89bf9?redirect=http%3A%2F%2Fwww.facebook.com%2F300039777514565
+                      - generic [ref=e546]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e550]:
+              - link [ref=e553] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Automobile-Jean-Clermont-Inc/7950418.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Automobile Jean Clermont Inc - Recyclage et démolition d'autos" [ref=e554]
+              - generic [ref=e555]:
+                - generic [ref=e556]:
+                  - generic [ref=e557]:
+                    - heading [level=3] [ref=e559]:
+                      - link "Automobile Jean Clermont Inc" [ref=e560] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/Automobile-Jean-Clermont-Inc/7950418.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e561]:
+                      - generic [ref=e562]: 4151 boul Lévesque E, Laval QC H7E 2R3
+                      - link "Itinéraire »" [ref=e563] [cursor=pointer]:
+                        - /url: /merchant/directions/7950418/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - link "Recyclage et démolition d'autos" [ref=e567] [cursor=pointer]:
+                      - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                  - link "Ouvert jusqu'à 18:00" [ref=e570] [cursor=pointer]:
+                    - /url: /bus/Quebec/Laval/Automobile-Jean-Clermont-Inc/7950418.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e573]:
+                  - listitem [ref=e574]:
+                    - link " Téléphone" [ref=e575] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e576]: 
+                      - text: Téléphone
+                  - listitem [ref=e577]:
+                    - link " Itinéraire" [ref=e578] [cursor=pointer]:
+                      - /url: /merchant/directions/7950418/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e579]: 
+                      - text: Itinéraire
+                  - listitem [ref=e580]:
+                    - link " Site web" [ref=e581] [cursor=pointer]:
+                      - /url: /gourl/4c769a75546796f76fc3a3d67fe318e1cd530c60?redirect=http%3A%2F%2Fwww.automobilejeanclermont.com%2F
+                      - generic [ref=e582]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e586]:
+              - link [ref=e589] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Automobile-Jean-Clermont-Inc/2105379.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Automobile Jean Clermont Inc - Recyclage et démolition d'autos" [ref=e590]
+              - generic [ref=e591]:
+                - generic [ref=e592]:
+                  - generic [ref=e593]:
+                    - heading [level=3] [ref=e595]:
+                      - link "Automobile Jean Clermont Inc" [ref=e596] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/Automobile-Jean-Clermont-Inc/2105379.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e597]:
+                      - generic [ref=e598]: 4151 boul Lévesque E, Laval QC H7E 2R3
+                      - link "Itinéraire »" [ref=e599] [cursor=pointer]:
+                        - /url: /merchant/directions/2105379/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e600]:
+                      - generic [ref=e601]: Auto ferraille, Auto recyclée, Auto scrapée, Auto usagée, Automobiles d'occasion-concessionnaires, Camion recyclé, Camions d'occasion, Cours à scrape, Démolition, Recyclage d'auto, Recyclage de camion, Remorquage
+                      - generic [ref=e604]:
+                        - link "Recyclage et démolition d'autos" [ref=e605] [cursor=pointer]:
+                          - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                        - text: ","
+                        - link "Concessionnaires d'autos d'occasion" [ref=e606] [cursor=pointer]:
+                          - /url: /search/si/1/Concessionnaires+d%27autos+d%27occasion/Mascouche+QC
+                  - generic [ref=e607]:
+                    - generic [ref=e609]:
+                      - generic [ref=e610]:
+                        - link "rating 5" [ref=e611] [cursor=pointer]:
+                          - /url: /bus/Quebec/Laval/Automobile-Jean-Clermont-Inc/2105379.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                        - link "(1)" [ref=e618] [cursor=pointer]:
+                          - /url: /bus/Quebec/Laval/Automobile-Jean-Clermont-Inc/2105379.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                      - link "Lire les commentaires" [ref=e620] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/Automobile-Jean-Clermont-Inc/2105379.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                    - link "Ouvert jusqu'à 21:00" [ref=e622] [cursor=pointer]:
+                      - /url: /bus/Quebec/Laval/Automobile-Jean-Clermont-Inc/2105379.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e625]:
+                  - listitem [ref=e626]:
+                    - link " Téléphone" [ref=e627] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e628]: 
+                      - text: Téléphone
+                  - listitem [ref=e629]:
+                    - link " Itinéraire" [ref=e630] [cursor=pointer]:
+                      - /url: /merchant/directions/2105379/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e631]: 
+                      - text: Itinéraire
+                  - listitem [ref=e632]:
+                    - link " Site web" [ref=e633] [cursor=pointer]:
+                      - /url: /gourl/60588d4f877a5c59f96f542dd644a201711f6163?redirect=http%3A%2F%2Fautomobilejeanclermont.com%2F
+                      - generic [ref=e634]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e638]:
+              - link [ref=e641] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal/Recyclage-Fascer/101841311.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Recyclage Fascer - Recyclage et démolition d'autos" [ref=e642]
+              - generic [ref=e643]:
+                - generic [ref=e644]:
+                  - generic [ref=e645]:
+                    - heading [level=3] [ref=e647]:
+                      - link "Recyclage Fascer" [ref=e648] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal/Recyclage-Fascer/101841311.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e649]:
+                      - generic [ref=e650]: 6600 rue Magloire, Montréal QC H1P 1N9
+                      - link "Itinéraire »" [ref=e651] [cursor=pointer]:
+                        - /url: /merchant/directions/101841311/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e652]:
+                      - generic [ref=e653]: Acheteur d'automobiles à la ferraille, Récupération d'auto, Achat auto pour ferraille, Metal, Recyclage de véhicules
+                      - link "Recyclage et démolition d'autos" [ref=e657] [cursor=pointer]:
+                        - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                  - link "Ouvert jusqu'à 18:59" [ref=e660] [cursor=pointer]:
+                    - /url: /bus/Quebec/Montreal/Recyclage-Fascer/101841311.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e663]:
+                  - listitem [ref=e664]:
+                    - link " Téléphone" [ref=e665] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e666]: 
+                      - text: Téléphone
+                  - listitem [ref=e667]:
+                    - link " Itinéraire" [ref=e668] [cursor=pointer]:
+                      - /url: /merchant/directions/101841311/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e669]: 
+                      - text: Itinéraire
+                  - text: 
+            - generic [ref=e673]:
+              - link [ref=e676] [cursor=pointer]:
+                - /url: /bus/Quebec/Saint-Esprit/Auto-Demolition-Et-Recyclage-Roy-Ltee/131115.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#gallery
+                - img "Auto Démolition Et Recyclage Roy Ltée - Recyclage et démolition d'autos" [ref=e677]
+              - generic [ref=e678]:
+                - generic [ref=e679]:
+                  - generic [ref=e680]:
+                    - heading [level=3] [ref=e682]:
+                      - link "Auto Démolition Et Recyclage Roy Ltée" [ref=e683] [cursor=pointer]:
+                        - /url: /bus/Quebec/Saint-Esprit/Auto-Demolition-Et-Recyclage-Roy-Ltee/131115.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e684]:
+                      - generic [ref=e685]: 98 Rang des Continuations, Saint-Esprit QC J0K 2L0
+                      - link "Itinéraire »" [ref=e686] [cursor=pointer]:
+                        - /url: /merchant/directions/131115/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e687]:
+                      - article [ref=e690]:
+                        - text: Depuis maintenant trois générations, la compagnie Auto Démolition et Recyclage Roy Ltée à Saint-Esprit vous offre ses services de
+                        - link "plus..." [ref=e691] [cursor=pointer]:
+                          - /url: javascript:void(0);
+                      - generic [ref=e692]:
+                        - generic [ref=e693]:
+                          - link "Recyclage et démolition d'autos" [ref=e694] [cursor=pointer]:
+                            - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                          - text: ","
+                          - link "Ferraille et recyclage de métaux" [ref=e695] [cursor=pointer]:
+                            - /url: /search/si/1/Ferraille+et+recyclage+de+m%C3%A9taux/Mascouche+QC
+                        - generic [ref=e696]:
+                          - text: ","
+                          - link "Plus…" [ref=e697] [cursor=pointer]:
+                            - /url: /bus/Quebec/Saint-Esprit/Auto-Demolition-Et-Recyclage-Roy-Ltee/131115.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - link "Fermera bientôt" [ref=e700] [cursor=pointer]:
+                    - /url: /bus/Quebec/Saint-Esprit/Auto-Demolition-Et-Recyclage-Roy-Ltee/131115.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e703]:
+                  - listitem [ref=e704]:
+                    - link " Téléphone" [ref=e705] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e706]: 
+                      - text: Téléphone
+                  - listitem [ref=e707]:
+                    - link " Itinéraire" [ref=e708] [cursor=pointer]:
+                      - /url: /merchant/directions/131115/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e709]: 
+                      - text: Itinéraire
+                  - listitem [ref=e710]:
+                    - link " Site web" [ref=e711] [cursor=pointer]:
+                      - /url: /gourl/1b79b1f8a7262e08466a1fd1b0e473e7e081bb38?redirect=http%3A%2F%2Fwww.recyclageroy.com%2F
+                      - generic [ref=e712]: 
+                      - text: Site web
+                  - listitem [ref=e713]:
+                    - link " Message" [ref=e714] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - generic [ref=e715]: 
+                      - text: Message
+                  - text: 
+            - generic [ref=e719]:
+              - link [ref=e722] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal-Nord/Jack-Auto/2659027.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#gallery
+                - img "Jack Auto - Recyclage et démolition d'autos" [ref=e723]
+              - generic [ref=e724]:
+                - generic [ref=e725]:
+                  - generic [ref=e726]:
+                    - heading [level=3] [ref=e728]:
+                      - link "Jack Auto" [ref=e729] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal-Nord/Jack-Auto/2659027.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e730]:
+                      - generic [ref=e731]: 4485 boul Industriel, Montréal-Nord QC H1H 2Z6
+                      - link "Itinéraire »" [ref=e732] [cursor=pointer]:
+                        - /url: /merchant/directions/2659027/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e733]:
+                      - generic [ref=e734]: Moteurs, Roues, Transmissions, Pare-brise, Pneus, Alternateur, Carrosserie, Démarreurs, Silencieux
+                      - article [ref=e738]:
+                        - text: Chez Jack's Pièces D'Autos Usagées, situé à Montréal, nous vendons des
+                        - link "plus..." [ref=e739] [cursor=pointer]:
+                          - /url: javascript:void(0);
+                      - generic [ref=e741]:
+                        - link "Recyclage et démolition d'autos" [ref=e742] [cursor=pointer]:
+                          - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                        - text: ","
+                        - link "Accessoires et pièces d'autos d'occasion" [ref=e743] [cursor=pointer]:
+                          - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                  - generic [ref=e744]:
+                    - generic [ref=e746]:
+                      - generic [ref=e747]:
+                        - link "rating 3" [ref=e748] [cursor=pointer]:
+                          - /url: /bus/Quebec/Montreal-Nord/Jack-Auto/2659027.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                        - link "(5)" [ref=e755] [cursor=pointer]:
+                          - /url: /bus/Quebec/Montreal-Nord/Jack-Auto/2659027.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                      - link "Lire les commentaires" [ref=e757] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal-Nord/Jack-Auto/2659027.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                    - link "Fermera bientôt" [ref=e759] [cursor=pointer]:
+                      - /url: /bus/Quebec/Montreal-Nord/Jack-Auto/2659027.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - generic [ref=e760]:
+                  - generic [ref=e761]:
+                    - generic [ref=e763]: Service excelent et tres bon prix et qualite equipe du tonnere.Merci!
+                    - link "Lire plus" [ref=e765] [cursor=pointer]:
+                      - /url: /bus/Quebec/Montreal-Nord/Jack-Auto/2659027.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true&ypgBestReview=200400117
+                  - list [ref=e767]:
+                    - listitem [ref=e768]:
+                      - link " Téléphone" [ref=e769] [cursor=pointer]:
+                        - /url: javascript:void(0)
+                        - generic [ref=e770]: 
+                        - text: Téléphone
+                    - listitem [ref=e771]:
+                      - link " Itinéraire" [ref=e772] [cursor=pointer]:
+                        - /url: /merchant/directions/2659027/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                        - generic [ref=e773]: 
+                        - text: Itinéraire
+                    - listitem [ref=e774]:
+                      - link " Site web" [ref=e775] [cursor=pointer]:
+                        - /url: /gourl/31eb25966420aaa086bb48492d0c6ae0f6907b79?redirect=http%3A%2F%2Fjackautomtl.com%2F
+                        - generic [ref=e776]: 
+                        - text: Site web
+                    - listitem [ref=e777]:
+                      - link " Message" [ref=e778] [cursor=pointer]:
+                        - /url: javascript:void(0);
+                        - generic [ref=e779]: 
+                        - text: Message
+                    - text: 
+            - generic [ref=e783]:
+              - link [ref=e786] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal/Recyclage-Automobile-Gt-S-E-N-C/102187009.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Recyclage Automobile Gt S.E.N.C. - Réparation et entretien d'auto" [ref=e787]
+              - generic [ref=e788]:
+                - generic [ref=e790]:
+                  - heading [level=3] [ref=e792]:
+                    - link "Recyclage Automobile Gt S.E.N.C." [ref=e793] [cursor=pointer]:
+                      - /url: /bus/Quebec/Montreal/Recyclage-Automobile-Gt-S-E-N-C/102187009.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e794]:
+                    - generic [ref=e795]: 6-4120 55E Rue, Montréal QC H1Z 1E7
+                    - link "Itinéraire »" [ref=e796] [cursor=pointer]:
+                      - /url: /merchant/directions/102187009/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - link "Réparation et entretien d'auto" [ref=e800] [cursor=pointer]:
+                    - /url: /search/si/1/R%C3%A9paration+et+entretien+d%27auto/Mascouche+QC
+                - list [ref=e803]:
+                  - listitem [ref=e804]:
+                    - link " Téléphone" [ref=e805] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e806]: 
+                      - text: Téléphone
+                  - listitem [ref=e807]:
+                    - link " Itinéraire" [ref=e808] [cursor=pointer]:
+                      - /url: /merchant/directions/102187009/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e809]: 
+                      - text: Itinéraire
+                  - listitem [ref=e810]:
+                    - link " Site web" [ref=e811] [cursor=pointer]:
+                      - /url: /gourl/537561d46077538fbc8722f43b7f96039b3195e2?redirect=http%3A%2F%2Fwww.facebook.com%2F525912934462404
+                      - generic [ref=e812]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e816]:
+              - link [ref=e819] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal/Recyclage-Auto-GT/100804755.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Recyclage Auto GT - Recyclage et démolition d'autos" [ref=e820]
+              - generic [ref=e821]:
+                - generic [ref=e822]:
+                  - generic [ref=e823]:
+                    - heading [level=3] [ref=e825]:
+                      - link "Recyclage Auto GT" [ref=e826] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal/Recyclage-Auto-GT/100804755.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e827]:
+                      - generic [ref=e828]: 4121, 55E rue, Montréal QC H1Z 1E8
+                      - link "Itinéraire »" [ref=e829] [cursor=pointer]:
+                        - /url: /merchant/directions/100804755/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e830]:
+                      - generic [ref=e831]: Recyclage et démo, Récupération d'auto, Acheteur d'automobiles à la ferraille, Parc à ferrailles, Auto ferraille, Auto recyclée, Auto scrapée, Auto usagée, Camion recyclé, Cours à scrape, Démolition, Recyclage d'auto, Recyclage de camion, Remorquage
+                      - link "Recyclage et démolition d'autos" [ref=e835] [cursor=pointer]:
+                        - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                  - generic [ref=e836]:
+                    - generic [ref=e838]:
+                      - generic [ref=e839]:
+                        - link "rating 5" [ref=e840] [cursor=pointer]:
+                          - /url: /bus/Quebec/Montreal/Recyclage-Auto-GT/100804755.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                        - link "(1)" [ref=e847] [cursor=pointer]:
+                          - /url: /bus/Quebec/Montreal/Recyclage-Auto-GT/100804755.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                      - link "Lire les commentaires" [ref=e849] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal/Recyclage-Auto-GT/100804755.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                    - link "Ouvert jusqu'à 23:00" [ref=e851] [cursor=pointer]:
+                      - /url: /bus/Quebec/Montreal/Recyclage-Auto-GT/100804755.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e854]:
+                  - listitem [ref=e855]:
+                    - link " Téléphone" [ref=e856] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e857]: 
+                      - text: Téléphone
+                  - listitem [ref=e858]:
+                    - link " Itinéraire" [ref=e859] [cursor=pointer]:
+                      - /url: /merchant/directions/100804755/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e860]: 
+                      - text: Itinéraire
+                  - listitem [ref=e861]:
+                    - link " Message" [ref=e862] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - generic [ref=e863]: 
+                      - text: Message
+                  - text: 
+            - generic [ref=e867]:
+              - link [ref=e870] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Pieces-D-Auto-Saulnier-Inc/102500316.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Pieces D'Auto Saulnier Inc - Recyclage et démolition d'autos" [ref=e871]
+              - generic [ref=e872]:
+                - generic [ref=e874]:
+                  - heading [level=3] [ref=e876]:
+                    - link "Pieces D'Auto Saulnier Inc" [ref=e877] [cursor=pointer]:
+                      - /url: /bus/Quebec/Laval/Pieces-D-Auto-Saulnier-Inc/102500316.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e878]:
+                    - generic [ref=e879]: 85 Rue Saulnier, Laval QC H7M 1S9
+                    - link "Itinéraire »" [ref=e880] [cursor=pointer]:
+                      - /url: /merchant/directions/102500316/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - link "Recyclage et démolition d'autos" [ref=e884] [cursor=pointer]:
+                    - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                - list [ref=e887]:
+                  - listitem [ref=e888]:
+                    - link " Téléphone" [ref=e889] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e890]: 
+                      - text: Téléphone
+                  - listitem [ref=e891]:
+                    - link " Itinéraire" [ref=e892] [cursor=pointer]:
+                      - /url: /merchant/directions/102500316/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e893]: 
+                      - text: Itinéraire
+                  - text: 
+            - generic [ref=e897]:
+              - link [ref=e900] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Recyclage-Auto-Minuit/101610290.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#gallery
+                - img "Recyclage Auto Minuit - Recyclage et démolition d'autos" [ref=e901]
+              - generic [ref=e902]:
+                - generic [ref=e903]:
+                  - generic [ref=e904]:
+                    - heading [level=3] [ref=e906]:
+                      - link "Recyclage Auto Minuit" [ref=e907] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/Recyclage-Auto-Minuit/101610290.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e908]:
+                      - generic [ref=e909]: 1175, rue Notre-Dame-de-Fatima, Laval QC H7G 3Z7
+                      - link "Itinéraire »" [ref=e910] [cursor=pointer]:
+                        - /url: /merchant/directions/101610290/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e911]:
+                      - generic [ref=e912]: Acheteur d'automobiles à la ferraille, Récupération d'auto, Ferrailles, Scrap, Démolition de véhicules, Recyclage de véhicules
+                      - link "Recyclage et démolition d'autos" [ref=e916] [cursor=pointer]:
+                        - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                  - link "Ouvert 24h" [ref=e919] [cursor=pointer]:
+                    - /url: /bus/Quebec/Laval/Recyclage-Auto-Minuit/101610290.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e922]:
+                  - listitem [ref=e923]:
+                    - link " Téléphone" [ref=e924] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e925]: 
+                      - text: Téléphone
+                  - listitem [ref=e926]:
+                    - link " Itinéraire" [ref=e927] [cursor=pointer]:
+                      - /url: /merchant/directions/101610290/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e928]: 
+                      - text: Itinéraire
+                  - listitem [ref=e929]:
+                    - link " Site web" [ref=e930] [cursor=pointer]:
+                      - /url: /gourl/b3b01b6bcd32ce2fdf44dbf925fcf47f9371f4ea?redirect=http%3A%2F%2Fwww.facebook.com%2F762795217242639
+                      - generic [ref=e931]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e935]:
+              - link [ref=e938] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Recyclage-Auto-Parts/7836331.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Recyclage Auto Parts - Accessoires et pièces d'autos d'occasion" [ref=e939]
+              - generic [ref=e940]:
+                - generic [ref=e941]:
+                  - generic [ref=e942]:
+                    - heading [level=3] [ref=e944]:
+                      - link "Recyclage Auto Parts" [ref=e945] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/Recyclage-Auto-Parts/7836331.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e946]:
+                      - generic [ref=e947]: 10, rue Gélinas, Laval QC H7M 3S9
+                      - link "Itinéraire »" [ref=e948] [cursor=pointer]:
+                        - /url: /merchant/directions/7836331/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - link "Accessoires et pièces d'autos d'occasion" [ref=e952] [cursor=pointer]:
+                      - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                  - link "Fermera bientôt" [ref=e955] [cursor=pointer]:
+                    - /url: /bus/Quebec/Laval/Recyclage-Auto-Parts/7836331.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e958]:
+                  - listitem [ref=e959]:
+                    - link " Téléphone" [ref=e960] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e961]: 
+                      - text: Téléphone
+                  - listitem [ref=e962]:
+                    - link " Itinéraire" [ref=e963] [cursor=pointer]:
+                      - /url: /merchant/directions/7836331/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e964]: 
+                      - text: Itinéraire
+                  - listitem [ref=e965]:
+                    - link " Site web" [ref=e966] [cursor=pointer]:
+                      - /url: /gourl/4afcf9849852a48ad5f63be939d7f0eb8a81a15f?redirect=http%3A%2F%2Fwww.recyclagelaval.ca%2F
+                      - generic [ref=e967]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e971]:
+              - link [ref=e974] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/EJB-Recyclage-D-Auto/102358469.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#gallery
+                - img "EJB Recyclage D'Auto - Garages de réparation d'auto" [ref=e975]
+              - generic [ref=e976]:
+                - generic [ref=e977]:
+                  - generic [ref=e978]:
+                    - heading [level=3] [ref=e980]:
+                      - link "EJB Recyclage D'Auto" [ref=e981] [cursor=pointer]:
+                        - /url: /bus/Quebec/Laval/EJB-Recyclage-D-Auto/102358469.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e982]:
+                      - generic [ref=e983]: 160 rue de la Station, Laval QC H7M 3H7
+                      - link "Itinéraire »" [ref=e984] [cursor=pointer]:
+                        - /url: /merchant/directions/102358469/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - link "Garages de réparation d'auto" [ref=e988] [cursor=pointer]:
+                      - /url: /search/si/1/Garages+de+r%C3%A9paration+d%27auto/Mascouche+QC
+                  - link "Ouvert jusqu'à 18:00" [ref=e991] [cursor=pointer]:
+                    - /url: /bus/Quebec/Laval/EJB-Recyclage-D-Auto/102358469.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e994]:
+                  - listitem [ref=e995]:
+                    - link " Téléphone" [ref=e996] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e997]: 
+                      - text: Téléphone
+                  - listitem [ref=e998]:
+                    - link " Itinéraire" [ref=e999] [cursor=pointer]:
+                      - /url: /merchant/directions/102358469/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e1000]: 
+                      - text: Itinéraire
+                  - listitem [ref=e1001]:
+                    - link " Message" [ref=e1002] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - generic [ref=e1003]: 
+                      - text: Message
+                  - text: 
+            - generic [ref=e1007]:
+              - link [ref=e1010] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Ht-Etoile-Automobile/102498897.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Ht Étoile Automobile - Recyclage et démolition d'autos" [ref=e1011]
+              - generic [ref=e1012]:
+                - generic [ref=e1014]:
+                  - heading [level=3] [ref=e1016]:
+                    - link "Ht Étoile Automobile" [ref=e1017] [cursor=pointer]:
+                      - /url: /bus/Quebec/Laval/Ht-Etoile-Automobile/102498897.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e1018]:
+                    - generic [ref=e1019]: 160 Rue De La Station, Laval QC H7M 3H7
+                    - link "Itinéraire »" [ref=e1020] [cursor=pointer]:
+                      - /url: /merchant/directions/102498897/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e1023]:
+                    - link "Recyclage et démolition d'autos" [ref=e1024] [cursor=pointer]:
+                      - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                    - text: ","
+                    - link "Accessoires et pièces d'autos d'occasion" [ref=e1025] [cursor=pointer]:
+                      - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                - list [ref=e1028]:
+                  - listitem [ref=e1029]:
+                    - link " Téléphone" [ref=e1030] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e1031]: 
+                      - text: Téléphone
+                  - listitem [ref=e1032]:
+                    - link " Itinéraire" [ref=e1033] [cursor=pointer]:
+                      - /url: /merchant/directions/102498897/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e1034]: 
+                      - text: Itinéraire
+                  - text: 
+            - generic [ref=e1038]:
+              - link [ref=e1041] [cursor=pointer]:
+                - /url: /bus/Quebec/Laval/Auto-Vany/3365888.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Auto Vany - Accessoires et pièces d'autos d'occasion" [ref=e1042]
+              - generic [ref=e1043]:
+                - generic [ref=e1045]:
+                  - heading [level=3] [ref=e1047]:
+                    - link "Auto Vany" [ref=e1048] [cursor=pointer]:
+                      - /url: /bus/Quebec/Laval/Auto-Vany/3365888.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - generic [ref=e1049]:
+                    - generic [ref=e1050]: 160, rue de la Station, Laval QC H7M 3H7
+                    - link "Itinéraire »" [ref=e1051] [cursor=pointer]:
+                      - /url: /merchant/directions/3365888/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                  - link "Accessoires et pièces d'autos d'occasion" [ref=e1055] [cursor=pointer]:
+                    - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                - list [ref=e1058]:
+                  - listitem [ref=e1059]:
+                    - link " Téléphone" [ref=e1060] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e1061]: 
+                      - text: Téléphone
+                  - listitem [ref=e1062]:
+                    - link " Itinéraire" [ref=e1063] [cursor=pointer]:
+                      - /url: /merchant/directions/3365888/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e1064]: 
+                      - text: Itinéraire
+                  - text: 
+            - generic [ref=e1068]:
+              - link [ref=e1071] [cursor=pointer]:
+                - /url: /bus/Quebec/Montreal/Auto-Ferraille/100267534.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                - img "Auto Ferraille - Recyclage et démolition d'autos" [ref=e1072]
+              - generic [ref=e1073]:
+                - generic [ref=e1074]:
+                  - generic [ref=e1075]:
+                    - heading [level=3] [ref=e1077]:
+                      - link "Auto Ferraille" [ref=e1078] [cursor=pointer]:
+                        - /url: /bus/Quebec/Montreal/Auto-Ferraille/100267534.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e1079]:
+                      - generic [ref=e1080]: 7315 Honoré Vaillancourt, Montréal QC H1E 2Z7
+                      - link "Itinéraire »" [ref=e1081] [cursor=pointer]:
+                        - /url: /merchant/directions/100267534/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e1082]:
+                      - generic [ref=e1083]: Achetons véhicules pour ferraille, Automobile scrap, Remorquage gratuit, Achetons véhicules de route toutes conditions, On s'occupe de vos papiers reçu S.A.A.Q., Autos-camions-bateaux, Motorisé-roulotte-machinerie, Chariot élévateur, Auto recyclage, Auto ferraille, Auto démolition
+                      - link "Recyclage et démolition d'autos" [ref=e1087] [cursor=pointer]:
+                        - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                  - link "Ouvert 24h" [ref=e1090] [cursor=pointer]:
+                    - /url: /bus/Quebec/Montreal/Auto-Ferraille/100267534.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e1093]:
+                  - listitem [ref=e1094]:
+                    - link " Téléphone" [ref=e1095] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e1096]: 
+                      - text: Téléphone
+                  - listitem [ref=e1097]:
+                    - link " Itinéraire" [ref=e1098] [cursor=pointer]:
+                      - /url: /merchant/directions/100267534/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e1099]: 
+                      - text: Itinéraire
+                  - listitem [ref=e1100]:
+                    - link " Site web" [ref=e1101] [cursor=pointer]:
+                      - /url: /gourl/62f12d07434c580930d0c4525d87c080e759f4aa?redirect=http%3A%2F%2Fwww.ferrailleauto.ca%2F
+                      - generic [ref=e1102]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e1106]:
+              - link [ref=e1109] [cursor=pointer]:
+                - /url: /bus/Quebec/Boisbriand/Recyclage-Burnout/100680287.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#gallery
+                - img "Recyclage Burnout - Recyclage et démolition d'autos" [ref=e1110]
+              - generic [ref=e1111]:
+                - generic [ref=e1112]:
+                  - generic [ref=e1113]:
+                    - heading [level=3] [ref=e1115]:
+                      - link "Recyclage Burnout" [ref=e1116] [cursor=pointer]:
+                        - /url: /bus/Quebec/Boisbriand/Recyclage-Burnout/100680287.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e1117]:
+                      - generic [ref=e1118]: 1-317, Montée Sanche, Boisbriand QC J7G 2E4
+                      - link "Itinéraire »" [ref=e1119] [cursor=pointer]:
+                        - /url: /merchant/directions/100680287/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e1120]:
+                      - generic [ref=e1121]: Récupération d'auto, Démolition d'auto, Démolition et recyclage d'automobiles, Acheteur d'automobiles à la ferraille
+                      - link "Recyclage et démolition d'autos" [ref=e1125] [cursor=pointer]:
+                        - /url: /search/si/1/Recyclage+et+d%C3%A9molition+d%27autos/Mascouche+QC
+                  - link "Ouvert jusqu'à 23:59" [ref=e1128] [cursor=pointer]:
+                    - /url: /bus/Quebec/Boisbriand/Recyclage-Burnout/100680287.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e1131]:
+                  - listitem [ref=e1132]:
+                    - link " Téléphone" [ref=e1133] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e1134]: 
+                      - text: Téléphone
+                  - listitem [ref=e1135]:
+                    - link " Itinéraire" [ref=e1136] [cursor=pointer]:
+                      - /url: /merchant/directions/100680287/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e1137]: 
+                      - text: Itinéraire
+                  - listitem [ref=e1138]:
+                    - link " Site web" [ref=e1139] [cursor=pointer]:
+                      - /url: /gourl/7d712fef1160cc2b391d06c52fc1d4c023ef78c5?redirect=http%3A%2F%2Fburnout.burnpalm.com%2F
+                      - generic [ref=e1140]: 
+                      - text: Site web
+                  - listitem [ref=e1141]:
+                    - link " Message" [ref=e1142] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - generic [ref=e1143]: 
+                      - text: Message
+                  - text: 
+            - generic [ref=e1147]:
+              - link [ref=e1150] [cursor=pointer]:
+                - /url: /bus/Quebec/Sainte-Sophie/Recyclage-D-Autos-Ste-Sophie/103032198.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#gallery
+                - img "Recyclage D'Autos Ste-Sophie - Accessoires et pièces d'autos d'occasion" [ref=e1151]
+              - generic [ref=e1152]:
+                - generic [ref=e1153]:
+                  - generic [ref=e1154]:
+                    - heading [level=3] [ref=e1156]:
+                      - link "Recyclage D'Autos Ste-Sophie" [ref=e1157] [cursor=pointer]:
+                        - /url: /bus/Quebec/Sainte-Sophie/Recyclage-D-Autos-Ste-Sophie/103032198.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e1158]:
+                      - generic [ref=e1159]: 2454 2e Rue, Sainte-Sophie QC J5J 1N5
+                      - link "Itinéraire »" [ref=e1160] [cursor=pointer]:
+                        - /url: /merchant/directions/103032198/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - link "Accessoires et pièces d'autos d'occasion" [ref=e1164] [cursor=pointer]:
+                      - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                  - link "Fermera bientôt" [ref=e1167] [cursor=pointer]:
+                    - /url: /bus/Quebec/Sainte-Sophie/Recyclage-D-Autos-Ste-Sophie/103032198.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e1170]:
+                  - listitem [ref=e1171]:
+                    - link " Téléphone" [ref=e1172] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e1173]: 
+                      - text: Téléphone
+                  - listitem [ref=e1174]:
+                    - link " Itinéraire" [ref=e1175] [cursor=pointer]:
+                      - /url: /merchant/directions/103032198/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e1176]: 
+                      - text: Itinéraire
+                  - listitem [ref=e1177]:
+                    - link " Site web" [ref=e1178] [cursor=pointer]:
+                      - /url: /gourl/9ae068b4e8b0bf629227b53a26f85c157e8e3810?redirect=http%3A%2F%2Fwww.recyclageautosaintesophie.ca%2F
+                      - generic [ref=e1179]: 
+                      - text: Site web
+                  - text: 
+            - generic [ref=e1183]:
+              - link [ref=e1186] [cursor=pointer]:
+                - /url: /bus/Quebec/Sainte-Sophie/Recyclage-D-Autos-Ste-Sophie/6573122.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#gallery
+                - img "Recyclage D'Autos Ste-Sophie - Accessoires et pièces d'autos d'occasion" [ref=e1187]
+              - generic [ref=e1188]:
+                - generic [ref=e1189]:
+                  - generic [ref=e1190]:
+                    - heading [level=3] [ref=e1192]:
+                      - link "Recyclage D'Autos Ste-Sophie" [ref=e1193] [cursor=pointer]:
+                        - /url: /bus/Quebec/Sainte-Sophie/Recyclage-D-Autos-Ste-Sophie/6573122.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e1194]:
+                      - generic [ref=e1195]: 2454A 2E rue, Sainte-Sophie QC J5J 1N5
+                      - link "Itinéraire »" [ref=e1196] [cursor=pointer]:
+                        - /url: /merchant/directions/6573122/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                    - generic [ref=e1197]:
+                      - generic [ref=e1198]: Pare-brise recyclé, Moteur recyclé, Air climatisé d'auto recyclé, Pièce d'auto recyclée, Boîte de vitesse recyclée, Transmission recyclée, Pièces neuves et usagées, Pièces usagées d'autos/camions, Camion, Auto, Achetons autos pour pièces/ferraille, Achat d'auto pour ferraille, Pneus neufs, Pneus usagés
+                      - generic [ref=e1201]:
+                        - link "Accessoires et pièces d'autos d'occasion" [ref=e1202] [cursor=pointer]:
+                          - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+                        - text: ","
+                        - link "Services de recyclage" [ref=e1203] [cursor=pointer]:
+                          - /url: /search/si/1/Services+de+recyclage/Mascouche+QC
+                  - generic [ref=e1204]:
+                    - generic [ref=e1206]:
+                      - generic [ref=e1207]:
+                        - link "rating 5" [ref=e1208] [cursor=pointer]:
+                          - /url: /bus/Quebec/Sainte-Sophie/Recyclage-D-Autos-Ste-Sophie/6573122.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                        - link "(1)" [ref=e1215] [cursor=pointer]:
+                          - /url: /bus/Quebec/Sainte-Sophie/Recyclage-D-Autos-Ste-Sophie/6573122.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                      - link "Lire les commentaires" [ref=e1217] [cursor=pointer]:
+                        - /url: /bus/Quebec/Sainte-Sophie/Recyclage-D-Autos-Ste-Sophie/6573122.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#ypgReviewsHeader
+                    - link "Fermera bientôt" [ref=e1219] [cursor=pointer]:
+                      - /url: /bus/Quebec/Sainte-Sophie/Recyclage-D-Autos-Ste-Sophie/6573122.html?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true#openHourScroll
+                - list [ref=e1222]:
+                  - listitem [ref=e1223]:
+                    - link " Téléphone" [ref=e1224] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                      - generic [ref=e1225]: 
+                      - text: Téléphone
+                  - listitem [ref=e1226]:
+                    - link " Itinéraire" [ref=e1227] [cursor=pointer]:
+                      - /url: /merchant/directions/6573122/?what=Recyclage-Automobile&where=Mascouche+QC&useContext=true
+                      - generic [ref=e1228]: 
+                      - text: Itinéraire
+                  - listitem [ref=e1229]:
+                    - link " Site web" [ref=e1230] [cursor=pointer]:
+                      - /url: /gourl/9ae068b4e8b0bf629227b53a26f85c157e8e3810?redirect=http%3A%2F%2Fwww.recyclageautosaintesophie.ca%2F
+                      - generic [ref=e1231]: 
+                      - text: Site web
+                  - text: 
+          - generic [ref=e1232]: 1 / 1
+          - contentinfo [ref=e1234]:
+            - generic [ref=e1236]:
+              - heading "Entreprises similaires dans d’autres villes" [level=2] [ref=e1238]
+              - list [ref=e1239]:
+                - listitem [ref=e1240]:
+                  - link "Montreal" [ref=e1241] [cursor=pointer]:
+                    - /url: /search/si/1/Recyclage-Automobile/Montreal+QC
+                - listitem [ref=e1242]:
+                  - link "Laval" [ref=e1243] [cursor=pointer]:
+                    - /url: /search/si/1/Recyclage-Automobile/Laval+QC
+                - listitem [ref=e1244]:
+                  - link "Longueuil" [ref=e1245] [cursor=pointer]:
+                    - /url: /search/si/1/Recyclage-Automobile/Longueuil+QC
+                - listitem [ref=e1246]:
+                  - link "Repentigny" [ref=e1247] [cursor=pointer]:
+                    - /url: /search/si/1/Recyclage-Automobile/Repentigny+QC
+        - generic [ref=e1248]:
+          - paragraph [ref=e1249]: "Est-ce que vous cherchiez:"
+          - link "Accessoires et pièces d'autos d'occasion" [ref=e1250] [cursor=pointer]:
+            - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+d%27occasion/Mascouche+QC
+            - text: Accessoires et pièces d'autos d'occasion
+            - generic [ref=e1251]: 
+          - link "Accessoires et pièces d'autos neuves" [ref=e1252] [cursor=pointer]:
+            - /url: /search/si/1/Accessoires+et+pi%C3%A8ces+d%27autos+neuves/Mascouche+QC
+            - text: Accessoires et pièces d'autos neuves
+            - generic [ref=e1253]: 
+          - link "Remorquage de véhicules" [ref=e1254] [cursor=pointer]:
+            - /url: /search/si/1/Remorquage+de+v%C3%A9hicules/Mascouche+QC
+            - text: Remorquage de véhicules
+            - generic [ref=e1255]: 
+          - link "Services de recyclage" [ref=e1256] [cursor=pointer]:
+            - /url: /search/si/1/Services+de+recyclage/Mascouche+QC
+            - text: Services de recyclage
+            - generic [ref=e1257]: 
+          - link "Concessionnaires d'autos d'occasion" [ref=e1258] [cursor=pointer]:
+            - /url: /search/si/1/Concessionnaires+d%27autos+d%27occasion/Mascouche+QC
+            - text: Concessionnaires d'autos d'occasion
+            - generic [ref=e1259]: 
+      - generic [ref=e1260]:
+        - link "<< Évaluez les résultats" [ref=e1261] [cursor=pointer]:
+          - /url: javascript:void(0);
+        - generic [ref=e1263]:
+          - text: 
+          - generic [ref=e1264]:
+            - region "Map" [ref=e1265]
+            - group [ref=e1324]:
+              - generic "Toggle attribution" [ref=e1325] [cursor=pointer]
+          - complementary [ref=e1326]:
+            - list [ref=e1327]:
+              - listitem [ref=e1328]:
+                - link "Voir la carte" [ref=e1329] [cursor=pointer]:
+                  - /url: javascript:void(0);
+        - generic [ref=e1331]:
+          - generic [ref=e1332]: Articles reliés
+          - list [ref=e1335]:
+            - listitem [ref=e1336]:
+              - link "Remorquer son véhicule de l'étranger, un casse-tête? »" [ref=e1337] [cursor=pointer]:
+                - /url: /trucs/remorquer-son-vehicule-de-letranger-un-casse-tete/
+            - listitem [ref=e1338]:
+              - link "Auto-remorquage en 5 étapes faciles »" [ref=e1339] [cursor=pointer]:
+                - /url: /trucs/auto-remorquage-en-5-etapes-faciles/
+            - listitem [ref=e1340]:
+              - link "Les remorqueurs respectent-ils la règlementation? »" [ref=e1341] [cursor=pointer]:
+                - /url: /trucs/les-remorqueurs-respectent-ils-la-reglementation/
+            - listitem [ref=e1342]:
+              - link "Peut-on remorquer un véhicule 4x4? »" [ref=e1343] [cursor=pointer]:
+                - /url: /trucs/peut-on-remorquer-un-vehicule-4x4/
+            - listitem [ref=e1344]:
+              - link "Types de remorques et accessoires »" [ref=e1345] [cursor=pointer]:
+                - /url: /trucs/types-de-remorques-et-accessoires/
+    - generic [ref=e1347]:
+      - link "Pour nous joindre" [ref=e1348] [cursor=pointer]:
+        - /url: /pournousjoindre/
+      - text: "|"
+      - link "En savoir plus +" [ref=e1349] [cursor=pointer]:
+        - /url: "#ypgFooter"
+    - generic [ref=e1350]: Haut de la page
+    - text:  » » » » » » | En savoir plus - • • • • • • • • • • • • • • • • | • • • • • • • • • •
+  - generic [ref=e1351]:
+    - banner [ref=e1352]:
+      - link "Fermer le menu":
+        - /url: "#"
+    - list [ref=e1355]:
+      - listitem [ref=e1356]:
+        - generic [ref=e1357]: Connexion
+      - listitem [ref=e1358]:
+        - generic [ref=e1359]: Joindre
+      - listitem [ref=e1360]:
+        - link "Recherche de personnes" [ref=e1361] [cursor=pointer]:
+          - /url: https://www.fr.canada411.ca/
+      - listitem [ref=e1362]:
+        - link "Ajouter une inscription" [ref=e1363] [cursor=pointer]:
+          - /url: https://business.yellowpages.ca/processus-inscription/#/free-listing-yellow-pages?utm_source=ypca&utm_medium=link&utm_campaign=footer
+      - listitem [ref=e1364]:
+        - link "Annoncez avec nous" [ref=e1365] [cursor=pointer]:
+          - /url: https://solutions.yp.ca/fr?utm_source=ypca&utm_medium=link&utm_campaign=YPca_AdveritseWithUs
+      - listitem [ref=e1366]:
+        - link "Télécharger l'application" [ref=e1367] [cursor=pointer]:
+          - /url: /applications/
+  - generic [ref=e1368]: 
+  - region "Vos données, votre choix." [active] [ref=e1370]:
+    - alertdialog "Vos données, votre choix." [ref=e1371]:
+      - generic [ref=e1372]:
+        - generic [ref=e1373]:
+          - generic:
+            - heading "Vos données, votre choix." [level=2] [ref=e1374]
+            - generic [ref=e1375]:
+              - text: Ce site utilise des témoins (cookies). Ces témoins améliorent votre expérience, améliorent la qualité de notre site et nous aident à vous montrer des éléments qui sont plus susceptibles d’être pertinents pour vous. Nous pouvons également autoriser des tiers (y compris nos partenaires publicitaires) à placer des témoins sur notre site web. En cliquant sur « accepter », vous acceptez l’utilisation des témoins telle que décrite dans notre
+              - link "Pour en savoir plus sur la protection de votre vie privée, s'ouvre dans un nouvel onglet" [ref=e1376] [cursor=pointer]:
+                - /url: https://www.corporate.yp.ca/fr-politique-relative-aux-cookies
+                - text: Politique en matière de Cookies.
+        - generic [ref=e1378]:
+          - button "Accepter tous les cookies" [ref=e1380] [cursor=pointer]
+          - button "Paramètres personnalisés" [ref=e1381] [cursor=pointer]

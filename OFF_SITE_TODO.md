@@ -8,6 +8,12 @@ LLM answers.
 
 ---
 
+> **Update 2026-09-08:** `OFF_SITE_AUDIT.md` now contains an actual audit of the
+> off-site position rather than a generic checklist, and it changes the priority
+> order at the bottom of this file. Two findings dominate: another business
+> holds 340 Chemin Pincourt across every directory, and Autos B2 has
+> essentially no citations at all. Read that first.
+
 ## 0. What is achievable, and what is not
 
 This has to come first, because it decides where the effort goes.
