@@ -16,7 +16,7 @@ import {
 } from "@/config/routes";
 import { siteConfig, fullAddress, mapsEmbedUrl, routeEmbedUrl } from "@/config/site";
 import { getCopy } from "@/content/copy";
-import { pageTitle } from "@/lib/seo";
+import { fitDescription, pageTitle } from "@/lib/seo";
 import { faqFor } from "@/content/faq";
 import { CITIES, cityByKey, citiesFor } from "@/content/cities";
 import { serviceByKey } from "@/content/services";
@@ -62,16 +62,43 @@ function metaFor(lang: Lang, slug: string): Meta | null {
 
   if (resolved.type === "city") {
     const city = cityByKey(resolved.cityKey)!;
+    const { name, distanceKm: km, driveMinutes: min } = city;
+    const atYard = km === 0;
+
+    /*
+      The description is where a city page earns its click, and every one of
+      these was 89-120 characters — 35 to 65 characters of search-result space
+      left empty on exactly the pages that need local click-through.
+
+      The distance and drive time come from content/cities.ts, so each city
+      now gets a description no other city could carry, using facts already on
+      the page rather than padding.
+    */
     return lang === "fr"
       ? {
           // pageTitle drops the qualifier for a long name like
           // Saint-Lin-Laurentides rather than cutting it mid-word.
-          title: pageTitle(`Cour à scrap ${city.name}`, "rachat comptant"),
-          description: `Vendre une auto scrap à ${city.name} ? On achète comptant, remorquage gratuit, enlèvement souvent le jour même.`,
+          title: pageTitle(`Cour à scrap ${name}`, "rachat comptant"),
+          description: atYard
+            ? fitDescription(
+                `Vendre une auto scrap à ${name} ? Notre cour est au ${siteConfig.address.street}. On paie comptant, remorquage gratuit et enlèvement souvent le jour même.`
+              )
+            : fitDescription(
+                `Vendre une auto scrap à ${name} ? On paie comptant, remorquage gratuit et enlèvement souvent le jour même. Notre cour est à ${km} km, environ ${min} min.`,
+                `Vendre une auto scrap à ${name} ? On paie comptant, remorquage gratuit, enlèvement souvent le jour même. Cour à ${km} km, ${min} min de route.`
+              ),
         }
       : {
-          title: pageTitle(`Scrap car buyer ${city.name}`, "cash paid"),
-          description: `Selling a scrap car in ${city.name}? We pay cash, free towing, and pickup is often the same day.`,
+          title: pageTitle(`Scrap car buyer ${name}`, "cash paid"),
+          description: atYard
+            ? fitDescription(
+                `Selling a scrap car in ${name}? Our yard is right here at ${siteConfig.address.street}. We pay cash on pickup, towing is free, and collection is often same-day.`
+              )
+            : fitDescription(
+                `Selling a scrap car in ${name}? We pay cash on pickup, towing is always free and collection is often same-day. Our yard is ${km} km away, about ${min} min.`,
+                `Selling a scrap car in ${name}? We pay cash, towing is free and collection is often same-day. Our yard is ${km} km away, about a ${min} minute drive.`,
+                `Selling a scrap car in ${name}? We pay cash, towing is free and collection is often same-day. Our yard is ${km} km away, about ${min} min.`
+              ),
         };
   }
 
