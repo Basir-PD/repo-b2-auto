@@ -147,6 +147,7 @@ export const fr = {
         "Rosemère",
         "Blainville",
         "Sainte-Thérèse",
+        "Saint-Eustache",
         "Laval",
         "Montréal-Est",
         "Rivière-des-Prairies",

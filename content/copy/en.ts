@@ -140,6 +140,7 @@ export const en: Copy = {
         "Rosemère",
         "Blainville",
         "Sainte-Thérèse",
+        "Saint-Eustache",
         "Laval",
         "Montréal-Est",
         "Rivière-des-Prairies",
