@@ -24,10 +24,18 @@ export const siteConfig = {
    * from, Google is told the real version lives somewhere else — and if
    * that somewhere else 404s, nothing gets indexed at all.
    *
+   * The canonical host is the APEX, autosb2.com — no www. Everything else
+   * (www.autosb2.com, b2autos.com, www.b2autos.com) 301s here; see the
+   * `redirects()` block in next.config.ts.
+   *
+   * Note the email address is deliberately NOT on this domain: it is still
+   * admin@b2autos.com. That is a mailbox, not a URL, and it is a separate
+   * decision. Do not "fix" it to match this value.
+   *
    * The default is the domain the site is live on. Override per environment
    * with NEXT_PUBLIC_SITE_URL if that ever changes.
    */
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.autosb2.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://autosb2.com",
 
   name: "Autos B2",
   legalName: "Autos B2",
