@@ -120,14 +120,14 @@ export const siteConfig = {
   },
 
   /**
-   * Open every day, 8:00 AM to 8:30 PM. One entry, seven days — the site and
+   * Open every day, 8:00 AM to 8:00 PM. One entry, seven days — the site and
    * the schema both read this, so the hours can never disagree between the
    * body copy and the structured data.
    */
   hours: {
     days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     opens: "08:00",
-    closes: "20:30",
+    closes: "20:00",
   },
 
   /** Verified business figures. Do not add to these without a source. */

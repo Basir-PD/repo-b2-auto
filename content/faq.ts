@@ -100,7 +100,7 @@ const FR: FaqItem[] = [
   {
     id: "heures",
     q: "Quelles sont vos heures ?",
-    a: "On est ouvert 7 jours sur 7, de 8 h à 20 h 30.",
+    a: "On est ouvert 7 jours sur 7, de 8 h à 20 h.",
   },
   {
     id: "adresse",
@@ -194,7 +194,7 @@ const EN: FaqItem[] = [
   {
     id: "heures",
     q: "What are your hours?",
-    a: "We're open 7 days a week, from 8:00am to 8:30pm.",
+    a: "We're open 7 days a week, from 8:00am to 8:00pm.",
   },
   {
     id: "adresse",

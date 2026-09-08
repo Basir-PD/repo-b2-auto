@@ -180,7 +180,7 @@ Each one is there because it **proves a claim the copy makes**:
 |---|---|
 | `attache-vehicule-plateau.jpg` | A real person doing the work — the strongest signal in the set |
 | `transport-multi-vehicules.jpg` | Scale: five cars on one hauler, behind the 2,000/year figure |
-| `enlevement-soir-residentiel.jpg` | The 8:30pm hours are real |
+| `enlevement-soir-residentiel.jpg` | The 8pm hours are real |
 | `plateau-vus-charge.jpg` | Our own flatbed, not a subcontractor |
 | `remorquage-chariot-elevateur.jpg` | "Any vehicle, no exceptions" |
 | `remorquage-soir-berline.jpg` | Same-day, after-hours pickup |
@@ -485,7 +485,7 @@ expands the hand-aligned `@keyframes` into something harder to read.
   "hundreds of satisfied customers" or any volume language.
 - The address is **Mascouche**. Laval is a service area, never the address.
 - The email is **admin@b2autos.com**.
-- Hours are **8:00–20:30, seven days a week**, identical on every page and in
+- Hours are **8:00–20:00, seven days a week**, identical on every page and in
   the schema. They come from `siteConfig.hours`, so they cannot drift.
 - **No social media icons or links** anywhere. `sameAs` is omitted from the
   JSON-LD entirely — an empty `sameAs` is worse than none.
