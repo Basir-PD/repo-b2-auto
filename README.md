@@ -1,4 +1,4 @@
-# Autos B2 — b2autos.com
+# Autos B2 — autosb2.com
 
 Bilingual (fr-CA / en-CA) lead-generation site for **Autos B2**, a licensed auto
 recycler and scrap-car buyer at **340 Chemin Pincourt, Mascouche, QC J7L 2W3**.
@@ -255,7 +255,26 @@ Two kinds of submission arrive:
 
 ```bash
 # .env.local (Next)
-NEXT_PUBLIC_SITE_URL=https://b2autos.com
+
+# ⚠️ The canonical origin. Apex, no www, no trailing slash.
+#
+# This one value is stamped into EVERY canonical tag, hreflang alternate,
+# og:url, JSON-LD `url` and sitemap entry the site emits. Point it at a
+# hostname the site is not actually served from and you tell Google the real
+# version of every page lives somewhere else — and if that somewhere else
+# 404s, nothing gets indexed at all.
+#
+# Change it only when the domain genuinely changes. After changing it, rebuild
+# and confirm that the canonical, hreflang, og:url, JSON-LD url and every
+# <loc> in /sitemap.xml all carry the new host.
+#
+# The 301s from the other hostnames live in `redirects()` in next.config.ts —
+# those also require the domain to be added and pointed at the project in
+# Vercel; code alone will not redirect a hostname that never reaches the app.
+#
+# Note: this is NOT the same domain as the contact mailbox, which is still
+# admin@b2autos.com. That split is deliberate.
+NEXT_PUBLIC_SITE_URL=https://autosb2.com
 NEXT_PUBLIC_CONVEX_URL=            # written by `npx convex dev`
 NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX     # unset = no tags load at all
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=
