@@ -102,12 +102,22 @@ export const siteConfig = {
   /**
    * Yard coordinates.
    *
-   * NOT VERIFIED — left null on purpose. The JSON-LD omits the `geo` block
-   * entirely while this is null rather than shipping a guessed pin, which is
-   * worse than no pin at all for local ranking. To fill it: open the Google
-   * Business Profile listing in Maps, right-click the pin, copy the lat/lng.
+   * Read off the Google Business Profile pin itself, not geocoded from the
+   * address string — so the JSON-LD `geo` and the GBP agree exactly.
+   *
+   * Source: https://maps.app.goo.gl/5Z54QqJqVdyTcXzG9 → the place coordinates
+   * in the resolved Maps URL (`!3d45.7421284!4d-73.6730281`). The listing is
+   * "Recyclage Autos B2", category Auto wrecker, 340 Chem. Pincourt.
+   * Plus code P8RG+VQ Mascouche. Google CID 8774241978892122836
+   * (ftid 0x4cc8dd4c7d410c7b:0x79c45e97852f7ad4).
+   *
+   * Do not "tidy" these to fewer decimal places — the precision is what makes
+   * the pin land on the yard rather than on the street.
    */
-  geo: null as null | { latitude: number; longitude: number },
+  geo: { latitude: 45.7421284, longitude: -73.6730281 } as null | {
+    latitude: number;
+    longitude: number;
+  },
 
   /**
    * Open every day, 8:00 AM to 8:30 PM. One entry, seven days — the site and
