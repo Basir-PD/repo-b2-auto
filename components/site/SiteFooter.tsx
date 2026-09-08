@@ -41,6 +41,14 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
             />
 
             <address className="mt-5 space-y-3 not-italic text-sm leading-relaxed">
+              {/*
+                The registered name in text, not just the logo image. Google's
+                name guideline asks for the name used consistently on the
+                storefront, the website and the stationery — a logo PNG is not
+                readable evidence of any of that, and this is the block a
+                crawler reads as the NAP.
+              */}
+              <p className="font-bold text-white">{siteConfig.legalName}</p>
               <p className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
                 <span>
@@ -152,7 +160,7 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
         <div className="mt-12 flex flex-col gap-3 border-t border-slate-800 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           {/* Dynamic — never a hardcoded year. */}
           <p>
-            © {year} {siteConfig.name}.{" "}
+            © {year} {siteConfig.legalName}.{" "}
             {lang === "fr" ? "Tous droits réservés." : "All rights reserved."} {fullAddress}.
           </p>
           <p className="flex flex-wrap items-center gap-x-4 gap-y-2">
