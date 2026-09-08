@@ -205,6 +205,17 @@ export default async function SlugPage({
 
   const crumb = (name: string) => [{ name, path }];
 
+  /*
+    The schema trail is the visible trail plus the Home root. Deriving one
+    from the other is the point: ten pages used to render breadcrumbs with no
+    BreadcrumbList behind them, which is exactly the visible/markup mismatch
+    Google's structured-data guidelines forbid.
+  */
+  const homeTrail = (name: string) => [
+    { name: t.common.breadcrumbHome, path: pathFor("home", lang) },
+    ...crumb(name),
+  ];
+
   const common = (
     <>
       <JsonLd
@@ -417,6 +428,7 @@ export default async function SlugPage({
       return (
         <>
           {common}
+          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema(homeTrail(t.nav.quote))} />
           <PageHeader
             lang={lang}
             trail={crumb(t.nav.quote)}
@@ -565,6 +577,7 @@ export default async function SlugPage({
       return (
         <>
           {common}
+          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema(homeTrail(PRIVACY.h1[lang]))} />
           <PageHeader
             lang={lang}
             trail={crumb(PRIVACY.h1[lang])}
@@ -579,6 +592,7 @@ export default async function SlugPage({
       return (
         <>
           {common}
+          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema(homeTrail(TERMS.h1[lang]))} />
           <PageHeader
             lang={lang}
             trail={crumb(TERMS.h1[lang])}
@@ -695,6 +709,7 @@ export default async function SlugPage({
       return (
         <>
           {common}
+          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema(homeTrail(t.nav.blog))} />
           <PageHeader
             lang={lang}
             trail={crumb(t.nav.blog)}
