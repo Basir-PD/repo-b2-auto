@@ -42,6 +42,13 @@ export function localBusinessSchema(lang: Lang) {
     "@type": ["AutoWrecker", "LocalBusiness"],
     "@id": `${siteConfig.url}/#business`,
     name: siteConfig.name,
+    /*
+      The registered entity, which differs from the trading name. Emitting
+      both is how Google reconciles this site with the Business Profile, the
+      SAAQ recycler registry and any citation that lists the legal name —
+      without either string having to appear in visible copy.
+    */
+    legalName: siteConfig.legalName,
     description: t.home.metaDescription,
     url: abs(`/${lang}/`),
     telephone: siteConfig.phone.e164,

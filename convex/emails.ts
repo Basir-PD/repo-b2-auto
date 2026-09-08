@@ -28,7 +28,7 @@ const LEAD_INBOX = "admin@b2autos.com";
 
 const BUSINESS = {
   name: "Autos B2",
-  legalName: "Autos B2",
+  legalName: "Recyclage Autos B2",
   phoneDisplay: "+1 (514) 623-2787",
   phoneHref: "tel:+15146232787",
   /**

@@ -37,8 +37,16 @@ export const siteConfig = {
    */
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://autosb2.com",
 
+  /**
+   * `name` is the trading name — what customers say, what the signage reads,
+   * and what belongs in every title, heading and JSON-LD `name`.
+   *
+   * `legalName` is the registered entity and is deliberately different. It is
+   * NOT interchangeable with `name`: putting "Recyclage Autos B2" in a page
+   * title or an H1 would be optimising for a string nobody searches.
+   */
   name: "Autos B2",
-  legalName: "Autos B2",
+  legalName: "Recyclage Autos B2",
   shortName: "Autos B2",
 
   phone: {
