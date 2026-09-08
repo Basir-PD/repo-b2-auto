@@ -31,10 +31,16 @@ const BUSINESS = {
   legalName: "Autos B2",
   phoneDisplay: "+1 (514) 623-2787",
   phoneHref: "tel:+15146232787",
-  /** Public contact address, shown to customers in the confirmation email. */
+  /**
+   * Public contact address, shown to customers in the confirmation email.
+   *
+   * The mailbox is deliberately on b2autos.com while `url` below is
+   * autosb2.com. That split is intentional and pending a separate decision —
+   * do not "correct" this address to match the domain.
+   */
   email: "info@b2autos.com",
   address: "340 Chemin Pincourt, Mascouche, QC J7L 2W3",
-  url: "https://b2autos.com",
+  url: "https://autosb2.com",
 };
 
 /** Escape untrusted values before interpolating into the HTML body. */
