@@ -29,10 +29,10 @@
 
 Mascouche, Terrebonne, Lachenaie, La Plaine, Repentigny, L'Assomption,
 Charlemagne, Le Gardeur, Saint-Lin-Laurentides, Bois-des-Filion, Rosemère,
-Blainville, Sainte-Thérèse, Laval, Montréal-Est, Rivière-des-Prairies,
-Pointe-aux-Trembles, Anjou and Montréal-Nord — that is, the Montreal North
-Shore (Rive-Nord) of Quebec, Canada, together with Laval and the east end of
-Montreal.
+Blainville, Sainte-Thérèse, Saint-Eustache, Laval, Montréal-Est,
+Rivière-des-Prairies, Pointe-aux-Trembles, Anjou and Montréal-Nord — that is,
+the Montreal North Shore (Rive-Nord) of Quebec, Canada, together with Laval
+and the east end of Montreal.
 
 ## Common questions
 
