@@ -36,3 +36,30 @@ export function pageTitle(main: string, extra?: string): string {
   // result recognisable in a list — and trim the descriptive part.
   return `${main.slice(0, TITLE_MAX - SUFFIX.length - 1).trimEnd()}…${SUFFIX}`;
 }
+
+/**
+ * Google renders roughly 155 characters of description and truncates the rest.
+ * Under about 140 and the snippet looks thin next to competitors that filled
+ * the space — on a city page that snippet IS the pitch, so the target is a
+ * window rather than a ceiling.
+ */
+export const DESCRIPTION_MIN = 140;
+
+/**
+ * Pick the first candidate that fits the window.
+ *
+ * Same shape as pageTitle's handling of `extra`: write a full version and a
+ * compact fallback, and let length decide. A city name like
+ * Saint-Lin-Laurentides is 21 characters before the sentence around it starts,
+ * which is the difference between fitting and overflowing — so the choice
+ * cannot be made when the copy is written, only when the name is known.
+ *
+ * Falls back to the LAST candidate (the most compact) rather than the first,
+ * so an overflow degrades to the shortest option instead of the longest.
+ */
+export function fitDescription(...candidates: string[]): string {
+  return (
+    candidates.find((c) => c.length >= DESCRIPTION_MIN && c.length <= DESCRIPTION_MAX) ??
+    candidates[candidates.length - 1]
+  );
+}
