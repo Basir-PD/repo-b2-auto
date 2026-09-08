@@ -1,11 +1,20 @@
 # TODO
 
-Open work on autosb2.com. Companion to `SEO_AUDIT.md` (what was found) and
-`OFF_SITE_TODO.md` (what cannot be fixed in code).
+Open work on autosb2.com. Companion to `SEO_AUDIT.md` (on-site findings), `OFF_SITE_AUDIT.md` (off-site
+findings, run 2026-09-08) and `OFF_SITE_TODO.md` (the off-site action list).
 
 Last updated: 2026-09-08.
 
 ---
+
+## 0. 🔴 Read `OFF_SITE_AUDIT.md` first
+
+The off-site audit found that **340 Chemin Pincourt is listed across every major
+directory as "Pièces d'Auto Christian 2007 Inc"**, phone 450-477-1050 — a
+different business at your address — while Autos B2 has effectively zero
+citations and is absent from PagesJaunes entirely. That outranks everything
+below it in importance and needs a decision from the owner before other
+off-site work is worth doing.
 
 ## 1. NAP — the remaining gaps
 
@@ -62,9 +71,11 @@ GBP pin. What is still open:
       `alternateName`) without spending title characters on it. Fully compliant
       only if the name is also on the signage. See the discussion in
       `OFF_SITE_TODO.md` §1.
-- [ ] **Confirm `NEXT_PUBLIC_GTM_ID=GTM-5V37JFTD` is set in Vercel.** The
-      container ID is not in this repo and a local build ships no GTM at all.
-      Unverifiable from here.
+- [x] ~~Confirm `NEXT_PUBLIC_GTM_ID` is set in Vercel~~ — **CONFIRMED LIVE.**
+      `GTM-5V37JFTD` is present in the production HTML. Tracking is running.
+- [ ] **Set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel.** Verified as
+      absent from the live site, so Search Console is almost certainly not set
+      up — no indexation data, no query data, no sitemap submission.
 - [ ] **Confirm the full weekly GBP hours.** Signed-out Maps only exposes the
       current day. The site now says 7 days 08:00–20:00 everywhere; if the GBP
       varies by day, the site still mismatches on those days.
@@ -144,10 +155,10 @@ GBP pin. What is still open:
 - [ ] **`/lp/` pages emit no canonical.** They are `noindex` and
       `Disallow`-ed so this is defensible, but a self-referencing canonical
       costs nothing and protects against ad tracking parameters.
-- [ ] **DNS/Vercel for the redirects.** The 301s in `next.config.ts` for
-      `b2autos.com` and `www.b2autos.com` are inert until both domains are
-      added to the Vercel project and pointed at it. Code alone cannot redirect
-      a hostname that never reaches the app.
+- [ ] **Attach `b2autos.com` in the Vercel dashboard.** DNS is ALREADY done —
+      it resolves to Vercel (`216.198.79.1`) and 404s only because the domain
+      is not attached to the project. So this is a dashboard click, not a DNS
+      change. The 301s in `next.config.ts` go live the moment it is attached.
 - [ ] **Verify in Search Console** on the apex `https://autosb2.com` now that
       the canonical host moved, and submit `/sitemap.xml`. Set
       `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — the meta tag is already wired and

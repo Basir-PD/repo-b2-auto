@@ -1,0 +1,20 @@
+[     572ms] [LOG] function loadGPT() called... @ https://static.yellowpages.ca/ypca/ypui-7.3.8-20260728.1908/resources/static/gpt.js:0
+[    1180ms] [LOG] serp..._updateQuickLinks.... @ https://static.yellowpages.ca/ypca/ypui-7.3.8-20260728.1908/resources/static/yellowSerp_defer.js:17
+[    1284ms] [WARNING] [GPT] PubAdsService.enableLazyLoad is deprecated, use googletag.setConfig({lazyLoad: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202609030101/pubads_impl.js:18
+[    1288ms] [WARNING] [GPT] [["ypg_mediative_sponsor_results"]] passed to PubAdsService.setTargeting is invalid and will soon no longer be supported. Please review your implementation and ensure all input values conform strictly to the data types defined.
+https://goo.gle/gpt-message#185 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202609030101/pubads_impl.js:18
+[    2057ms] [LOG] All Map Tiles loaded @ https://static.yellowpages.ca/ypca/ypui-7.3.8-20260728.1908/resources/static/yellowMapsModule_aws.js:664
+[    2284ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://www.pagesjaunes.ca/search/si/1/Recyclage-Automobile/Mascouche+QC:0
+[    3011ms] [ERROR] Access to XMLHttpRequest at 'https://fundingchoicesmessages.google.com/el/AGSKWxVr3rak8WieHARchHts48HOPOAPhxwCsxOC8XYxO478LRxnIWGBWdYchz0kL9I4HaLAd3GjxoXrEk_8pwy_vxIpZqspgZEpQIx74R3kvXqAsJ2FyEADdx2RpQLJcunPOrNAij5m0Q==' from origin 'https://www.pagesjaunes.ca' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://www.pagesjaunes.ca/search/si/1/Recyclage-Automobile/Mascouche+QC:0
+[    3011ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://fundingchoicesmessages.google.com/el/AGSKWxVr3rak8WieHARchHts48HOPOAPhxwCsxOC8XYxO478LRxnIWGBWdYchz0kL9I4HaLAd3GjxoXrEk_8pwy_vxIpZqspgZEpQIx74R3kvXqAsJ2FyEADdx2RpQLJcunPOrNAij5m0Q==:0
+[   10059ms] [LOG] function loadGPT() called... @ https://static.yellowpages.ca/ypca/ypui-7.3.8-20260728.1908/resources/static/gpt.js:0
+[   10094ms] [LOG] serp..._updateQuickLinks.... @ https://static.yellowpages.ca/ypca/ypui-7.3.8-20260728.1908/resources/static/yellowSerp_defer.js:17
+[   10111ms] [WARNING] [GPT] PubAdsService.enableLazyLoad is deprecated, use googletag.setConfig({lazyLoad: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202609030101/pubads_impl.js:18
+[   10113ms] [WARNING] [GPT] [["ypg_mediative_sponsor_results"]] passed to PubAdsService.setTargeting is invalid and will soon no longer be supported. Please review your implementation and ensure all input values conform strictly to the data types defined.
+https://goo.gle/gpt-message#185 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202609030101/pubads_impl.js:18
+[   10378ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://www.pagesjaunes.ca/search/si/1/Recyclage-Automobile/Mascouche+QC:0
+[   10590ms] [LOG] All Map Tiles loaded @ https://static.yellowpages.ca/ypca/ypui-7.3.8-20260728.1908/resources/static/yellowMapsModule_aws.js:664
+[   11144ms] [INFO] Powered by AMP ⚡ HTML – Version 2607210106000 https://www.pagesjaunes.ca/search/si/1/Recyclage-Automobile/Mascouche+QC @ https://cdn.ampproject.org/rtv/012607210106000/amp4ads-v0.mjs:1
+[   11492ms] [INFO] Powered by AMP ⚡ HTML – Version 2607210106000 https://www.pagesjaunes.ca/search/si/1/Recyclage-Automobile/Mascouche+QC @ https://cdn.ampproject.org/rtv/012607210106000/amp4ads-v0.mjs:1
