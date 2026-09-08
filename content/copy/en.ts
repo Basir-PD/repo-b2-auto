@@ -46,6 +46,8 @@ export const en: Copy = {
     readMore: "Read the article",
     published: "Published",
     skipToContent: "Skip to main content",
+    /** Shown only when siteConfig.GBP_REVIEW_LINK is set. */
+    reviewCta: "Leave us a Google review",
   },
 
   home: {

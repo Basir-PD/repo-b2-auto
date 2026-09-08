@@ -9,6 +9,7 @@ import { SERVICES } from "@/content/services";
 import { getCopy } from "@/content/copy";
 import PhoneLink from "@/components/site/PhoneLink";
 import MailLink from "@/components/site/MailLink";
+import ReviewLink from "@/components/site/ReviewLink";
 
 /**
  * No social icons: there are no accounts. An icon row linking to "#" is a dead
@@ -61,6 +62,11 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
                 className="block font-black tabular-nums text-white hover:text-brand-400"
               />
               <MailLink source="footer" className="block hover:text-white" />
+              {/* Renders nothing until GBP_REVIEW_LINK is set. */}
+              <ReviewLink
+                lang={lang}
+                className="inline-flex items-center gap-1.5 pt-1 font-semibold text-brand-400 hover:text-brand-300"
+              />
             </div>
           </div>
 

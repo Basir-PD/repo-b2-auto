@@ -49,6 +49,8 @@ export const fr = {
     readMore: "Lire l'article",
     published: "Publié le",
     skipToContent: "Aller au contenu principal",
+    /** Shown only when siteConfig.GBP_REVIEW_LINK is set. */
+    reviewCta: "Laissez-nous un avis Google",
   },
 
   home: {
