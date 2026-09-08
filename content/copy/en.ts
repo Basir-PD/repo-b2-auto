@@ -36,8 +36,8 @@ export const en: Copy = {
     whatsapp: "WhatsApp",
     whatsappAria: "Message Autos B2 on WhatsApp",
     whatsappTagline: "Send us a photo of your car",
-    hours: "Open 7 days, 8am–8:30pm",
-    hoursLong: "Open 7 days a week, 8:00am to 8:30pm",
+    hours: "Open 7 days, 8am–8pm",
+    hoursLong: "Open 7 days a week, 8:00am to 8:00pm",
     addressLabel: "Our yard",
     emailLabel: "Email",
     phoneLabel: "Phone",
@@ -46,6 +46,8 @@ export const en: Copy = {
     readMore: "Read the article",
     published: "Published",
     skipToContent: "Skip to main content",
+    /** Shown only when siteConfig.GBP_REVIEW_LINK is set. */
+    reviewCta: "Leave us a Google review",
   },
 
   home: {
@@ -67,7 +69,7 @@ export const en: Copy = {
       "Free towing included",
       "Cash on pickup",
       "We handle the SAAQ transfer",
-      "Open 7 days, 8am–8:30pm",
+      "Open 7 days, 8am–8pm",
     ],
 
     howItWorks: {
@@ -100,7 +102,7 @@ export const en: Copy = {
       ],
     },
 
-    stats: ["2,000 vehicles bought per year", "10 years in Mascouche", "Open 7 days, 8am–8:30pm"],
+    stats: ["2,000 vehicles bought per year", "10 years in Mascouche", "Open 7 days, 8am–8pm"],
 
     why: {
       title: "Who buys junk cars in Laval and Montreal?",
@@ -140,6 +142,7 @@ export const en: Copy = {
         "Rosemère",
         "Blainville",
         "Sainte-Thérèse",
+        "Saint-Eustache",
         "Laval",
         "Montréal-Est",
         "Rivière-des-Prairies",
@@ -175,7 +178,7 @@ export const en: Copy = {
     eyebrow: "Free quote",
     title: "What is your vehicle worth?",
     subtitle: "Four questions, under a minute. We call you back with a firm price.",
-    replyTime: "We usually call back within 5 minutes, 8am to 8:30pm.",
+    replyTime: "We usually call back within 5 minutes, 8am to 8pm.",
 
     vehicle: "Year, make and model",
     name: "First and last name",
@@ -198,7 +201,7 @@ export const en: Copy = {
     metaDescription:
       "Your quote request has been received. A member of the Autos B2 team will call you shortly.",
     h1: "Thanks — we'll call you shortly",
-    body: "We've got your request. Someone on the team usually calls within 30 minutes during opening hours, 8am to 8:30pm, 7 days a week.",
+    body: "We've got your request. Someone on the team usually calls within 30 minutes during opening hours, 8am to 8pm, 7 days a week.",
     urgent: "In a hurry? Call us directly:",
     whatNext: "What happens next",
     steps: [

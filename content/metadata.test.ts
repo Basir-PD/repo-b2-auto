@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { DESCRIPTION_MAX, TITLE_MAX, pageTitle } from "@/lib/seo";
+import { DESCRIPTION_MAX, DESCRIPTION_MIN, TITLE_MAX, fitDescription, pageTitle } from "@/lib/seo";
 import { getCopy } from "@/content/copy";
 import { SERVICES } from "@/content/services";
 import { ABOUT, CONTACT, PRIVACY, TERMS } from "@/content/pages";
@@ -79,11 +79,44 @@ describe("city pages", () => {
       expect(en.length, `en → "${en}"`).toBeLessThanOrEqual(TITLE_MAX);
     });
 
-    it(`${city.name} fits both description templates`, () => {
-      const fr = `Vendre une auto scrap à ${city.name} ? On achète comptant, remorquage gratuit, enlèvement souvent le jour même.`;
-      const en = `Selling a scrap car in ${city.name}? We pay cash, free towing, and pickup is often the same day.`;
-      expect(fr.length, `fr (${fr.length})`).toBeLessThanOrEqual(DESCRIPTION_MAX);
-      expect(en.length, `en (${en.length})`).toBeLessThanOrEqual(DESCRIPTION_MAX);
+    /*
+      These mirror the templates in app/(public)/[lang]/[slug]/page.tsx. A city
+      name like Saint-Lin-Laurentides is 21 characters before the sentence
+      around it starts, and the French full template overflows on it — the
+      point of this spec is that adding such a city cannot silently ship a
+      description Google will truncate, or one so short the snippet looks
+      thin next to a competitor who filled the space.
+    */
+    it(`${city.name} lands inside the description window in both languages`, () => {
+      const { name, distanceKm: km, driveMinutes: min } = city;
+      const atYard = km === 0;
+
+      const fr = atYard
+        ? fitDescription(
+            `Vendre une auto scrap à ${name} ? Notre cour est au 340 Chemin Pincourt. On paie comptant, remorquage gratuit et enlèvement souvent le jour même.`
+          )
+        : fitDescription(
+            `Vendre une auto scrap à ${name} ? On paie comptant, remorquage gratuit et enlèvement souvent le jour même. Notre cour est à ${km} km, environ ${min} min.`,
+            `Vendre une auto scrap à ${name} ? On paie comptant, remorquage gratuit, enlèvement souvent le jour même. Cour à ${km} km, ${min} min de route.`
+          );
+
+      const en = atYard
+        ? fitDescription(
+            `Selling a scrap car in ${name}? Our yard is right here at 340 Chemin Pincourt. We pay cash on pickup, towing is free, and collection is often same-day.`
+          )
+        : fitDescription(
+            `Selling a scrap car in ${name}? We pay cash on pickup, towing is always free and collection is often same-day. Our yard is ${km} km away, about ${min} min.`,
+            `Selling a scrap car in ${name}? We pay cash, towing is free and collection is often same-day. Our yard is ${km} km away, about a ${min} minute drive.`,
+            `Selling a scrap car in ${name}? We pay cash, towing is free and collection is often same-day. Our yard is ${km} km away, about ${min} min.`
+          );
+
+      for (const [label, d] of [
+        ["fr", fr],
+        ["en", en],
+      ] as const) {
+        expect(d.length, `${label} → "${d}" (${d.length})`).toBeGreaterThanOrEqual(DESCRIPTION_MIN);
+        expect(d.length, `${label} → "${d}" (${d.length})`).toBeLessThanOrEqual(DESCRIPTION_MAX);
+      }
     });
   }
 });

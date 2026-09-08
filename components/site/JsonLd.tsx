@@ -22,26 +22,54 @@ export function JsonLd({ id, data }: { id: string; data: object }) {
 }
 
 /**
- * The business itself.
+ * The business itself. `@id` is `#business`; every other node references it
+ * rather than restating the NAP.
  *
- * AutoWrecker is the specific schema.org type for a scrap yard and is a
- * subtype of LocalBusiness, so declaring both is redundant — the array form
- * below keeps the generic type explicit for consumers that don't know the
- * narrow one.
+ * `geo` now carries the real coordinates off the Business Profile pin (see
+ * config/site.ts) — it stays behind a null check so the block disappears
+ * rather than emitting a half-filled GeoCoordinates if it is ever cleared.
  *
- * Three things are conditionally omitted rather than faked:
- *   - `geo`, until real coordinates are pulled off the GBP listing
+ * Two things are still conditionally omitted rather than faked:
  *   - `sameAs`, because there are no social profiles
- *   - `aggregateRating`, until the 5 real reviews are on the page
+ *   - `aggregateRating`, until the real reviews are visible on the page.
+ *     Rating markup with nothing behind it is a manual-action risk, so the
+ *     markup follows the data and not the other way round.
  */
 export function localBusinessSchema(lang: Lang) {
   const t = getCopy(lang);
 
   const data: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": ["AutoWrecker", "LocalBusiness"],
+    /*
+      AutoWrecker is the narrow type and the one that matches the Google
+      Business Profile category ("Auto wrecker"). LocalBusiness and
+      Organization are both ancestors of it, so they are strictly redundant —
+      they are declared anyway because plenty of consumers, including the
+      answer engines this site wants to be cited by, look for the generic type
+      and do not walk the schema.org hierarchy to find it.
+    */
+    "@type": ["AutoWrecker", "LocalBusiness", "Organization"],
     "@id": `${siteConfig.url}/#business`,
     name: siteConfig.name,
+    /*
+      Two names are in use: the Business Profile lists "Recyclage Autos B2",
+      while the trading name customers say — and every page title and heading
+      on this site — is "Autos B2".
+
+      legalName and alternateName both carry the longer form so Google can see
+      one entity rather than two businesses at one address. It is also the
+      corroboration Google's name guideline asks for: the name must be the one
+      used consistently on the storefront, the website and the stationery, and
+      the footer now states it in readable text rather than only inside a logo
+      image.
+
+      Deliberately NOT in `name`: the titles are capped at 60 characters, and
+      the longer brand costs 10 of them. Measured, it would strip the
+      qualifier off 12 of 28 titles — every French city page would lose
+      "rachat comptant". Identity goes here; the titles keep selling.
+    */
+    legalName: siteConfig.legalName,
+    alternateName: siteConfig.legalName,
     description: t.home.metaDescription,
     url: abs(`/${lang}/`),
     telephone: siteConfig.phone.e164,
@@ -108,6 +136,28 @@ export function localBusinessSchema(lang: Lang) {
   }
 
   return data;
+}
+
+/**
+ * The site itself, as a distinct entity from the business that runs it.
+ *
+ * `@id` matters more than the content here: WebPage.isPartOf and every future
+ * node can point at `#website` instead of restating name and url inline, which
+ * is what stops a crawler seeing several slightly different websites.
+ *
+ * No `potentialAction`/SearchAction: there is no site search. Declaring one
+ * that resolves to nothing is a Rich Results error, not a bonus.
+ */
+export function websiteSchema(lang: Lang) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteConfig.url}/#website`,
+    name: siteConfig.name,
+    url: abs(`/${lang}/`),
+    inLanguage: lang === "fr" ? "fr-CA" : "en-CA",
+    publisher: { "@id": `${siteConfig.url}/#business` },
+  };
 }
 
 export function serviceSchema({
@@ -191,7 +241,7 @@ export function webPageSchema({
     description,
     url: abs(path),
     inLanguage: lang === "fr" ? "fr-CA" : "en-CA",
-    isPartOf: { "@type": "WebSite", name: siteConfig.name, url: siteConfig.url },
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
     about: { "@id": `${siteConfig.url}/#business` },
   };
 }

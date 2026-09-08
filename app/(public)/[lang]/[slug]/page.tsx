@@ -16,7 +16,7 @@ import {
 } from "@/config/routes";
 import { siteConfig, fullAddress, mapsEmbedUrl, routeEmbedUrl } from "@/config/site";
 import { getCopy } from "@/content/copy";
-import { pageTitle } from "@/lib/seo";
+import { fitDescription, pageTitle } from "@/lib/seo";
 import { faqFor } from "@/content/faq";
 import { CITIES, cityByKey, citiesFor } from "@/content/cities";
 import { serviceByKey } from "@/content/services";
@@ -27,6 +27,7 @@ import QuoteForm from "@/components/site/QuoteForm";
 import PhotoGrid from "@/components/site/PhotoGrid";
 import PhoneLink from "@/components/site/PhoneLink";
 import MailLink from "@/components/site/MailLink";
+import ReviewLink from "@/components/site/ReviewLink";
 import { PageHeader, Sections, CtaBand } from "@/components/pages/PageShell";
 import {
   JsonLd,
@@ -61,16 +62,43 @@ function metaFor(lang: Lang, slug: string): Meta | null {
 
   if (resolved.type === "city") {
     const city = cityByKey(resolved.cityKey)!;
+    const { name, distanceKm: km, driveMinutes: min } = city;
+    const atYard = km === 0;
+
+    /*
+      The description is where a city page earns its click, and every one of
+      these was 89-120 characters — 35 to 65 characters of search-result space
+      left empty on exactly the pages that need local click-through.
+
+      The distance and drive time come from content/cities.ts, so each city
+      now gets a description no other city could carry, using facts already on
+      the page rather than padding.
+    */
     return lang === "fr"
       ? {
           // pageTitle drops the qualifier for a long name like
           // Saint-Lin-Laurentides rather than cutting it mid-word.
-          title: pageTitle(`Cour à scrap ${city.name}`, "rachat comptant"),
-          description: `Vendre une auto scrap à ${city.name} ? On achète comptant, remorquage gratuit, enlèvement souvent le jour même.`,
+          title: pageTitle(`Cour à scrap ${name}`, "rachat comptant"),
+          description: atYard
+            ? fitDescription(
+                `Vendre une auto scrap à ${name} ? Notre cour est au ${siteConfig.address.street}. On paie comptant, remorquage gratuit et enlèvement souvent le jour même.`
+              )
+            : fitDescription(
+                `Vendre une auto scrap à ${name} ? On paie comptant, remorquage gratuit et enlèvement souvent le jour même. Notre cour est à ${km} km, environ ${min} min.`,
+                `Vendre une auto scrap à ${name} ? On paie comptant, remorquage gratuit, enlèvement souvent le jour même. Cour à ${km} km, ${min} min de route.`
+              ),
         }
       : {
-          title: pageTitle(`Scrap car buyer ${city.name}`, "cash paid"),
-          description: `Selling a scrap car in ${city.name}? We pay cash, free towing, and pickup is often the same day.`,
+          title: pageTitle(`Scrap car buyer ${name}`, "cash paid"),
+          description: atYard
+            ? fitDescription(
+                `Selling a scrap car in ${name}? Our yard is right here at ${siteConfig.address.street}. We pay cash on pickup, towing is free, and collection is often same-day.`
+              )
+            : fitDescription(
+                `Selling a scrap car in ${name}? We pay cash on pickup, towing is always free and collection is often same-day. Our yard is ${km} km away, about ${min} min.`,
+                `Selling a scrap car in ${name}? We pay cash, towing is free and collection is often same-day. Our yard is ${km} km away, about a ${min} minute drive.`,
+                `Selling a scrap car in ${name}? We pay cash, towing is free and collection is often same-day. Our yard is ${km} km away, about ${min} min.`
+              ),
         };
   }
 
@@ -203,6 +231,17 @@ export default async function SlugPage({
   const path = `/${lang}/${slug}/`;
 
   const crumb = (name: string) => [{ name, path }];
+
+  /*
+    The schema trail is the visible trail plus the Home root. Deriving one
+    from the other is the point: ten pages used to render breadcrumbs with no
+    BreadcrumbList behind them, which is exactly the visible/markup mismatch
+    Google's structured-data guidelines forbid.
+  */
+  const homeTrail = (name: string) => [
+    { name: t.common.breadcrumbHome, path: pathFor("home", lang) },
+    ...crumb(name),
+  ];
 
   const common = (
     <>
@@ -416,6 +455,7 @@ export default async function SlugPage({
       return (
         <>
           {common}
+          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema(homeTrail(t.nav.quote))} />
           <PageHeader
             lang={lang}
             trail={crumb(t.nav.quote)}
@@ -564,6 +604,7 @@ export default async function SlugPage({
       return (
         <>
           {common}
+          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema(homeTrail(PRIVACY.h1[lang]))} />
           <PageHeader
             lang={lang}
             trail={crumb(PRIVACY.h1[lang])}
@@ -578,6 +619,7 @@ export default async function SlugPage({
       return (
         <>
           {common}
+          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema(homeTrail(TERMS.h1[lang]))} />
           <PageHeader
             lang={lang}
             trail={crumb(TERMS.h1[lang])}
@@ -662,6 +704,12 @@ export default async function SlugPage({
                   </div>
                 </dl>
 
+                {/* Renders nothing until GBP_REVIEW_LINK is set. */}
+                <ReviewLink
+                  lang={lang}
+                  className="mt-8 inline-flex items-center gap-2 rounded-xl border-2 border-brand-600 px-5 py-3 text-sm font-bold text-brand-700 transition-colors hover:bg-brand-50"
+                />
+
                 <div className="mt-8 overflow-hidden rounded-xl border border-slate-200">
                   <iframe
                     src={mapsEmbedUrl()}
@@ -688,6 +736,7 @@ export default async function SlugPage({
       return (
         <>
           {common}
+          <JsonLd id="ld-breadcrumb" data={breadcrumbSchema(homeTrail(t.nav.blog))} />
           <PageHeader
             lang={lang}
             trail={crumb(t.nav.blog)}
