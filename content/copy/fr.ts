@@ -39,8 +39,8 @@ export const fr = {
     whatsapp: "WhatsApp",
     whatsappAria: "Écrire à Autos B2 sur WhatsApp",
     whatsappTagline: "Envoyez-nous une photo de votre auto",
-    hours: "Ouvert 7 jours, 8 h à 20 h 30",
-    hoursLong: "Ouvert 7 jours sur 7, de 8 h à 20 h 30",
+    hours: "Ouvert 7 jours, 8 h à 20 h",
+    hoursLong: "Ouvert 7 jours sur 7, de 8 h à 20 h",
     addressLabel: "Notre cour",
     emailLabel: "Courriel",
     phoneLabel: "Téléphone",
@@ -72,7 +72,7 @@ export const fr = {
       "Remorquage gratuit inclus",
       "Argent comptant à l'enlèvement",
       "On gère le transfert SAAQ",
-      "Ouvert 7 jours, 8h à 20h30",
+      "Ouvert 7 jours, 8h à 20h",
     ],
 
     howItWorks: {
@@ -108,7 +108,7 @@ export const fr = {
     stats: [
       "2 000 véhicules achetés par année",
       "10 ans d'expérience à Mascouche",
-      "Ouvert 7 jours sur 7, 8h à 20h30",
+      "Ouvert 7 jours sur 7, 8h à 20h",
     ],
 
     why: {
@@ -185,7 +185,7 @@ export const fr = {
     eyebrow: "Estimation gratuite",
     title: "Combien vaut votre véhicule ?",
     subtitle: "Quatre questions, moins d'une minute. On vous rappelle avec un prix ferme.",
-    replyTime: "On rappelle habituellement en moins de 5 minutes, de 8 h à 20 h 30.",
+    replyTime: "On rappelle habituellement en moins de 5 minutes, de 8 h à 20 h.",
 
     vehicle: "Année, marque et modèle",
     name: "Prénom et nom",
@@ -209,7 +209,7 @@ export const fr = {
     metaDescription:
       "Votre demande d'estimation est reçue. Un membre de l'équipe Autos B2 vous rappelle sous peu.",
     h1: "Merci — on vous rappelle sous peu",
-    body: "Votre demande est bien reçue. Un membre de l'équipe vous téléphone généralement en moins de 30 minutes pendant nos heures d'ouverture, de 8 h à 20 h 30, 7 jours sur 7.",
+    body: "Votre demande est bien reçue. Un membre de l'équipe vous téléphone généralement en moins de 30 minutes pendant nos heures d'ouverture, de 8 h à 20 h, 7 jours sur 7.",
     urgent: "Vous êtes pressé ? Appelez-nous directement :",
     whatNext: "Ce qui arrive ensuite",
     steps: [
