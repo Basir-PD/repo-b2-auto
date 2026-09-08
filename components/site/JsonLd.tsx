@@ -52,12 +52,24 @@ export function localBusinessSchema(lang: Lang) {
     "@id": `${siteConfig.url}/#business`,
     name: siteConfig.name,
     /*
-      The registered entity, which differs from the trading name. Emitting
-      both is how Google reconciles this site with the Business Profile, the
-      SAAQ recycler registry and any citation that lists the legal name —
-      without either string having to appear in visible copy.
+      Two names are in use: the Business Profile lists "Recyclage Autos B2",
+      while the trading name customers say — and every page title and heading
+      on this site — is "Autos B2".
+
+      legalName and alternateName both carry the longer form so Google can see
+      one entity rather than two businesses at one address. It is also the
+      corroboration Google's name guideline asks for: the name must be the one
+      used consistently on the storefront, the website and the stationery, and
+      the footer now states it in readable text rather than only inside a logo
+      image.
+
+      Deliberately NOT in `name`: the titles are capped at 60 characters, and
+      the longer brand costs 10 of them. Measured, it would strip the
+      qualifier off 12 of 28 titles — every French city page would lose
+      "rachat comptant". Identity goes here; the titles keep selling.
     */
     legalName: siteConfig.legalName,
+    alternateName: siteConfig.legalName,
     description: t.home.metaDescription,
     url: abs(`/${lang}/`),
     telephone: siteConfig.phone.e164,
