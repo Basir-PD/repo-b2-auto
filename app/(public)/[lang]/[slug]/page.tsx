@@ -27,6 +27,7 @@ import QuoteForm from "@/components/site/QuoteForm";
 import PhotoGrid from "@/components/site/PhotoGrid";
 import PhoneLink from "@/components/site/PhoneLink";
 import MailLink from "@/components/site/MailLink";
+import ReviewLink from "@/components/site/ReviewLink";
 import { PageHeader, Sections, CtaBand } from "@/components/pages/PageShell";
 import {
   JsonLd,
@@ -661,6 +662,12 @@ export default async function SlugPage({
                     </div>
                   </div>
                 </dl>
+
+                {/* Renders nothing until GBP_REVIEW_LINK is set. */}
+                <ReviewLink
+                  lang={lang}
+                  className="mt-8 inline-flex items-center gap-2 rounded-xl border-2 border-brand-600 px-5 py-3 text-sm font-bold text-brand-700 transition-colors hover:bg-brand-50"
+                />
 
                 <div className="mt-8 overflow-hidden rounded-xl border border-slate-200">
                   <iframe
