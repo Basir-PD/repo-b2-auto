@@ -159,10 +159,16 @@ GBP pin. What is still open:
       it resolves to Vercel (`216.198.79.1`) and 404s only because the domain
       is not attached to the project. So this is a dashboard click, not a DNS
       change. The 301s in `next.config.ts` go live the moment it is attached.
-- [ ] **Verify in Search Console** on the apex `https://autosb2.com` now that
-      the canonical host moved, and submit `/sitemap.xml`. Set
+- [ ] **Verify in Search Console on `https://www.autosb2.com`** — the **www**
+      host, not the apex, and submit `/sitemap.xml`. Set
       `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — the meta tag is already wired and
       renders only when the env var is present.
+      ⚠️ This item used to say "the apex, now that the canonical host moved".
+      The canonical host did **not** move: the apex migration caused a redirect
+      loop and was reverted in `2cfc036`. Verified in production —
+      `https://autosb2.com/en/` 308s to `https://www.autosb2.com/en/`, and the
+      canonical tag reads `www`. Verifying the apex would register a property
+      that redirects away and report no data.
 
 ---
 
