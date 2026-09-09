@@ -167,16 +167,19 @@ GBP pin. What is still open:
       to the old host. Delete them only once the domain has lapsed and stopped
       resolving.
 
-- [ ] **Verify in Search Console on `https://www.autosb2.com`** — the **www**
-      host, not the apex, and submit `/sitemap.xml`. Set
-      `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — the meta tag is already wired and
-      renders only when the env var is present.
-      ⚠️ This item used to say "the apex, now that the canonical host moved".
-      The canonical host did **not** move: the apex migration caused a redirect
-      loop and was reverted in `2cfc036`. Verified in production —
-      `https://autosb2.com/en/` 308s to `https://www.autosb2.com/en/`, and the
-      canonical tag reads `www`. Verifying the apex would register a property
-      that redirects away and report no data.
+- [x] ~~Verify in Search Console.~~ **DONE — verified 2026-09-08.** A Domain
+      property on `autosb2.com`, verified by the DNS TXT record, so it covers
+      the apex, `www` and every subdomain at once. Confirmed live in the
+      console: Performance, Indexing and Experience panels all present and
+      reading "Processing data, please check again in a day or so", which is
+      the normal state for a property with no history yet.
+- [ ] **Submit `/sitemap.xml` in Search Console.** Sitemaps → enter
+      `sitemap.xml` → Submit. Verified serving: 200, `application/xml`, 40
+      URLs, and `robots.txt` points at it.
+- [ ] **Come back in a few days** for the first real numbers. Pages tells you
+      how many of the 40 URLs are indexed; Performance gives queries and
+      average position — the first time any ranking question on this project
+      is answerable with data rather than inference.
 
 ---
 
