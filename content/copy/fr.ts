@@ -87,14 +87,23 @@ export const fr = {
     ctaSecondary: `Appeler ${PHONE}`,
 
     /*
-      Free towing and cash moved up into the subtitle, so the strip carries
-      only what the subtitle does not say. Repeating them two elements apart
-      made the hero list seven claims and land none of them.
+      These are the eight callout assets from the Google Ads account, word for
+      word, because someone who clicks an ad promising "Aucuns frais cachés"
+      has to land on a page that says "Aucuns frais cachés". Message match is
+      the cheapest conversion win there is, and Google scores the landing page
+      against the ad for Quality Score on top of that.
+
+      Only six are here: "Paiement comptant" and "Ramassage gratuit" are the
+      other two callouts, and they are already the subtitle. Saying them twice
+      two elements apart is what this strip used to do wrong.
     */
     trustStrip: [
-      "On gère le transfert SAAQ",
-      "Notre propre cour à Mascouche",
-      `Ouvert 7 jours, ${hoursRange("fr").replace("de ", "")}`,
+      "Aucuns frais cachés",
+      "Reçu SAAQ officiel",
+      "Service rapide",
+      "Recyclage responsable",
+      "Prix compétitifs",
+      hoursLong("fr"),
     ],
 
     howItWorks: {

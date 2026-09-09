@@ -76,9 +76,12 @@ export const en: Copy = {
     ctaSecondary: `Call ${PHONE}`,
 
     trustStrip: [
-      "We handle the SAAQ transfer",
-      "Our own yard in Mascouche",
-      `Open 7 days, ${hoursRange("en")}`,
+      "No hidden fees",
+      "Official SAAQ receipt",
+      "Fast service",
+      "Responsible recycling",
+      "Competitive prices",
+      hoursLong("en"),
     ],
 
     howItWorks: {

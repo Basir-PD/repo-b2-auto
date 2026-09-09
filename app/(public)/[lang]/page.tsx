@@ -200,7 +200,13 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 />
               </div>
 
-              <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2.5">
+              {/*
+                A grid, not a flex-wrap. At three items the wrap produced tidy
+                rows by luck; at six, items of very different widths ragged
+                badly. Two fixed columns keep the checkmarks in a line, which
+                is the whole visual point of a strip like this.
+              */}
+              <ul className="mt-8 grid gap-x-5 gap-y-3 sm:grid-cols-2">
                 {t.home.trustStrip.map((item) => (
                   <li
                     key={item}
