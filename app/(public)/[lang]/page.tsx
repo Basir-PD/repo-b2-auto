@@ -9,6 +9,7 @@ import { siteConfig, fullAddress, mapsEmbedUrl, mapsUrl } from "@/config/site";
 import { getCopy } from "@/content/copy";
 import { homeFaqFor } from "@/content/faq";
 import { CITIES } from "@/content/cities";
+import { SERVICE_AREA } from "@/content/service-area";
 import { HOME_PHOTOS } from "@/content/photos";
 import { hasReviews, REVIEWS } from "@/content/reviews";
 import QuoteForm from "@/components/site/QuoteForm";
@@ -309,29 +310,47 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             {siteConfig.address.postalCode}
           </p>
 
-          <ul className="mt-8 flex flex-wrap gap-2">
-            {t.home.serviceArea.cities.map((city) => {
-              const page = CITIES.find((c) => c.name === city && c.slug[lang]);
-              return page ? (
-                <li key={city}>
-                  <Link
-                    href={cityPathFor(page.slug[lang]!, lang)}
-                    className="inline-flex items-center gap-1 rounded-full border border-brand-600 bg-white px-4 py-2 text-sm font-bold text-brand-700 transition-colors hover:bg-brand-50"
-                  >
-                    {city}
-                    <ChevronRight className="h-3.5 w-3.5" />
-                  </Link>
-                </li>
-              ) : (
-                <li
-                  key={city}
-                  className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600"
-                >
-                  {city}
-                </li>
-              );
-            })}
-          </ul>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-600">
+            {t.home.serviceArea.lead}
+          </p>
+
+          {/*
+            Grouped by region, not one flat run of 33 chips. The region names
+            are search terms in their own right, and a reader scanning for
+            "is my city here?" finds it faster in a labelled group.
+          */}
+          <div className="mt-10 space-y-8">
+            {SERVICE_AREA.map((region) => (
+              <div key={region.key}>
+                <h3 className="text-sm font-black uppercase tracking-wider text-slate-500">
+                  {region.label[lang]}
+                </h3>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {region.cities.map((city) => {
+                    const page = CITIES.find((c) => c.name === city && c.slug[lang]);
+                    return page ? (
+                      <li key={city}>
+                        <Link
+                          href={cityPathFor(page.slug[lang]!, lang)}
+                          className="inline-flex items-center gap-1 rounded-full border border-brand-600 bg-white px-4 py-2 text-sm font-bold text-brand-700 transition-colors hover:bg-brand-50"
+                        >
+                          {city}
+                          <ChevronRight className="h-3.5 w-3.5" />
+                        </Link>
+                      </li>
+                    ) : (
+                      <li
+                        key={city}
+                        className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600"
+                      >
+                        {city}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
