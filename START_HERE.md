@@ -2,16 +2,31 @@
 
 Pick-up point for the autosb2.com SEO work. Last session: **2026-09-08**.
 
-**MERGED AND PUSHED.** `main` is at `83077a7` — `seo/canonical-domain` (18 commits) merged via
-`--no-ff`. If Vercel auto-deploys from `main`, this is live.
+**`main` is at `2cfc036`, deployed, and the site is UP and verified.**
 
-⚠️ **The merge was a canonical host migration.** The site canonicalised to `www.autosb2.com`
-and now canonicalises to the apex `autosb2.com`, with 301s from `www.autosb2.com`,
-`b2autos.com` and `www.b2autos.com`. Google takes days to weeks to reassign a canonical host;
-some ranking movement in that window is expected and is not a regression. Three follow-ups
-live outside the repo — see §4.
+## 🔴 Read this before touching redirects or the canonical host
 
----
+An earlier commit in this session moved the canonical host to the apex
+`autosb2.com` and added a `www → apex` redirect. **It took the entire site down.**
+
+Vercel redirects the apex to `www` at the DOMAIN level, before a request reaches
+the app. The code redirected `www` back to the apex. The two pointed at each other:
+
+```
+autosb2.com/fr/      → 308 → www.autosb2.com/fr/   (Vercel domain setting)
+www.autosb2.com/fr/  → 301 → autosb2.com/fr/       (next.config.ts)
+```
+
+Infinite loop on every page. Reverted in `2cfc036`; recovery deploy took ~60s.
+
+**The canonical host is `https://www.autosb2.com` and it must stay that way** unless
+the Vercel domain setting is flipped FIRST. Both `config/site.ts` and
+`next.config.ts` carry a warning comment. Do not re-add a redirect for a hostname
+Vercel is already redirecting — check Project → Settings → Domains first.
+
+Lesson worth keeping: the redirect rules were verified with `Host` headers against a
+local `next start`, where Vercel's domain layer does not exist. That test could never
+have caught this. **Host-level redirects have to be checked against production.**
 
 ## 1. Paste this to start
 
@@ -22,9 +37,16 @@ Copy the block below into a new session. Fill in the answers you have; leave the
 Continuing SEO work on autosb2.com. Read START_HERE.md, TODO.md, SEO_AUDIT.md and
 OFF_SITE_AUDIT.md first — do not re-audit, it is all done.
 
-State: seo/canonical-domain is MERGED to main (83077a7) and pushed; likely
-deployed. Build passes, npm run verify passes, 101 tests green. Run
-`npm install` first — node_modules in a fresh clone is incomplete without it.
+State: merged to main and DEPLOYED. main is at 2cfc036. Site is UP and
+verified in production. Build passes, npm run verify passes, 101 tests green.
+Run `npm install` first — node_modules in a fresh clone is incomplete without it.
+
+⚠️ The canonical host is https://www.autosb2.com. An apex migration was tried
+this session and caused a site-wide redirect loop (Vercel redirects apex→www at
+the domain level; the code redirected www→apex). It was reverted. Do NOT re-add
+a www→apex redirect unless the Vercel domain setting is flipped first. See the
+warning at the top of START_HERE.md and the comments in config/site.ts and
+next.config.ts.
 
 Answers to your open questions:
 
@@ -102,13 +124,13 @@ citations anywhere. Another business holds the address online.
 
 Pick one and name it in the prompt:
 
-1. **Verify the deploy landed and the migration is behaving.** Check that
-   `https://autosb2.com/fr/` returns 200 with a self-canonical on the apex, that
-   `https://www.autosb2.com/fr/` 301s to it, and that the live HTML shows
-   `"closes":"20:00"` and a `geo` block. Then do the three off-repo follow-ups:
-   add the apex property in Search Console and resubmit /sitemap.xml; attach
-   b2autos.com in the Vercel dashboard (DNS already resolves there, it 404s only
-   because it is not attached to the project); confirm the GBP website field.
+1. **Search Console + the two dashboard tasks.** Set
+   `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel, verify
+   `https://www.autosb2.com` in Search Console and submit `/sitemap.xml` — there
+   is currently no indexation or query data at all. Then attach `b2autos.com` in
+   the Vercel dashboard; its DNS already resolves to Vercel and it 404s only
+   because it is not attached, so the 301s already in the code go live the moment
+   it is.
 2. **`convex/emails.ts` NAP import.** It still holds a second hardcoded copy of the business
    facts; it agrees with config only because it was fixed by hand. Next change drifts the
    customer email again.
