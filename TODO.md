@@ -3,7 +3,7 @@
 Open work on autosb2.com. Companion to `SEO_AUDIT.md` (on-site findings), `OFF_SITE_AUDIT.md` (off-site
 findings, run 2026-09-08) and `OFF_SITE_TODO.md` (the off-site action list).
 
-Last updated: 2026-09-08.
+Last updated: 2026-09-09.
 
 ---
 
@@ -92,11 +92,11 @@ GBP pin. What is still open:
 
 ## 3. Content
 
-- [ ] **City pages are 268–381 unique words** against a 400 target — every one
-      of the twelve, and the file's own header comment claims "400+". Weakest:
-      Bois-des-Filion (268 words, only 2 named sectors), Montréal-Est (287),
-      Blainville (297). Needs real local detail; do not invent landmarks,
-      testimonials or statistics.
+- [ ] **City pages are 248–380 unique words** against a 400 target — all
+      eighteen of them, and the file's own header comment claims "400+".
+      Weakest: Bois-des-Filion (268 fr / 248 en, only 2 named sectors),
+      Montréal-Est (287 / 284), Blainville (297 / 262). Needs real local
+      detail; do not invent landmarks, testimonials or statistics.
 - [ ] **One FAQ per city page, not two.** `content/cities.ts` has a single
       `faqQ`/`faqA` per city, and the `FAQPage` schema is a one-item array.
 - [ ] 🔴 **24 of the 33 served municipalities have no page.** The owner
@@ -111,9 +111,10 @@ GBP pin. What is still open:
       Highest-value missing pages, by search volume and by distance from the
       yard: **Saint-Jérôme, Saint-Eustache, Boisbriand, Mirabel** (a real
       Laurentians cluster, none of it covered), then
-      **Dollard-des-Ormeaux / Dorval** for the West Island anglophone market —
-      which is also the strongest argument yet for English twins, since the
-      West Island searches in English.
+      **Dollard-des-Ormeaux / Dorval** for the West Island anglophone market,
+      which searches in English. Each new city now costs two pages, not one:
+      as of 2026-09-09 every city ships in both languages and a test enforces
+      it.
       Blocked on real local detail: each page needs its own sectors, arteries
       and pickup window. Do not template these; Google filters doorway sets.
 - [ ] **Blog titles carry no brand suffix** while every other page does. Left
@@ -194,6 +195,8 @@ GBP pin. What is still open:
       Submitted as the full URL `https://www.autosb2.com/sitemap.xml`; a Domain
       property has no host prefix in the box, so the short form does not work.
       Status: **Success**, 40 discovered pages, read the same day.
+      *The sitemap is now 46 URLs* — the six new English city pages. Google
+      re-reads a submitted sitemap on its own; no resubmission needed.
 - [ ] **Come back in a few days** for the first real numbers. Pages tells you
       how many of the 40 URLs are indexed; Performance gives queries and
       average position — the first time any ranking question on this project
@@ -210,4 +213,6 @@ to the service area · `geo` filled from the GBP pin · `WebSite` and
 `Article` image · blog-post hreflang · all 12 city meta descriptions rewritten to
 140–155 characters with real per-city distances · closing time corrected to
 20:00 across 31 occurrences in 10 files · registered name stated in the footer
-and schema without touching titles · review CTA built and gated.
+and schema without touching titles · review CTA built and gated · the six French-only city pages given English twins,
+taking the sitemap from 40 to 46 URLs and closing the nine-vs-three link gap on the
+English homepage.
