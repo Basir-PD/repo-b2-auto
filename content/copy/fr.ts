@@ -163,7 +163,7 @@ export const fr = {
     fleetTitle: "Notre flotte de remorquage, au travail",
     fleetSub:
       "Nos propres camions, nos propres chauffeurs. Ces photos sont prises sur nos ramassages, pas achetées dans une banque d'images.",
-    reviewsHeading: "5,0 ★ sur 5 avis Google",
+    reviewsHeading: "Ce que disent nos clients sur Google",
 
     faqHeading: "Questions fréquentes",
     faqAllLink: "Voir toutes les questions",

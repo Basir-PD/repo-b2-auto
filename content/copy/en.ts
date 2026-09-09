@@ -156,7 +156,7 @@ export const en: Copy = {
     fleetTitle: "Our removal fleet, at work",
     fleetSub:
       "Our own trucks, our own drivers. These are photos from our pickups, not bought from a stock library.",
-    reviewsHeading: "5.0 ★ from 5 Google reviews",
+    reviewsHeading: "What our customers say on Google",
 
     faqHeading: "Frequently asked questions",
     faqAllLink: "See all questions",

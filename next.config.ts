@@ -39,7 +39,13 @@ const nextConfig: NextConfig = {
    * → make autosb2.com primary and www redirect to it), THEN change
    * siteConfig.url and add the rule back here. In that order, never together.
    *
-   * b2autos.com is safe to redirect from here because Vercel is not
+   * b2autos.com is being retired — the owner has moved everything, including
+   * the mailbox, to autosb2.com. These rules are kept rather than deleted:
+   * they are inert while the domain is unattached, they cost nothing, and
+   * they catch anything that still links to the old host. Remove them once
+   * the domain has lapsed and no longer resolves.
+   *
+   * It is safe to redirect from here because Vercel is not
    * redirecting it — its DNS already resolves to Vercel (216.198.79.1) but
    * it 404s, because the domain is not attached to the project. These rules
    * stay inert until someone attaches it in the dashboard.

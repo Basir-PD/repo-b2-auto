@@ -155,10 +155,15 @@ GBP pin. What is still open:
 - [ ] **`/lp/` pages emit no canonical.** They are `noindex` and
       `Disallow`-ed so this is defensible, but a self-referencing canonical
       costs nothing and protects against ad tracking parameters.
-- [ ] **Attach `b2autos.com` in the Vercel dashboard.** DNS is ALREADY done —
-      it resolves to Vercel (`216.198.79.1`) and 404s only because the domain
-      is not attached to the project. So this is a dashboard click, not a DNS
-      change. The 301s in `next.config.ts` go live the moment it is attached.
+- [x] ~~Attach `b2autos.com` in the Vercel dashboard.~~ **Decided against —
+      the owner is retiring the domain.** Everything is on `autosb2.com`,
+      including the mailbox, which moved to `admin@autosb2.com`.
+      The 301s for `b2autos.com` and `www.b2autos.com` stay in
+      `next.config.ts`. They are inert while the domain is unattached and cost
+      nothing, and they are the safety net if anything out there still links
+      to the old host. Delete them only once the domain has lapsed and stopped
+      resolving.
+
 - [ ] **Verify in Search Console on `https://www.autosb2.com`** — the **www**
       host, not the apex, and submit `/sitemap.xml`. Set
       `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — the meta tag is already wired and

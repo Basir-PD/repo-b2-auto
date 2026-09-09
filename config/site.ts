@@ -155,9 +155,21 @@ export const siteConfig = {
    * only when `reviews` in content/reviews.ts actually holds these 5 reviews;
    * an empty array means no rating markup and no reviews section.
    */
+  /*
+    Google reviews. The profile currently has NONE.
+
+    This said 5 reviews at 5.0, which was never true — nothing on the site
+    ever showed it, because the heading and the AggregateRating markup are
+    both gated on content/reviews.ts actually holding reviews, and it is
+    empty. But a wrong number sitting in config is a wrong number waiting to
+    be rendered, so it reads zero until there is something to count.
+
+    Update BOTH when reviews arrive: the count here and the texts in
+    content/reviews.ts. The section and the schema turn on together.
+  */
   reviews: {
-    ratingValue: 5,
-    reviewCount: 5,
+    ratingValue: 0,
+    reviewCount: 0,
   },
 
   /**
