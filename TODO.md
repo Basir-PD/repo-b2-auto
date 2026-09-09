@@ -73,16 +73,15 @@ GBP pin. What is still open:
       `OFF_SITE_TODO.md` §1.
 - [x] ~~Confirm `NEXT_PUBLIC_GTM_ID` is set in Vercel~~ — **CONFIRMED LIVE.**
       `GTM-5V37JFTD` is present in the production HTML. Tracking is running.
-- [ ] **Set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel.** Verified as
-      absent from the live site, so Search Console is almost certainly not set
-      up — no indexation data, no query data, no sitemap submission.
-- [x] ~~Confirm the full weekly GBP hours.~~ **Answered by the owner: 06:00 to
-      21:00, the same seven days.** The site said 08:00–20:00 and now says
-      06:00–21:00 everywhere, from one place.
-      ⚠️ **The Google Business Profile still says it opens at 8 a.m. and
-      closes at 20:00.** The site and the profile now disagree by two hours at
-      each end, which is a NAP mismatch and hurts local ranking. The profile
-      is the side that needs changing — only the owner can do it.
+- [x] ~~Set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel.~~ **Not needed.**
+      The owner registered a **Domain** property, which verifies by DNS, not by
+      the HTML meta tag. The TXT record is already live on `autosb2.com`:
+      `google-site-verification=446cMRhLX92UCeMXYo-wJyzFRFsiaR2LHdSvwNnuqGE`
+      (nameservers are Namecheap, `dns1/dns2.registrar-servers.com`).
+      The env var and its meta tag stay wired but unused; setting it would
+      change nothing. A Domain property is the better choice here anyway — it
+      covers the apex, `www` and any subdomain in one, which matters given the
+      apex→www redirect.
 - [ ] **City-page local facts** — see §3. Confirm that gaps should ship as
       clearly-marked `TODO` placeholders rather than invented detail.
 
