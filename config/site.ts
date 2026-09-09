@@ -173,11 +173,21 @@ export const siteConfig = {
   },
 
   /**
-   * Public "leave us a review" link from the Google Business Profile.
-   * NOT AVAILABLE YET — every review-request button stays hidden while this
-   * is an empty string.
+   * Public "leave a review" link from the Google Business Profile.
+   *
+   * The short g.page form, taken from the profile's own "Ask for reviews"
+   * panel. It opens the star-rating dialog directly — verified: it resolves
+   * to search.google.com/local/writereview with the place ID
+   * ChIJewxBfUzdyEwR1HovhZdexHk. Google asks for a sign-in first, which is
+   * expected; a review cannot be left anonymously.
+   *
+   * Not a link to the profile page. Those land on a search result, leaving
+   * the customer to find the card, scroll to reviews and click through —
+   * three steps of friction on the one action that matters most here.
+   *
+   * components/site/ReviewLink.tsx renders nothing while this is empty.
    */
-  GBP_REVIEW_LINK: "",
+  GBP_REVIEW_LINK: "https://g.page/r/CdR6L4WXXsR5ECE/review",
 
   priceRange: "$$",
 
