@@ -56,16 +56,19 @@ GBP pin. What is still open:
 
 ## 2. Blocked — needs a decision or a value from the owner
 
-- [ ] **Google review link.** `config/site.ts` → `GBP_REVIEW_LINK` is `""`.
-      `components/site/ReviewLink.tsx` is built and renders nothing until it is
-      set; both placements (footer, contact page) are wired and tested. Paste
-      the URL and it goes live. Format: `https://g.page/r/<id>/review` or
-      `https://search.google.com/local/writereview?placeid=<id>`.
-- [ ] **The 5 review texts**, verbatim, with reviewer names as they appear
-      publicly. `content/reviews.ts` is an empty array on purpose — the
-      `AggregateRating` schema and the homepage reviews section both stay off
-      until the reviews they summarise are visible on the page. Shipping a
-      rating with nothing behind it is a manual-action risk.
+- [x] ~~Google review link.~~ **DONE — live.**
+      `https://g.page/r/CdR6L4WXXsR5ECE/review`, taken from the profile's own
+      "Ask for reviews" panel. Verified it resolves to
+      `search.google.com/local/writereview` with place ID
+      `ChIJewxBfUzdyEwR1HovhZdexHk`, so it opens the star dialog directly
+      rather than a search result. Rendering in the footer and on both contact
+      pages.
+- [ ] **Review texts — there are currently ZERO reviews**, not five. The
+      earlier note assumed five; the owner's profile shows none. `siteConfig.
+      reviews` now reads 0/0 and `content/reviews.ts` stays empty, so the
+      reviews section and the AggregateRating schema both stay off. Paste real
+      ones as they arrive and both turn on together. Never a rating without
+      the reviews behind it.
 - [ ] **GBP name: keep "Recyclage Autos B2" or revert to "Autos B2".** The site
       now corroborates the longer form (footer text, `legalName`,
       `alternateName`) without spending title characters on it. Fully compliant
