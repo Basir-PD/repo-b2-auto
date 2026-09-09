@@ -19,86 +19,66 @@ const nextConfig: NextConfig = {
   },
 
   /**
-   * One host, one set of URLs.
+   * One host, one set of URLs: https://www.autosb2.com.
    *
-   * The site is canonically https://autosb2.com (apex, no www) — that is what
-   * siteConfig.url stamps into every canonical, hreflang, og:url, JSON-LD url
-   * and sitemap entry. Three other hostnames can reach this content, and each
-   * one that answers 200 is a duplicate of the entire site:
+   * ⚠️ READ THIS BEFORE ADDING A HOST REDIRECT HERE.
    *
-   *   www.autosb2.com   — the www form of the real domain
-   *   b2autos.com       — the legacy/alternate domain
-   *   www.b2autos.com   — its www form
+   * Vercel redirects the apex autosb2.com to www at the DOMAIN level, before
+   * a request ever reaches this app. A previous version of this block added
+   * a www→apex redirect to move the canonical host to the apex. The two
+   * redirects pointed at each other and every single request became an
+   * infinite loop:
    *
-   * All three 301 to the apex, preserving the path and the query string, so a
-   * link to any of them keeps its destination and passes its equity on.
+   *     autosb2.com/fr/      → 308 → www.autosb2.com/fr/   (Vercel)
+   *     www.autosb2.com/fr/  → 301 → autosb2.com/fr/       (this file)
    *
-   * ⚠️ CODE ALONE IS NOT ENOUGH. A redirect can only fire if the request
-   * actually reaches this app, and it only reaches this app if the hostname
-   * resolves here. For each of b2autos.com and www.b2autos.com you must ALSO:
+   * The entire site was unreachable. Never add a redirect here for a
+   * hostname Vercel is already redirecting; check the Domains settings first.
    *
-   *   1. Add the domain to this project in Vercel
-   *      (Project → Settings → Domains → Add).
-   *   2. Point its DNS at Vercel — apex via an A record to 76.76.21.21,
-   *      www via a CNAME to cname.vercel-dns.com (Vercel shows the exact
-   *      values when you add the domain).
-   *   3. Wait for the TLS certificate to issue, or the redirect fails at the
-   *      handshake, before any HTTP status is ever sent.
+   * To actually move to the apex: flip Vercel (Project → Settings → Domains
+   * → make autosb2.com primary and www redirect to it), THEN change
+   * siteConfig.url and add the rule back here. In that order, never together.
    *
-   * Until b2autos.com is added and pointed at the project, the b2autos.com
-   * rules below are inert — they are not wrong, they are simply never reached.
-   *
-   * Vercel can also do the www→apex redirect itself at the domain level. If
-   * you configure it there, the www.autosb2.com rule here becomes redundant
-   * rather than conflicting; both produce the same 301 to the same target.
+   * b2autos.com is safe to redirect from here because Vercel is not
+   * redirecting it — its DNS already resolves to Vercel (216.198.79.1) but
+   * it 404s, because the domain is not attached to the project. These rules
+   * stay inert until someone attaches it in the dashboard.
    */
   async redirects() {
     /*
-      Two rules per host, and both details matter:
+      `statusCode: 301` rather than `permanent: true`, which emits 308.
 
-      `statusCode: 301` rather than `permanent: true`. Next's `permanent` flag
-      emits 308, not 301. Google treats the two the same, but plenty of older
-      tooling, analytics and link checkers do not, and there is no upside to
-      the less-understood status here.
-
-      `:path+` rather than `:path*`, with the trailing slash written into the
-      destination. `trailingSlash: true` above means the canonical form of
-      every URL ends in a slash — but `:path*` does not capture that slash, so
-      `destination: ".../:path*"` produced `https://autosb2.com/fr/about`,
-      which the app then 308s a SECOND time to add the slash back. Two hops on
-      every redirected link. `:path+` requires at least one segment, so the
-      bare root falls through to the root rule below instead of producing a
-      double slash.
-
-      Files are the exception and must come FIRST. `trailingSlash` does not
-      apply to a path with an extension: /sitemap.xml is a file, and the
-      slash-appending rule turned it into /sitemap.xml/, which 404s. Anything
-      ending in `.ext` — sitemap.xml, robots.txt, llms.txt, the icons, every
-      image in /public — redirects verbatim.
+      `:path+` with the trailing slash written into the destination:
+      `trailingSlash: true` means the canonical form ends in a slash, but
+      `:path*` does not capture it, so the destination lost it and the app
+      then redirected a SECOND time to add it back. Files are matched first
+      and keep no trailing slash — /sitemap.xml must not become
+      /sitemap.xml/, which 404s.
     */
-    const toApex = (host: string) => [
+    const toCanonical = (host: string) => [
       {
-        // Files: no trailing slash, ever.
         source: "/:file(.*\\.[a-zA-Z0-9]+)",
         has: [{ type: "host" as const, value: host }],
-        destination: "https://autosb2.com/:file",
+        destination: "https://www.autosb2.com/:file",
         statusCode: 301,
       },
       {
         source: "/",
         has: [{ type: "host" as const, value: host }],
-        destination: "https://autosb2.com/",
+        destination: "https://www.autosb2.com/",
         statusCode: 301,
       },
       {
         source: "/:path+",
         has: [{ type: "host" as const, value: host }],
-        destination: "https://autosb2.com/:path+/",
+        destination: "https://www.autosb2.com/:path+/",
         statusCode: 301,
       },
     ];
 
-    return [...toApex("www.autosb2.com"), ...toApex("b2autos.com"), ...toApex("www.b2autos.com")];
+    // NOT www.autosb2.com — that is the canonical host and redirecting it
+    // here is exactly what caused the outage described above.
+    return [...toCanonical("b2autos.com"), ...toCanonical("www.b2autos.com")];
   },
 
   async headers() {

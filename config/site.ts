@@ -24,9 +24,18 @@ export const siteConfig = {
    * from, Google is told the real version lives somewhere else — and if
    * that somewhere else 404s, nothing gets indexed at all.
    *
-   * The canonical host is the APEX, autosb2.com — no www. Everything else
-   * (www.autosb2.com, b2autos.com, www.b2autos.com) 301s here; see the
-   * `redirects()` block in next.config.ts.
+   * The canonical host is www.autosb2.com.
+   *
+   * ⚠️ THIS MUST MATCH THE VERCEL DOMAIN SETTING. Vercel is configured to
+   * redirect the apex to www at the domain level, before the app is ever
+   * reached. An earlier version of this file set the apex as canonical and
+   * added a www→apex redirect in next.config.ts; the two fought each other
+   * and every request became an infinite 308/301 loop. The whole site was
+   * unreachable until it was reverted.
+   *
+   * To move to the apex later, the Vercel setting has to be flipped FIRST
+   * (Project → Settings → Domains → make autosb2.com primary, www redirect
+   * to it), and only then this value and the redirects in next.config.ts.
    *
    * Note the email address is deliberately NOT on this domain: it is still
    * admin@b2autos.com. That is a mailbox, not a URL, and it is a separate
@@ -35,7 +44,7 @@ export const siteConfig = {
    * The default is the domain the site is live on. Override per environment
    * with NEXT_PUBLIC_SITE_URL if that ever changes.
    */
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://autosb2.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.autosb2.com",
 
   /**
    * `name` is the trading name — what customers say, what the signage reads,
