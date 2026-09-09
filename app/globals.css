@@ -63,7 +63,15 @@
   --color-brand-900: var(--brand-900);
   --color-brand-950: var(--brand-950);
 
-  --font-sans: Outfit, sans-serif;
+  /*
+     var(--font-outfit), not the bare family name. next/font self-hosts the
+     face under a generated variable and ships size-adjusted fallback metrics
+     with it. Naming "Outfit" directly asks for a font the browser does not
+     have installed, so anything using Tailwind's font-sans utility fell
+     through to the system stack and skipped those metrics. <body> was always
+     fine — it uses outfit.className.
+  */
+  --font-sans: var(--font-outfit), sans-serif;
 
   /*
      A ring breathing out of the call button.

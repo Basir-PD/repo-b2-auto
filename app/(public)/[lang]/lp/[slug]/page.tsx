@@ -145,8 +145,13 @@ export default async function LandingPage({
                 : "Autos B2 flatbed tow truck loaded with a vehicle, in Mascouche"
             }
             fill
-            priority
-            fetchPriority="high"
+            /*
+              Lazy, not priority. This sits below the H1, the sub, the call
+              button, the bullet list and the entire quote form — it cannot be
+              the LCP element on any viewport, and marking it high-priority
+              only made it compete with whatever is.
+            */
+            loading="lazy"
             sizes="100vw"
             quality={50}
             className="object-cover object-[58%_62%] [mask-image:linear-gradient(to_bottom,transparent,black_34%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_34%)]"
