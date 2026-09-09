@@ -31,6 +31,13 @@ export const fr = {
     quote: "Estimation gratuite",
   },
 
+  crossLinks: {
+    servicesInCity: "Nos services à",
+    citiesForService: "Où on offre ce service",
+    citiesLead:
+      "On se déplace gratuitement dans ces villes. Chaque page donne la distance depuis notre cour et le délai d'enlèvement habituel.",
+    servicesLead: "Ce qu'on achète et ce qu'on fait sur place :",
+  },
   common: {
     callCta: `Appeler ${PHONE}`,
     callAria: "Appeler Autos B2 maintenant",

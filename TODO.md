@@ -108,10 +108,13 @@ GBP pin. What is still open:
 
 ## 4. Internal linking
 
-- [ ] **Service pages have no in-body links to city pages, and city pages none
-      back.** Every service↔city link on the site comes from the global footer,
-      which carries far less weight and gives Google no signal about which city
-      belongs with which service.
+- [x] ~~Service pages have no in-body links to city pages, and city pages none
+      back.~~ **Done.** `components/pages/CrossLinks.tsx` adds a "Where we
+      offer this" block to every service page and a "Our services in {city}"
+      block to every city page. Anchor text names both halves — "Remorquage
+      gratuit de véhicule à Laval", not "Laval" — because the anchor is the
+      signal. Measured before and after: a service page went from 1 in-body
+      link to 10, a city page from 9 to 13.
 - [ ] **Blog posts have one inbound link each**, from the blog index only. They
       also link out to nothing but home, blog and the quote page.
 - [ ] Blog is in the footer, not the header nav.
@@ -173,9 +176,10 @@ GBP pin. What is still open:
       console: Performance, Indexing and Experience panels all present and
       reading "Processing data, please check again in a day or so", which is
       the normal state for a property with no history yet.
-- [ ] **Submit `/sitemap.xml` in Search Console.** Sitemaps → enter
-      `sitemap.xml` → Submit. Verified serving: 200, `application/xml`, 40
-      URLs, and `robots.txt` points at it.
+- [x] ~~Submit `/sitemap.xml` in Search Console.~~ **DONE — 2026-09-08.**
+      Submitted as the full URL `https://www.autosb2.com/sitemap.xml`; a Domain
+      property has no host prefix in the box, so the short form does not work.
+      Status: **Success**, 40 discovered pages, read the same day.
 - [ ] **Come back in a few days** for the first real numbers. Pages tells you
       how many of the 40 URLs are indexed; Performance gives queries and
       average position — the first time any ranking question on this project
