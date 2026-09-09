@@ -28,6 +28,13 @@ export const en: Copy = {
     quote: "Free quote",
   },
 
+  crossLinks: {
+    servicesInCity: "Our services in",
+    citiesForService: "Where we offer this",
+    citiesLead:
+      "We travel free to these cities. Each page gives the distance from our yard and the usual pickup window.",
+    servicesLead: "What we buy and what we handle on site:",
+  },
   common: {
     callCta: `Call ${PHONE}`,
     callAria: "Call Autos B2 now",

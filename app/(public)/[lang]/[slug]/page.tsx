@@ -29,6 +29,7 @@ import PhoneLink from "@/components/site/PhoneLink";
 import MailLink from "@/components/site/MailLink";
 import ReviewLink from "@/components/site/ReviewLink";
 import { PageHeader, Sections, CtaBand } from "@/components/pages/PageShell";
+import { CitiesForService, ServicesForCity } from "@/components/pages/CrossLinks";
 import {
   JsonLd,
   breadcrumbSchema,
@@ -382,6 +383,8 @@ export default async function SlugPage({
             <QuoteForm lang={lang} source={`city_${city.key}`} />
           </div>
 
+          <ServicesForCity lang={lang} cityName={city.name} />
+
           <nav className="mt-12" aria-label={t.nav.cities}>
             <h2 className="text-sm font-bold uppercase tracking-wide text-slate-500">
               {t.nav.cities}
@@ -443,6 +446,8 @@ export default async function SlugPage({
         <div className="container mx-auto max-w-2xl px-4 pb-16 sm:px-6 lg:px-8">
           <QuoteForm lang={lang} source={`service_${service.key}`} />
         </div>
+
+        <CitiesForService lang={lang} serviceName={service.serviceName[lang]} />
 
         <CtaBand lang={lang} />
       </>
