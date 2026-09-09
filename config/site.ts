@@ -135,8 +135,8 @@ export const siteConfig = {
    */
   hours: {
     days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    opens: "08:00",
-    closes: "20:00",
+    opens: "06:00",
+    closes: "21:00",
   },
 
   /** Verified business figures. Do not add to these without a source. */
@@ -227,4 +227,49 @@ export function routeEmbedUrl(city: string) {
   return `https://maps.google.com/maps?saddr=${encodeURIComponent(
     fullAddress
   )}&daddr=${encodeURIComponent(`${city}, QC`)}&t=&z=11&ie=UTF8&iwloc=&output=embed`;
+}
+
+/**
+ * The opening hours, written out.
+ *
+ * They were hardcoded in twenty places across five content files — every one
+ * a separate chance to say something the schema contradicts. Changing them
+ * meant finding all twenty; missing one meant a page disagreeing with the
+ * Business Profile, which is exactly the NAP mismatch that costs local
+ * ranking.
+ *
+ * `12` renders 8h/8am rather than 08h/08:00am, which is how these are
+ * actually written in both languages.
+ */
+function hour(value: string, lang: "fr" | "en") {
+  const [h, m] = value.split(":").map(Number);
+  if (lang === "fr") return m === 0 ? `${h} h` : `${h} h ${m}`;
+  const suffix = h >= 12 ? "pm" : "am";
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return m === 0 ? `${h12}${suffix}` : `${h12}:${String(m).padStart(2, "0")}${suffix}`;
+}
+
+/** "8 h à 20 h" / "8am to 8pm" — the range alone. */
+export function hoursRange(lang: "fr" | "en") {
+  const from = hour(siteConfig.hours.opens, lang);
+  const to = hour(siteConfig.hours.closes, lang);
+  return lang === "fr" ? `de ${from} à ${to}` : `${from} to ${to}`;
+}
+
+/** "Ouvert 7 jours, 8 h à 20 h" — the short badge form. */
+export function hoursShort(lang: "fr" | "en") {
+  const days = siteConfig.hours.days.length;
+  const from = hour(siteConfig.hours.opens, lang);
+  const to = hour(siteConfig.hours.closes, lang);
+  return lang === "fr"
+    ? `Ouvert ${days} jours, ${from} à ${to}`
+    : `Open ${days} days, ${from}\u2013${to}`;
+}
+
+/** "Ouvert 7 jours sur 7, de 8 h à 20 h" — the full sentence form. */
+export function hoursLong(lang: "fr" | "en") {
+  const days = siteConfig.hours.days.length;
+  return lang === "fr"
+    ? `Ouvert ${days} jours sur ${days}, ${hoursRange("fr")}`
+    : `Open ${days} days a week, ${hoursRange("en")}`;
 }
