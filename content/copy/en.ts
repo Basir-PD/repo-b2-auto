@@ -62,8 +62,11 @@ export const en: Copy = {
     metaDescription:
       "Junk car buyer in Laval, Montreal and the North Shore. We buy damaged, totaled and non running cars. Free scrap car removal, cash on pickup.",
 
-    h1: "Sell your junk car in Laval & Montreal — cash on the spot",
-    sub: "We buy junk cars across Laval, Montreal and the North Shore, in any condition — not running, wrecked, engine-less or written off. Free scrap car removal and cash on pickup.",
+    h1: {
+      promise: "Best price for your scrap car,",
+      guarantee: "or we pay the difference.",
+    },
+    sub: ["Offer in 2 minutes", "Cash", "Free towing"],
     priceAnchor: "$300 to $3,000 cash depending on the vehicle",
     priceFigure: "$300 – $3,000",
     priceCaption: "cash, depending on the vehicle",
@@ -73,9 +76,8 @@ export const en: Copy = {
     ctaSecondary: `Call ${PHONE}`,
 
     trustStrip: [
-      "Free towing included",
-      "Cash on pickup",
       "We handle the SAAQ transfer",
+      "Our own yard in Mascouche",
       `Open 7 days, ${hoursRange("en")}`,
     ],
 

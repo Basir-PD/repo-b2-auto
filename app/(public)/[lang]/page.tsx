@@ -107,9 +107,11 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               {/*
                 The markets served, not the address. The yard is in Mascouche
                 and that is stated in the schema, the footer and the yard
-                section — but a searcher in Laval needs to see Laval, and it
-                would read oddly directly above a headline naming Laval and
-                Montreal.
+                section — but a searcher in Laval needs to see Laval.
+
+                This carries more weight than it used to. The headline is now
+                a price guarantee and names no city at all, so this line is
+                the only local signal above the fold. It is not decoration.
               */}
               <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-700 sm:text-[13px]">
                 <span className="h-2 w-2 shrink-0 rounded-full bg-brand-500" />
@@ -120,13 +122,40 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 {t.common.hours}
               </p>
 
-              <h1 className="mt-5 text-[2.1rem] font-black leading-[1.06] tracking-tight text-slate-900 sm:text-[2.9rem] lg:text-[3.25rem]">
-                {t.home.h1}
+              {/*
+                Set in sentence case, not the caps it was written in. At
+                3.25rem in font-black, caps across three lines reads as
+                shouting — which is precisely what the competitor's hero does.
+                The guarantee is the differentiator, so it gets the brand
+                green and lets the colour do the emphasis instead.
+
+                The two halves are inline rather than force-broken: the split
+                lands wherever the line wraps, which holds up across both
+                languages and every width. The colour marks the seam.
+              */}
+              <h1 className="mt-5 text-balance text-[2rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.6rem] lg:text-[3rem]">
+                {t.home.h1.promise} <span className="text-brand-700">{t.home.h1.guarantee}</span>
               </h1>
 
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                {t.home.sub}
-              </p>
+              {/*
+                Three beats, set as a row rather than a sentence. Written as
+                "Offre en 2 minutes. Cash. Remorquage gratuit." — the periods
+                are doing the work of separators, so they are rendered as
+                separators.
+              */}
+              <ul className="mt-6 flex max-w-xl flex-wrap items-center gap-x-3.5 gap-y-2 text-lg font-bold text-slate-800 sm:text-xl">
+                {t.home.sub.map((beat, index) => (
+                  <li key={beat} className="flex items-center gap-3.5">
+                    {index > 0 && (
+                      <span
+                        aria-hidden="true"
+                        className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"
+                      />
+                    )}
+                    {beat}
+                  </li>
+                ))}
+              </ul>
 
               {/*
                 The price figure is switched off for now, on request.

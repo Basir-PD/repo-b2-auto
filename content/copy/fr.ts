@@ -65,8 +65,19 @@ export const fr = {
     metaDescription:
       "Acheteur d'auto scrap à Laval, Montréal et la Rive-Nord. On achète accidentée, en panne ou perte totale. Cash pour auto et remorquage gratuit.",
 
-    h1: "Vendre son auto scrap à Laval et Montréal — payé comptant",
-    sub: "Acheteur d'auto scrap à Laval, Montréal et sur la Rive-Nord. On achète votre véhicule peu importe son état : en panne, accidenté, sans moteur ou perte totale. Remorquage gratuit et cash pour auto à l'enlèvement.",
+    /*
+      Two halves, deliberately. `promise` is the claim every scrap buyer
+      makes; `guarantee` is the one none of them will put in writing, and it
+      is rendered in brand green so the eye lands on the half that is
+      actually different. Splitting it in the data rather than slicing the
+      string at "ou" keeps the two languages independent.
+    */
+    h1: {
+      promise: "Le meilleur prix pour votre auto scrap,",
+      guarantee: "ou on vous paie la différence.",
+    },
+    /* Three beats, not a paragraph. Rendered as a row with green dots. */
+    sub: ["Offre en 2 minutes", "Cash", "Remorquage gratuit"],
     priceAnchor: "De 300 $ à 3 000 $ comptant selon le véhicule",
     priceFigure: "300 $ – 3 000 $",
     priceCaption: "comptant, selon le véhicule",
@@ -75,10 +86,14 @@ export const fr = {
     ctaPrimary: "Obtenir mon estimation gratuite",
     ctaSecondary: `Appeler ${PHONE}`,
 
+    /*
+      Free towing and cash moved up into the subtitle, so the strip carries
+      only what the subtitle does not say. Repeating them two elements apart
+      made the hero list seven claims and land none of them.
+    */
     trustStrip: [
-      "Remorquage gratuit inclus",
-      "Argent comptant à l'enlèvement",
       "On gère le transfert SAAQ",
+      "Notre propre cour à Mascouche",
       `Ouvert 7 jours, ${hoursRange("fr").replace("de ", "")}`,
     ],
 
