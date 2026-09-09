@@ -60,8 +60,9 @@ export default async function LandingPage({
           <Image
             src="/logo-autob2.png"
             alt={siteConfig.name}
-            width={289}
-            height={109}
+            width={600}
+            height={214}
+            sizes="101px"
             loading="eager"
             className="h-8 w-auto sm:h-9"
           />

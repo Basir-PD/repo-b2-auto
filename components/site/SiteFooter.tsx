@@ -37,6 +37,7 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
               alt={siteConfig.name}
               width={600}
               height={214}
+              sizes="135px"
               className="h-12 w-auto"
             />
 
