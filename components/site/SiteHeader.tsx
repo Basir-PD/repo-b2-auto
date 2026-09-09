@@ -65,8 +65,12 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
           <Image
             src="/logo-autob2.png"
             alt={siteConfig.name}
-            width={289}
-            height={109}
+            width={600}
+            height={214}
+            // Renders at 40px tall (44 from sm), so ~112–124 CSS px wide.
+            // Without this Next assumes it could be full width and ships a
+            // 640px file into a 112px slot, on every page.
+            sizes="124px"
             loading="eager"
             className="h-10 w-auto sm:h-11"
           />
