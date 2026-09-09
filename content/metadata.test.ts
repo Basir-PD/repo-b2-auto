@@ -169,6 +169,43 @@ describe("city pages", () => {
       }
     });
   }
+
+  /*
+    Language parity. The homepage links a city only when that city has a page
+    in the language being viewed, so a missing `en` slug rendered as nine
+    linked cities in French and three in English — the same coverage claim,
+    visibly thinner on one side. It also dropped the city out of the English
+    sitemap entirely. Both languages ship together or the asymmetry comes back
+    silently on the next city added.
+  */
+  it("every city has a page in both languages", () => {
+    for (const city of CITIES) {
+      expect(city.slug.fr, `${city.name} has no fr slug`).toBeTruthy();
+      expect(city.slug.en, `${city.name} has no en slug`).toBeTruthy();
+      expect(city.copy.fr, `${city.name} has no fr copy`).toBeTruthy();
+      expect(city.copy.en, `${city.name} has no en copy`).toBeTruthy();
+    }
+  });
+
+  it("no two cities share a slug", () => {
+    const slugs = CITIES.flatMap((c) => [c.slug.fr, c.slug.en]).filter(Boolean);
+    expect(new Set(slugs).size, "duplicate city slug").toBe(slugs.length);
+  });
+
+  /*
+    Catches the cheap version of the fix: pasting the French block into `en`
+    so the page exists. A duplicated body is a duplicated page, and Google
+    reads it as one.
+  */
+  it("English city copy is not the French copy", () => {
+    for (const city of CITIES) {
+      const en = city.copy.en!;
+      const fr = city.copy.fr;
+      for (const key of Object.keys(fr) as (keyof typeof fr)[]) {
+        expect(en[key], `${city.name}.${key} is identical in both languages`).not.toBe(fr[key]);
+      }
+    }
+  });
 });
 
 describe("heading labels", () => {

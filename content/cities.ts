@@ -11,10 +11,14 @@ import { hoursLong } from "@/config/site";
  * gets its own distances, its own arteries and sectors, and its own pickup
  * window. Roughly 400+ words of genuinely distinct prose per city.
  *
- * Only three cities have English twins so far — the anglophone search volume
- * outside Laval, Mascouche and Terrebonne does not justify a page yet. A city
- * with no `en` slug simply drops out of the English sitemap and emits no
- * English hreflang, which is correct: a false alternate breaks the cluster.
+ * Every city has an English twin. For a while only three did, which showed up
+ * on the homepage as nine linked cities in French and three in English — the
+ * same map, visibly thinner in one language. A city with no `en` slug drops
+ * out of the English sitemap and emits no English hreflang, so the missing
+ * six were not merely unlinked, they did not exist for an English search at
+ * all. The English copy is written from the same verified facts as the
+ * French — same distances, same arteries, same pickup windows — not machine
+ * translated, because a translated doorway set is still a doorway set.
  */
 export type CityCopy = {
   /** Unique opening, ~60 words. Sets the local scene. */
@@ -134,7 +138,7 @@ export const CITIES: City[] = [
   {
     key: "repentigny",
     name: "Repentigny",
-    slug: { fr: "rachat-auto-repentigny" },
+    slug: { fr: "rachat-auto-repentigny", en: "junk-car-removal-repentigny" },
     distanceKm: 17,
     driveMinutes: 20,
     sectors: ["Le Gardeur", "Vieux-Repentigny", "secteur Iberville", "secteur Brien"],
@@ -152,6 +156,19 @@ export const CITIES: City[] = [
           "On récupère la plaque, on remplit la cession et on vous laisse le reçu officiel SAAQ à l'enlèvement. C'est la preuve dont vous avez besoin pour que le véhicule cesse d'être à votre nom et pour arrêter d'en payer l'immatriculation.",
         faqQ: "Quel est le délai habituel pour un enlèvement à Repentigny ?",
         faqA: "Le plus souvent dans les 24 heures. On planifie généralement les ramassages de Repentigny et du Gardeur dans le même bloc horaire pour limiter les allers-retours sur la 40, alors on vous propose une plage de deux heures plutôt qu'une heure fixe.",
+      },
+      en: {
+        lede: "Repentigny is about twenty minutes from the yard by the 640 and then the 40. We come down several times a week — into Vieux-Repentigny along the river, into Le Gardeur, and into the residential streets that grew up around boulevard Brien.",
+        worth:
+          "Weight, year, catalytic converter, reusable parts: that is what sets the amount. Offers generally land between $300 and $3,000. We give a firm price on the phone from what you tell us, and that is the amount handed to you in cash at pickup — not a price to be confirmed on site.",
+        towing:
+          "The run is the 640 east then the 40, which puts the whole Iberville sector and the streets around Galeries Rive Nord within easy reach. In Vieux-Repentigny the lots near rue Notre-Dame are often long and narrow; the flatbed pulls a dead vehicle out from the back of a driveway without tearing up the asphalt or the lawn. In Le Gardeur we cover right out to the Charlemagne line.",
+        vehicles:
+          "A lot of family vehicles at the end of their life, high-mileage SUVs and cars wrecked on the 40. We also buy commercial vans, pickups and insurer write-offs, including the ones with no engine and no transmission left in them.",
+        paperwork:
+          "We take the plate, complete the release and leave you the official SAAQ receipt at pickup. That is the proof you need for the vehicle to stop being in your name and for the registration to stop costing you.",
+        faqQ: "How long is the usual wait for a pickup in Repentigny?",
+        faqA: "Most often within 24 hours. We generally schedule Repentigny and Le Gardeur pickups in the same block to limit the back-and-forth on the 40, so we will offer you a two-hour window rather than a fixed time.",
       },
     },
   },
@@ -206,7 +223,7 @@ export const CITIES: City[] = [
   {
     key: "lassomption",
     name: "L'Assomption",
-    slug: { fr: "rachat-auto-lassomption" },
+    slug: { fr: "rachat-auto-lassomption", en: "scrap-car-lassomption" },
     distanceKm: 22,
     driveMinutes: 25,
     sectors: ["Vieux L'Assomption", "Saint-Gérard-Majella", "secteur de la rivière"],
@@ -225,13 +242,26 @@ export const CITIES: City[] = [
         faqQ: "Vous vous déplacez jusque dans les rangs de L'Assomption ?",
         faqA: "Oui. On ramasse autant en secteur urbain que dans les rangs. Le délai habituel est de 24 à 48 heures, et on prévoit une plage horaire un peu plus large pour les adresses rurales, parce qu'un véhicule immobilisé sur un terrain meuble prend plus de temps à sortir qu'un véhicule dans une entrée asphaltée.",
       },
+      en: {
+        lede: "L'Assomption is about twenty-five minutes from the yard, by the 640 and then the 40, or by route 343. The lots here are bigger than in the dense suburbs, and it is a place where vehicles have often been parked up behind a house or inside a barn for a very long time.",
+        worth:
+          "The amount depends on weight, year, catalytic converter and recoverable parts — generally between $300 and $3,000. A vehicle stored for ten years is still worth something: the metal has a value no matter how long the car has sat. Call with the year, make and model and we give you a firm price.",
+        towing:
+          "We come in on boulevard L'Ange-Gardien for Vieux L'Assomption, and on route 343 for Saint-Gérard-Majella and the rangs. On a large property the problem is not the distance, it is the ground: a vehicle sunk into soft earth or grown over with vegetation needs a winch and a bit more time. Tell us on the phone so we bring the right equipment.",
+        vehicles:
+          "Plenty of light farm vehicles, work pickups, high-mileage SUVs and cars that have not moved in years. We also buy wrecked vehicles and declared write-offs, with or without an engine.",
+        paperwork:
+          "We take the plate, sign the release with you and hand over the official SAAQ receipt before we leave. If the paperwork went missing in a move or after a death in the family, call us: we will tell you exactly what to get before we drive out.",
+        faqQ: "Do you come out to the rangs in L'Assomption?",
+        faqA: "Yes. We pick up in the village and out on the rangs alike. The usual window is 24 to 48 hours, and we allow a slightly wider slot for rural addresses, because a vehicle stuck on soft ground takes longer to get out than one sitting on a paved driveway.",
+      },
     },
   },
 
   {
     key: "blainville",
     name: "Blainville",
-    slug: { fr: "rachat-auto-blainville" },
+    slug: { fr: "rachat-auto-blainville", en: "scrap-car-removal-blainville" },
     distanceKm: 27,
     driveMinutes: 28,
     sectors: ["Fontainebleau", "Chante-Bois", "Notre-Dame", "secteur du Plateau"],
@@ -250,13 +280,26 @@ export const CITIES: City[] = [
         faqQ: "Quel est le délai pour un ramassage à Blainville ?",
         faqA: "Habituellement 24 à 48 heures. Blainville est notre point le plus à l'ouest sur la 640, alors on regroupe ces ramassages avec ceux de Bois-des-Filion et de Sainte-Thérèse dans la même sortie. Ça veut dire une plage horaire à convenir plutôt qu'un passage à l'improviste.",
       },
+      en: {
+        lede: "Blainville sits at the far end of the 640 from our yard: about thirty kilometres west, roughly twenty-eight minutes of road. We collect there regularly, mostly in the Fontainebleau and Chante-Bois neighbourhoods, where a double driveway often hides a second car that no longer runs.",
+        worth:
+          "The price comes off weight, year, catalytic converter and the parts still worth pulling, and generally lands between $300 and $3,000. We confirm the amount on the phone before making the drive, because a thirty-kilometre run makes sense for neither of us if the vehicle is not the one that was described.",
+        towing:
+          "Access is the 640 west, then boulevard du Curé-Labelle for the middle of the city and the 15 for the north end. The newer neighbourhoods have wide streets and clear driveways, which makes loading quick. For a vehicle in a garage or boxed in behind another car, tell us in advance and we plan a longer slot.",
+        vehicles:
+          "Family cars at the end of the line, high-mileage SUVs, vehicles wrecked on the 640 or the 15, work pickups. As everywhere, we also take vehicles with no engine, no transmission, or declared a total loss.",
+        paperwork:
+          "Plate taken, release completed, official receipt handed over on the spot: the SAAQ transfer is settled at pickup and you go nowhere to do it.",
+        faqQ: "How long for a pickup in Blainville?",
+        faqA: "Usually 24 to 48 hours. Blainville is our furthest point west on the 640, so we group these pickups with Bois-des-Filion and Sainte-Thérèse on the same run. That means a time slot agreed in advance rather than an unannounced visit.",
+      },
     },
   },
 
   {
     key: "saint-lin",
     name: "Saint-Lin-Laurentides",
-    slug: { fr: "rachat-auto-saint-lin" },
+    slug: { fr: "rachat-auto-saint-lin", en: "sell-scrap-car-saint-lin" },
     distanceKm: 28,
     driveMinutes: 30,
     sectors: ["secteur Saint-Lin", "secteur Laurentides", "rangs environnants"],
@@ -275,13 +318,26 @@ export const CITIES: City[] = [
         faqQ: "Vous montez jusqu'à Saint-Lin-Laurentides pour un seul véhicule ?",
         faqA: "Oui. Le délai est généralement de 48 heures parce qu'on planifie la montée vers Saint-Lin sur des journées précises plutôt qu'à la demande. Si vous avez deux véhicules ou plus, on s'organise plus vite — un déplacement qui charge deux autos se justifie tout seul.",
       },
+      en: {
+        lede: "Saint-Lin-Laurentides is about thirty minutes north of the yard, by the 25 and then route 335. It is the most rural area we serve regularly, and it works differently: many vehicles here have been sitting on large properties for a very long time, sometimes several on the same lot.",
+        worth:
+          "The amount depends on weight, year, catalytic converter and recoverable parts — generally $300 to $3,000. If you have more than one vehicle to get rid of, say so when you call: we can often load two on the same trip, which changes the arithmetic in your favour.",
+        towing:
+          "We come up route 335 and take rue Saint-Isidore for the middle of the village, then the rangs for the addresses further out. On unpaved ground a vehicle that has not moved in years usually has its wheels sunk or seized; that is a winch job, not a straight load. Mention it on the phone and we arrive equipped the first time.",
+        vehicles:
+          "Work pickups, light farm vehicles, SUVs, stored cars, wrecked vehicles. No engine, no wheels, no keys, or no paperwork in hand — we look at each case and almost always find a way to buy it.",
+        paperwork:
+          "We complete the SAAQ release with you on site, take the plate and leave you the official receipt. For a vehicle stored a long time or inherited, call first: there is sometimes one step to take on your side, and we will tell you which one.",
+        faqQ: "Will you come up to Saint-Lin-Laurentides for a single vehicle?",
+        faqA: "Yes. The window is generally 48 hours, because we plan the run up to Saint-Lin on set days rather than on demand. With two vehicles or more we move faster — a trip that loads two cars pays for itself.",
+      },
     },
   },
 
   {
     key: "bois-des-filion",
     name: "Bois-des-Filion",
-    slug: { fr: "rachat-auto-bois-des-filion" },
+    slug: { fr: "rachat-auto-bois-des-filion", en: "scrap-yard-bois-des-filion" },
     distanceKm: 19,
     driveMinutes: 20,
     sectors: ["secteur du boulevard Adolphe-Chapleau", "secteur de la rivière des Mille Îles"],
@@ -300,13 +356,26 @@ export const CITIES: City[] = [
         faqQ: "Bois-des-Filion est une petite ville — vous vous déplacez quand même ?",
         faqA: "Oui, régulièrement. Bois-des-Filion est sur notre trajet vers l'ouest de la 640, alors le délai est court : souvent le jour même, sinon le lendemain. C'est un des secteurs où on peut le plus facilement s'ajuster à votre horaire.",
       },
+      en: {
+        lede: "Bois-des-Filion is directly on our route west: about twenty minutes on the 640. It is a small town, wedged between the Rivière des Mille Îles and the highway, and we serve it on the same run as Rosemère and Sainte-Thérèse.",
+        worth:
+          "As everywhere, the price rests on weight, year, catalytic converter and reusable parts, and generally lands between $300 and $3,000. We give a firm price on the phone from the year, the make, the model and the vehicle's real condition.",
+        towing:
+          "We come off the 640 exit and take boulevard Adolphe-Chapleau. The residential streets near the river are narrow and several driveways slope down toward the house, which makes a flatbed more practical than a hook truck: we pull the vehicle out to the street rather than manoeuvring on a slope. If the vehicle is near the Athanase-David bridge, we schedule mid-day rather than at rush hour.",
+        vehicles:
+          "Cars that no longer start, second vehicles left to sit, SUVs, pickups, wrecked vehicles and total losses. Too rusted for inspection, no engine or no keys — it still gets picked up.",
+        paperwork:
+          "Plate taken, release signed, official SAAQ receipt handed over at pickup. You stop paying registration the moment the vehicle leaves your driveway.",
+        faqQ: "Bois-des-Filion is a small town — do you still come out?",
+        faqA: "Yes, regularly. Bois-des-Filion is on our way west along the 640, so the wait is short: often the same day, otherwise the next. It is one of the areas where we can most easily fit your schedule.",
+      },
     },
   },
 
   {
     key: "montreal-est",
     name: "Montréal-Est",
-    slug: { fr: "rachat-auto-montreal-est" },
+    slug: { fr: "rachat-auto-montreal-est", en: "scrap-car-buyer-montreal-est" },
     distanceKm: 26,
     driveMinutes: 30,
     sectors: [
@@ -330,6 +399,19 @@ export const CITIES: City[] = [
           "On récupère la plaque, on remplit la cession et on vous remet le reçu officiel sur place. C'est ce document qui met fin à votre immatriculation — gardez-le.",
         faqQ: "Vous descendez vraiment jusqu'à Montréal-Est et Pointe-aux-Trembles ?",
         faqA: "Oui, c'est notre limite sud et on y va plusieurs fois par semaine. Le délai est généralement de 24 à 48 heures, avec une heure d'arrivée fixée d'avance plutôt qu'une plage : dans l'est de l'île, le stationnement se planifie, sinon la remorqueuse tourne en rond.",
+      },
+      en: {
+        lede: "The east end of the island is the southern edge of our service area: about thirty minutes by the 25 and then the 40. We cover Montréal-Est itself, and also Pointe-aux-Trembles, Rivière-des-Prairies, Anjou and Montréal-Nord, which sit in the same corridor.",
+        worth:
+          "Weight, year, catalytic converter, parts still worth pulling: the amount generally lands between $300 and $3,000. We confirm the price on the phone before driving down, and it does not change when the tow truck arrives, as long as the vehicle matches what was described.",
+        towing:
+          "We come in on the 40 and pick up rue Notre-Dame or boulevard Henri-Bourassa depending on the sector. The constraint in the east end is not distance, it is parking: one-way streets, back lanes, reserved spaces, apartment buildings with no private driveway. So we set a specific arrival time rather than a wide window, and we ask you to clear the space in front of the vehicle if you can.",
+        vehicles:
+          "Cars stranded on the street or in a lane, vehicles wrecked on the 40 or the 25, commercial vans, pickups, SUVs. We also buy vehicles with no paperwork in hand, walking you through what has to be obtained before the pickup.",
+        paperwork:
+          "We take the plate, complete the release and hand you the official receipt on the spot. That document is what ends your registration — keep it.",
+        faqQ: "Do you really come all the way down to Montréal-Est and Pointe-aux-Trembles?",
+        faqA: "Yes, it is our southern limit and we are there several times a week. The window is generally 24 to 48 hours, with an arrival time fixed in advance rather than a range: in the east end, parking has to be planned or the tow truck ends up circling.",
       },
     },
   },
