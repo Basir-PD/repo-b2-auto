@@ -2,8 +2,14 @@
 
 Pick-up point for the autosb2.com SEO work. Last session: **2026-09-08**.
 
-Everything is on branch **`seo/canonical-domain`** (16 commits, pushed, **not merged, not
-deployed**). `main` is untouched and the live site is still the old build.
+**MERGED AND PUSHED.** `main` is at `83077a7` — `seo/canonical-domain` (18 commits) merged via
+`--no-ff`. If Vercel auto-deploys from `main`, this is live.
+
+⚠️ **The merge was a canonical host migration.** The site canonicalised to `www.autosb2.com`
+and now canonicalises to the apex `autosb2.com`, with 301s from `www.autosb2.com`,
+`b2autos.com` and `www.b2autos.com`. Google takes days to weeks to reassign a canonical host;
+some ranking movement in that window is expected and is not a regression. Three follow-ups
+live outside the repo — see §4.
 
 ---
 
@@ -16,8 +22,9 @@ Copy the block below into a new session. Fill in the answers you have; leave the
 Continuing SEO work on autosb2.com. Read START_HERE.md, TODO.md, SEO_AUDIT.md and
 OFF_SITE_AUDIT.md first — do not re-audit, it is all done.
 
-State: branch seo/canonical-domain, 16 commits, pushed but NOT merged and NOT
-deployed. Build passes, npm run verify passes, 101 tests green.
+State: seo/canonical-domain is MERGED to main (83077a7) and pushed; likely
+deployed. Build passes, npm run verify passes, 101 tests green. Run
+`npm install` first — node_modules in a fresh clone is incomplete without it.
 
 Answers to your open questions:
 
@@ -95,8 +102,13 @@ citations anywhere. Another business holds the address online.
 
 Pick one and name it in the prompt:
 
-1. **Deploy the branch.** Merge and ship, so the corrected hours, apex canonical, geo and
-   schema are actually live. Nothing else is real until this happens.
+1. **Verify the deploy landed and the migration is behaving.** Check that
+   `https://autosb2.com/fr/` returns 200 with a self-canonical on the apex, that
+   `https://www.autosb2.com/fr/` 301s to it, and that the live HTML shows
+   `"closes":"20:00"` and a `geo` block. Then do the three off-repo follow-ups:
+   add the apex property in Search Console and resubmit /sitemap.xml; attach
+   b2autos.com in the Vercel dashboard (DNS already resolves there, it 404s only
+   because it is not attached to the project); confirm the GBP website field.
 2. **`convex/emails.ts` NAP import.** It still holds a second hardcoded copy of the business
    facts; it agrees with config only because it was fixed by hand. Next change drifts the
    customer email again.
