@@ -124,10 +124,11 @@ citations anywhere. Another business holds the address online.
 
 Pick one and name it in the prompt:
 
-1. **Search Console + the two dashboard tasks.** Set
-   `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel, verify
-   `https://www.autosb2.com` in Search Console and submit `/sitemap.xml` — there
-   is currently no indexation or query data at all. Then attach `b2autos.com` in
+1. **Search Console + the two dashboard tasks.** **Search Console is a DOMAIN property, verified by DNS.** The TXT
+   record is already live on `autosb2.com`; `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`
+   is NOT needed and setting it changes nothing. What remains is clicking
+   Verify (if it is still pending) and submitting `/sitemap.xml` — there is
+   currently no indexation or query data at all. Then attach `b2autos.com` in
    the Vercel dashboard; its DNS already resolves to Vercel and it 404s only
    because it is not attached, so the 301s already in the code go live the moment
    it is.
