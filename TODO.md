@@ -99,8 +99,23 @@ GBP pin. What is still open:
       testimonials or statistics.
 - [ ] **One FAQ per city page, not two.** `content/cities.ts` has a single
       `faqQ`/`faqA` per city, and the `FAQPage` schema is a one-item array.
-- [ ] **Saint-Eustache has no page.** Largest city served without one, and a
-      different search market from the Terrebonne–Repentigny corridor.
+- [ ] 🔴 **24 of the 33 served municipalities have no page.** The owner
+      confirmed the real territory on 2026-09-08 and it is much wider than the
+      site had: the Lower Laurentians (Saint-Jérôme, Mirabel, Boisbriand,
+      Sainte-Sophie, Saint-Eustache, Pointe-Calumet), the West Island
+      (Dollard-des-Ormeaux, Kirkland, Beaconsfield, Dorval, Côte-Saint-Luc,
+      Westmount) and the South Shore (Varennes, Boucherville). All 33 now
+      appear in `content/service-area.ts`, in both `areaServed` nodes, on the
+      homepage and in the footer — but a coverage claim is not a page, and it
+      is the page that ranks for "cour à scrap Saint-Jérôme".
+      Highest-value missing pages, by search volume and by distance from the
+      yard: **Saint-Jérôme, Saint-Eustache, Boisbriand, Mirabel** (a real
+      Laurentians cluster, none of it covered), then
+      **Dollard-des-Ormeaux / Dorval** for the West Island anglophone market —
+      which is also the strongest argument yet for English twins, since the
+      West Island searches in English.
+      Blocked on real local detail: each page needs its own sectors, arteries
+      and pickup window. Do not template these; Google filters doorway sets.
 - [ ] **Blog titles carry no brand suffix** while every other page does. Left
       as-is deliberately — the brand would force truncation on informational
       titles — but `content/metadata.test.ts` still asserts a `pageTitle()`
@@ -139,19 +154,15 @@ GBP pin. What is still open:
 
 ## 6. Performance
 
-- [ ] **`app/globals.css:66` sets `--font-sans: Outfit, sans-serif`** — the raw
-      family name rather than `var(--font-outfit)`, which is what `next/font`
-      actually exposes. `<body>` is fine via `outfit.className`, but anything
-      using Tailwind's `font-sans` utility resolves to a family the browser does
-      not have self-hosted, bypassing the size-adjusted fallback metrics.
-- [ ] **LP `priority` is on a below-the-fold image** —
-      `app/(public)/[lang]/lp/[slug]/page.tsx:139` carries `priority` +
-      `fetchPriority="high"` on an image that sits after the H1, sub, CTA,
-      bullets and the quote form. It is competing with the real LCP element.
-- [ ] **~3.5 MB of unreferenced images in `public/`** — `b2-tow-truck.png`
-      (1335 KB), `nano-banana.png` (1242 KB), `tow-trackinng.webp` (471 KB),
-      `scrapyar.jpg` (256 KB), `hero-image.jpg` (203 KB). README already marks
-      four as safe to delete.
+- [x] ~~`--font-sans` was the literal family name, not `var(--font-outfit)`.~~
+      **Done in 782da81.** Every Tailwind `font-sans` utility was falling
+      through to the generic sans-serif and skipping next/font's size-adjusted
+      fallback metrics.
+- [x] ~~LP `priority` on a below-the-fold image.~~ **Done in 782da81.** It was
+      competing with the real LCP element on the one page type where the first
+      paint is bought and paid for.
+- [x] ~~~3.5 MB of unreferenced images in `public/`.~~ **Done in 782da81.**
+      Five files, 3.43 MB. `public/` is now 1.2 MB.
 - [ ] **Maps iframes have no intrinsic `width`/`height`** — all three are sized
       only by Tailwind classes. CSS reserves the box so real CLS is low, but the
       attributes are absent.
