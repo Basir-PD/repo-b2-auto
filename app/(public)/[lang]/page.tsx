@@ -65,6 +65,17 @@ export async function generateMetadata({
   };
 }
 
+/**
+ * The three how-it-works illustrations, in sequence order: get an offer, we
+ * tow, we pay cash. Identical in both languages, so they are not in the copy
+ * files — only their alt text is, which genuinely does differ.
+ */
+const STEP_IMAGES = [
+  "/photos/etape-1-estimation.webp",
+  "/photos/etape-2-remorquage.webp",
+  "/photos/etape-3-comptant.webp",
+] as const;
+
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang: raw } = await params;
   if (!isLang(raw)) notFound();
@@ -227,9 +238,15 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           </div>
 
           {/*
-            Full width beneath both columns, where it has room to be read.
-            `priority` because it is the LCP element on a wide screen, and the
+            Full width beneath both columns, where it has room to be read. The
             explicit width/height reserve the box so it cannot shift the page.
+
+            It used to carry `priority` + fetchPriority="high" on the theory
+            that it was the LCP element on a wide screen. Measured, it was not
+            the bottleneck: dropping the preload took desktop LCP from 0.8s to
+            0.6s, because the preload was competing with the font for the
+            H1 — which is the real LCP element on every viewport. On mobile
+            this sits well below the fold, so preloading it was pure cost.
           */}
           <div className="mt-12 lg:mt-16">
             <Image
@@ -237,9 +254,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               alt=""
               width={1600}
               height={476}
-              priority
-              fetchPriority="high"
-              sizes="(min-width: 1280px) 1216px, 100vw"
+              loading="lazy"
+              sizes="(min-width: 1088px) 1024px, 100vw"
               quality={72}
               className="mx-auto h-auto w-full max-w-5xl"
             />
@@ -258,11 +274,31 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           <ol className="mt-10 grid gap-6 md:grid-cols-3 lg:gap-8">
             {t.home.howItWorks.steps.map((step, index) => (
               <li key={step.title} className="rounded-2xl border border-slate-200 p-6 sm:p-7">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-lg font-black text-white">
-                  {index + 1}
-                </span>
-                <h3 className="mt-5 text-lg font-black text-slate-900">{step.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-slate-600">{step.body}</p>
+                {/*
+                  All three were normalised to one 1200x694 canvas with the
+                  subject scaled to a common width, so the three headings sit
+                  on the same line no matter how tall each subject is. The
+                  surrounding white is the image's own background and is
+                  invisible against the card.
+
+                  No `priority`: this section is well below the fold and must
+                  not compete with the hero for the LCP.
+                */}
+                <Image
+                  src={STEP_IMAGES[index]}
+                  alt={step.alt}
+                  width={1200}
+                  height={694}
+                  sizes="(min-width: 1280px) 330px, (min-width: 768px) 26vw, 88vw"
+                  className="h-auto w-full"
+                />
+                <div className="mt-5 flex items-center gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-600 text-base font-black text-white">
+                    {index + 1}
+                  </span>
+                  <h3 className="text-lg font-black text-slate-900">{step.title}</h3>
+                </div>
+                <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{step.body}</p>
               </li>
             ))}
           </ol>

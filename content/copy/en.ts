@@ -90,14 +90,17 @@ export const en: Copy = {
         {
           title: "Tell us about the vehicle",
           body: "Year, make, model and condition, by phone or through the form. Two minutes and you get a firm price, no obligation.",
+          alt: "A man on the phone beside his damaged car",
         },
         {
           title: "We schedule free pickup",
           body: "You pick the time. Our tow truck covers the entire North Shore and Laval, often same day.",
+          alt: "A driver loading a damaged car onto the Autos B2 flatbed",
         },
         {
           title: "You get paid cash on the spot",
           body: "We hand you the money at pickup, take the plate, and issue the official SAAQ receipt so you stop paying registration.",
+          alt: "An Autos B2 driver handing cash to the owner in front of the loaded flatbed",
         },
       ],
     },
