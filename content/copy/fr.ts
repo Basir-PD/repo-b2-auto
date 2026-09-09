@@ -108,18 +108,28 @@ export const fr = {
 
     howItWorks: {
       title: "Vendre son char scrap en 3 étapes, moins de 24 heures",
+      /*
+        `alt` describes the illustration for each step. The image paths are not
+        here: they are the same file in both languages, and stating a path
+        twice is how the two copy files drift apart. They live beside the
+        render in app/(public)/[lang]/page.tsx, where the order of the sequence
+        already lives.
+      */
       steps: [
         {
           title: "Donnez-nous les infos de base",
           body: "Année, marque, modèle et état. Par téléphone ou avec le formulaire. Ça prend 2 minutes et vous recevez un prix ferme, sans obligation.",
+          alt: "Un homme au téléphone à côté de son auto accidentée",
         },
         {
           title: "On planifie l'enlèvement gratuit",
           body: "Vous choisissez le moment. Notre remorqueuse se déplace partout sur la Rive-Nord et à Laval, souvent le jour même.",
+          alt: "Un chauffeur charge une auto accidentée sur le plateau de la remorqueuse Autos B2",
         },
         {
           title: "Vous êtes payé comptant sur place",
           body: "On vous remet l'argent à l'enlèvement, on récupère la plaque et on produit le reçu officiel pour la SAAQ. Vous arrêtez de payer l'immatriculation.",
+          alt: "Un chauffeur Autos B2 remet l'argent comptant au propriétaire devant la remorqueuse chargée",
         },
       ],
     },
