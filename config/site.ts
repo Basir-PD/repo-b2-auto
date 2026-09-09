@@ -37,9 +37,9 @@ export const siteConfig = {
    * (Project → Settings → Domains → make autosb2.com primary, www redirect
    * to it), and only then this value and the redirects in next.config.ts.
    *
-   * Note the email address is deliberately NOT on this domain: it is still
-   * admin@b2autos.com. That is a mailbox, not a URL, and it is a separate
-   * decision. Do not "fix" it to match this value.
+   * The mailbox now matches this domain — admin@autosb2.com — but it is
+   * still a separate decision from the canonical host. Changing one does not
+   * imply changing the other.
    *
    * The default is the domain the site is live on. Override per environment
    * with NEXT_PUBLIC_SITE_URL if that ever changes.
@@ -90,7 +90,7 @@ export const siteConfig = {
         }
       : null,
 
-  email: "admin@b2autos.com",
+  email: "admin@autosb2.com",
 
   /** wa.me deep link — opens a WhatsApp chat with this number. */
   whatsapp: {
@@ -179,7 +179,7 @@ export const siteConfig = {
   social: [] as string[],
 
   /** Where new-lead notification emails are delivered. */
-  leadInbox: process.env.LEAD_INBOX || "admin@b2autos.com",
+  leadInbox: process.env.LEAD_INBOX || "admin@autosb2.com",
 
   /**
    * Optional POST target for every lead, fired alongside the email so someone

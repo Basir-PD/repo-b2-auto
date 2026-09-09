@@ -273,13 +273,13 @@ Two kinds of submission arrive:
 # Vercel; code alone will not redirect a hostname that never reaches the app.
 #
 # Note: this is NOT the same domain as the contact mailbox, which is still
-# admin@b2autos.com. That split is deliberate.
+# admin@autosb2.com — the mailbox now matches the domain.
 NEXT_PUBLIC_SITE_URL=https://autosb2.com
 NEXT_PUBLIC_CONVEX_URL=            # written by `npx convex dev`
 NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX     # unset = no tags load at all
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=
 INGEST_SECRET=                     # optional, must match the Convex var
-LEAD_INBOX=admin@b2autos.com
+LEAD_INBOX=admin@autosb2.com
 LEAD_WEBHOOK_URL=                  # Zapier/Make -> Twilio SMS or WhatsApp
 
 # Convex deployment (`npx convex env set …`)
@@ -484,7 +484,7 @@ expands the hand-aligned `@keyframes` into something harder to read.
 - The review count is **5**, the average is **5.0**. Never round up, never write
   "hundreds of satisfied customers" or any volume language.
 - The address is **Mascouche**. Laval is a service area, never the address.
-- The email is **admin@b2autos.com**.
+- The email is **admin@autosb2.com**.
 - Hours are **8:00–20:00, seven days a week**, identical on every page and in
   the schema. They come from `siteConfig.hours`, so they cannot drift.
 - **No social media icons or links** anywhere. `sameAs` is omitted from the

@@ -34,6 +34,21 @@ function checkDescription(label: string, description: string) {
   expect(description.length, `${label} is suspiciously short`).toBeGreaterThan(50);
 }
 
+describe("business facts have one source", () => {
+  /*
+    convex/emails.ts used to restate the NAP by hand and had already drifted:
+    the confirmation email said info@b2autos.com while every page said admin@.
+    It now derives from config/site.ts. This asserts it stays that way, since
+    the failure is invisible — nobody reads their own confirmation email.
+  */
+  it("the confirmation email derives its facts from config, not a copy", async () => {
+    const src = await import("node:fs").then((fs) => fs.readFileSync("convex/emails.ts", "utf8"));
+    expect(src).toMatch(/from "\.\.\/config\/site"/);
+    // No hardcoded address literals left in the email template.
+    expect(src).not.toMatch(/@(b2autos|autosb2)\.com"/);
+  });
+});
+
 describe("homepage metadata", () => {
   for (const lang of LANGS) {
     it(`${lang}: fits a search result`, () => {

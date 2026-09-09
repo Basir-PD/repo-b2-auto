@@ -1,6 +1,7 @@
 import { v } from "convex/values";
 import { internalAction } from "./_generated/server";
 import { internal } from "./_generated/api";
+import { fullAddress, siteConfig } from "../config/site";
 
 /**
  * ============================================================
@@ -12,8 +13,8 @@ import { internal } from "./_generated/api";
  *
  * Set on the Convex deployment:
  *   npx convex env set RESEND_API_KEY re_xxxxxxxx
- *   npx convex env set QUOTE_FROM "Autos B2 <quotes@b2autos.com>"
- *   npx convex env set QUOTE_INBOX admin@b2autos.com
+ *   npx convex env set QUOTE_FROM "Autos B2 <quotes@autosb2.com>"
+ *   npx convex env set QUOTE_INBOX admin@autosb2.com
  * ============================================================
  */
 
@@ -24,23 +25,29 @@ const RESEND_ENDPOINT = "https://api.resend.com/emails";
  * default is the real address so notifications work the moment the API
  * key is set, without a second piece of configuration to forget.
  */
-const LEAD_INBOX = "admin@b2autos.com";
+const LEAD_INBOX = siteConfig.leadInbox;
 
+/*
+  Derived from config/site.ts, not restated here.
+
+  This used to be a hand-maintained second copy of the same facts, and it had
+  already drifted: the confirmation email told customers info@b2autos.com
+  while every page of the site said admin@. Whoever fixed one had no reason to
+  know the other existed.
+
+  config/site.ts has no imports of its own, so it bundles cleanly into the
+  Convex runtime. `url` falls back to its default here because
+  NEXT_PUBLIC_SITE_URL is a Next variable and is not set in this environment —
+  which is the correct value anyway.
+*/
 const BUSINESS = {
-  name: "Autos B2",
-  legalName: "Recyclage Autos B2",
-  phoneDisplay: "+1 (514) 623-2787",
-  phoneHref: "tel:+15146232787",
-  /**
-   * Public contact address, shown to customers in the confirmation email.
-   *
-   * The mailbox is deliberately on b2autos.com while `url` below is
-   * autosb2.com. That split is intentional and pending a separate decision —
-   * do not "correct" this address to match the domain.
-   */
-  email: "info@b2autos.com",
-  address: "340 Chemin Pincourt, Mascouche, QC J7L 2W3",
-  url: "https://autosb2.com",
+  name: siteConfig.name,
+  legalName: siteConfig.legalName,
+  phoneDisplay: siteConfig.phone.display,
+  phoneHref: siteConfig.phone.href,
+  email: siteConfig.email,
+  address: fullAddress,
+  url: siteConfig.url,
 };
 
 /** Escape untrusted values before interpolating into the HTML body. */
