@@ -3,7 +3,9 @@ import { DESCRIPTION_MAX, DESCRIPTION_MIN, TITLE_MAX, fitDescription, pageTitle 
 import { getCopy } from "@/content/copy";
 import { SERVICES } from "@/content/services";
 import { ABOUT, CONTACT, PRIVACY, TERMS } from "@/content/pages";
+import { siteConfig } from "@/config/site";
 import { CITIES } from "@/content/cities";
+import { SERVED_CITIES } from "@/content/service-area";
 import { POSTS } from "@/content/blog";
 
 const LANGS = ["fr", "en"] as const;
@@ -46,6 +48,39 @@ describe("business facts have one source", () => {
     expect(src).toMatch(/from "\.\.\/config\/site"/);
     // No hardcoded address literals left in the email template.
     expect(src).not.toMatch(/@(b2autos|autosb2)\.com"/);
+  });
+
+  /*
+    public/llms.txt is the one file on the site that cannot derive anything —
+    it is static text, and it is what an LLM reads when asked about this
+    business. It had gone stale exactly where it hurts: it still advertised
+    08:00–20:00 four hours after the real hours changed, and pointed at the
+    non-canonical apex. Both are silent failures, because nothing renders it.
+  */
+  it("llms.txt agrees with config on hours, phone, email and canonical host", async () => {
+    const src = await import("node:fs").then((fs) => fs.readFileSync("public/llms.txt", "utf8"));
+    expect(src).toContain(`${siteConfig.hours.opens}\u2013${siteConfig.hours.closes}`);
+    expect(src).toContain(siteConfig.phone.display);
+    expect(src).toContain(siteConfig.email);
+    expect(src).toContain(siteConfig.url);
+    // The apex is a redirect. Every URL in here has to be the canonical host.
+    expect(src).not.toMatch(/https:\/\/autosb2\.com/);
+  });
+
+  /*
+    The service area is a coverage claim, so the human-readable list and the
+    machine-readable one have to be the same list. They live in different
+    files by necessity — llms.txt is static — which is precisely why this is
+    asserted rather than assumed.
+  */
+  it("llms.txt names every city in the service area", async () => {
+    const src = await import("node:fs").then((fs) => fs.readFileSync("public/llms.txt", "utf8"));
+    // llms.txt is written unaccented for tokeniser-friendliness; compare folded.
+    const fold = (value: string) => value.normalize("NFD").replace(/\p{M}/gu, "");
+    const folded = fold(src);
+    for (const city of SERVED_CITIES) {
+      expect(folded, `llms.txt is missing ${city}`).toContain(fold(city));
+    }
   });
 });
 

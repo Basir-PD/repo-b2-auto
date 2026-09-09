@@ -5,6 +5,7 @@ import type { Lang } from "@/config/routes";
 import { pathFor, cityPathFor } from "@/config/routes";
 import { siteConfig, fullAddress } from "@/config/site";
 import { citiesFor } from "@/content/cities";
+import { SERVED_CITIES } from "@/content/service-area";
 import { SERVICES } from "@/content/services";
 import { getCopy } from "@/content/copy";
 import PhoneLink from "@/components/site/PhoneLink";
@@ -112,6 +113,21 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
                 </li>
               ))}
             </ul>
+
+            {/*
+              The rest of the territory as plain text, not as links. Thirty-odd
+              anchors here would be a link farm in the sitewide footer, and most
+              of them have no page to point at. But the names still have to
+              appear somewhere sitewide: someone in Beaconsfield needs to see
+              Beaconsfield before they believe the truck comes out there, and
+              the same is true of a crawler reading the coverage claim.
+            */}
+            <p className="mt-5 text-xs leading-relaxed text-slate-400">
+              <span className="font-bold text-slate-300">
+                {lang === "fr" ? "Aussi desservis :" : "Also served:"}
+              </span>{" "}
+              {SERVED_CITIES.filter((city) => !cities.some((c) => c.name === city)).join(", ")}.
+            </p>
           </div>
 
           <div>

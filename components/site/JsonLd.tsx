@@ -2,7 +2,7 @@ import type { Lang } from "@/config/routes";
 import { siteConfig } from "@/config/site";
 import { REVIEWS, hasReviews } from "@/content/reviews";
 import type { FaqItem } from "@/content/faq";
-import { CITIES } from "@/content/cities";
+import { SERVED_CITIES } from "@/content/service-area";
 import { getCopy } from "@/content/copy";
 
 function abs(path: string) {
@@ -94,14 +94,19 @@ export function localBusinessSchema(lang: Lang) {
         closes: siteConfig.hours.closes,
       },
     ],
-    areaServed: [
-      ...t.home.serviceArea.cities.map((city) => ({
-        "@type": "City",
-        name: city,
-        addressRegion: "QC",
-        addressCountry: "CA",
-      })),
-    ],
+    /*
+      Every municipality the truck goes to, not only the ones with a page.
+      areaServed is the machine-readable territory claim — it is read when
+      deciding which local queries this business is eligible for, so it
+      lists the real coverage rather than the subset we happen to have
+      written pages for.
+    */
+    areaServed: SERVED_CITIES.map((city) => ({
+      "@type": "City",
+      name: city,
+      addressRegion: "QC",
+      addressCountry: "CA",
+    })),
     image: abs("/hero-tow-truck.jpg"),
   };
 
@@ -179,9 +184,9 @@ export function serviceSchema({
     serviceType: name,
     url: abs(path),
     provider: { "@id": `${siteConfig.url}/#business` },
-    areaServed: CITIES.map((city) => ({
+    areaServed: SERVED_CITIES.map((city) => ({
       "@type": "City",
-      name: city.name,
+      name: city,
       addressRegion: "QC",
       addressCountry: "CA",
     })),
