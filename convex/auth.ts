@@ -11,7 +11,7 @@ import { ConvexError } from "convex/values";
  * listed in the ADMIN_EMAILS environment variable.
  *
  * Set it on the Convex deployment (not in .env.local):
- *   npx convex env set ADMIN_EMAILS "you@b2autos.com,boss@b2autos.com"
+ *   npx convex env set ADMIN_EMAILS "you@autosb2.com,boss@autosb2.com"
  *
  * The allowlist is enforced twice on purpose — here, so no
  * unwanted account can ever be created, and again in
