@@ -1,4 +1,5 @@
 import type { Lang } from "@/config/routes";
+import { hoursLong } from "@/config/site";
 
 /**
  * The FAQ. One source for three consumers: the full /faq/ page, the five-item
@@ -100,7 +101,7 @@ const FR: FaqItem[] = [
   {
     id: "heures",
     q: "Quelles sont vos heures ?",
-    a: "On est ouvert 7 jours sur 7, de 8 h à 20 h.",
+    a: `On est ${hoursLong("fr").toLowerCase()}.`,
   },
   {
     id: "adresse",
@@ -194,7 +195,7 @@ const EN: FaqItem[] = [
   {
     id: "heures",
     q: "What are your hours?",
-    a: "We're open 7 days a week, from 8:00am to 8:00pm.",
+    a: `We are ${hoursLong("en").toLowerCase()}.`,
   },
   {
     id: "adresse",

@@ -1,4 +1,5 @@
 import type { Lang } from "@/config/routes";
+import { hoursLong } from "@/config/site";
 
 /**
  * Every city page is generated from this file. Adding a city is one entry —
@@ -74,7 +75,7 @@ export const CITIES: City[] = [
         paperwork:
           "On s'occupe du transfert SAAQ sur place. On récupère la plaque, on remplit la cession et on vous remet le reçu officiel avant de partir avec le véhicule. C'est ce document qui prouve que l'auto n'est plus à vous et qui vous permet d'arrêter de payer l'immatriculation dès maintenant.",
         faqQ: "Ça prend combien de temps pour un ramassage à Mascouche ?",
-        faqA: "Souvent la journée même. Comme la cour est au 340 Chemin Pincourt, un appel le matin donne presque toujours un enlèvement en après-midi, et un appel en fin de journée est ramassé le lendemain matin. On est ouvert 7 jours sur 7, de 8 h à 20 h.",
+        faqA: `Souvent la journée même. Comme la cour est au 340 Chemin Pincourt, un appel le matin donne presque toujours un enlèvement en après-midi, et un appel en fin de journée est ramassé le lendemain matin. On est ${hoursLong("fr").toLowerCase()}.`,
       },
       en: {
         lede: "Our yard is in Mascouche, at 340 Chemin Pincourt. No subcontractor, no Montreal middleman reselling your call: when you phone us, you are talking to the recycler who will buy the vehicle, send the tow truck and hand you the money. This is the city we have worked in for ten years, and the one we know best.",
@@ -87,7 +88,7 @@ export const CITIES: City[] = [
         paperwork:
           "We handle the SAAQ transfer on site. We take the plate, complete the release and hand you the official receipt before the vehicle leaves. That document is what proves the car is no longer yours and lets you stop paying registration immediately.",
         faqQ: "How fast is a pickup in Mascouche?",
-        faqA: "Usually the same day. With the yard at 340 Chemin Pincourt, a morning call almost always means an afternoon pickup, and a late-day call gets collected the next morning. We are open 7 days a week, 8am to 8pm.",
+        faqA: `Usually the same day. With the yard at 340 Chemin Pincourt, a morning call almost always means an afternoon pickup, and a late-day call gets collected the next morning. We are ${hoursLong("en").toLowerCase()}.`,
       },
     },
   },

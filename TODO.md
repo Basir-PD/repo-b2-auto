@@ -76,9 +76,13 @@ GBP pin. What is still open:
 - [ ] **Set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel.** Verified as
       absent from the live site, so Search Console is almost certainly not set
       up — no indexation data, no query data, no sitemap submission.
-- [ ] **Confirm the full weekly GBP hours.** Signed-out Maps only exposes the
-      current day. The site now says 7 days 08:00–20:00 everywhere; if the GBP
-      varies by day, the site still mismatches on those days.
+- [x] ~~Confirm the full weekly GBP hours.~~ **Answered by the owner: 06:00 to
+      21:00, the same seven days.** The site said 08:00–20:00 and now says
+      06:00–21:00 everywhere, from one place.
+      ⚠️ **The Google Business Profile still says it opens at 8 a.m. and
+      closes at 20:00.** The site and the profile now disagree by two hours at
+      each end, which is a NAP mismatch and hurts local ranking. The profile
+      is the side that needs changing — only the owner can do it.
 - [ ] **City-page local facts** — see §3. Confirm that gaps should ship as
       clearly-marked `TODO` placeholders rather than invented detail.
 

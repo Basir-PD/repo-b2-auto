@@ -1,6 +1,6 @@
 import type { Lang } from "@/config/routes";
 import type { Section } from "@/content/services";
-import { siteConfig, fullAddress } from "@/config/site";
+import { siteConfig, fullAddress, hoursRange } from "@/config/site";
 
 export type StaticPage = {
   metaTitle: Record<Lang, string>;
@@ -53,7 +53,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "Nos heures",
         body: [
-          "On répond au téléphone 7 jours sur 7, de 8 h à 20 h — incluant les fins de semaine et les jours fériés. Un véhicule mort dans une entrée ne choisit pas le moment, et on ne voit pas pourquoi il faudrait attendre au lundi.",
+          `On répond au téléphone 7 jours sur 7, ${hoursRange("fr")} — incluant les fins de semaine et les jours fériés. Un véhicule mort dans une entrée ne choisit pas le moment, et on ne voit pas pourquoi il faudrait attendre au lundi.`,
         ],
       },
     ],
@@ -82,7 +82,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "Our hours",
         body: [
-          "We answer the phone 7 days a week, 8:00am to 8:00pm — weekends and holidays included. A dead car in a driveway doesn't pick its moment, and we see no reason it should have to wait for Monday.",
+          `We answer the phone 7 days a week, ${hoursRange("en")} — weekends and holidays included. A dead car in a driveway doesn't pick its moment, and we see no reason it should have to wait for Monday.`,
         ],
       },
     ],
@@ -321,8 +321,8 @@ export const CONTACT: StaticPage = {
     en: "Contact — 340 Chemin Pincourt, Mascouche",
   },
   metaDescription: {
-    fr: `Joignez Autos B2 au ${siteConfig.phone.display}, 7 jours sur 7 de 8 h à 20 h. Notre cour : ${fullAddress}.`,
-    en: `Reach Autos B2 at ${siteConfig.phone.display}, 7 days a week from 8am to 8pm. Our yard: ${fullAddress}.`,
+    fr: `Joignez Autos B2 au ${siteConfig.phone.display}, 7 jours sur 7 ${hoursRange("fr")}. Notre cour : ${fullAddress}.`,
+    en: `Reach Autos B2 at ${siteConfig.phone.display}, 7 days a week ${hoursRange("en")}. Our yard: ${fullAddress}.`,
   },
   h1: { fr: "Nous joindre", en: "Contact us" },
   lede: {

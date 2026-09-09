@@ -1,5 +1,5 @@
 import type { Lang } from "@/config/routes";
-import { siteConfig } from "@/config/site";
+import { siteConfig, hoursShort, hoursRange } from "@/config/site";
 
 /**
  * Paid-traffic landing pages.
@@ -35,7 +35,7 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Remorquage gratuit inclus, jamais déduit",
       "Argent comptant à l'enlèvement",
       "Transfert SAAQ réglé sur place",
-      "Ouvert 7 jours, 8 h à 20 h",
+      hoursShort("fr"),
       "Prix ferme confirmé au téléphone",
     ],
     reassurance:
@@ -53,7 +53,7 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Plateau : on sort un véhicule sans roues ou aux freins bloqués",
       "Aucuns frais de déplacement, jamais",
       "On récupère la plaque et on remplit la cession",
-      "Ouvert 7 jours, 8 h à 20 h",
+      hoursShort("fr"),
     ],
     reassurance:
       "Entrée en pente, cour arrière, terrain non asphalté : dites-nous la situation et on arrive équipés.",
@@ -86,7 +86,7 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Free towing included, never deducted",
       "Cash in hand at pickup",
       "SAAQ transfer handled on site",
-      "Open 7 days, 8am to 8pm",
+      `Open 7 days, ${hoursRange("en")}`,
       "Firm price confirmed on the phone",
     ],
     reassurance:
