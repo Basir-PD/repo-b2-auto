@@ -45,7 +45,7 @@ export const fr = {
     callShort: "Appeler",
     whatsapp: "WhatsApp",
     whatsappAria: "Écrire à Autos B2 sur WhatsApp",
-    whatsappTagline: "Envoyez-nous une photo de votre auto",
+    whatsappTagline: "Écrivez-nous, on répond vite",
     hoursLong: hoursLong("fr"),
     addressLabel: "Notre cour",
     emailLabel: "Courriel",
@@ -80,8 +80,17 @@ export const fr = {
     priceAnchor: "De 300 $ à 3 000 $ comptant selon le véhicule",
     priceFigure: "300 $ – 3 000 $",
     priceCaption: "comptant, selon le véhicule",
-    whatsappCta: "Envoyer une photo sur WhatsApp",
-    whatsappPrefill: "Bonjour ! J'aimerais une estimation pour mon véhicule. Voici une photo :",
+    /*
+      "Envoyer un message", not "Envoyer une photo". The photo framing asked
+      for something before the conversation had started — a seller standing in
+      a driveway has to go and take one before they can press the button, and
+      the ones who did not want to were told, in effect, that this channel was
+      not for them. The prefill lost its trailing "Voici une photo :" for the
+      same reason: it opened a chat that read as unfinished until an
+      attachment was added.
+    */
+    whatsappCta: "Envoyer un message sur WhatsApp",
+    whatsappPrefill: "Bonjour ! J'aimerais une estimation pour mon véhicule.",
     ctaPrimary: "Obtenir mon estimation gratuite",
     ctaSecondary: `Appeler ${PHONE}`,
 
