@@ -75,8 +75,10 @@ export const en: Copy = {
     ctaSecondary: `Call ${PHONE}`,
 
     trustStrip: [
-      "No hidden fees",
       "Official SAAQ receipt",
+      "No hidden fees",
+      "Free towing",
+      "Cash payment",
       "Fast service",
       "Responsible recycling",
     ],

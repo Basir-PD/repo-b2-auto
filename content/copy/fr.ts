@@ -92,17 +92,24 @@ export const fr = {
       the cheapest conversion win there is, and Google scores the landing page
       against the ad for Quality Score on top of that.
 
-      Four of the eight. "Paiement comptant" and "Ramassage gratuit" are two
-      more callouts, but they are already the subtitle, and saying them twice
-      two elements apart is what this strip used to do wrong. "Prix
-      compétitifs" and the opening hours were dropped on request: the price
-      claim is weaker than the guarantee already in the H1, and the hours are
-      stated in the footer, the schema and the contact page without being
-      repeated a fourth time above the fold.
+      Six of the eight, ordered on request. The SAAQ receipt leads because it
+      is the one item on the list a seller does not know they need until
+      somebody tells them, and it is the reason the registration stops costing
+      them money.
+
+      "Remorquage gratuit" and "Paiement comptant" also appear in the subtitle
+      three elements above. That repetition is deliberate and was asked for:
+      they are the two things a scrap seller checks for first, and the
+      checkmark list is where a skimmer looks to confirm what the headline
+      claimed. "Prix compétitifs" and the opening hours are the two callouts
+      left out — the price claim is weaker than the guarantee already in the
+      H1, and the hours are in the footer, the schema and the contact page.
     */
     trustStrip: [
-      "Aucuns frais cachés",
       "Reçu SAAQ officiel",
+      "Aucuns frais cachés",
+      "Remorquage gratuit",
+      "Paiement comptant",
       "Service rapide",
       "Recyclage responsable",
     ],
