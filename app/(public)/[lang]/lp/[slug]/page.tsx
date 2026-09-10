@@ -7,7 +7,7 @@ import { Check } from "lucide-react";
 import { isLang, pathFor, type Lang } from "@/config/routes";
 import { siteConfig, fullAddress } from "@/config/site";
 import { getCopy } from "@/content/copy";
-import { LANDING_CONTENT, landingBySlug } from "@/content/landing";
+import { LANDING_CONTENT, landingBySlug, landingStats } from "@/content/landing";
 import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
 
@@ -93,17 +93,36 @@ export default async function LandingPage({
         <div className="container mx-auto px-4 pb-10 pt-10 sm:px-6 sm:pb-12 sm:pt-14">
           <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
-              <p className="inline-flex rounded-full bg-brand-600 px-4 py-2 text-xs font-black uppercase tracking-[0.08em] text-white sm:text-sm">
-                {lp.badge}
-              </p>
-
-              <h1 className="mt-6 text-[2.1rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.75rem]">
+              {/*
+                No eyebrow above the H1. It carried the price range, which was
+                removed on request — and with the beats sitting directly under
+                the headline there is nothing for a badge to do but push the
+                form further down the phone screen.
+              */}
+              <h1 className="text-[2.1rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.75rem]">
                 {lp.h1}
               </h1>
 
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                {lp.sub}
-              </p>
+              {/*
+                Three beats with brand dots, the same device as the homepage
+                hero. `lp.sub` is deliberately not rendered here — it is the
+                meta and og description, which is what shows when someone
+                pastes the link into Messenger.
+              */}
+              <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2.5">
+                {lp.beats.map((beat) => (
+                  <li
+                    key={beat}
+                    className="flex items-center gap-2.5 text-base font-black text-slate-800 sm:text-lg"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="h-2 w-2 shrink-0 rounded-full bg-brand-600"
+                    />
+                    {beat}
+                  </li>
+                ))}
+              </ul>
 
               <PhoneLink
                 source={`lp_${slug}_hero`}
@@ -135,10 +154,40 @@ export default async function LandingPage({
           </div>
         </div>
 
+        {/*
+          The three numbers. Real ones, read off siteConfig.facts so they can
+          never disagree with the homepage: 2 000 vehicles a year and 10 years
+          at Mascouche. Nothing rounded, nothing invented — a figure a
+          competitor can disprove costs more than the figure was ever worth.
+        */}
+        <div className="container mx-auto px-4 pb-12 sm:px-6 sm:pb-14">
+          <dl className="grid grid-cols-1 divide-y divide-slate-200 overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {landingStats(lang).map((stat) => (
+              <div key={stat.label} className="px-6 py-6 text-center sm:py-7">
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <span className="block text-3xl font-black leading-none tracking-tight text-brand-700 sm:text-[2.25rem]">
+                    {stat.figure}
+                  </span>
+                  <span className="mt-2 block text-[13px] font-semibold leading-snug text-slate-600">
+                    {stat.label}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
         {/* The truck as the page's floor — same device as the main hero. */}
         <div className="relative h-[12rem] w-full sm:h-[16rem] lg:h-[19rem]">
           <Image
-            src="/hero-tow-truck.jpg"
+            /*
+              The homepage hero's image, not the 3:2 crop this page used to
+              carry. It is a 1600x476 banner, which is the shape this strip
+              actually is, and 126 KB against 265 KB — on the one page type
+              where the pageview is bought and paid for.
+            */
+            src="/tow-truck-hero.webp"
             alt={
               lang === "fr"
                 ? "Remorqueuse à plateau d'Autos B2 chargée d'un véhicule, à Mascouche"
@@ -154,7 +203,7 @@ export default async function LandingPage({
             loading="lazy"
             sizes="100vw"
             quality={50}
-            className="object-cover object-[58%_62%] [mask-image:linear-gradient(to_bottom,transparent,black_34%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_34%)]"
+            className="object-cover object-[58%_58%] [mask-image:linear-gradient(to_bottom,transparent,black_34%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_34%)]"
           />
         </div>
       </main>
