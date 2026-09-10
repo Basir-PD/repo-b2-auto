@@ -204,12 +204,40 @@ export const LANDING_CONTENT: LandingContent[] = [
     reassurance:
       "Ten years recycling vehicles at 340 Chemin Pincourt. We are the buyer, not a broker passing your call along.",
   },
+  /*
+    Damaged is not a synonym for junk, and pointing "cash for damaged cars"
+    at the junk-car page would be treating it as one.
+
+    The junk-car searcher has a vehicle that stopped being worth repairing
+    some time ago and wants it gone. This one had a working car until
+    recently, has probably just been told by an insurer that it is a write-
+    off, and is deciding what to do about it — a different question, asked in
+    a worse week. The page answers that question instead of selling scrap
+    removal at them.
+  */
+  {
+    slug: "cash-for-damaged-cars",
+    lang: "en",
+    title: "Cash for Damaged Cars | Autos B2",
+    h1: "Cash for a damaged car — wrecked, written off, or after a collision",
+    sub: "If the insurer declared it a total loss, or the repair quote came back higher than the car is worth, we buy it as it stands. Free towing, cash at pickup.",
+    beats: ["Quick offer", "Easy pickup", "Fast payment"],
+    bullets: [
+      "Total loss, write-off, or a repair bill that is not worth paying",
+      "Front, rear or rollover damage — it does not need to drive",
+      "We tow it from the body shop, the yard, or your driveway",
+      "SAAQ transfer and plate handled on the spot",
+      "Firm price on the phone before anyone is dispatched",
+    ],
+    reassurance:
+      "The undamaged half of a wrecked car still has real value. That is what you are being paid for.",
+  },
   {
     slug: "cash-for-junk-cars",
     lang: "en",
-    title: "Cash for Junk Cars | Autos B2",
-    h1: "Sell your junk car today — cash, paid on the spot",
-    sub: "Any condition: not running, wrecked, no engine, or written off. We pick it up free and pay you at pickup.",
+    title: "Cash for Junk Cars & Scrap Cars | Autos B2",
+    h1: "Cash for junk cars and scrap cars — paid on the spot",
+    sub: "Junk car, scrap car, end-of-life vehicle — different words for the same thing, and we buy all of them. Any condition. Free pickup, cash at the door.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
     bullets: [
       "Free towing included, never deducted",
