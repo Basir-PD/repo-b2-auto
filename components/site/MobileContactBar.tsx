@@ -20,9 +20,21 @@ import WhatsAppIcon from "@/components/site/WhatsAppIcon";
  * above the fold, and a second copy fixed to the bottom of the same viewport
  * is noise rather than help.
  *
- * The spacer is not optional. Without it the bar covers the last ~64px of
+ * Built as a raised bar rather than two full-bleed colour slabs, so it reads
+ * as a native bottom tab bar: a white surface with a hairline and an upward
+ * shadow, two rounded actions inset inside it, and the safe-area inset paid
+ * by the container so neither button sits under an iPhone's home indicator.
+ *
+ * WhatsApp is #075E54 — their dark teal — and not the #25D366 brand green.
+ * The label is white by request, and white on #25D366 is a 1.98:1 contrast
+ * ratio, which is unreadable in daylight and less than half the AA floor.
+ * #075E54 is 7.67:1, is WhatsApp's own colour, and stays distinct from the
+ * brand green next to it.
+ *
+ * The spacer is not optional. Without it the bar covers the last ~68px of
  * every page, and reserving the height in layout rather than overlaying is
- * what keeps CLS at zero.
+ * what keeps CLS at zero. Keep it in step with the bar's real height:
+ * 10px top padding + 48px button + 10px bottom padding = 68px = 4.25rem.
  */
 export default function MobileContactBar({
   callLabel,
@@ -43,32 +55,37 @@ export default function MobileContactBar({
 
   const waHref = `${siteConfig.whatsapp.href}?text=${encodeURIComponent(prefill)}`;
 
+  const action =
+    "flex h-12 items-center justify-center gap-2 rounded-xl text-[15px] font-black text-white transition-colors";
+
   return (
     <>
-      <div aria-hidden="true" className="h-[calc(4rem+env(safe-area-inset-bottom))] md:hidden" />
-      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-black/10 pb-[env(safe-area-inset-bottom)] md:hidden">
-        <a
-          href={phone.href}
-          onClick={() => {
-            trackCall("mobile_bar");
-            fbqTrack("Contact", { content_name: "mobile_bar" });
-          }}
-          data-phone={phone.e164}
-          className="flex h-16 items-center justify-center gap-2 bg-brand-600 text-base font-black text-white active:bg-brand-700"
-        >
-          <Phone className="h-5 w-5 shrink-0" strokeWidth={2.5} fill="currentColor" />
-          {callLabel}
-        </a>
-        <a
-          href={waHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackWhatsApp("mobile_bar")}
-          className="flex h-16 items-center justify-center gap-2 bg-[#25D366] text-base font-black text-slate-900 active:bg-[#1FBE5A]"
-        >
-          <WhatsAppIcon className="h-5 w-5 shrink-0" />
-          {whatsappLabel}
-        </a>
+      <div aria-hidden="true" className="h-[calc(4.25rem+env(safe-area-inset-bottom))] md:hidden" />
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(15,23,42,0.10)] backdrop-blur-sm md:hidden">
+        <div className="grid grid-cols-2 gap-2.5">
+          <a
+            href={phone.href}
+            onClick={() => {
+              trackCall("mobile_bar");
+              fbqTrack("Contact", { content_name: "mobile_bar" });
+            }}
+            data-phone={phone.e164}
+            className={`${action} bg-brand-600 active:bg-brand-700`}
+          >
+            <Phone className="h-[18px] w-[18px] shrink-0" strokeWidth={2.5} fill="currentColor" />
+            {callLabel}
+          </a>
+          <a
+            href={waHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackWhatsApp("mobile_bar")}
+            className={`${action} bg-[#075E54] active:bg-[#054C44]`}
+          >
+            <WhatsAppIcon className="h-[18px] w-[18px] shrink-0" />
+            {whatsappLabel}
+          </a>
+        </div>
       </div>
     </>
   );
