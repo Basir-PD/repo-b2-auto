@@ -82,7 +82,7 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Remorquage gratuit inclus",
       "Payé comptant à l'enlèvement",
       "On s'occupe de toute la paperasse SAAQ",
-      "Envoyez-nous une photo par WhatsApp si c'est plus simple",
+      "Écrivez-nous sur WhatsApp si c'est plus simple",
     ],
     /*
       This used to restate the ten years and the two thousand vehicles. The
