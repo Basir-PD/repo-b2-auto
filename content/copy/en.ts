@@ -16,7 +16,7 @@ export const en: Copy = {
 
   nav: {
     services: "Services",
-    scrapBuying: "Junk cars",
+    scrapBuying: "Scrap cars",
     towing: "Towing",
     damaged: "Damaged",
     trucks: "Trucks and SUVs",
