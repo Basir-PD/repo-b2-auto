@@ -1,4 +1,4 @@
-import { siteConfig, hoursShort, hoursLong, hoursRange } from "@/config/site";
+import { siteConfig, hoursLong, hoursRange } from "@/config/site";
 import type { Copy } from "@/content/copy/fr";
 
 const PHONE = siteConfig.phone.display;
@@ -115,12 +115,6 @@ export const en: Copy = {
         "Missing paperwork — we walk you through it",
       ],
     },
-
-    stats: [
-      `${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} vehicles bought per year`,
-      `${siteConfig.facts.yearsInBusiness} years in Mascouche`,
-      hoursShort("en"),
-    ],
 
     why: {
       title: "Who buys junk cars in Laval and Montreal?",

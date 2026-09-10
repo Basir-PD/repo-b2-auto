@@ -154,12 +154,6 @@ export const fr = {
       ],
     },
 
-    stats: [
-      `${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} véhicules achetés par année`,
-      `${siteConfig.facts.yearsInBusiness} ans d'expérience à Mascouche`,
-      `Ouvert 7 jours sur 7, ${hoursRange("fr").replace("de ", "")}`,
-    ],
-
     why: {
       title: "Qui achète les autos scrap à Laval et Montréal ?",
       points: [

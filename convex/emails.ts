@@ -147,6 +147,16 @@ export const sendQuoteNotification = internalAction({
     } catch (err) {
       emailSent = false;
       emailError = err instanceof Error ? err.message : String(err);
+      /*
+        Also log it. The failure was already being written to the quote
+        document, which sounds like enough until you need it: a notification
+        that silently stops arriving looks identical to nobody filling the
+        form in, and finding out why meant opening a database row. It cost a
+        day of a dead RESEND_API_KEY — set to the literal string "re_…",
+        pasted out of a set-up instruction — going unnoticed while the form
+        itself was working perfectly.
+      */
+      console.error("[emails] notification NOT sent for", quoteId, "—", emailError);
     }
 
     await ctx.runMutation(internal.quotes.recordEmailResult, { quoteId, emailSent, emailError });
