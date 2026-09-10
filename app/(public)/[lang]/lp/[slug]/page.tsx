@@ -7,12 +7,12 @@ import { Check } from "lucide-react";
 import { isLang, pathFor, type Lang } from "@/config/routes";
 import { siteConfig, fullAddress } from "@/config/site";
 import { getCopy } from "@/content/copy";
-import { LANDING_CONTENT, landingBySlug, landingStats } from "@/content/landing";
+import { LANDING_CONTENT, landingBySlug } from "@/content/landing";
 import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
-import CountUp from "@/components/site/CountUp";
 import HowItWorks from "@/components/pages/HowItWorks";
+import StatBand from "@/components/pages/StatBand";
 
 export function generateStaticParams() {
   return LANDING_CONTENT.map((lp) => ({ lang: lp.lang, slug: lp.slug }));
@@ -172,33 +172,6 @@ export default async function LandingPage({
         </div>
 
         {/*
-          The three numbers. Real ones, read off siteConfig.facts so they can
-          never disagree with the homepage, the about page or the photo
-          captions, all of which state the same figures. They count up once,
-          the first time the band is scrolled into view.
-        */}
-        <div className="container mx-auto px-4 pb-12 sm:px-6 sm:pb-14">
-          <dl className="grid grid-cols-1 divide-y divide-slate-200 overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {landingStats(lang).stats.map((stat) => (
-              <div key={stat.label} className="px-6 py-6 text-center sm:py-7">
-                <dt className="sr-only">{stat.label}</dt>
-                <dd>
-                  <CountUp
-                    value={stat.value}
-                    unit={stat.unit}
-                    locale={landingStats(lang).locale}
-                    className="block text-3xl font-black leading-none tracking-tight tabular-nums text-brand-700 sm:text-[2.25rem]"
-                  />
-                  <span className="mt-2 block text-[13px] font-semibold leading-snug text-slate-600">
-                    {stat.label}
-                  </span>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        {/*
           The homepage's treatment of the same asset: full width beneath the
           hero, intrinsic 1600x476 so the box is reserved and it cannot shift
           the page. It used to be a fixed-height crop under a mask, which is
@@ -220,6 +193,15 @@ export default async function LandingPage({
             quality={72}
             className="mx-auto h-auto w-full max-w-5xl"
           />
+        </div>
+
+        {/*
+          Below the photograph, not above it. The truck is the proof and the
+          figures are its caption — set above, they read as a header for the
+          form that came before them.
+        */}
+        <div className="container mx-auto px-4 pb-14 sm:px-6 sm:pb-16">
+          <StatBand lang={lang} />
         </div>
 
         {/*

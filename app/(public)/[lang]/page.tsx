@@ -14,6 +14,7 @@ import { HOME_PHOTOS } from "@/content/photos";
 import { hasReviews, REVIEWS } from "@/content/reviews";
 import QuoteForm from "@/components/site/QuoteForm";
 import HowItWorks from "@/components/pages/HowItWorks";
+import StatBand from "@/components/pages/StatBand";
 import PhotoGrid from "@/components/site/PhotoGrid";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
 import PhoneLink from "@/components/site/PhoneLink";
@@ -246,6 +247,18 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               className="mx-auto h-auto w-full max-w-5xl"
             />
           </div>
+
+          {/*
+            The three figures, directly under the photograph and rendered by
+            the same component the landing pages use — so the homepage and the
+            paid pages state the same claims in the same shape. They used to
+            live much further down, set as three green blocks of sentence
+            text, which is why the two page types disagreed on what a
+            statistic looks like here.
+          */}
+          <div className="mx-auto mt-8 max-w-5xl">
+            <StatBand lang={lang} />
+          </div>
         </div>
       </section>
 
@@ -288,15 +301,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               </li>
             ))}
           </ul>
-
-          {/* Verified figures only. No volume language, no invented counts. */}
-          <dl className="mt-10 grid gap-4 sm:grid-cols-3">
-            {t.home.stats.map((stat) => (
-              <div key={stat} className="rounded-xl bg-brand-600 px-6 py-7 text-center text-white">
-                <dt className="text-base font-black leading-snug sm:text-lg">{stat}</dt>
-              </div>
-            ))}
-          </dl>
         </div>
       </section>
 
