@@ -155,6 +155,55 @@ export const LANDING_CONTENT: LandingContent[] = [
     reassurance:
       "Notre cour est au 340 Chemin Pincourt à Mascouche. On vient à vous, vous ne déplacez rien.",
   },
+  /*
+    The English "scrap yard / junkyard {city}" set.
+
+    These two words carry a split intent that the French terms do not: about
+    half the people typing "junkyard montreal" want a fender for a Civic, not
+    a buyer for one. Google's own idea list for this set includes "scrap yard
+    montreal car parts" and "junkyard montreal car parts", which is the same
+    audience saying so out loud. At a CA$5.71 top-of-page bid, every one of
+    those clicks is paid for and none of them convert.
+
+    So the H1 says "we buy" before it says anything else, and the page never
+    pretends to be a parts counter. What the page cannot do is stop the click
+    being bought in the first place — that is a negative keyword list, not a
+    landing page.
+  */
+  {
+    slug: "scrap-yard-montreal",
+    lang: "en",
+    title: "Scrap Yard Montreal — We Buy Your Car | Autos B2",
+    h1: "The scrap yard that buys your car in Montreal",
+    sub: "A licensed auto recycler covering the island of Montreal. We buy end-of-life, wrecked and non-running vehicles, tow them away free, and pay cash at pickup.",
+    beats: ["Quick offer", "Easy pickup", "Fast payment"],
+    bullets: [
+      "We buy vehicles — you do not drive anything to a yard",
+      "Montreal-Nord, Anjou, Rivière-des-Prairies, Pointe-aux-Trembles",
+      "Also Westmount, Côte-Saint-Luc, Dorval and the West Island",
+      "Narrow lane or indoor garage? Tell us when you call",
+      "Not running, wrecked or written off — we buy it anyway",
+    ],
+    reassurance:
+      "Our yard is at 340 Chemin Pincourt in Mascouche. We come to you, and the tow costs you nothing.",
+  },
+  {
+    slug: "scrap-yard-laval",
+    lang: "en",
+    title: "Scrap Yard Laval — We Buy Your Car | Autos B2",
+    h1: "A scrap yard 24 km from Laval that pays cash for your car",
+    sub: "We are a licensed recycler in Mascouche, about 25 minutes from Laval. Give us the year, make and model and we come back with a firm price — then collect it free.",
+    beats: ["Quick offer", "Easy pickup", "Fast payment"],
+    bullets: [
+      "We buy vehicles — nothing to tow or drive yourself",
+      "Chomedey, Sainte-Rose, Vimont, Laval-des-Rapides, Duvernay",
+      "24 km from our yard, roughly a 25 minute run",
+      "Cash in hand at pickup, not a transfer to wait for",
+      "SAAQ transfer and plate handled on the spot",
+    ],
+    reassurance:
+      "Ten years recycling vehicles at 340 Chemin Pincourt. We are the buyer, not a broker passing your call along.",
+  },
   {
     slug: "cash-for-junk-cars",
     lang: "en",
