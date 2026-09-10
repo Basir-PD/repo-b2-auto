@@ -214,3 +214,18 @@ export function faqFor(lang: Lang): FaqItem[] {
 export function homeFaqFor(lang: Lang): FaqItem[] {
   return BY_LANG[lang].filter((item) => item.onHome);
 }
+
+/**
+ * A hand-picked subset, in the order given. The paid landing pages use this:
+ * they answer the same questions in the same words as the organic FAQ, so a
+ * fact corrected here is corrected everywhere. An unknown id throws rather
+ * than disappearing, because a page quietly rendering three answers instead
+ * of five is not something anyone would notice.
+ */
+export function faqByIds(lang: Lang, ids: readonly string[]): FaqItem[] {
+  return ids.map((id) => {
+    const item = BY_LANG[lang].find((entry) => entry.id === id);
+    if (!item) throw new Error(`No ${lang} FAQ entry with id "${id}"`);
+    return item;
+  });
+}

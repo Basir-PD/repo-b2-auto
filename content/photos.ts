@@ -13,10 +13,15 @@ import type { Lang } from "@/config/routes";
  * same angle or the same truck on the same kind of day, and a gallery that
  * repeats itself reads as padding rather than evidence.
  *
- * Speed: these are never in the hero and never on a /lp/ page. They sit
- * below the fold, lazy-loaded, in fixed aspect-ratio boxes so they cannot
- * move the layout, at quality 55 — which on a 400px-wide phone slot is
- * roughly 10 KB each.
+ * Speed: these are never in a hero. On the homepage and the /lp/ pages they
+ * sit below the fold, lazy-loaded, in fixed aspect-ratio boxes so they
+ * cannot move the layout, at quality 55 — which on a 400px-wide phone slot
+ * is roughly 10 KB each. A paid visitor who never scrolls never fetches them.
+ *
+ * There is no photo of the crew yet. When one arrives it belongs here, and
+ * it should be a real driver on a real job — not the illustrated figure in
+ * the how-it-works steps, which is a drawing and must never be captioned as
+ * one of ours.
  */
 export type Photo = {
   file: string;
@@ -29,9 +34,14 @@ export type Photo = {
 export const PHOTOS: Photo[] = [
   {
     file: "attache-vehicule-plateau.jpg",
+    /*
+      This described an employee strapping the van down. There is no one in
+      the frame — it is the truck, the van and the straps — and alt text is
+      what a screen reader announces as fact.
+    */
     alt: {
-      fr: "Un employé d'Autos B2 sangle une fourgonnette accidentée sur le plateau",
-      en: "An Autos B2 employee strapping a wrecked van down on the flatbed",
+      fr: "Fourgonnette accidentée sanglée sur le plateau d'une remorqueuse d'Autos B2",
+      en: "A wrecked minivan strapped down on an Autos B2 flatbed tow truck",
     },
     caption: {
       fr: "On attache et on sécurise le véhicule nous-mêmes avant de partir.",
@@ -95,5 +105,8 @@ export const PHOTOS: Photo[] = [
   },
 ];
 
-/** The three on the homepage: a person, the scale, and the evening hours. */
+/**
+ * The three on the homepage and the landing pages: a wreck secured on our
+ * own flatbed, the scale, and the evening hours.
+ */
 export const HOME_PHOTOS = [PHOTOS[0], PHOTOS[1], PHOTOS[2]];
