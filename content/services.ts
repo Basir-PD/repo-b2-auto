@@ -23,7 +23,7 @@ export const SERVICES: ServicePage[] = [
     key: "scrapBuying",
     serviceName: {
       fr: "Achat auto scrap — acheteur direct",
-      en: "Cash for junk cars — we buy junk cars",
+      en: "Cash for scrap cars — we buy scrap cars",
     },
     /*
        Titles are budgeted at 60 characters and " | Autos B2" eats 11 of
@@ -33,15 +33,15 @@ export const SERVICES: ServicePage[] = [
     */
     metaTitle: {
       fr: "Rachat d'auto scrap — Mascouche, Laval, Montréal",
-      en: "Cash for junk cars — Mascouche, Laval, Montreal",
+      en: "Cash for scrap cars — Mascouche, Laval, Montreal",
     },
     metaDescription: {
       fr: `On rachète votre auto scrap comptant, de 300 $ à 3 000 $ selon le véhicule. Remorquage gratuit et transfert SAAQ inclus. Ouvert 7 jours, ${hoursRange("fr").replace("de ", "")}.`,
-      en: `Autos B2 buys your junk car for cash, $300 to $3,000 depending on the vehicle. Free towing, SAAQ transfer included, open 7 days ${hoursRange("en")}.`,
+      en: `Autos B2 buys your scrap car for cash, $300 to $3,000 depending on the vehicle. Free towing, SAAQ transfer included, open 7 days ${hoursRange("en")}.`,
     },
     h1: {
       fr: "Vendre mon auto scrap — acheteur d'auto scrap, payé comptant",
-      en: "Sell my junk car — junk car buyer paying cash on the spot",
+      en: "Sell my scrap car — scrap car buyer paying cash on the spot",
     },
     lede: {
       fr: "On achète les véhicules en fin de vie pour les recycler nous-mêmes, dans notre cour du 340 Chemin Pincourt à Mascouche. Vous n'avez ni transport à organiser, ni paperasse à faire, ni frais à payer.",
