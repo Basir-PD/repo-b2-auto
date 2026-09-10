@@ -12,8 +12,8 @@ export type StaticPage = {
 
 export const ABOUT: StaticPage = {
   metaTitle: {
-    fr: "À propos — recycleur à Mascouche",
-    en: "About — auto recycler in Mascouche",
+    fr: "Recycleur auto — recyclage autos à Mascouche",
+    en: "Auto recycler — car recycling in Mascouche",
   },
   metaDescription: {
     fr: `Autos B2 est un recycleur automobile licencié établi au 340 Chemin Pincourt à Mascouche depuis ${siteConfig.facts.yearsInBusiness} ans. Environ ${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} véhicules achetés par année.`,

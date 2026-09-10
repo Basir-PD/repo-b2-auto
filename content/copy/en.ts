@@ -167,7 +167,7 @@ export const en: Copy = {
 
   form: {
     eyebrow: "Free quote",
-    title: "What is your vehicle worth?",
+    title: "What is your car worth?",
     subtitle: "Four questions, under a minute. We call you back with a firm price.",
     replyTime: "We usually call back within 5 minutes.",
 

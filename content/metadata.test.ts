@@ -137,7 +137,7 @@ describe("city pages", () => {
   // 21 characters before the sentence around it starts.
   for (const city of CITIES) {
     it(`${city.name} fits both title templates`, () => {
-      const fr = pageTitle(`Cour à scrap ${city.name}`, "rachat comptant");
+      const fr = pageTitle(`Scrap auto ${city.name}`, "rachat comptant");
       const en = pageTitle(`Scrap car buyer ${city.name}`, "cash paid");
       expect(fr.length, `fr → "${fr}"`).toBeLessThanOrEqual(TITLE_MAX);
       expect(en.length, `en → "${en}"`).toBeLessThanOrEqual(TITLE_MAX);

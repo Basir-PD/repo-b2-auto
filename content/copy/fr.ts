@@ -60,9 +60,17 @@ export const fr = {
   },
 
   home: {
-    metaTitle: "Vendre son auto scrap Laval, Montréal | Autos B2",
+    /*
+      "Scrap auto", not "auto scrap". Keyword Planner puts "scrap auto" at
+      1K–10K searches a month in Canada with a $12.66 top-of-page bid — the
+      most expensive term in the whole set, which is what high commercial
+      intent looks like. The site had been writing the grammatical order,
+      which is not the order people type. "scrap auto laval" falls out of the
+      same title for free.
+    */
+    metaTitle: "Scrap auto Laval, Montréal — rachat comptant | Autos B2",
     metaDescription:
-      "Acheteur d'auto scrap à Laval, Montréal et la Rive-Nord. On achète accidentée, en panne ou perte totale. Cash pour auto et remorquage gratuit.",
+      "Scrap auto à Laval, Montréal et la Rive-Nord : on rachète comptant. Accidentée, en panne ou perte totale. Remorquage gratuit et reçu SAAQ inclus.",
 
     /*
       Two halves, deliberately. `promise` is the claim every scrap buyer
@@ -214,7 +222,7 @@ export const fr = {
 
   form: {
     eyebrow: "Estimation gratuite",
-    title: "Combien vaut votre véhicule ?",
+    title: "Combien vaut votre auto ?",
     subtitle: "Quatre questions, moins d'une minute. On vous rappelle avec un prix ferme.",
     /* No hours here. The visitor is submitting the form now; what they want
        to know is how long they wait, not when the yard closes. */

@@ -79,7 +79,7 @@ function metaFor(lang: Lang, slug: string): Meta | null {
       ? {
           // pageTitle drops the qualifier for a long name like
           // Saint-Lin-Laurentides rather than cutting it mid-word.
-          title: pageTitle(`Cour à scrap ${name}`, "rachat comptant"),
+          title: pageTitle(`Scrap auto ${name}`, "rachat comptant"),
           description: atYard
             ? fitDescription(
                 `Vendre une auto scrap à ${name} ? Notre cour est au ${siteConfig.address.street}. On paie comptant, remorquage gratuit et enlèvement souvent le jour même.`
