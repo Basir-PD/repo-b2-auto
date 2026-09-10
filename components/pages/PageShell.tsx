@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, Check } from "lucide-react";
 import type { Lang } from "@/config/routes";
 import { pathFor } from "@/config/routes";
 import { getCopy } from "@/content/copy";
 import type { Section } from "@/content/services";
 import PhoneLink from "@/components/site/PhoneLink";
+import WhatsAppLink from "@/components/site/WhatsAppLink";
 
 export function Breadcrumbs({
   lang,
@@ -41,17 +43,31 @@ export function Breadcrumbs({
   );
 }
 
+/**
+ * `cta` adds the hero's WhatsApp-then-phone pair and the truck beneath it.
+ *
+ * It is opt-in rather than automatic because PageHeader also sits on top of
+ * the privacy policy and the terms, where a "message us on WhatsApp" button
+ * is noise, and on the contact page, which already carries both buttons a
+ * few hundred pixels further down. The pages that take it are the ones in
+ * the header nav — the four services, about and the FAQ — where a reader has
+ * arrived with a question and the answer to most of them is a phone call.
+ */
 export function PageHeader({
   lang,
   trail,
   h1,
   lede,
+  cta = false,
 }: {
   lang: Lang;
   trail: { name: string; path: string }[];
   h1: string;
   lede?: string;
+  cta?: boolean;
 }) {
+  const t = getCopy(lang);
+
   return (
     <section className="border-b border-slate-200 bg-slate-50 py-10 sm:py-14">
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -60,6 +76,41 @@ export function PageHeader({
           {h1}
         </h1>
         {lede && <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{lede}</p>}
+
+        {cta && (
+          <>
+            {/* Stacked and equal width, the same pair as the homepage hero. */}
+            <div className="mt-7 flex max-w-md flex-col gap-3">
+              <WhatsAppLink
+                source="page_header"
+                label={t.home.whatsappCta}
+                prefill={t.home.whatsappPrefill}
+              />
+              <PhoneLink
+                source="page_header"
+                showIcon
+                label={t.home.ctaSecondary}
+                className="flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl border-2 border-slate-300 bg-white px-6 py-4 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+              />
+            </div>
+
+            {/*
+              Intrinsic 1600x476 so the box is reserved before the file
+              arrives. Lazy and unprioritised: the H1 above is the LCP element
+              on every viewport, and preloading this only competes with it.
+            */}
+            <Image
+              src="/tow-truck-hero.webp"
+              alt=""
+              width={1600}
+              height={476}
+              loading="lazy"
+              sizes="(min-width: 896px) 832px, 100vw"
+              quality={72}
+              className="mt-8 h-auto w-full"
+            />
+          </>
+        )}
       </div>
     </section>
   );
