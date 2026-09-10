@@ -91,6 +91,70 @@ export const LANDING_CONTENT: LandingContent[] = [
     */
     reassurance: "Pas d'intermédiaire : on achète, on remorque et on paie nous-mêmes.",
   },
+  /*
+    The "recyclage auto {ville}" set. Built for Google Ads keyword-level
+    final URLs, not for search: they are noindex, so they cannot compete with
+    /fr/rachat-auto-laval/ or /fr/cour-a-scrap-terrebonne/, which already rank
+    for those cities and would have been cannibalised by an indexed twin.
+    That distinction is the whole reason these live under /lp/ — three
+    indexed pages saying "recyclage auto Laval" next to an existing page
+    saying "scrap auto Laval" is the textbook doorway set Google filters.
+
+    Each carries its own distance, its own sectors and its own opening
+    sentence, because a landing page that is the previous one with the city
+    swapped converts like one too.
+  */
+  {
+    slug: "recyclage-auto-laval",
+    lang: "fr",
+    title: "Recyclage auto Laval | Autos B2",
+    h1: "Recyclage auto à Laval — on rachète votre véhicule comptant",
+    sub: "Recycleur licencié établi à Mascouche, à 24 km de Laval. On rachète votre auto en fin de vie, on la remorque gratuitement et on vous paie sur place.",
+    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
+    bullets: [
+      "24 km de notre cour — environ 25 minutes de route",
+      "Chomedey, Sainte-Rose, Vimont, Laval-des-Rapides, Duvernay",
+      "Remorquage gratuit, jamais déduit de votre montant",
+      "Fluides, batterie et pneus traités aux normes du Québec",
+      "En panne, accidentée ou perte totale : on achète pareil",
+    ],
+    reassurance:
+      "On recycle nous-mêmes, au 340 Chemin Pincourt. Votre véhicule n'est pas revendu à un tiers.",
+  },
+  {
+    slug: "recyclage-auto-terrebonne",
+    lang: "fr",
+    title: "Recyclage auto Terrebonne | Autos B2",
+    h1: "Recyclage auto à Terrebonne — la cour est à 9 km",
+    sub: "Notre cour du 340 Chemin Pincourt est le recycleur le plus proche de Terrebonne : 9 km, environ 15 minutes. Enlèvement souvent le jour même.",
+    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
+    bullets: [
+      "9 km de votre porte — le ramassage part de Mascouche",
+      "Lachenaie, La Plaine, Vieux-Terrebonne, secteur des Seigneurs",
+      "Souvent ramassé le jour même de l'appel",
+      "Reçu officiel SAAQ produit sur place",
+      "Argent comptant à l'enlèvement, pas de virement à attendre",
+    ],
+    reassurance:
+      "Vous pouvez aussi passer à la cour. On est ouvert 7 jours et voisin de chez vous.",
+  },
+  {
+    slug: "recyclage-auto-montreal",
+    lang: "fr",
+    title: "Recyclage auto Montréal | Autos B2",
+    h1: "Recyclage auto à Montréal — enlèvement gratuit, payé comptant",
+    sub: "On se déplace sur l'île de Montréal pour racheter et recycler les véhicules en fin de vie. Le remorquage est gratuit et vous êtes payé au moment de l'enlèvement.",
+    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
+    bullets: [
+      "Montréal-Nord, Anjou, Rivière-des-Prairies, Pointe-aux-Trembles",
+      "Aussi Westmount, Côte-Saint-Luc, Dorval et le West Island",
+      "Ruelle étroite ou stationnement intérieur : dites-le-nous d'avance",
+      "Recyclage fait dans notre propre cour, pas sous-traité",
+      "On récupère la plaque et on remplit la cession SAAQ",
+    ],
+    reassurance:
+      "Notre cour est au 340 Chemin Pincourt à Mascouche. On vient à vous, vous ne déplacez rien.",
+  },
   {
     slug: "cash-for-junk-cars",
     lang: "en",
