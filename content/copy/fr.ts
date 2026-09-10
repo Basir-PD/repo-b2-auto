@@ -1,4 +1,4 @@
-import { siteConfig, hoursShort, hoursLong, hoursRange } from "@/config/site";
+import { siteConfig, hoursLong, hoursRange } from "@/config/site";
 
 const PHONE = siteConfig.phone.display;
 
@@ -46,7 +46,6 @@ export const fr = {
     whatsapp: "WhatsApp",
     whatsappAria: "Écrire à Autos B2 sur WhatsApp",
     whatsappTagline: "Envoyez-nous une photo de votre auto",
-    hours: hoursShort("fr"),
     hoursLong: hoursLong("fr"),
     addressLabel: "Notre cour",
     emailLabel: "Courriel",
@@ -93,17 +92,19 @@ export const fr = {
       the cheapest conversion win there is, and Google scores the landing page
       against the ad for Quality Score on top of that.
 
-      Only six are here: "Paiement comptant" and "Ramassage gratuit" are the
-      other two callouts, and they are already the subtitle. Saying them twice
-      two elements apart is what this strip used to do wrong.
+      Four of the eight. "Paiement comptant" and "Ramassage gratuit" are two
+      more callouts, but they are already the subtitle, and saying them twice
+      two elements apart is what this strip used to do wrong. "Prix
+      compétitifs" and the opening hours were dropped on request: the price
+      claim is weaker than the guarantee already in the H1, and the hours are
+      stated in the footer, the schema and the contact page without being
+      repeated a fourth time above the fold.
     */
     trustStrip: [
       "Aucuns frais cachés",
       "Reçu SAAQ officiel",
       "Service rapide",
       "Recyclage responsable",
-      "Prix compétitifs",
-      hoursLong("fr"),
     ],
 
     howItWorks: {
@@ -205,7 +206,9 @@ export const fr = {
     eyebrow: "Estimation gratuite",
     title: "Combien vaut votre véhicule ?",
     subtitle: "Quatre questions, moins d'une minute. On vous rappelle avec un prix ferme.",
-    replyTime: `On rappelle habituellement en moins de 5 minutes, de ${hoursRange("fr").replace("de ", "")}.`,
+    /* No hours here. The visitor is submitting the form now; what they want
+       to know is how long they wait, not when the yard closes. */
+    replyTime: "On rappelle habituellement en moins de 5 minutes.",
 
     vehicle: "Année, marque et modèle",
     name: "Prénom et nom",

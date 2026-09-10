@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check, ChevronRight, Clock, MapPin } from "lucide-react";
+import { Check, ChevronRight, Clock, FileCheck, Lock, MapPin, Recycle } from "lucide-react";
 
 import { LANGS, isLang, pathFor, cityPathFor, type Lang } from "@/config/routes";
 import { siteConfig, fullAddress, mapsEmbedUrl, mapsUrl } from "@/config/site";
@@ -116,23 +116,14 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7 lg:max-w-xl">
               {/*
-                The markets served, not the address. The yard is in Mascouche
-                and that is stated in the schema, the footer and the yard
-                section — but a searcher in Laval needs to see Laval.
-
-                This carries more weight than it used to. The headline is now
-                a price guarantee and names no city at all, so this line is
-                the only local signal above the fold. It is not decoration.
+                There was a city-and-hours eyebrow above the headline. Removed
+                on request. Worth knowing what went with it: the H1 is a price
+                guarantee that names no city, so nothing above the fold is
+                local any more. The cities are still in the title, the meta
+                description, the schema and the service-area section — but a
+                visitor now reads the whole first screen without seeing their
+                own city. Put it back if the Laval and Montreal pages stall.
               */}
-              <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-700 sm:text-[13px]">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-brand-500" />
-                {lang === "fr" ? "Laval · Montréal · Rive-Nord" : "Laval · Montreal · North Shore"}
-                <span className="text-brand-400" aria-hidden="true">
-                  /
-                </span>
-                {t.common.hours}
-              </p>
-
               {/*
                 Set in sentence case, not the caps it was written in. At
                 3.25rem in font-black, caps across three lines reads as
@@ -144,7 +135,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 lands wherever the line wraps, which holds up across both
                 languages and every width. The colour marks the seam.
               */}
-              <h1 className="mt-5 text-balance text-[2rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.6rem] lg:text-[3rem]">
+              <h1 className="text-balance text-[2rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.6rem] lg:text-[3rem]">
                 {t.home.h1.promise} <span className="text-brand-700">{t.home.h1.guarantee}</span>
               </h1>
 
@@ -359,13 +350,69 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           <h2 className="max-w-3xl text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             {t.home.why.title}
           </h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:gap-8">
-            {t.home.why.points.map((point) => (
-              <div key={point.title} className="border-l-4 border-brand-600 pl-5">
-                <h3 className="text-lg font-black text-slate-900">{point.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-slate-600">{point.body}</p>
-              </div>
-            ))}
+          {/*
+            Four points, but deliberately not four equal boxes.
+
+            Only the first one — we own the yard, we are not a broker — is a
+            claim a competitor with a phone number and a subcontractor cannot
+            copy. The other three are reassurances against the three things
+            people fear when they call a scrap buyer: the price changing on
+            arrival, being left with the SAAQ paperwork, and the car ending up
+            in a field. So the differentiator gets the dark card and the full
+            height of the column, and the reassurances read as a list, which
+            is what they are. Equal cards would have said all four matter the
+            same amount.
+
+            The icons name the point rather than decorate it: a pin for the
+            real address, a lock for the price that does not move, a stamped
+            document for the SAAQ, a recycling mark for the disposal.
+          */}
+          {/*
+            The differentiator on top, the reassurances underneath — not four
+            equal boxes.
+
+            Only the first point, that we own the yard and are not a broker,
+            is a claim a competitor with a phone number and a subcontractor
+            cannot make. The other three answer the three things people are
+            actually afraid of when they call a scrap buyer: the price
+            changing when the truck arrives, being left holding the SAAQ
+            paperwork, and the car ending up in a field. Equal cards would
+            have said all four carry the same weight.
+
+            The icons name the point rather than decorate it: a pin for the
+            real address, a lock for the price that does not move, a stamped
+            document for the SAAQ, a recycling mark for the disposal.
+          */}
+          <div className="mt-10 flex flex-col gap-5 rounded-2xl bg-brand-700 p-7 text-white sm:flex-row sm:items-center sm:gap-7 sm:p-9">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/10">
+              <MapPin className="h-7 w-7 text-brand-200" strokeWidth={2.25} />
+            </span>
+            <div className="max-w-2xl">
+              <h3 className="text-xl font-black leading-snug sm:text-2xl">
+                {t.home.why.points[0].title}
+              </h3>
+              <p className="mt-2.5 text-[15px] leading-relaxed text-brand-100">
+                {t.home.why.points[0].body}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {t.home.why.points.slice(1).map((point, index) => {
+              const Icon = [Lock, FileCheck, Recycle][index];
+              return (
+                <div
+                  key={point.title}
+                  className="rounded-2xl bg-white p-6 ring-1 ring-slate-200 sm:p-7"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+                    <Icon className="h-5 w-5" strokeWidth={2.25} />
+                  </span>
+                  <h3 className="mt-5 text-lg font-black text-slate-900">{point.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-slate-600">{point.body}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

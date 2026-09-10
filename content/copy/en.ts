@@ -43,7 +43,6 @@ export const en: Copy = {
     whatsapp: "WhatsApp",
     whatsappAria: "Message Autos B2 on WhatsApp",
     whatsappTagline: "Send us a photo of your car",
-    hours: hoursShort("en"),
     hoursLong: hoursLong("en"),
     addressLabel: "Our yard",
     emailLabel: "Email",
@@ -80,8 +79,6 @@ export const en: Copy = {
       "Official SAAQ receipt",
       "Fast service",
       "Responsible recycling",
-      "Competitive prices",
-      hoursLong("en"),
     ],
 
     howItWorks: {
@@ -172,7 +169,7 @@ export const en: Copy = {
     eyebrow: "Free quote",
     title: "What is your vehicle worth?",
     subtitle: "Four questions, under a minute. We call you back with a firm price.",
-    replyTime: `We usually call back within 5 minutes, ${hoursRange("en")}.`,
+    replyTime: "We usually call back within 5 minutes.",
 
     vehicle: "Year, make and model",
     name: "First and last name",
