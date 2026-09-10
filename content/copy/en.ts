@@ -116,7 +116,11 @@ export const en: Copy = {
       ],
     },
 
-    stats: ["2,000 vehicles bought per year", "10 years in Mascouche", hoursShort("en")],
+    stats: [
+      `${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} vehicles bought per year`,
+      `${siteConfig.facts.yearsInBusiness} years in Mascouche`,
+      hoursShort("en"),
+    ],
 
     why: {
       title: "Who buys junk cars in Laval and Montreal?",

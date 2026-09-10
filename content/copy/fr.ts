@@ -155,8 +155,8 @@ export const fr = {
     },
 
     stats: [
-      "2 000 véhicules achetés par année",
-      "10 ans d'expérience à Mascouche",
+      `${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} véhicules achetés par année`,
+      `${siteConfig.facts.yearsInBusiness} ans d'expérience à Mascouche`,
       `Ouvert 7 jours sur 7, ${hoursRange("fr").replace("de ", "")}`,
     ],
 
