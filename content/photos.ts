@@ -55,8 +55,8 @@ export const PHOTOS: Photo[] = [
       en: "An evening car pickup outside a home on the North Shore",
     },
     caption: {
-      fr: "On ramasse jusqu'à 20 h, 7 jours sur 7.",
-      en: "We collect until 8pm, 7 days a week.",
+      fr: "On passe en soirée, quand vous êtes à la maison.",
+      en: "We come by in the evening, when you are home.",
     },
   },
   {
