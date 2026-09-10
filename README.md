@@ -102,7 +102,7 @@ to `.env.local` for dev and set the same keys in Vercel for production.
 | `NEXT_PUBLIC_TRACKING_PHONE_E164` + `_DISPLAY` | Your call-tracking provider's pool number | DNI stays off; everyone sees the real number and calls cannot be attributed to a click. Both must be set. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Search Console → HTML tag method | Cannot verify the property. |
 | `LEAD_WEBHOOK_URL` | Zapier/Make hook → Twilio SMS or WhatsApp | Leads still store and email, but nobody gets pinged to call back within five minutes. |
-| `NEXT_PUBLIC_CONVEX_URL`, `INGEST_SECRET` | `npx convex dev` | **The form returns 503 and leads are lost.** |
+| `NEXT_PUBLIC_CONVEX_URL`, `INGEST_SECRET` | `npx convex dev` locally; **`npx convex deploy` for production**, which prints the `https://….convex.cloud` URL to paste into Vercel | Nothing is stored and nothing reaches `/admin`. `LEAD_WEBHOOK_URL` still pages a human if it is set; with neither configured the form returns 503 and **the lead is lost**. A `local:` deployment in `.env.local` is a laptop, not a backend — it cannot be the production value. |
 
 ### Then, inside the ad platforms
 

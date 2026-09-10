@@ -10,9 +10,10 @@ import { phoneIsValid } from "@/lib/phone";
  * POST /api/quote  —  lead handler
  * ============================================================
  * Validates, stores in Convex (which schedules the notification
- * email), then fires the SMS/WhatsApp webhook. Storing first
- * means a mail or webhook outage costs a notification, never a
- * lead — it still shows up in /admin either way.
+ * email), then fires the SMS/WhatsApp webhook. Both are tried
+ * independently and a lead is only refused when neither accepted
+ * it, so a store outage costs the /admin record but still pages a
+ * human, and a webhook outage costs the ping but not the lead.
  *
  * Two kinds of submission arrive here:
  *
@@ -178,48 +179,73 @@ export async function POST(request: Request) {
     locale,
   };
 
+  /*
+   * Two independent sinks: Convex (the record of the lead, which also
+   * schedules the notification email) and the webhook (the SMS/WhatsApp ping
+   * that gets a human dialling). Both are attempted, and the submission is
+   * only refused if NEITHER of them accepted it.
+   *
+   * It used to return 503 the instant NEXT_PUBLIC_CONVEX_URL was missing,
+   * before the webhook was even tried. That is not hypothetical: production
+   * ran that way, answering every single submission with
+   * {"error":"backend_not_configured"} while the visitor was told to phone
+   * instead. An unconfigured datastore is an outage. It must not also be a
+   * lost customer when there is a second route to a human sitting right
+   * there, unused.
+   */
   const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
-  if (!convexUrl) {
+  let stored = false;
+
+  if (convexUrl) {
+    try {
+      const convex = new ConvexHttpClient(convexUrl);
+      await convex.mutation(api.quotes.submit, {
+        ...lead,
+        secret: process.env.INGEST_SECRET,
+      });
+      stored = true;
+    } catch (err) {
+      // Log the whole lead so it stays recoverable from the server logs.
+      console.error(
+        "[quote] failed to store lead:",
+        err instanceof ConvexError ? err.data : err,
+        JSON.stringify(lead)
+      );
+    }
+  } else {
     console.error(
       "[quote] NEXT_PUBLIC_CONVEX_URL is not set — lead NOT stored. Captured:",
       JSON.stringify(lead)
     );
-    return NextResponse.json({ error: "backend_not_configured" }, { status: 503 });
-  }
-
-  try {
-    const convex = new ConvexHttpClient(convexUrl);
-    await convex.mutation(api.quotes.submit, {
-      ...lead,
-      secret: process.env.INGEST_SECRET,
-    });
-  } catch (err) {
-    // Log the whole lead so it stays recoverable from the server logs.
-    console.error(
-      "[quote] failed to store lead:",
-      err instanceof ConvexError ? err.data : err,
-      JSON.stringify(lead)
-    );
-    return NextResponse.json({ error: "store_failed" }, { status: 502 });
   }
 
   /*
-   * Fire the SMS/WhatsApp hook. Deliberately not awaited into the response
-   * path beyond a short timeout: the lead is already stored, and a slow
-   * Zapier endpoint must not turn a captured lead into a 502 the browser
-   * shows as an error.
+   * `stored` rides along in the payload so whoever receives the ping knows
+   * whether this lead also exists in /admin or whether the message they are
+   * reading is the only copy of it anywhere.
    */
+  let notified = false;
   if (siteConfig.leadWebhook) {
     try {
       await fetch(siteConfig.leadWebhook, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...lead, partial, source, attribution }),
+        body: JSON.stringify({ ...lead, partial, source, attribution, stored }),
         signal: AbortSignal.timeout(3000),
       });
+      notified = true;
     } catch (err) {
-      console.error("[quote] webhook failed (lead is stored):", err);
+      console.error("[quote] webhook failed:", err, stored ? "(lead is stored)" : "(lead is LOST)");
     }
+  }
+
+  if (!stored && !notified) {
+    /*
+     * Nowhere for the lead to go. The console.error above is now the only
+     * record it ever existed, so the visitor genuinely does need the phone
+     * number the form is about to show them.
+     */
+    return NextResponse.json({ error: "backend_not_configured" }, { status: 503 });
   }
 
   return NextResponse.json({ ok: true });

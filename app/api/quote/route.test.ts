@@ -16,6 +16,17 @@ vi.mock("convex/browser", () => ({
 vi.mock("@/convex/_generated/api", () => ({ api: { quotes: { submit: "quotes:submit" } } }));
 
 process.env.NEXT_PUBLIC_CONVEX_URL = "http://127.0.0.1:3210";
+process.env.LEAD_WEBHOOK_URL = "https://hooks.example/lead";
+
+/*
+ * The webhook is a bare `fetch`, so it is stubbed globally rather than mocked
+ * per module. Every spec runs with a reachable webhook unless it says
+ * otherwise, which is what production looks like once LEAD_WEBHOOK_URL is set.
+ */
+const webhook = vi.fn(
+  async (_url: string, _init: RequestInit) => new Response("{}", { status: 200 })
+);
+vi.stubGlobal("fetch", webhook);
 
 const { POST } = await import("@/app/api/quote/route");
 
@@ -45,7 +56,13 @@ const validLead = {
   source: "quote_page",
 };
 
-beforeEach(() => submit.mockClear());
+beforeEach(() => {
+  submit.mockClear();
+  submit.mockImplementation(async () => ({ _id: "test" }));
+  webhook.mockClear();
+  webhook.mockImplementation(async () => new Response("{}", { status: 200 }));
+  process.env.NEXT_PUBLIC_CONVEX_URL = "http://127.0.0.1:3210";
+});
 
 describe("POST /api/quote — accepting a real lead", () => {
   it("stores a complete submission and returns ok", async () => {
@@ -155,5 +172,71 @@ describe("POST /api/quote — spam and abuse", () => {
     // every lead site-wide.
     const other = await post(validLead, "198.51.100.99");
     expect(other.status).toBe(200);
+  });
+});
+
+/*
+ * Production shipped for its entire life answering every submission with
+ * {"error":"backend_not_configured"}, because NEXT_PUBLIC_CONVEX_URL was
+ * never set on the host and the handler returned 503 before it tried the
+ * webhook. Nobody noticed: the form showed "call us instead", which reads
+ * like a transient glitch rather than a funnel with no bottom. These specs
+ * are the reason it cannot happen quietly again.
+ */
+describe("POST /api/quote — when a backend is missing", () => {
+  /*
+   * `= ""` and not `delete` or `= undefined`: Node coerces an assigned
+   * undefined to the *string* "undefined", which is truthy, so the route
+   * would sail past its own guard and the spec would pass for the wrong
+   * reason. An empty string is falsy and is also the more realistic
+   * failure — a variable present in Vercel with nothing in it.
+   */
+  it("still reaches a human through the webhook when the store is unconfigured", async () => {
+    process.env.NEXT_PUBLIC_CONVEX_URL = "";
+
+    const res = await post(validLead);
+
+    expect(res.status).toBe(200);
+    await expect(res.json()).resolves.toEqual({ ok: true });
+    expect(submit).not.toHaveBeenCalled();
+    expect(webhook).toHaveBeenCalledTimes(1);
+  });
+
+  it("still reaches a human through the webhook when the store throws", async () => {
+    submit.mockImplementation(async () => {
+      throw new Error("convex is down");
+    });
+
+    const res = await post(validLead);
+
+    expect(res.status).toBe(200);
+    expect(webhook).toHaveBeenCalledTimes(1);
+  });
+
+  /*
+   * Whoever reads the SMS needs to know whether the lead is also sitting in
+   * /admin or whether the message in their hand is the only copy of it.
+   */
+  it("tells the webhook whether the lead was also stored", async () => {
+    await post(validLead);
+    expect(JSON.parse(String(webhook.mock.calls[0][1].body)).stored).toBe(true);
+
+    webhook.mockClear();
+    process.env.NEXT_PUBLIC_CONVEX_URL = "";
+
+    await post(validLead);
+    expect(JSON.parse(String(webhook.mock.calls[0][1].body)).stored).toBe(false);
+  });
+
+  it("refuses the lead only when there is nowhere at all for it to go", async () => {
+    process.env.NEXT_PUBLIC_CONVEX_URL = "";
+    webhook.mockImplementation(async () => {
+      throw new Error("webhook is down");
+    });
+
+    const res = await post(validLead);
+
+    expect(res.status).toBe(503);
+    await expect(res.json()).resolves.toEqual({ error: "backend_not_configured" });
   });
 });

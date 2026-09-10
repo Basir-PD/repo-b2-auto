@@ -7,7 +7,37 @@ Last updated: 2026-09-09.
 
 ---
 
-## 0. 🔴 Read `OFF_SITE_AUDIT.md` first
+## 0. 🔴🔴 The quote form is dead in production
+
+`POST https://www.autosb2.com/api/quote/` returns **503
+`{"error":"backend_not_configured"}`**. Confirmed live on 2026-09-09 from the
+browser network tab. `NEXT_PUBLIC_CONVEX_URL` is not set on Vercel, and the
+only Convex deployment that exists is `local:local-bp_payenda-b2_autos` on
+`127.0.0.1:3210` — a laptop, not a backend. **There is no production Convex
+deployment.** Every lead submitted through the site has been lost; the only
+trace is a `console.error` in the Vercel runtime log.
+
+This outranks every other item in this file, on-site and off. Ads, rankings
+and city pages all funnel into a form that does not work.
+
+- [ ] `npx convex deploy` — creates the production deployment, prints the
+      `https://<name>.convex.cloud` URL.
+- [ ] Vercel → Settings → Environment Variables → Production:
+      `NEXT_PUBLIC_CONVEX_URL=https://<name>.convex.cloud`. It is a
+      `NEXT_PUBLIC_` var, so it is inlined at build — **redeploy after
+      setting it**, do not just save.
+- [ ] `npx convex env set INGEST_SECRET "<random>"` and set the identical
+      value in Vercel.
+- [ ] `npx convex env set RESEND_API_KEY re_…`, plus `QUOTE_FROM`,
+      `QUOTE_INBOX`, `ADMIN_EMAILS` — without these the lead stores but
+      nobody is emailed.
+- [ ] Set `LEAD_WEBHOOK_URL` in Vercel. As of 2026-09-09 the route tries the
+      webhook independently of the store, so this is the second route to a
+      human when Convex is unreachable — but it does nothing while unset.
+- [ ] Re-test `/fr/lp/vendre-mon-auto/` end to end and confirm a 200 with
+      `{"ok":true}` in the network tab.
+
+## 0.1 🔴 Read `OFF_SITE_AUDIT.md` first
 
 The off-site audit found that **340 Chemin Pincourt is listed across every major
 directory as "Pièces d'Auto Christian 2007 Inc"**, phone 450-477-1050 — a
