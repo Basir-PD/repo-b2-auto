@@ -13,6 +13,7 @@ import { SERVICE_AREA } from "@/content/service-area";
 import { HOME_PHOTOS } from "@/content/photos";
 import { hasReviews, REVIEWS } from "@/content/reviews";
 import QuoteForm from "@/components/site/QuoteForm";
+import HowItWorks from "@/components/pages/HowItWorks";
 import PhotoGrid from "@/components/site/PhotoGrid";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
 import PhoneLink from "@/components/site/PhoneLink";
@@ -70,12 +71,6 @@ export async function generateMetadata({
  * tow, we pay cash. Identical in both languages, so they are not in the copy
  * files — only their alt text is, which genuinely does differ.
  */
-const STEP_IMAGES = [
-  "/photos/etape-1-estimation.webp",
-  "/photos/etape-2-remorquage.webp",
-  "/photos/etape-3-comptant.webp",
-] as const;
-
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang: raw } = await params;
   if (!isLang(raw)) notFound();
@@ -255,46 +250,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       </section>
 
       {/* -------------------------------------------------- How it works */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="max-w-3xl text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-            {t.home.howItWorks.title}
-          </h2>
-
-          {/* Numbered because this genuinely is a sequence — the order is the content. */}
-          <ol className="mt-10 grid gap-6 md:grid-cols-3 lg:gap-8">
-            {t.home.howItWorks.steps.map((step, index) => (
-              <li key={step.title} className="rounded-2xl border border-slate-200 p-6 sm:p-7">
-                {/*
-                  All three were normalised to one 1200x694 canvas with the
-                  subject scaled to a common width, so the three headings sit
-                  on the same line no matter how tall each subject is. The
-                  surrounding white is the image's own background and is
-                  invisible against the card.
-
-                  No `priority`: this section is well below the fold and must
-                  not compete with the hero for the LCP.
-                */}
-                <Image
-                  src={STEP_IMAGES[index]}
-                  alt={step.alt}
-                  width={1200}
-                  height={694}
-                  sizes="(min-width: 1280px) 330px, (min-width: 768px) 26vw, 88vw"
-                  className="h-auto w-full"
-                />
-                <div className="mt-5 flex items-center gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-600 text-base font-black text-white">
-                    {index + 1}
-                  </span>
-                  <h3 className="text-lg font-black text-slate-900">{step.title}</h3>
-                </div>
-                <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{step.body}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <HowItWorks lang={lang} />
 
       {/* --------------------------------------------------- Fleet photos */}
       {/*

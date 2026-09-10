@@ -142,7 +142,14 @@ export const siteConfig = {
   /** Verified business figures. Do not add to these without a source. */
   facts: {
     yearsInBusiness: 10,
-    vehiclesPerYear: 2000,
+    /*
+      Raised from 2 000 to 10 000 on 2026-09-09, on the owner's word that
+      2 000 was the figure that was wrong. It is stated in one place because
+      it is rendered in two — the homepage stat row and the landing-page
+      band — and a volume claim that disagrees with itself across a site is
+      worse than either version of it.
+    */
+    vehiclesPerYear: 10000,
     cashMin: 300,
     cashMax: 3000,
   },

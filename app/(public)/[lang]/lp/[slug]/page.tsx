@@ -10,6 +10,9 @@ import { getCopy } from "@/content/copy";
 import { LANDING_CONTENT, landingBySlug, landingStats } from "@/content/landing";
 import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
+import WhatsAppLink from "@/components/site/WhatsAppLink";
+import CountUp from "@/components/site/CountUp";
+import HowItWorks from "@/components/pages/HowItWorks";
 
 export function generateStaticParams() {
   return LANDING_CONTENT.map((lp) => ({ lang: lp.lang, slug: lp.slug }));
@@ -104,32 +107,46 @@ export default async function LandingPage({
               </h1>
 
               {/*
-                Three beats with brand dots, the same device as the homepage
-                hero. `lp.sub` is deliberately not rendered here — it is the
-                meta and og description, which is what shows when someone
-                pastes the link into Messenger.
+                The homepage hero's beats treatment, not a variant of it: the
+                dot is a separator between beats, so the first one does not get
+                one — a leading dot turns a rhythm into a bullet list.
+
+                `lp.sub` is deliberately not rendered. It is the meta and og
+                description, which is what shows when someone pastes the link
+                into Messenger.
               */}
-              <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2.5">
-                {lp.beats.map((beat) => (
-                  <li
-                    key={beat}
-                    className="flex items-center gap-2.5 text-base font-black text-slate-800 sm:text-lg"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="h-2 w-2 shrink-0 rounded-full bg-brand-600"
-                    />
+              <ul className="mt-6 flex max-w-xl flex-wrap items-center gap-x-3.5 gap-y-2 text-lg font-bold text-slate-800 sm:text-xl">
+                {lp.beats.map((beat, index) => (
+                  <li key={beat} className="flex items-center gap-3.5">
+                    {index > 0 && (
+                      <span
+                        aria-hidden="true"
+                        className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"
+                      />
+                    )}
                     {beat}
                   </li>
                 ))}
               </ul>
 
-              <PhoneLink
-                source={`lp_${slug}_hero`}
-                showIcon
-                label={t.home.ctaSecondary}
-                className="mt-7 flex w-full items-center justify-center gap-3 rounded-xl bg-brand-600 px-6 py-4 text-lg font-black text-white shadow-lg shadow-brand-900/15 transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 sm:w-auto"
-              />
+              {/*
+                Stacked and equal width, same as the homepage. WhatsApp leads:
+                the form is already in this viewport, and someone standing next
+                to a dead car would rather send a photo than describe it.
+              */}
+              <div className="mt-8 flex max-w-md flex-col gap-3">
+                <WhatsAppLink
+                  source={`lp_${slug}`}
+                  label={t.home.whatsappCta}
+                  prefill={t.home.whatsappPrefill}
+                />
+                <PhoneLink
+                  source={`lp_${slug}_hero`}
+                  showIcon
+                  label={t.home.ctaSecondary}
+                  className="flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl border-2 border-slate-300 bg-white px-6 py-4 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                />
+              </div>
 
               <ul className="mt-8 space-y-3">
                 {lp.bullets.map((bullet) => (
@@ -156,19 +173,22 @@ export default async function LandingPage({
 
         {/*
           The three numbers. Real ones, read off siteConfig.facts so they can
-          never disagree with the homepage: 2 000 vehicles a year and 10 years
-          at Mascouche. Nothing rounded, nothing invented — a figure a
-          competitor can disprove costs more than the figure was ever worth.
+          never disagree with the homepage, the about page or the photo
+          captions, all of which state the same figures. They count up once,
+          the first time the band is scrolled into view.
         */}
         <div className="container mx-auto px-4 pb-12 sm:px-6 sm:pb-14">
           <dl className="grid grid-cols-1 divide-y divide-slate-200 overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {landingStats(lang).map((stat) => (
+            {landingStats(lang).stats.map((stat) => (
               <div key={stat.label} className="px-6 py-6 text-center sm:py-7">
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
-                  <span className="block text-3xl font-black leading-none tracking-tight text-brand-700 sm:text-[2.25rem]">
-                    {stat.figure}
-                  </span>
+                  <CountUp
+                    value={stat.value}
+                    unit={stat.unit}
+                    locale={landingStats(lang).locale}
+                    className="block text-3xl font-black leading-none tracking-tight tabular-nums text-brand-700 sm:text-[2.25rem]"
+                  />
                   <span className="mt-2 block text-[13px] font-semibold leading-snug text-slate-600">
                     {stat.label}
                   </span>
@@ -178,34 +198,36 @@ export default async function LandingPage({
           </dl>
         </div>
 
-        {/* The truck as the page's floor — same device as the main hero. */}
-        <div className="relative h-[12rem] w-full sm:h-[16rem] lg:h-[19rem]">
+        {/*
+          The homepage's treatment of the same asset: full width beneath the
+          hero, intrinsic 1600x476 so the box is reserved and it cannot shift
+          the page. It used to be a fixed-height crop under a mask, which is
+          how a 3:2 photo was made to behave like a banner — unnecessary now
+          that the banner is the actual image.
+        */}
+        <div className="container mx-auto px-4 pb-14 sm:px-6 sm:pb-16">
           <Image
-            /*
-              The homepage hero's image, not the 3:2 crop this page used to
-              carry. It is a 1600x476 banner, which is the shape this strip
-              actually is, and 126 KB against 265 KB — on the one page type
-              where the pageview is bought and paid for.
-            */
             src="/tow-truck-hero.webp"
             alt={
               lang === "fr"
                 ? "Remorqueuse à plateau d'Autos B2 chargée d'un véhicule, à Mascouche"
                 : "Autos B2 flatbed tow truck loaded with a vehicle, in Mascouche"
             }
-            fill
-            /*
-              Lazy, not priority. This sits below the H1, the sub, the call
-              button, the bullet list and the entire quote form — it cannot be
-              the LCP element on any viewport, and marking it high-priority
-              only made it compete with whatever is.
-            */
+            width={1600}
+            height={476}
             loading="lazy"
-            sizes="100vw"
-            quality={50}
-            className="object-cover object-[58%_58%] [mask-image:linear-gradient(to_bottom,transparent,black_34%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_34%)]"
+            sizes="(min-width: 1088px) 1024px, 100vw"
+            quality={72}
+            className="mx-auto h-auto w-full max-w-5xl"
           />
         </div>
+
+        {/*
+          The three steps, the same component the homepage renders. A landing
+          page that asks a stranger to start a process it has never described
+          is asking for the call it does not get.
+        */}
+        <HowItWorks lang={lang} compact />
       </main>
 
       {/* Minimal footer: legally required identity, no links out. */}

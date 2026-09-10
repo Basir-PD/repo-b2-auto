@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site";
 import type { Lang } from "@/config/routes";
 
 /**
@@ -44,8 +45,8 @@ export const PHOTOS: Photo[] = [
       en: "An Autos B2 trailer hauling five end-of-life vehicles on the North Shore",
     },
     caption: {
-      fr: "Environ 2 000 véhicules ramassés par année.",
-      en: "Around 2,000 vehicles collected per year.",
+      fr: `Environ ${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} véhicules ramassés par année.`,
+      en: `Around ${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} vehicles collected per year.`,
     },
   },
   {

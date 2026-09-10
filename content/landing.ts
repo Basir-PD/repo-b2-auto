@@ -115,12 +115,14 @@ export const LANDING_CONTENT: LandingContent[] = [
  * The three numbers under the hero, derived from `siteConfig.facts` so they
  * can never drift from the homepage's version of the same claims.
  *
- * These are the real figures: two thousand vehicles a year, ten years at
- * Mascouche. An earlier build of this site advertised "10 000+ vehicles",
- * "350+ reviews" and "25+ years"; all three were removed because nobody
- * could source them, and they are not coming back. A number a competitor
- * can disprove in one phone call is worth less than no number at all — and
- * this is the page where a stranger decides whether to hand over a car.
+ * The vehicle figure was 2 000 until the owner corrected it to 10 000 on
+ * 2026-09-09. It lives in `siteConfig.facts` and is read from there by the
+ * homepage stat row, the about page, a photo caption and this band, so the
+ * four cannot drift apart — which they had, silently, before this.
+ *
+ * The review count is NOT a stat here and must never become one. The profile
+ * has one review; "350+ reviews" shipped on an earlier build of this site and
+ * was removed as unsourceable, and it does not come back by the side door.
  *
  * The price range is deliberately not one of these. It was removed from the
  * hero on request, and reintroducing it as a stat would be the same claim
@@ -129,23 +131,28 @@ export const LANDING_CONTENT: LandingContent[] = [
 export function landingStats(lang: Lang) {
   const { vehiclesPerYear, yearsInBusiness } = siteConfig.facts;
 
+  /*
+    `value` and `unit` are separate because the band counts up when it scrolls
+    into view, and a counter needs a number, not "10 ans". The unit is printed
+    straight after the formatted figure.
+  */
   return lang === "fr"
-    ? [
-        {
-          figure: vehiclesPerYear.toLocaleString("fr-CA"),
-          label: "véhicules achetés par année",
-        },
-        { figure: `${yearsInBusiness} ans`, label: "de recyclage à Mascouche" },
-        { figure: "7 j/7", label: hoursRange("fr").replace("de ", "") },
-      ]
-    : [
-        {
-          figure: vehiclesPerYear.toLocaleString("en-CA"),
-          label: "vehicles bought per year",
-        },
-        { figure: `${yearsInBusiness} years`, label: "recycling in Mascouche" },
-        { figure: "7 days", label: hoursRange("en") },
-      ];
+    ? {
+        locale: "fr-CA",
+        stats: [
+          { value: vehiclesPerYear, unit: "", label: "véhicules achetés par année" },
+          { value: yearsInBusiness, unit: " ans", label: "de recyclage à Mascouche" },
+          { value: 7, unit: " j/7", label: hoursRange("fr").replace("de ", "") },
+        ],
+      }
+    : {
+        locale: "en-CA",
+        stats: [
+          { value: vehiclesPerYear, unit: "", label: "vehicles bought per year" },
+          { value: yearsInBusiness, unit: " years", label: "recycling in Mascouche" },
+          { value: 7, unit: " days", label: hoursRange("en") },
+        ],
+      };
 }
 
 export function landingBySlug(lang: Lang, slug: string) {
