@@ -1,5 +1,5 @@
 import type { Lang } from "@/config/routes";
-import { siteConfig, hoursRange } from "@/config/site";
+import { siteConfig } from "@/config/site";
 
 /**
  * The three numbers under the hero, derived from `siteConfig.facts` so they
@@ -25,22 +25,26 @@ export function businessStats(lang: Lang) {
     `value` and `unit` are separate because the band counts up when it scrolls
     into view, and a counter needs a number, not "10 ans". The unit is printed
     straight after the formatted figure.
+
+    The third label says what being open seven days actually buys the seller
+    — evenings, weekends, holidays — rather than restating the opening hours,
+    which are already in the header, the footer and the schema.
   */
   return lang === "fr"
     ? {
         locale: "fr-CA",
         stats: [
           { value: vehiclesPerYear, unit: "", label: "véhicules achetés par année" },
-          { value: yearsInBusiness, unit: " ans", label: "de recyclage à Mascouche" },
-          { value: 7, unit: " j/7", label: hoursRange("fr").replace("de ", "") },
+          { value: yearsInBusiness, unit: " ans", label: "d'expérience" },
+          { value: 7, unit: " j/7", label: "Horaire flexible, fins de semaine et jours fériés" },
         ],
       }
     : {
         locale: "en-CA",
         stats: [
           { value: vehiclesPerYear, unit: "", label: "vehicles bought per year" },
-          { value: yearsInBusiness, unit: " years", label: "recycling in Mascouche" },
-          { value: 7, unit: " days", label: hoursRange("en") },
+          { value: yearsInBusiness, unit: " years", label: "of experience" },
+          { value: 7, unit: " days", label: "Flexible hours, weekends and holidays" },
         ],
       };
 }
