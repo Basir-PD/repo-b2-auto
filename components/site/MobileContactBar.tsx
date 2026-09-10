@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -31,6 +32,13 @@ import WhatsAppIcon from "@/components/site/WhatsAppIcon";
  * #075E54 is 7.67:1, is WhatsApp's own colour, and stays distinct from the
  * brand green next to it.
  *
+ * It stays out of the way until the page has been scrolled 150px. On first
+ * paint the visitor is already looking at a phone number in the header and a
+ * call button in the hero; a third copy of the same two actions pinned over
+ * the bottom of that same screen is a duplicate, and on a short viewport it
+ * eats a fifth of what they can see. Past 150px the hero is gone and the bar
+ * becomes the only route to a call, which is when it earns the space.
+ *
  * The spacer is not optional. Without it the bar covers the last ~68px of
  * every page, and reserving the height in layout rather than overlaying is
  * what keeps CLS at zero. Keep it in step with the bar's real height:
@@ -48,6 +56,19 @@ export default function MobileContactBar({
 }) {
   const pathname = usePathname();
   const phone = usePhone();
+  const [shown, setShown] = useState(false);
+
+  /*
+   * `passive` because this listener never calls preventDefault, and saying so
+   * lets the browser scroll without waiting to find out. The state only
+   * flips on a crossing, so a scroll is a comparison and not a re-render.
+   */
+  useEffect(() => {
+    const onScroll = () => setShown(window.scrollY > 150);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // "/fr/" and "/en/" — the homepage in either language.
   const isHome = /^\/(fr|en)\/?$/.test(pathname);
@@ -61,7 +82,20 @@ export default function MobileContactBar({
   return (
     <>
       <div aria-hidden="true" className="h-[calc(4.25rem+env(safe-area-inset-bottom))] md:hidden" />
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(15,23,42,0.10)] backdrop-blur-sm md:hidden">
+      {/*
+        Translated out rather than unmounted, so the bar slides rather than
+        appearing, and `invisible` rather than `hidden` so the transition can
+        still run. aria-hidden and inert keep it off the tab order and out of
+        a screen reader while it is parked off-screen — a keyboard user
+        should not be able to focus a call button that nobody can see.
+      */}
+      <div
+        aria-hidden={!shown}
+        inert={!shown || undefined}
+        className={`fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(15,23,42,0.10)] backdrop-blur-sm transition-transform duration-200 ease-out motion-reduce:transition-none md:hidden ${
+          shown ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
         <div className="grid grid-cols-2 gap-2.5">
           <a
             href={phone.href}

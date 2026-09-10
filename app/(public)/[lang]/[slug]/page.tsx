@@ -440,6 +440,7 @@ export default async function SlugPage({
           trail={crumb(service.serviceName[lang])}
           h1={service.h1[lang]}
           lede={service.lede[lang]}
+          cta
         />
         <Sections sections={service.sections[lang]} />
 
@@ -548,6 +549,7 @@ export default async function SlugPage({
                 ? "Les réponses aux questions qu'on nous pose le plus souvent au téléphone."
                 : "Answers to what we're asked most often on the phone."
             }
+            cta
           />
           <div className="container mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
             <div className="divide-y divide-slate-200 border-y border-slate-200">
@@ -583,6 +585,7 @@ export default async function SlugPage({
             trail={crumb(t.nav.about)}
             h1={ABOUT.h1[lang]}
             lede={ABOUT.lede[lang]}
+            cta
           />
           <Sections sections={ABOUT.sections[lang]} />
 
