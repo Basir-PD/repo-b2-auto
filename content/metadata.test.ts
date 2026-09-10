@@ -19,11 +19,23 @@ const LANGS = ["fr", "en"] as const;
  * These specs check the copy at its source, which is where it is written and
  * where a regression starts.
  */
-function checkTitle(label: string, title: string) {
+/*
+  `min` is opt-in because it is only true of pages someone searches for. A
+  legal page called "Terms of use" is 23 characters and should stay that way.
+  A service page is different: it is competing for a query, Google renders
+  about 60 characters, and "Cash for junk cars | Autos B2" left 31 of them
+  empty while every rival filled the line with cities. That shipped and sat
+  there because the only assertion here was an upper bound.
+*/
+function checkTitle(label: string, title: string, min = 0) {
   const composed = pageTitle(title);
   expect(composed.length, `${label} → "${composed}" (${composed.length})`).toBeLessThanOrEqual(
     TITLE_MAX
   );
+  expect(
+    composed.length,
+    `${label} → "${composed}" (${composed.length}) wastes the title budget`
+  ).toBeGreaterThanOrEqual(min);
   // The brand is appended once, by pageTitle, and never written into the copy.
   expect(title, `${label} should not carry the brand itself`).not.toMatch(/Autos B2|B2 Autos/);
 }
@@ -95,11 +107,13 @@ describe("homepage metadata", () => {
   }
 });
 
+const SERVICE_TITLE_MIN = 45;
+
 describe("service pages", () => {
   for (const service of SERVICES) {
     for (const lang of LANGS) {
       it(`${service.key} (${lang})`, () => {
-        checkTitle(`${service.key} ${lang}`, service.metaTitle[lang]);
+        checkTitle(`${service.key} ${lang}`, service.metaTitle[lang], SERVICE_TITLE_MIN);
         checkDescription(`${service.key} ${lang}`, service.metaDescription[lang]);
       });
     }

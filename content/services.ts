@@ -25,9 +25,15 @@ export const SERVICES: ServicePage[] = [
       fr: "Achat auto scrap — acheteur direct",
       en: "Cash for junk cars — we buy junk cars",
     },
+    /*
+       Titles are budgeted at 60 characters and " | Autos B2" eats 11 of
+       them. These two were 30 and 29 characters all-in — half the budget
+       unspent, on the highest-intent service page on the site, and the only
+       two service titles carrying no city at all. The geography is back.
+    */
     metaTitle: {
-      fr: "Rachat d'auto scrap",
-      en: "Cash for junk cars",
+      fr: "Rachat d'auto scrap — Mascouche, Laval, Montréal",
+      en: "Cash for junk cars — Mascouche, Laval, Montreal",
     },
     metaDescription: {
       fr: `On rachète votre auto scrap comptant, de 300 $ à 3 000 $ selon le véhicule. Remorquage gratuit et transfert SAAQ inclus. Ouvert 7 jours, ${hoursRange("fr").replace("de ", "")}.`,
@@ -306,8 +312,8 @@ export const SERVICES: ServicePage[] = [
       en: "Truck, SUV and van buying",
     },
     metaTitle: {
-      fr: "Achat de camion, VUS et fourgonnette",
-      en: "We buy trucks, SUVs and vans",
+      fr: "Achat de camion, VUS et fourgonnette — Rive-Nord",
+      en: "We buy trucks, SUVs and vans — Laval & Montreal",
     },
     metaDescription: {
       fr: "On achète camionnettes, VUS, fourgonnettes et véhicules commerciaux légers, en état ou non. Argent comptant et remorquage gratuit sur la Rive-Nord.",
