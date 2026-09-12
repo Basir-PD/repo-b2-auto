@@ -150,8 +150,6 @@ export const siteConfig = {
       worse than either version of it.
     */
     vehiclesPerYear: 10000,
-    cashMin: 300,
-    cashMax: 3000,
   },
 
   /**

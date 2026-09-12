@@ -21,7 +21,7 @@ const FR: FaqItem[] = [
     id: "valeur",
     onHome: true,
     q: "Combien vaut mon auto scrap ?",
-    a: "Ça dépend du poids du véhicule, de l'année, du modèle, de la présence du convertisseur catalytique et de l'état des pièces réutilisables. Nos offres se situent généralement entre 300 $ et 3 000 $. Appelez-nous avec l'année, la marque et le modèle et on vous donne un prix ferme en quelques minutes.",
+    a: "Ça dépend du poids du véhicule, de l'année, du modèle, de la présence du convertisseur catalytique et de l'état des pièces réutilisables. Appelez-nous avec l'année, la marque et le modèle et on vous donne un prix ferme en quelques minutes.",
   },
   {
     id: "remorquage",
@@ -115,7 +115,7 @@ const EN: FaqItem[] = [
     id: "valeur",
     onHome: true,
     q: "What is my scrap car worth?",
-    a: "It depends on the vehicle's weight, year and model, whether the catalytic converter is still on it, and the condition of any reusable parts. Our offers generally land between $300 and $3,000. Call us with the year, make and model and we'll give you a firm price in minutes.",
+    a: "It depends on the vehicle's weight, year and model, whether the catalytic converter is still on it, and the condition of any reusable parts. Call us with the year, make and model and we'll give you a firm price in minutes.",
   },
   {
     id: "remorquage",

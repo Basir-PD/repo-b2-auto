@@ -21,13 +21,13 @@ export const POSTS: Post[] = [
     description:
       "Ce qui fait vraiment monter ou descendre le prix d'une auto scrap au Québec : le poids, le convertisseur catalytique, l'année et les pièces récupérables.",
     date: "2026-01-15",
-    lede: "La réponse courte : entre 300 $ et 3 000 $. La réponse utile, c'est de comprendre ce qui vous place en haut ou en bas de cette fourchette — parce que la plupart des facteurs sont connus avant même que quiconque regarde le véhicule.",
+    lede: "La réponse courte : ça dépend du véhicule. La réponse utile, c'est de comprendre ce qui fait monter ou descendre le prix — parce que la plupart des facteurs sont connus avant même que quiconque regarde le véhicule.",
     sections: [
       {
         h2: "Le poids fixe le plancher",
         body: [
           "Une auto en fin de vie est d'abord vendue comme métal. Le poids du véhicule fixe donc un montant de base qu'aucune négociation ne change : une compacte de 1 200 kg et une camionnette pleine grandeur de 2 400 kg ne partent pas du même point.",
-          "C'est la raison la plus simple pour laquelle les camions, les VUS et les fourgonnettes se retrouvent presque toujours dans le haut de la fourchette. Ce n'est pas une question de marque ni de popularité : c'est de la masse.",
+          "C'est la raison la plus simple pour laquelle les camions, les VUS et les fourgonnettes reçoivent presque toujours les offres les plus élevées. Ce n'est pas une question de marque ni de popularité : c'est de la masse.",
         ],
       },
       {
