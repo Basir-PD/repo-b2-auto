@@ -39,7 +39,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "Comment on établit un prix",
         body: [
-          "Un prix honnête repose sur des données vérifiables : le poids du véhicule, son année, son modèle, la présence du convertisseur catalytique et l'état des pièces réutilisables. Nos offres se situent entre 300 $ et 3 000 $ selon ces facteurs.",
+          "Un prix honnête repose sur des données vérifiables : le poids du véhicule, son année, son modèle, la présence du convertisseur catalytique et l'état des pièces réutilisables.",
           "On confirme le montant au téléphone et on s'y tient. C'est la seule promesse qui compte dans cette industrie, parce que c'est celle qui est le plus souvent brisée.",
         ],
       },
@@ -68,7 +68,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "How we set a price",
         body: [
-          "An honest price rests on things that can be checked: the vehicle's weight, its year and model, whether the catalytic converter is still on it, and the condition of anything reusable. Our offers land between $300 and $3,000 depending on those factors.",
+          "An honest price rests on things that can be checked: the vehicle's weight, its year and model, whether the catalytic converter is still on it, and the condition of anything reusable.",
           "We confirm the amount on the phone and we stick to it. It's the only promise that matters in this industry, because it's the one most often broken.",
         ],
       },
@@ -279,7 +279,7 @@ export const TERMS: StaticPage = {
       {
         h2: "Contenu du site",
         body: [
-          "Les délais, distances et montants indiqués sur ce site sont donnés à titre indicatif et peuvent varier selon la ville, l'horaire de remorquage et l'état réel du véhicule. Les prix affichés sont une fourchette, pas une offre ferme.",
+          "Les délais, distances et montants indiqués sur ce site sont donnés à titre indicatif et peuvent varier selon la ville, l'horaire de remorquage et l'état réel du véhicule. Seul le prix confirmé pour votre véhicule constitue une offre.",
         ],
       },
     ],
@@ -308,7 +308,7 @@ export const TERMS: StaticPage = {
       {
         h2: "Site content",
         body: [
-          "Timings, distances and amounts shown on this site are indicative and can vary with the city, the towing schedule and the vehicle's actual condition. Prices shown are a range, not a firm offer.",
+          "Timings, distances and amounts shown on this site are indicative and can vary with the city, the towing schedule and the vehicle's actual condition. Only the price confirmed for your vehicle is an offer.",
         ],
       },
     ],

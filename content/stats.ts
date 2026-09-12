@@ -14,9 +14,10 @@ import { siteConfig } from "@/config/site";
  * has one review; "350+ reviews" shipped on an earlier build of this site and
  * was removed as unsourceable, and it does not come back by the side door.
  *
- * The price range is deliberately not one of these. It was removed from the
- * hero on request, and reintroducing it as a stat would be the same claim
- * wearing a different hat.
+ * The price range is deliberately not one of these. The "$300 to $3,000"
+ * figure was removed from the whole site on request on 2026-09-10 — hero,
+ * FAQ, city and service pages, llms.txt — and reintroducing it as a stat
+ * would be the same claim wearing a different hat.
  */
 export function businessStats(lang: Lang) {
   const { vehiclesPerYear, yearsInBusiness } = siteConfig.facts;

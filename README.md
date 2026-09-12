@@ -20,7 +20,6 @@ Everything below lives in **one** place. Nothing is hardcoded in components.
 | Address / postal code | `config/site.ts` → `siteConfig.address` |
 | Map coordinates | `config/site.ts` → `siteConfig.geo` — see below |
 | Opening hours | `config/site.ts` → `siteConfig.hours` |
-| Cash range ($300–$3,000) | `config/site.ts` → `siteConfig.facts.cashMin` / `cashMax` |
 | Years in business, vehicles/year | `config/site.ts` → `siteConfig.facts` |
 | Google review link | `config/site.ts` → `siteConfig.GBP_REVIEW_LINK` — see below |
 | Real Google reviews | `content/reviews.ts` — see below |

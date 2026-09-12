@@ -36,8 +36,8 @@ export const SERVICES: ServicePage[] = [
       en: "Cash for scrap cars — Mascouche, Laval, Montreal",
     },
     metaDescription: {
-      fr: `On rachète votre auto scrap comptant, de 300 $ à 3 000 $ selon le véhicule. Remorquage gratuit et transfert SAAQ inclus. Ouvert 7 jours, ${hoursRange("fr").replace("de ", "")}.`,
-      en: `Autos B2 buys your scrap car for cash, $300 to $3,000 depending on the vehicle. Free towing, SAAQ transfer included, open 7 days ${hoursRange("en")}.`,
+      fr: `On rachète votre auto scrap comptant, peu importe l'état. Remorquage gratuit et transfert SAAQ inclus. Ouvert 7 jours, ${hoursRange("fr").replace("de ", "")}.`,
+      en: `Autos B2 buys your scrap car for cash, in any condition. Free towing, SAAQ transfer included, open 7 days ${hoursRange("en")}.`,
     },
     h1: {
       fr: "Vendre mon auto scrap — acheteur d'auto scrap, payé comptant",
@@ -53,7 +53,7 @@ export const SERVICES: ServicePage[] = [
           h2: "Ce qui détermine le montant",
           body: [
             "Une auto scrap n'est pas payée « au feeling ». Le montant repose sur quatre facteurs mesurables : le poids du véhicule, qui fixe la valeur du métal ; l'année et le modèle, qui déterminent la demande pour les pièces ; la présence du convertisseur catalytique, la pièce la plus valable d'un véhicule en fin de vie ; et l'état des composantes encore réutilisables, comme le moteur, la transmission, les portières ou les jantes.",
-            "C'est pour ça que nos offres varient de 300 $ à 3 000 $. Un petit véhicule dépouillé de son catalyseur est au bas de l'échelle ; un VUS récent accidenté mais complet est en haut.",
+            "C'est pour ça que les offres varient autant d'un véhicule à l'autre. Un petit véhicule dépouillé de son catalyseur reçoit le moins ; un VUS récent accidenté mais complet, le plus.",
           ],
         },
         {
@@ -87,7 +87,7 @@ export const SERVICES: ServicePage[] = [
           h2: "What determines the amount",
           body: [
             "A scrap car isn't priced on a hunch. The amount rests on four measurable things: the vehicle's weight, which sets the metal value; the year and model, which drive demand for parts; whether the catalytic converter is still on it, the single most valuable component on an end-of-life vehicle; and the condition of anything still reusable — engine, transmission, doors, rims.",
-            "That's why our offers range from $300 to $3,000. A small car stripped of its converter sits at the bottom; a recent SUV, wrecked but complete, sits at the top.",
+            "That's why offers vary so much from one vehicle to the next. A small car stripped of its converter gets the least; a recent SUV, wrecked but complete, gets the most.",
           ],
         },
         {
@@ -333,7 +333,7 @@ export const SERVICES: ServicePage[] = [
           h2: "Pourquoi un camion vaut plus qu'une berline",
           body: [
             "Le poids joue directement sur la valeur du métal, et une camionnette pleine grandeur pèse facilement le double d'une compacte. Les pièces de camions et de VUS se revendent aussi mieux : boîtes de transfert, différentiels, hayons, essieux et pare-chocs partent rapidement.",
-            "C'est pour cette raison que le haut de notre fourchette — jusqu'à 3 000 $ — concerne presque toujours des camions, des VUS ou des fourgonnettes.",
+            "C'est pour cette raison que nos offres les plus élevées concernent presque toujours des camions, des VUS ou des fourgonnettes.",
           ],
         },
         {
@@ -365,7 +365,7 @@ export const SERVICES: ServicePage[] = [
           h2: "Why a truck is worth more than a sedan",
           body: [
             "Weight feeds straight into the metal value, and a full-size pickup easily weighs double a compact. Truck and SUV parts also resell better: transfer cases, differentials, tailgates, axles and bumpers move quickly.",
-            "That's why the top of our range — up to $3,000 — almost always involves a truck, an SUV or a van.",
+            "That's why our highest offers almost always involve a truck, an SUV or a van.",
           ],
         },
         {

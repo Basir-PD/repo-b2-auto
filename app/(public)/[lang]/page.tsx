@@ -156,24 +156,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               </ul>
 
               {/*
-                The price figure is switched off for now, on request.
-
-                It read: priceFigure ("300 $ – 3 000 $") set large in tabular
-                numerals against a green rule, with priceCaption beneath. The
-                copy keys are still in content/copy/*.ts, so restoring it is
-                just uncommenting this block.
-
-              <div className="mt-8 inline-block border-l-4 border-brand-600 pl-4">
-                <p className="text-[2rem] font-black leading-none tracking-tight tabular-nums text-slate-900 sm:text-[2.4rem]">
-                  {t.home.priceFigure}
-                </p>
-                <p className="mt-1.5 text-sm font-semibold text-slate-600">
-                  {t.home.priceCaption}
-                </p>
-              </div>
-              */}
-
-              {/*
                 WhatsApp leads here rather than a second link to the quote
                 page: the form is already in this viewport, and someone
                 standing next to a dead car would rather send a photo than
