@@ -40,8 +40,8 @@ export const PHOTOS: Photo[] = [
       what a screen reader announces as fact.
     */
     alt: {
-      fr: "Fourgonnette accidentée sanglée sur le plateau d'une remorqueuse d'Autos B2",
-      en: "A wrecked minivan strapped down on an Autos B2 flatbed tow truck",
+      fr: "Fourgonnette accidentée sanglée sur le plateau d'une remorqueuse de Recyclage Autos B2",
+      en: "A wrecked minivan strapped down on a Recyclage Autos B2 flatbed tow truck",
     },
     caption: {
       fr: "On attache et on sécurise le véhicule nous-mêmes avant de partir.",
@@ -51,8 +51,8 @@ export const PHOTOS: Photo[] = [
   {
     file: "transport-multi-vehicules.jpg",
     alt: {
-      fr: "Remorque d'Autos B2 transportant cinq véhicules en fin de vie sur la Rive-Nord",
-      en: "An Autos B2 trailer hauling five end-of-life vehicles on the North Shore",
+      fr: "Remorque de Recyclage Autos B2 transportant cinq véhicules en fin de vie sur la Rive-Nord",
+      en: "A Recyclage Autos B2 trailer hauling five end-of-life vehicles on the North Shore",
     },
     caption: {
       fr: `Environ ${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} véhicules ramassés par année.`,
@@ -73,8 +73,8 @@ export const PHOTOS: Photo[] = [
   {
     file: "plateau-vus-charge.jpg",
     alt: {
-      fr: "Plateau d'Autos B2 chargé d'un VUS, prêt à repartir vers la cour de Mascouche",
-      en: "An Autos B2 flatbed loaded with an SUV, ready to head back to the Mascouche yard",
+      fr: "Plateau de Recyclage Autos B2 chargé d'un VUS, prêt à repartir vers la cour de Mascouche",
+      en: "A Recyclage Autos B2 flatbed loaded with an SUV, ready to head back to the Mascouche yard",
     },
     caption: {
       fr: "Notre propre plateau — pas un sous-traitant.",
@@ -84,8 +84,8 @@ export const PHOTOS: Photo[] = [
   {
     file: "remorquage-chariot-elevateur.jpg",
     alt: {
-      fr: "Chariot élévateur chargé sur le plateau d'Autos B2",
-      en: "A forklift loaded on the Autos B2 flatbed",
+      fr: "Chariot élévateur chargé sur le plateau de Recyclage Autos B2",
+      en: "A forklift loaded on the Recyclage Autos B2 flatbed",
     },
     caption: {
       fr: "Auto, camion, VUS — ou tout autre engin.",
@@ -95,8 +95,8 @@ export const PHOTOS: Photo[] = [
   {
     file: "remorquage-soir-berline.jpg",
     alt: {
-      fr: "Remorquage d'une berline au crépuscule par Autos B2",
-      en: "Autos B2 towing a sedan at dusk",
+      fr: "Remorquage d'une berline au crépuscule par Recyclage Autos B2",
+      en: "Recyclage Autos B2 towing a sedan at dusk",
     },
     caption: {
       fr: "Enlèvement souvent le jour même.",

@@ -36,6 +36,9 @@ function checkTitle(label: string, title: string, min = 0) {
     composed.length,
     `${label} → "${composed}" (${composed.length}) wastes the title budget`
   ).toBeGreaterThanOrEqual(min);
+  // pageTitle cuts an overlong title with "…" rather than overflow. That keeps
+  // the length check green while the result reads badly, so it is a failure.
+  expect(composed, `${label} → "${composed}" is cut off`).not.toContain("…");
   // The brand is appended once, by pageTitle, and never written into the copy.
   expect(title, `${label} should not carry the brand itself`).not.toMatch(/Autos B2|B2 Autos/);
 }
@@ -259,7 +262,9 @@ describe("heading labels", () => {
 describe("blog posts", () => {
   for (const post of POSTS) {
     it(post.slug, () => {
-      checkTitle(post.slug, post.title);
+      // Articles use their title as-is, with no brand suffix (see [post]/page.tsx).
+      expect(post.title.length, post.title).toBeLessThanOrEqual(TITLE_MAX);
+      expect(post.title).not.toMatch(/Autos B2|B2 Autos/);
       checkDescription(post.slug, post.description);
     });
   }

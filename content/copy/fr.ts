@@ -40,11 +40,11 @@ export const fr = {
   },
   common: {
     callCta: `Appeler ${PHONE}`,
-    callAria: "Appeler Autos B2 maintenant",
+    callAria: "Appeler Recyclage Autos B2 maintenant",
     quoteCta: "Obtenir mon estimation gratuite",
     callShort: "Appeler",
     whatsapp: "WhatsApp",
-    whatsappAria: "Écrire à Autos B2 sur WhatsApp",
+    whatsappAria: "Écrire à Recyclage Autos B2 sur WhatsApp",
     whatsappTagline: "Écrivez-nous, on répond vite",
     hoursLong: hoursLong("fr"),
     addressLabel: "Notre cour",
@@ -68,7 +68,7 @@ export const fr = {
       which is not the order people type. "scrap auto laval" falls out of the
       same title for free.
     */
-    metaTitle: "Scrap auto Laval, Montréal — rachat comptant | Autos B2",
+    metaTitle: "Rachat auto scrap Laval, Montréal | Recyclage Autos B2",
     metaDescription:
       "Scrap auto à Laval, Montréal et la Rive-Nord : on rachète comptant. Accidentée, en panne ou perte totale. Remorquage gratuit et reçu SAAQ inclus.",
 
@@ -146,12 +146,12 @@ export const fr = {
         {
           title: "On planifie l'enlèvement gratuit",
           body: "Vous choisissez le moment. Notre remorqueuse se déplace partout sur la Rive-Nord et à Laval, souvent le jour même.",
-          alt: "Un chauffeur charge une auto accidentée sur le plateau de la remorqueuse Autos B2",
+          alt: "Un chauffeur charge une auto accidentée sur le plateau de la remorqueuse Recyclage Autos B2",
         },
         {
           title: "Vous êtes payé comptant sur place",
           body: "On vous remet l'argent à l'enlèvement, on récupère la plaque et on produit le reçu officiel pour la SAAQ. Vous arrêtez de payer l'immatriculation.",
-          alt: "Un chauffeur Autos B2 remet l'argent comptant au propriétaire devant la remorqueuse chargée",
+          alt: "Un chauffeur Recyclage Autos B2 remet l'argent comptant au propriétaire devant la remorqueuse chargée",
         },
       ],
     },
@@ -209,7 +209,7 @@ export const fr = {
       title: "On est un vrai recycleur, à une vraie adresse",
       body: "Pas un intermédiaire avec un numéro de téléphone. Notre cour est ouverte 7 jours sur 7 et vous êtes bienvenu de passer.",
       directions: "Obtenir l'itinéraire",
-      mapAlt: "Carte de la cour d'Autos B2 au 340 Chemin Pincourt, Mascouche",
+      mapAlt: "Carte de la cour de Recyclage Autos B2 au 340 Chemin Pincourt, Mascouche",
     },
     finalCta: {
       title: "Votre vieux char vaut de l'argent. Découvrez combien.",
@@ -239,13 +239,13 @@ export const fr = {
     tooManyBody:
       "Trop de tentatives en peu de temps. Réessayez dans quelques minutes, ou appelez-nous tout de suite :",
     privacyNote:
-      "En envoyant ce formulaire, vous acceptez qu'Autos B2 vous contacte par téléphone, texto ou courriel au sujet de votre soumission. Sans obligation. On ne partage jamais vos coordonnées.",
+      "En envoyant ce formulaire, vous acceptez que Recyclage Autos B2 vous contacte par téléphone, texto ou courriel au sujet de votre soumission. Sans obligation. On ne partage jamais vos coordonnées.",
   },
 
   thanks: {
-    metaTitle: "Merci — votre demande est reçue | Autos B2",
+    metaTitle: "Merci — votre demande est reçue | Recyclage Autos B2",
     metaDescription:
-      "Votre demande d'estimation est reçue. Un membre de l'équipe Autos B2 vous rappelle sous peu.",
+      "Votre demande d'estimation est reçue. Un membre de l'équipe Recyclage Autos B2 vous rappelle sous peu.",
     h1: "Merci — on vous rappelle sous peu",
     body: `Votre demande est bien reçue. Un membre de l'équipe vous téléphone généralement en moins de 30 minutes pendant nos heures d'ouverture, de ${hoursRange("fr").replace("de ", "")}, 7 jours sur 7.`,
     urgent: "Vous êtes pressé ? Appelez-nous directement :",

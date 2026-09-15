@@ -59,7 +59,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "vendre-mon-auto",
     lang: "fr",
-    title: "Vendre mon auto comptant | Autos B2",
+    title: "Vendre mon auto comptant | Recyclage Autos B2",
     h1: "Vendez votre auto aujourd'hui — argent comptant, sur place",
     sub: "Peu importe l'état : en panne, accidentée, sans moteur ou déclarée perte totale. On vient la chercher gratuitement et on vous paie à l'enlèvement.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
@@ -77,7 +77,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "remorquage-gratuit",
     lang: "fr",
-    title: "Remorquage gratuit de votre véhicule | Autos B2",
+    title: "Remorquage gratuit de votre véhicule | Recyclage Autos B2",
     h1: "Faites enlever votre véhicule gratuitement — et repartez avec de l'argent",
     sub: "On remorque sans frais partout sur la Rive-Nord, à Laval et dans l'est de Montréal, souvent le jour même. Et on vous paie comptant pour le véhicule.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
@@ -95,7 +95,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "offre-facebook",
     lang: "fr",
-    title: "Votre vieux char vaut de l'argent | Autos B2",
+    title: "Votre vieux char vaut de l'argent | Recyclage Autos B2",
     h1: "Votre vieux char dort dans l'entrée ? Il vaut de l'argent.",
     sub: "Donnez-nous l'année, la marque et le modèle. On vous rappelle avec un prix ferme en quelques minutes — et si ça vous convient, on vient le chercher gratuitement.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
@@ -130,7 +130,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "recyclage-auto-laval",
     lang: "fr",
-    title: "Recyclage auto Laval | Autos B2",
+    title: "Recyclage auto Laval | Recyclage Autos B2",
     h1: "Recyclage auto à Laval — on rachète votre véhicule comptant",
     sub: "Recycleur licencié établi à Mascouche, à 24 km de Laval. On rachète votre auto en fin de vie, on la remorque gratuitement et on vous paie sur place.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
@@ -148,7 +148,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "recyclage-auto-terrebonne",
     lang: "fr",
-    title: "Recyclage auto Terrebonne | Autos B2",
+    title: "Recyclage auto Terrebonne | Recyclage Autos B2",
     h1: "Recyclage auto à Terrebonne — la cour est à 9 km",
     sub: "Notre cour du 340 Chemin Pincourt est le recycleur le plus proche de Terrebonne : 9 km, environ 15 minutes. Enlèvement souvent le jour même.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
@@ -167,7 +167,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "recyclage-auto-montreal",
     lang: "fr",
-    title: "Recyclage auto Montréal | Autos B2",
+    title: "Recyclage auto Montréal | Recyclage Autos B2",
     h1: "Recyclage auto à Montréal — enlèvement gratuit, payé comptant",
     sub: "On se déplace sur l'île de Montréal pour racheter et recycler les véhicules en fin de vie. Le remorquage est gratuit et vous êtes payé au moment de l'enlèvement.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
@@ -200,7 +200,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "scrap-yard-montreal",
     lang: "en",
-    title: "Scrap Yard Montreal — We Buy Your Car | Autos B2",
+    title: "Scrap Yard Montreal — We Buy Your Car | Recyclage Autos B2",
     h1: "The scrap yard that buys your car in Montreal",
     sub: "A licensed auto recycler covering the island of Montreal. We buy end-of-life, wrecked and non-running vehicles, tow them away free, and pay cash at pickup.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
@@ -218,7 +218,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "scrap-yard-laval",
     lang: "en",
-    title: "Scrap Yard Laval — We Buy Your Car | Autos B2",
+    title: "Scrap Yard Laval — We Buy Your Car | Recyclage Autos B2",
     h1: "A scrap yard 24 km from Laval that pays cash for your car",
     sub: "We are a licensed recycler in Mascouche, about 25 minutes from Laval. Give us the year, make and model and we come back with a firm price — then collect it free.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
@@ -247,7 +247,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "cash-for-damaged-cars",
     lang: "en",
-    title: "Cash for Damaged Cars | Autos B2",
+    title: "Cash for Damaged Cars | Recyclage Autos B2",
     h1: "Cash for a damaged car — wrecked, written off, or after a collision",
     sub: "If the insurer declared it a total loss, or the repair quote came back higher than the car is worth, we buy it as it stands. Free towing, cash at pickup.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
@@ -270,7 +270,7 @@ export const LANDING_CONTENT: LandingContent[] = [
   {
     slug: "cash-for-junk-cars",
     lang: "en",
-    title: "Cash for Junk Cars & Scrap Cars | Autos B2",
+    title: "Cash for Junk Cars & Scrap Cars | Recyclage Autos B2",
     h1: "Cash for junk cars and scrap cars — paid on the spot",
     sub: "Junk car, scrap car, end-of-life vehicle — different words for the same thing, and we buy all of them. Any condition. Free pickup, cash at the door.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],

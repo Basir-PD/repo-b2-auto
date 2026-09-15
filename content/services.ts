@@ -26,18 +26,18 @@ export const SERVICES: ServicePage[] = [
       en: "Cash for scrap cars — we buy scrap cars",
     },
     /*
-       Titles are budgeted at 60 characters and " | Autos B2" eats 11 of
+       Titles are budgeted at 60 characters and " | Recyclage Autos B2" eats 21 of
        them. These two were 30 and 29 characters all-in — half the budget
        unspent, on the highest-intent service page on the site, and the only
        two service titles carrying no city at all. The geography is back.
     */
     metaTitle: {
-      fr: "Rachat d'auto scrap — Mascouche, Laval, Montréal",
-      en: "Cash for scrap cars — Mascouche, Laval, Montreal",
+      fr: "Auto scrap — Mascouche, Laval, Montréal",
+      en: "Scrap cars — Mascouche, Laval, Montreal",
     },
     metaDescription: {
       fr: `On rachète votre auto scrap comptant, peu importe l'état. Remorquage gratuit et transfert SAAQ inclus. Ouvert 7 jours, ${hoursRange("fr").replace("de ", "")}.`,
-      en: `Autos B2 buys your scrap car for cash, in any condition. Free towing, SAAQ transfer included, open 7 days ${hoursRange("en")}.`,
+      en: `Recyclage Autos B2 buys your scrap car for cash, in any condition. Free towing, SAAQ transfer included, open 7 days ${hoursRange("en")}.`,
     },
     h1: {
       fr: "Vendre mon auto scrap — acheteur d'auto scrap, payé comptant",
@@ -126,8 +126,8 @@ export const SERVICES: ServicePage[] = [
       en: "Free vehicle towing",
     },
     metaTitle: {
-      fr: "Remorquage gratuit — Laval, Montréal, Rive-Nord",
-      en: "Free scrap car removal — Laval & Montreal",
+      fr: "Remorquage — Laval, Montréal, Rive-Nord",
+      en: "Free car removal — Laval & Montreal",
     },
     metaDescription: {
       fr: "Remorquage gratuit inclus avec chaque rachat. Enlèvement partout sur la Rive-Nord, à Laval et dans l'est de Montréal, souvent le jour même.",
@@ -220,12 +220,12 @@ export const SERVICES: ServicePage[] = [
       en: "Damaged and written-off vehicle buying",
     },
     metaTitle: {
-      fr: "Vendre auto accidentée — achat perte totale",
+      fr: "Vendre auto accidentée ou perte totale",
       en: "Sell my damaged car — totaled car buyer",
     },
     metaDescription: {
       fr: "Véhicule accidenté ou perte totale ? On l'achète comptant, remorquage gratuit inclus. Offre ferme au téléphone, enlèvement souvent le jour même.",
-      en: "Vehicle wrecked or written off? Autos B2 buys it for cash, free towing included. Firm offer on the phone, pickup often the same day.",
+      en: "Vehicle wrecked or written off? Recyclage Autos B2 buys it for cash, free towing included. Firm offer on the phone, pickup often the same day.",
     },
     h1: {
       fr: "Vendre son auto accidentée ou sa perte totale",
@@ -312,12 +312,12 @@ export const SERVICES: ServicePage[] = [
       en: "Truck, SUV and van buying",
     },
     metaTitle: {
-      fr: "Achat de camion, VUS et fourgonnette — Rive-Nord",
-      en: "We buy trucks, SUVs and vans — Laval & Montreal",
+      fr: "Camion, VUS, fourgonnette — Rive-Nord",
+      en: "Trucks, SUVs, vans — Laval & Montreal",
     },
     metaDescription: {
       fr: "On achète camionnettes, VUS, fourgonnettes et véhicules commerciaux légers, en état ou non. Argent comptant et remorquage gratuit sur la Rive-Nord.",
-      en: "Autos B2 buys pickups, SUVs, vans and light commercial vehicles, running or not. Cash paid, free towing, across the North Shore and Laval.",
+      en: "Recyclage Autos B2 buys pickups, SUVs, vans and light commercial vehicles, running or not. Cash paid, free towing, across the North Shore and Laval.",
     },
     h1: {
       fr: "Achat de camions, VUS et fourgonnettes",

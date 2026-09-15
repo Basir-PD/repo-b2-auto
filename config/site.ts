@@ -47,14 +47,17 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.autosb2.com",
 
   /**
-   * `name` is the trading name — what customers say, what the signage reads,
-   * and what belongs in every title, heading and JSON-LD `name`.
+   * `name` is the business name exactly as the Google Business Profile lists
+   * it: "Recyclage Autos B2". It is also the registered name, so it is the
+   * real-world name and not a keyword added for ranking. It goes in every
+   * title, heading, footer and JSON-LD `name` so the site and the GBP read as
+   * one business.
    *
-   * `legalName` is the registered entity and is deliberately different. It is
-   * NOT interchangeable with `name`: putting "Recyclage Autos B2" in a page
-   * title or an H1 would be optimising for a string nobody searches.
+   * `shortName` is what people say out loud and what the logo image reads.
+   * It only appears as the JSON-LD `alternateName`, never as the brand on a
+   * page. Mixing the two on the site is what got flagged in the first place.
    */
-  name: "Autos B2",
+  name: "Recyclage Autos B2",
   legalName: "Recyclage Autos B2",
   shortName: "Autos B2",
 

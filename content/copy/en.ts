@@ -37,11 +37,11 @@ export const en: Copy = {
   },
   common: {
     callCta: `Call ${PHONE}`,
-    callAria: "Call Autos B2 now",
+    callAria: "Call Recyclage Autos B2 now",
     quoteCta: "Get my free quote",
     callShort: "Call",
     whatsapp: "WhatsApp",
-    whatsappAria: "Message Autos B2 on WhatsApp",
+    whatsappAria: "Message Recyclage Autos B2 on WhatsApp",
     whatsappTagline: "Message us, we answer fast",
     hoursLong: hoursLong("en"),
     addressLabel: "Our yard",
@@ -57,7 +57,7 @@ export const en: Copy = {
   },
 
   home: {
-    metaTitle: "Sell My Junk Car Laval & Montreal | Autos B2",
+    metaTitle: "Sell My Junk Car Laval & Montreal | Recyclage Autos B2",
     metaDescription:
       "Junk car buyer in Laval, Montreal and the North Shore. We buy damaged, totaled and non running cars. Free scrap car removal, cash on pickup.",
 
@@ -91,12 +91,12 @@ export const en: Copy = {
         {
           title: "We schedule free pickup",
           body: "You pick the time. Our tow truck covers the entire North Shore and Laval, often same day.",
-          alt: "A driver loading a damaged car onto the Autos B2 flatbed",
+          alt: "A driver loading a damaged car onto the Recyclage Autos B2 flatbed",
         },
         {
           title: "You get paid cash on the spot",
           body: "We hand you the money at pickup, take the plate, and issue the official SAAQ receipt so you stop paying registration.",
-          alt: "An Autos B2 driver handing cash to the owner in front of the loaded flatbed",
+          alt: "A Recyclage Autos B2 driver handing cash to the owner in front of the loaded flatbed",
         },
       ],
     },
@@ -154,7 +154,7 @@ export const en: Copy = {
       title: "A real recycler, at a real address",
       body: "Not a middleman with a phone number. Our yard is open 7 days a week and you are welcome to drop by.",
       directions: "Get directions",
-      mapAlt: "Map of the Autos B2 yard at 340 Chemin Pincourt, Mascouche",
+      mapAlt: "Map of the Recyclage Autos B2 yard at 340 Chemin Pincourt, Mascouche",
     },
     finalCta: {
       title: "Your old car is worth money. Find out how much.",
@@ -181,13 +181,13 @@ export const en: Copy = {
     errorBody: "It didn't go through. Please call us instead:",
     tooManyBody: "Too many attempts in a short time. Try again in a few minutes, or just call us:",
     privacyNote:
-      "By sending this form you agree that Autos B2 may contact you by phone, text or email about your quote. No obligation. We never share your details.",
+      "By sending this form you agree that Recyclage Autos B2 may contact you by phone, text or email about your quote. No obligation. We never share your details.",
   },
 
   thanks: {
-    metaTitle: "Thank you — we've got your request | Autos B2",
+    metaTitle: "Thank you — we've got your request | Recyclage Autos B2",
     metaDescription:
-      "Your quote request has been received. A member of the Autos B2 team will call you shortly.",
+      "Your quote request has been received. A member of the Recyclage Autos B2 team will call you shortly.",
     h1: "Thanks — we'll call you shortly",
     body: `We've got your request. Someone on the team usually calls within 30 minutes during opening hours, ${hoursRange("en")}, 7 days a week.`,
     urgent: "In a hurry? Call us directly:",

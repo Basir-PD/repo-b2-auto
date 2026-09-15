@@ -11,7 +11,7 @@ import { siteConfig } from "@/config/site";
 export const TITLE_MAX = 60;
 export const DESCRIPTION_MAX = 155;
 
-/** " | Autos B2" — what every title costs before it says anything. */
+/** " | Recyclage Autos B2" — what every title costs before it says anything. */
 const SUFFIX = ` | ${siteConfig.name}`;
 
 /**
@@ -20,7 +20,7 @@ const SUFFIX = ` | ${siteConfig.name}`;
  * The brand goes on here and ONLY here. Page titles used to carry it
  * themselves while the Next metadata template appended it again, producing
  * "Questions fréquentes | Autos B2 | Autos B2" — 74 characters, of which the
- * last 11 were a duplicate.
+ * last 11 were a duplicate. (The brand was shorter then.)
  *
  * `extra` is a qualifier worth having but not worth truncating for: it is
  * dropped whole if the result would overflow, rather than being cut mid-word.
