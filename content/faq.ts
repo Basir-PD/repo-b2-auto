@@ -44,7 +44,7 @@ const FR: FaqItem[] = [
     id: "qui-achete",
     onHome: true,
     q: "Qui achète une auto scrap à Laval et à Montréal ?",
-    a: "Nous. Autos B2 est un acheteur d'auto scrap établi au 340 Chemin Pincourt à Mascouche, et on se déplace à Laval, à Montréal et partout sur la Rive-Nord. On achète directement — on n'est pas un intermédiaire qui revend votre appel à un autre ferrailleur.",
+    a: "Nous. Recyclage Autos B2 est un acheteur d'auto scrap établi au 340 Chemin Pincourt à Mascouche, et on se déplace à Laval, à Montréal et partout sur la Rive-Nord. On achète directement — on n'est pas un intermédiaire qui revend votre appel à un autre ferrailleur.",
   },
   {
     id: "vendre-char-scrap",
@@ -138,7 +138,7 @@ const EN: FaqItem[] = [
     id: "qui-achete",
     onHome: true,
     q: "Who buys junk cars in Laval and Montreal?",
-    a: "We do. Autos B2 is a junk car buyer based at 340 Chemin Pincourt in Mascouche, and we travel to Laval, Montreal and across the North Shore. We buy directly — we are not a middleman reselling your call to another scrap yard.",
+    a: "We do. Recyclage Autos B2 is a junk car buyer based at 340 Chemin Pincourt in Mascouche, and we travel to Laval, Montreal and across the North Shore. We buy directly — we are not a middleman reselling your call to another scrap yard.",
   },
   {
     id: "vendre-char-scrap",

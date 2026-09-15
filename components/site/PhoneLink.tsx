@@ -12,7 +12,7 @@ import { fbqTrack } from "@/components/site/MetaPixel";
  * There is deliberately no `aria-label`. This link always renders visible
  * text — the number itself when nothing else is given — and an aria-label
  * that does not contain that text hands voice-control users a name they
- * cannot say: "Appeler +1 (514) 623-2787" on screen, "Appeler Autos B2" to
+ * cannot say: "Appeler +1 (514) 623-2787" on screen, "Appeler Recyclage Autos B2" to
  * the assistive layer, and no way to match the two. The visible text is
  * already the better accessible name.
  */

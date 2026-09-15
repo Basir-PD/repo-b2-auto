@@ -13,7 +13,7 @@ import { fullAddress, siteConfig } from "../config/site";
  *
  * Set on the Convex deployment:
  *   npx convex env set RESEND_API_KEY re_xxxxxxxx
- *   npx convex env set QUOTE_FROM "Autos B2 <quotes@autosb2.com>"
+ *   npx convex env set QUOTE_FROM "Recyclage Autos B2 <quotes@autosb2.com>"
  *   npx convex env set QUOTE_INBOX admin@autosb2.com
  * ============================================================
  */

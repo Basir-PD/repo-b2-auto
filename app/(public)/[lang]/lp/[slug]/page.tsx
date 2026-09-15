@@ -187,8 +187,8 @@ export default async function LandingPage({
             src="/tow-truck-hero.webp"
             alt={
               lang === "fr"
-                ? "Remorqueuse à plateau d'Autos B2 chargée d'un véhicule, à Mascouche"
-                : "Autos B2 flatbed tow truck loaded with a vehicle, in Mascouche"
+                ? "Remorqueuse à plateau de Recyclage Autos B2 chargée d'un véhicule, à Mascouche"
+                : "Recyclage Autos B2 flatbed tow truck loaded with a vehicle, in Mascouche"
             }
             width={1600}
             height={476}

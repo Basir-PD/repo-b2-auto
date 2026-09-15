@@ -130,7 +130,7 @@ export const POSTS: Post[] = [
   {
     slug: "vendre-une-auto-accidentee-apres-une-perte-totale",
     lang: "fr",
-    title: "Vendre une auto accidentée : vos options après une perte totale",
+    title: "Auto accidentée : vos options après une perte totale",
     description:
       "Ce que veut dire une perte totale, quand garder le véhicule est avantageux, et comment vendre une épave au Québec.",
     date: "2026-03-10",

@@ -12,12 +12,12 @@ export type StaticPage = {
 
 export const ABOUT: StaticPage = {
   metaTitle: {
-    fr: "Recycleur auto — recyclage autos à Mascouche",
-    en: "Auto recycler — car recycling in Mascouche",
+    fr: "Recycleur et recyclage auto, Mascouche",
+    en: "Auto recycler in Mascouche",
   },
   metaDescription: {
-    fr: `Autos B2 est un recycleur automobile licencié établi au 340 Chemin Pincourt à Mascouche depuis ${siteConfig.facts.yearsInBusiness} ans. Environ ${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} véhicules achetés par année.`,
-    en: `Autos B2 is a licensed auto recycler at 340 Chemin Pincourt in Mascouche, in business for ${siteConfig.facts.yearsInBusiness} years. Around ${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} vehicles bought per year.`,
+    fr: `Recyclage Autos B2 est un recycleur automobile licencié au 340 Chemin Pincourt à Mascouche depuis ${siteConfig.facts.yearsInBusiness} ans. Environ ${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} véhicules achetés par année.`,
+    en: `Recyclage Autos B2 is a licensed auto recycler at 340 Chemin Pincourt in Mascouche, in business for ${siteConfig.facts.yearsInBusiness} years. Around ${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} vehicles bought per year.`,
   },
   h1: {
     fr: "Un recycleur automobile de Mascouche, pas un intermédiaire",
@@ -32,7 +32,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "Ce qu'on fait",
         body: [
-          `Autos B2 achète des véhicules en fin de vie sur la Rive-Nord, à Laval et dans l'est de Montréal depuis ${siteConfig.facts.yearsInBusiness} ans. On en rachète environ ${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} par année.`,
+          `Recyclage Autos B2 achète des véhicules en fin de vie sur la Rive-Nord, à Laval et dans l'est de Montréal depuis ${siteConfig.facts.yearsInBusiness} ans. On en rachète environ ${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} par année.`,
           "La différence avec la plupart des numéros qu'on trouve en ligne, c'est qu'il n'y a personne entre vous et nous. Beaucoup d'annonces de « rachat d'auto » sont en réalité des courtiers : ils prennent votre appel, revendent votre coordonnée à un vrai recycleur, et le prix baisse d'autant. Nous, on est le recycleur.",
         ],
       },
@@ -61,7 +61,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "What we do",
         body: [
-          `Autos B2 has been buying end-of-life vehicles across the North Shore, Laval and east-end Montreal for ${siteConfig.facts.yearsInBusiness} years. We take in around ${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} of them a year.`,
+          `Recyclage Autos B2 has been buying end-of-life vehicles across the North Shore, Laval and east-end Montreal for ${siteConfig.facts.yearsInBusiness} years. We take in around ${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} of them a year.`,
           'What separates us from most of the numbers you\'ll find online is that there is nobody between you and us. A lot of "we buy cars" ads are brokers: they take your call, sell your details on to an actual recycler, and the price drops by whatever they keep. We are the recycler.',
         ],
       },
@@ -95,8 +95,8 @@ export const PRIVACY: StaticPage = {
     en: "Privacy policy",
   },
   metaDescription: {
-    fr: "Comment Autos B2 recueille, utilise et conserve vos renseignements personnels, conformément à la Loi 25 du Québec.",
-    en: "How Autos B2 collects, uses and retains your personal information, in line with Quebec's Law 25.",
+    fr: "Comment Recyclage Autos B2 recueille, utilise et conserve vos renseignements personnels, conformément à la Loi 25 du Québec.",
+    en: "How Recyclage Autos B2 collects, uses and retains your personal information, in line with Quebec's Law 25.",
   },
   h1: { fr: "Politique de confidentialité", en: "Privacy policy" },
   lede: {
@@ -245,8 +245,8 @@ export const TERMS: StaticPage = {
     en: "Terms of use",
   },
   metaDescription: {
-    fr: "Conditions d'utilisation du site d'Autos B2 et portée des estimations données en ligne ou par téléphone.",
-    en: "Terms of use for the Autos B2 website and the scope of quotes given online or by phone.",
+    fr: "Conditions d'utilisation du site de Recyclage Autos B2 et portée des estimations données en ligne ou par téléphone.",
+    en: "Terms of use for the Recyclage Autos B2 website and the scope of quotes given online or by phone.",
   },
   h1: { fr: "Conditions d'utilisation", en: "Terms of use" },
   lede: {
@@ -317,12 +317,12 @@ export const TERMS: StaticPage = {
 
 export const CONTACT: StaticPage = {
   metaTitle: {
-    fr: "Contact — 340 Chemin Pincourt, Mascouche",
-    en: "Contact — 340 Chemin Pincourt, Mascouche",
+    fr: "Contact: 340 Chemin Pincourt, Mascouche",
+    en: "Contact: 340 Chemin Pincourt, Mascouche",
   },
   metaDescription: {
-    fr: `Joignez Autos B2 au ${siteConfig.phone.display}, 7 jours sur 7 ${hoursRange("fr")}. Notre cour : ${fullAddress}.`,
-    en: `Reach Autos B2 at ${siteConfig.phone.display}, 7 days a week ${hoursRange("en")}. Our yard: ${fullAddress}.`,
+    fr: `Joignez Recyclage Autos B2 au ${siteConfig.phone.display}, 7 jours sur 7 ${hoursRange("fr")}. Notre cour : ${fullAddress}.`,
+    en: `Reach Recyclage Autos B2 at ${siteConfig.phone.display}, 7 days a week ${hoursRange("en")}. Our yard: ${fullAddress}.`,
   },
   h1: { fr: "Nous joindre", en: "Contact us" },
   lede: {
