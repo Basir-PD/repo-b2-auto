@@ -4,8 +4,23 @@ import { DEFAULT_LANG, LANGS, type Lang } from "@/config/routes";
 
 const convexMiddleware = convexAuthNextjsMiddleware();
 
-/** Paths that are never language-prefixed. */
-const PASSTHROUGH = ["/api", "/_next", "/admin", "/robots.txt", "/sitemap.xml", "/favicon.ico"];
+/**
+ * Paths that are never language-prefixed.
+ *
+ * `/whatsapp` is a route handler, not a page, and it exists in exactly one
+ * copy — there is nothing to translate about a redirect. Without it here the
+ * middleware rewrote every WhatsApp click to `/fr/whatsapp`, which no route
+ * serves, and the button led to a 404.
+ */
+const PASSTHROUGH = [
+  "/api",
+  "/_next",
+  "/admin",
+  "/whatsapp",
+  "/robots.txt",
+  "/sitemap.xml",
+  "/favicon.ico",
+];
 
 /**
  * Best supported language from Accept-Language, honouring the q-weights.

@@ -122,7 +122,9 @@ export const siteConfig = {
   whatsapp: {
     number: "15146232787",
     href: "https://wa.me/15146232787",
-    clickPath: "/whatsapp",
+    // Trailing slash: next.config sets trailingSlash, so linking without one
+    // costs every click an extra 308 before the redirect even runs.
+    clickPath: "/whatsapp/",
   },
 
   address: {
