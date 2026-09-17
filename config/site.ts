@@ -14,6 +14,18 @@
  * ============================================================
  */
 
+/**
+ * Years trading, in one place.
+ *
+ * Hoisted out of the object because two fields need it — `facts` for the
+ * copy and `foundingYear` for the JSON-LD — and an object literal cannot
+ * refer to itself. They were two independent literals, both reading 10, which
+ * is a drift waiting to happen: bump one on an anniversary, miss the other,
+ * and the page says eleven years while the structured data still says the
+ * business opened a year later than it did.
+ */
+const YEARS_IN_BUSINESS = 11;
+
 export const siteConfig = {
   /**
    * Canonical origin. No trailing slash.
@@ -144,15 +156,19 @@ export const siteConfig = {
 
   /** Verified business figures. Do not add to these without a source. */
   facts: {
-    yearsInBusiness: 10,
+    yearsInBusiness: YEARS_IN_BUSINESS,
     /*
-      Raised from 2 000 to 10 000 on 2026-09-09, on the owner's word that
-      2 000 was the figure that was wrong. It is stated in one place because
-      it is rendered in two — the homepage stat row and the landing-page
-      band — and a volume claim that disagrees with itself across a site is
+      2 000 until 2026-09-09, then 10 000, then corrected to 7 500 by the
+      owner on 2026-09-16 — the figure the site now carries. It is stated in
+      one place because it is rendered in five — the homepage stat row, the
+      landing-page band, the about page, the meta description and a photo
+      caption — and a volume claim that disagrees with itself across a site is
       worse than either version of it.
+
+      The stat band prints it as "7,500+"; the prose says "around 7,500".
+      Same number, and neither overstates it.
     */
-    vehiclesPerYear: 10000,
+    vehiclesPerYear: 7500,
   },
 
   /**
@@ -199,8 +215,8 @@ export const siteConfig = {
 
   priceRange: "$$",
 
-  /** 10 years in business as of 2026. */
-  foundingYear: new Date().getFullYear() - 10,
+  /** Derived, so it cannot disagree with the years quoted in the copy. */
+  foundingYear: new Date().getFullYear() - YEARS_IN_BUSINESS,
 
   /**
    * No social accounts exist. This stays empty and `sameAs` is omitted from
