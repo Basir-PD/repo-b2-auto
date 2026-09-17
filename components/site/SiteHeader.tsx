@@ -65,14 +65,21 @@ export default function SiteHeader({ lang, labels }: { lang: Lang; labels: Heade
           <Image
             src="/logo-autob2.png"
             alt={siteConfig.name}
-            width={600}
-            height={214}
-            // Renders at 40px tall (44 from sm), so ~112–124 CSS px wide.
+            width={900}
+            height={511}
+            // Renders at 44px tall (56 from sm), so ~78–99 CSS px wide.
             // Without this Next assumes it could be full width and ships a
-            // 640px file into a 112px slot, on every page.
-            sizes="124px"
+            // 640px file into a 99px slot, on every page.
+            sizes="99px"
             loading="eager"
-            className="h-10 w-auto sm:h-11"
+            /*
+              Taller than the old lockup was. The 2026 mark stacks the car over
+              the wordmark instead of setting them side by side, so matching the
+              old 40px height would have shrunk "AUTOS B2" by a third and left
+              "RECYCLAGE" as texture. 44px is the most the 64px mobile bar takes
+              without the logo touching the border.
+            */
+            className="h-11 w-auto sm:h-14"
           />
         </Link>
 

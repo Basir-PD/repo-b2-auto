@@ -29,17 +29,23 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
           {/* NAP — must match the Google Business Profile character for character. */}
           <div>
             {/*
-              The real logo, not a wordmark. The previous navy version washed
-              out to about 1.3:1 against this footer; the green holds, so the
-              mark can appear here as well as in the header.
+              The dark-background copy of the mark, not the one the header uses.
+              The 2026 logo draws the car and "RECYCLAGE AUTOS" in navy, which
+              sits at roughly 1.2:1 on slate-950 — invisible. This variant
+              carries the same artwork with the navy turned white and the green
+              untouched, which is the pairing that actually reads here.
+
+              Both files are generated from brand/autos-b2-logo-master.png. If
+              the logo is ever replaced, BOTH have to be regenerated or the
+              footer silently goes blank against its own background.
             */}
             <Image
-              src="/logo-autob2.png"
+              src="/logo-autob2-dark.png"
               alt={siteConfig.name}
-              width={600}
-              height={214}
-              sizes="135px"
-              className="h-12 w-auto"
+              width={900}
+              height={511}
+              sizes="113px"
+              className="h-16 w-auto"
             />
 
             <address className="mt-5 space-y-3 not-italic text-sm leading-relaxed">
