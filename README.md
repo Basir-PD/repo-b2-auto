@@ -428,6 +428,33 @@ On submit the browser **navigates** to `/fr/merci/` (or `/en/thank-you/`), so a
 real pageview conversion fires in Google Ads and Meta rather than relying on an
 event alone. Those pages are `noindex` and disallowed in `robots.txt`.
 
+### Call tracking must never touch the WhatsApp links
+
+A call-tracking tool (WhatConverts, CallRail, CTM — they all work this way)
+rewrites phone numbers it finds on the page into a rented tracking line so the
+call can be attributed. That is correct for a `tel:` link and **catastrophic for
+a wa.me link**: a tracking number is an ordinary phone line with no WhatsApp
+account, so the button opens WhatsApp only to be told the number "isn't on
+WhatsApp".
+
+Nothing about the page looks broken. No error is logged. The lead is just gone,
+and the only way anyone finds out is by clicking their own button.
+
+So every anchor carrying the WhatsApp number wears the `no-swap` class, exported
+as `NO_SWAP` from `lib/tracking.ts` and covered by
+`components/site/whatsapp-no-swap.test.tsx`. Three anchors have it today:
+`WhatsAppLink`, `WhatsAppFloat` and the WhatsApp half of `MobileContactBar`. A
+fourth will be added by someone who has not read this, which is what the spec is
+for.
+
+`tel:` links and `PhoneLink` deliberately do **not** carry it — those have to
+swap or the call tracking measures nothing.
+
+Do not run two number-swapping systems at once. If a third-party tool is doing
+DNI, leave `NEXT_PUBLIC_TRACKING_PHONE_E164` unset (see **Call tracking (DNI)**);
+the site's own swap and a vendor's will fight and neither attribution can be
+trusted.
+
 **Attribution.** `lib/attribution.ts` captures `gclid`, `wbraid`, `gbraid`,
 `fbclid`, `msclkid` and every `utm_*` on first paint and keeps them in
 `sessionStorage`, first-touch wins. They ride along on the lead, which is what

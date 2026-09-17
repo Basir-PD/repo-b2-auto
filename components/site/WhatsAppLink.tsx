@@ -1,7 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/config/site";
-import { trackWhatsApp } from "@/lib/tracking";
+import { NO_SWAP, trackWhatsApp } from "@/lib/tracking";
 import WhatsAppIcon from "@/components/site/WhatsAppIcon";
 
 /**
@@ -40,7 +40,7 @@ export default function WhatsAppLink({
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackWhatsApp(source)}
-      className={`flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-6 py-4 whitespace-nowrap text-base font-bold text-white shadow-lg shadow-emerald-900/20 transition-all hover:-translate-y-0.5 hover:bg-[#1FBE5A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 ${className}`}
+      className={`${NO_SWAP} flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-6 py-4 whitespace-nowrap text-base font-bold text-white shadow-lg shadow-emerald-900/20 transition-all hover:-translate-y-0.5 hover:bg-[#1FBE5A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 ${className}`}
     >
       <WhatsAppIcon className="h-5 w-5 shrink-0" />
       {label}

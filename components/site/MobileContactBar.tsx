@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { usePhone } from "@/lib/usePhone";
-import { trackCall, trackWhatsApp } from "@/lib/tracking";
+import { NO_SWAP, trackCall, trackWhatsApp } from "@/lib/tracking";
 import { fbqTrack } from "@/components/site/MetaPixel";
 import WhatsAppIcon from "@/components/site/WhatsAppIcon";
 
@@ -114,7 +114,7 @@ export default function MobileContactBar({
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackWhatsApp("mobile_bar")}
-            className={`${action} bg-[#075E54] active:bg-[#054C44]`}
+            className={`${NO_SWAP} ${action} bg-[#075E54] active:bg-[#054C44]`}
           >
             <WhatsAppIcon className="h-[18px] w-[18px] shrink-0" />
             {whatsappLabel}

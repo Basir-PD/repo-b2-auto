@@ -1,7 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/config/site";
-import { trackWhatsApp } from "@/lib/tracking";
+import { NO_SWAP, trackWhatsApp } from "@/lib/tracking";
 import WhatsAppIcon from "@/components/site/WhatsAppIcon";
 
 /**
@@ -19,7 +19,7 @@ export default function WhatsAppFloat({ ariaLabel }: { ariaLabel: string }) {
       rel="noopener noreferrer"
       onClick={() => trackWhatsApp("float")}
       aria-label={ariaLabel}
-      className="fixed bottom-6 right-6 z-40 hidden h-14 w-14 md:flex items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+      className={`${NO_SWAP} fixed bottom-6 right-6 z-40 hidden h-14 w-14 md:flex items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2`}
     >
       <WhatsAppIcon className="h-7 w-7 text-white" />
     </a>
