@@ -24,7 +24,7 @@ import MobileContactBar from "./MobileContactBar";
 // The bar hides itself on the homepage, so the specs run it on another route.
 vi.mock("next/navigation", () => ({ usePathname: () => "/fr/vendre-mon-auto/" }));
 
-const waNumber = siteConfig.whatsapp.number;
+const waPath = siteConfig.whatsapp.clickPath;
 
 describe("WhatsApp links opt out of call-tracking number swapping", () => {
   it("marks the inline WhatsApp button", () => {
@@ -32,7 +32,7 @@ describe("WhatsApp links opt out of call-tracking number swapping", () => {
 
     const link = screen.getByRole("link", { name: /whatsapp/i });
     expect(link).toHaveClass(NO_SWAP);
-    expect(link).toHaveAttribute("href", expect.stringContaining(waNumber));
+    expect(link).toHaveAttribute("href", expect.stringContaining(waPath));
   });
 
   it("marks the button even when a prefill is seeded into the chat", () => {
@@ -40,7 +40,7 @@ describe("WhatsApp links opt out of call-tracking number swapping", () => {
 
     const link = screen.getByRole("link", { name: /whatsapp/i });
     expect(link).toHaveClass(NO_SWAP);
-    expect(link.getAttribute("href")).toContain(`wa.me/${waNumber}`);
+    expect(link.getAttribute("href")).toContain(waPath);
   });
 
   it("marks the desktop floating button", () => {
@@ -48,7 +48,7 @@ describe("WhatsApp links opt out of call-tracking number swapping", () => {
 
     const link = screen.getByRole("link", { name: "Nous écrire sur WhatsApp" });
     expect(link).toHaveClass(NO_SWAP);
-    expect(link).toHaveAttribute("href", expect.stringContaining(waNumber));
+    expect(link).toHaveAttribute("href", expect.stringContaining(waPath));
   });
 
   it("marks the WhatsApp half of the mobile bar and leaves the call half swappable", () => {
@@ -63,7 +63,7 @@ describe("WhatsApp links opt out of call-tracking number swapping", () => {
 
     const whatsapp = screen.getByRole("link", { name: /whatsapp/i });
     expect(whatsapp).toHaveClass(NO_SWAP);
-    expect(whatsapp.getAttribute("href")).toContain(`wa.me/${waNumber}`);
+    expect(whatsapp.getAttribute("href")).toContain(waPath);
 
     /*
       The other half of the bar is a tel: link and MUST stay swappable — if
@@ -72,5 +72,35 @@ describe("WhatsApp links opt out of call-tracking number swapping", () => {
     const call = screen.getByRole("link", { name: /appeler/i });
     expect(call).not.toHaveClass(NO_SWAP);
     expect(call.getAttribute("href")).toMatch(/^tel:/);
+  });
+});
+
+/*
+ * The invariant that actually matters, and the reason the `no-swap` class was
+ * not enough: a call-tracking script cannot rewrite a number that is not there.
+ * If any of these buttons ever renders the raw wa.me URL again, the swapper
+ * gets something to match and the button dies silently.
+ */
+describe("the WhatsApp number never reaches the DOM", () => {
+  const digits = siteConfig.whatsapp.number;
+
+  it("keeps the number out of the inline button", () => {
+    const { container } = render(<WhatsAppLink source="hero" label="WhatsApp" prefill="Bonjour" />);
+    expect(container.innerHTML).not.toContain(digits);
+    expect(container.innerHTML).not.toContain("wa.me");
+  });
+
+  it("keeps the number out of the floating button", () => {
+    const { container } = render(<WhatsAppFloat ariaLabel="WhatsApp" />);
+    expect(container.innerHTML).not.toContain(digits);
+    expect(container.innerHTML).not.toContain("wa.me");
+  });
+
+  it("keeps the number out of the mobile bar", () => {
+    Object.defineProperty(window, "scrollY", { value: 200, configurable: true });
+    const { container } = render(
+      <MobileContactBar callLabel="Appeler" whatsappLabel="WhatsApp" prefill="Bonjour" />
+    );
+    expect(container.innerHTML).not.toContain("wa.me");
   });
 });

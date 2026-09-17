@@ -107,10 +107,22 @@ export const siteConfig = {
 
   email: "admin@autosb2.com",
 
-  /** wa.me deep link — opens a WhatsApp chat with this number. */
+  /**
+   * WhatsApp.
+   *
+   * `clickPath` is what every button on the site links to, NOT the wa.me URL.
+   * app/whatsapp/route.ts redirects it. The number is deliberately kept out of
+   * the rendered page because the call-tracking script rewrites any phone
+   * number it finds, and a swapped wa.me link opens WhatsApp only to report
+   * that the number is not on WhatsApp — see that file for the whole story.
+   *
+   * `href` is the real deep link and is used by the redirect, server side,
+   * where no swapper can reach it.
+   */
   whatsapp: {
     number: "15146232787",
     href: "https://wa.me/15146232787",
+    clickPath: "/whatsapp",
   },
 
   address: {
