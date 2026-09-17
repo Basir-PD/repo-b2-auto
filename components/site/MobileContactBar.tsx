@@ -74,7 +74,7 @@ export default function MobileContactBar({
   const isHome = /^\/(fr|en)\/?$/.test(pathname);
   if (isHome) return null;
 
-  const waHref = `${siteConfig.whatsapp.href}?text=${encodeURIComponent(prefill)}`;
+  const waHref = `${siteConfig.whatsapp.clickPath}?text=${encodeURIComponent(prefill)}`;
 
   const action =
     "flex h-12 items-center justify-center gap-2 rounded-xl text-[15px] font-black text-white transition-colors";

@@ -14,7 +14,7 @@ import WhatsAppIcon from "@/components/site/WhatsAppIcon";
 export default function WhatsAppFloat({ ariaLabel }: { ariaLabel: string }) {
   return (
     <a
-      href={siteConfig.whatsapp.href}
+      href={siteConfig.whatsapp.clickPath}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackWhatsApp("float")}

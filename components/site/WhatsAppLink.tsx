@@ -30,9 +30,14 @@ export default function WhatsAppLink({
   prefill?: string;
   className?: string;
 }) {
+  /*
+    Points at our own /whatsapp redirect, never at wa.me — the number must not
+    appear in the DOM or the call-tracking script rewrites it. See
+    app/whatsapp/route.ts.
+  */
   const href = prefill
-    ? `${siteConfig.whatsapp.href}?text=${encodeURIComponent(prefill)}`
-    : siteConfig.whatsapp.href;
+    ? `${siteConfig.whatsapp.clickPath}?text=${encodeURIComponent(prefill)}`
+    : siteConfig.whatsapp.clickPath;
 
   return (
     <a
