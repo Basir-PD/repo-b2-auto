@@ -180,10 +180,13 @@ They are not wrong, but they no longer match the mark in the header:
 - `app/apple-icon.png` — 180x180 home-screen icon, the real logo centred on
   the logo's dark green (`#04331A`).
 
-> The name still reads **AUTOS B2**, matching `siteConfig.name`, the truck door
-> and the ads, so there is no name mismatch for ad review or the Google
-> Business Profile check to trip over. "RECYCLAGE" above it is a descriptor,
-> not part of the registered name — do not copy it into `siteConfig`.
+> The mark now agrees with the rename that shipped on 2026-09-15. It reads
+> **RECYCLAGE AUTOS B2**, which is `siteConfig.name`, the registered entity and
+> the Google Business Profile listing, all the same string — so the logo, the
+> titles, the schema `name` and the GBP finally say one thing. "AUTOS B2" is
+> `shortName` and the JSON-LD `alternateName`; it is what the wordmark
+> emphasises and what people say out loud, which is why the artwork sets it
+> large with "RECYCLAGE" above it.
 >
 > The palette is a looser fit than it was. The logo's green is `#0F9810`,
 > noticeably brighter and yellower than `--brand-600` `#206735`, which every
