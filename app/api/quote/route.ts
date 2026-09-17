@@ -4,13 +4,15 @@ import { ConvexError } from "convex/values";
 import { api } from "@/convex/_generated/api";
 import { siteConfig } from "@/config/site";
 import { phoneIsValid } from "@/lib/phone";
+import { sendLeadWhatsApp } from "@/lib/whatsapp";
 
 /**
  * ============================================================
  * POST /api/quote  —  lead handler
  * ============================================================
  * Validates, stores in Convex (which schedules the notification
- * email), then fires the SMS/WhatsApp webhook. Both are tried
+ * email), then pings the owner's phone on WhatsApp and fires the
+ * generic lead webhook. The store and the pings are tried
  * independently and a lead is only refused when neither accepted
  * it, so a store outage costs the /admin record but still pages a
  * human, and a webhook outage costs the ping but not the lead.
@@ -30,7 +32,10 @@ import { phoneIsValid } from "@/lib/phone";
  * Next app env (.env.local):
  *   NEXT_PUBLIC_CONVEX_URL   written by `npx convex dev`
  *   INGEST_SECRET            optional; must match the Convex var
- *   LEAD_WEBHOOK_URL         optional; Zapier/Make → Twilio or WhatsApp
+ *   LEAD_WEBHOOK_URL         optional; Zapier/Make → Twilio SMS
+ *   WHATSAPP_TOKEN           optional; see lib/whatsapp.ts
+ *   WHATSAPP_PHONE_NUMBER_ID optional; the SENDER's id
+ *   WHATSAPP_TO              optional; who gets paged
  *
  * Convex deployment env (`npx convex env set …`):
  *   RESEND_API_KEY, QUOTE_FROM, QUOTE_INBOX, ADMIN_EMAILS
@@ -181,9 +186,9 @@ export async function POST(request: Request) {
 
   /*
    * Two independent sinks: Convex (the record of the lead, which also
-   * schedules the notification email) and the webhook (the SMS/WhatsApp ping
-   * that gets a human dialling). Both are attempted, and the submission is
-   * only refused if NEITHER of them accepted it.
+   * schedules the notification email) and the pings that get a human
+   * dialling — WhatsApp and the webhook. Both sides are attempted, and the
+   * submission is only refused if NEITHER of them accepted it.
    *
    * It used to return 503 the instant NEXT_PUBLIC_CONVEX_URL was missing,
    * before the webhook was even tried. That is not hypothetical: production
@@ -224,20 +229,56 @@ export async function POST(request: Request) {
    * whether this lead also exists in /admin or whether the message they are
    * reading is the only copy of it anywhere.
    */
-  let notified = false;
-  if (siteConfig.leadWebhook) {
-    try {
-      await fetch(siteConfig.leadWebhook, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...lead, partial, source, attribution, stored }),
-        signal: AbortSignal.timeout(3000),
-      });
-      notified = true;
-    } catch (err) {
-      console.error("[quote] webhook failed:", err, stored ? "(lead is stored)" : "(lead is LOST)");
-    }
-  }
+  /*
+   * Two ways to reach a human, tried together and counted as one: the generic
+   * webhook (whatever is pointed at LEAD_WEBHOOK_URL — Zapier, Make, SMS) and
+   * WhatsApp straight to the owner's phone.
+   *
+   * In parallel, so the visitor waits for the slower of the two rather than
+   * their sum, and independent, so either one alone still pages somebody.
+   * Neither is allowed to throw out of here: a notification failure must cost
+   * the notification, never the lead.
+   */
+  const [webhookPing, whatsappPing] = await Promise.all([
+    (async () => {
+      if (!siteConfig.leadWebhook) return false;
+      try {
+        await fetch(siteConfig.leadWebhook, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...lead, partial, source, attribution, stored }),
+          signal: AbortSignal.timeout(3000),
+        });
+        return true;
+      } catch (err) {
+        console.error(
+          "[quote] webhook failed:",
+          err,
+          stored ? "(lead is stored)" : "(lead is LOST)"
+        );
+        return false;
+      }
+    })(),
+    /*
+     * Deliberately NOT routed through Convex like the notification email is.
+     * The email can afford to ride on the store — it is read minutes later
+     * anyway — but this ping is the one that gets somebody dialling, so it
+     * must survive a Convex outage. It resolves false rather than throwing
+     * when WhatsApp is unconfigured or Meta is unhappy; lib/whatsapp.ts logs
+     * the reason.
+     */
+    sendLeadWhatsApp({
+      name: lead.name,
+      phone,
+      vehicle,
+      partial,
+      source,
+      postal: postal || undefined,
+      stored,
+    }),
+  ]);
+
+  const notified = webhookPing || whatsappPing;
 
   if (!stored && !notified) {
     /*

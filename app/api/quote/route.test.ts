@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 /*
  * Convex is mocked, so these specs exercise our validation, throttling and
@@ -238,5 +238,90 @@ describe("POST /api/quote — when a backend is missing", () => {
 
     expect(res.status).toBe(503);
     await expect(res.json()).resolves.toEqual({ error: "backend_not_configured" });
+  });
+});
+
+/*
+ * The WhatsApp ping is the fastest route to somebody dialling back, so it is
+ * wired straight into the route rather than through Convex like the
+ * notification email. These specs pin that independence down: the ping has to
+ * survive the store being gone, and it has to be enough on its own to keep a
+ * lead from being refused.
+ */
+describe("POST /api/quote — the WhatsApp ping", () => {
+  const GRAPH = "graph.facebook.com";
+
+  /** Calls the route made to Meta, as opposed to the lead webhook. */
+  const graphCalls = () => webhook.mock.calls.filter(([url]) => String(url).includes(GRAPH));
+
+  beforeEach(() => {
+    process.env.WHATSAPP_TOKEN = "test-token";
+    process.env.WHATSAPP_PHONE_NUMBER_ID = "1234567890";
+    process.env.WHATSAPP_TO = "5146232787";
+  });
+
+  afterEach(() => {
+    process.env.WHATSAPP_TOKEN = "";
+    process.env.WHATSAPP_PHONE_NUMBER_ID = "";
+    process.env.WHATSAPP_TO = "";
+  });
+
+  it("pings the owner's phone with the lead", async () => {
+    await post(validLead);
+
+    expect(graphCalls()).toHaveLength(1);
+    const body = JSON.parse(String(graphCalls()[0][1].body));
+    expect(body.to).toBe("15146232787");
+    const params = body.template.components[0].parameters.map((p: { text: string }) => p.text);
+    expect(params).toContain("Jean Tremblay");
+    expect(params).toContain("2011 Honda Civic");
+  });
+
+  it("marks an abandoned form as one, so it is not worked as a consented call", async () => {
+    await post({ phone: "(514) 623-2787", partial: true, source: "hero_form" });
+
+    const body = JSON.parse(String(graphCalls()[0][1].body));
+    const params = body.template.components[0].parameters.map((p: { text: string }) => p.text);
+    expect(params[0]).toContain("FORMULAIRE ABANDONNÉ");
+  });
+
+  /*
+   * The whole reason it does not ride on Convex. A store outage already costs
+   * the /admin record; it must not also cost the phone call.
+   */
+  it("still fires when Convex is unconfigured and the webhook is down", async () => {
+    process.env.NEXT_PUBLIC_CONVEX_URL = "";
+    webhook.mockImplementation(async (url: string) => {
+      if (!String(url).includes(GRAPH)) throw new Error("webhook is down");
+      return new Response("{}", { status: 200 });
+    });
+
+    const res = await post(validLead);
+
+    expect(res.status).toBe(200);
+    await expect(res.json()).resolves.toEqual({ ok: true });
+    expect(submit).not.toHaveBeenCalled();
+    expect(graphCalls()).toHaveLength(1);
+  });
+
+  it("tells the owner when the message in their hand is the only copy", async () => {
+    process.env.NEXT_PUBLIC_CONVEX_URL = "";
+
+    await post(validLead);
+
+    const body = JSON.parse(String(graphCalls()[0][1].body));
+    const params = body.template.components[0].parameters.map((p: { text: string }) => p.text);
+    expect(params[4]).toContain("seule copie");
+  });
+
+  it("refuses the lead only when Convex, the webhook AND WhatsApp have all failed", async () => {
+    process.env.NEXT_PUBLIC_CONVEX_URL = "";
+    webhook.mockImplementation(async () => {
+      throw new Error("everything is down");
+    });
+
+    const res = await post(validLead);
+
+    expect(res.status).toBe(503);
   });
 });
