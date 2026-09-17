@@ -69,7 +69,7 @@ export const CITIES: City[] = [
     landmark: "la montée Masson et l'autoroute 640",
     copy: {
       fr: {
-        lede: "Notre cour est à Mascouche, au 340 Chemin Pincourt. Pas de sous-traitant, pas d'intermédiaire à Montréal qui revend votre appel : quand vous nous téléphonez, vous parlez au recycleur qui va acheter votre véhicule, envoyer la remorqueuse et vous payer. C'est la ville où on opère depuis dix ans, et celle qu'on connaît le mieux.",
+        lede: "Notre cour est à Mascouche, au 340 Chemin Pincourt. Pas de sous-traitant, pas d'intermédiaire à Montréal qui revend votre appel : quand vous nous téléphonez, vous parlez au recycleur qui va acheter votre véhicule, envoyer la remorqueuse et vous payer. C'est la ville où on opère depuis onze ans, et celle qu'on connaît le mieux.",
         worth:
           "Le montant qu'on offre dépend surtout du poids du véhicule, de son année, de la présence du convertisseur catalytique et de l'état des pièces encore réutilisables. Comme la cour est ici même, il n'y a aucun frais de déplacement à absorber sur un ramassage à Mascouche : ce que le marché du métal et des pièces vaut pour votre auto, vous le recevez au complet.",
         towing:
@@ -82,7 +82,7 @@ export const CITIES: City[] = [
         faqA: `Souvent la journée même. Comme la cour est au 340 Chemin Pincourt, un appel le matin donne presque toujours un enlèvement en après-midi, et un appel en fin de journée est ramassé le lendemain matin. On est ${hoursLong("fr").toLowerCase()}.`,
       },
       en: {
-        lede: "Our yard is in Mascouche, at 340 Chemin Pincourt. No subcontractor, no Montreal middleman reselling your call: when you phone us, you are talking to the recycler who will buy the vehicle, send the tow truck and hand you the money. This is the city we have worked in for ten years, and the one we know best.",
+        lede: "Our yard is in Mascouche, at 340 Chemin Pincourt. No subcontractor, no Montreal middleman reselling your call: when you phone us, you are talking to the recycler who will buy the vehicle, send the tow truck and hand you the money. This is the city we have worked in for eleven years, and the one we know best.",
         worth:
           "What we offer depends mostly on the vehicle's weight, its year, whether the catalytic converter is still on it, and the condition of any reusable parts. Because the yard is right here, there is no travel cost to absorb on a Mascouche pickup — whatever the metal and the parts are worth, you get all of it.",
         towing:
