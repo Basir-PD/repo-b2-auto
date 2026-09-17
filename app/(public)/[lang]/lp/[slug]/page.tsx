@@ -67,11 +67,14 @@ export default async function LandingPage({
           <Image
             src="/logo-autob2.png"
             alt={siteConfig.name}
-            width={600}
-            height={214}
-            sizes="101px"
+            width={900}
+            height={511}
+            sizes="85px"
             loading="eager"
-            className="h-8 w-auto sm:h-9"
+            // Same reason as the header: the stacked mark needs the extra
+            // height to stay legible. Still smaller than the header's, because
+            // on a paid page the phone number outranks the logo.
+            className="h-10 w-auto sm:h-12"
           />
           <PhoneLink
             source={`lp_${slug}_header`}

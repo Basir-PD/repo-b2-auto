@@ -24,7 +24,8 @@ Everything below lives in **one** place. Nothing is hardcoded in components.
 | Google review link | `config/site.ts` → `siteConfig.GBP_REVIEW_LINK` — see below |
 | Real Google reviews | `content/reviews.ts` — see below |
 | Where lead emails go | `config/site.ts` → `siteConfig.leadInbox` (env `LEAD_INBOX`) |
-| SMS / WhatsApp webhook | env `LEAD_WEBHOOK_URL` — see below |
+| WhatsApp lead ping | env `WHATSAPP_*` — see below |
+| SMS webhook | env `LEAD_WEBHOOK_URL` — see below |
 | Page copy | `content/copy/fr.ts` and `content/copy/en.ts` |
 | FAQ | `content/faq.ts` (one source for the FAQ page, the homepage block and the schema) |
 | Service pages | `content/services.ts` |
@@ -100,7 +101,8 @@ to `.env.local` for dev and set the same keys in Vercel for production.
 | `NEXT_PUBLIC_META_PIXEL_ID` | Meta Events Manager → dataset ID | No Meta pixel, no Lead events, no Advantage+ optimisation. |
 | `NEXT_PUBLIC_TRACKING_PHONE_E164` + `_DISPLAY` | Your call-tracking provider's pool number | DNI stays off; everyone sees the real number and calls cannot be attributed to a click. Both must be set. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Search Console → HTML tag method | Cannot verify the property. |
-| `LEAD_WEBHOOK_URL` | Zapier/Make hook → Twilio SMS or WhatsApp | Leads still store and email, but nobody gets pinged to call back within five minutes. |
+| `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID` | Meta Cloud API — full walkthrough under **Lead delivery** | No WhatsApp ping. Leads still store and email, but 514 775-6790 never buzzes. The sender must be a second number, never 514 623-2787. |
+| `LEAD_WEBHOOK_URL` | optional Zapier/Make hook → Twilio SMS | Nothing, unless WhatsApp is also unset — then nobody gets pinged to call back within five minutes. |
 | `NEXT_PUBLIC_CONVEX_URL`, `INGEST_SECRET` | `npx convex dev` locally; **`npx convex deploy` for production**, which prints the `https://….convex.cloud` URL to paste into Vercel | Nothing is stored and nothing reaches `/admin`. `LEAD_WEBHOOK_URL` still pages a human if it is set; with neither configured the form returns 503 and **the lead is lost**. A `local:` deployment in `.env.local` is a laptop, not a backend — it cannot be the production value. |
 
 ### Then, inside the ad platforms
@@ -139,32 +141,56 @@ to `.env.local` for dev and set the same keys in Vercel for production.
 
 ## Logo
 
-`public/logo-autob2.png` — 600x214, transparent, derived from the supplied
-1448x1086 PNG by trimming the empty margin and resizing. The untrimmed master
-is kept at `brand/autos-b2-logo-master.png`, which is outside `public/` so it
-is preserved without being deployed.
+**Two files, and both must be regenerated together.**
 
-Used in the site header, the landing-page header **and the footer**. The green
-holds its own on the near-black footer, which the earlier navy version did
-not — it measured about 1.3:1 there and disappeared.
+| File | Artwork | Used by |
+| --- | --- | --- |
+| `public/logo-autob2.png` | navy + green, as supplied | site header, landing-page header |
+| `public/logo-autob2-dark.png` | same, navy turned white | footer only |
+
+Both are 900x511, transparent, generated from `brand/autos-b2-logo-master.png`
+(the supplied 1536x1024 PNG) by trimming the empty margin, keying the white
+background out to alpha with a soft ramp, and resizing. The master lives
+outside `public/` so it is preserved without being deployed.
+
+The dark copy is not decoration. The 2026 mark draws the car and "RECYCLAGE
+AUTOS" in navy `#0A1828`, which measures about 1.2:1 against the slate-950
+footer — invisible. Replace the logo without rebuilding that second file and
+the footer mark silently disappears against its own background, which nobody
+notices because the alt text still reads correctly.
+
+The 2025 green wordmark it replaced is kept at
+`brand/autos-b2-logo-green-2025.png`. That one was a single file because it was
+green throughout and survived both backgrounds.
+
+The lockup also changed shape: 2.80:1 side-by-side became 1.76:1 stacked, so
+every `className` height went up. Matching the old 40px header height would
+have shrunk "AUTOS B2" by a third and reduced "RECYCLAGE" to texture.
 
 Loaded `eager` rather than `priority` in the headers: it is above the fold so
 it must not wait for an intersection, but a preload would compete with the
 hero image, which is the LCP element. Intrinsic width/height are set, so it
 cannot shift the layout as it decodes.
 
-Icons, both generated from this artwork:
+Icons — **still generated from the 2025 green wordmark, not this logo.**
+They are not wrong, but they no longer match the mark in the header:
 
 - `app/icon.svg` — the tab favicon. A "B2" mark on the logo's dark-green
   gradient, because the full wordmark is illegible at 16px.
 - `app/apple-icon.png` — 180x180 home-screen icon, the real logo centred on
   the logo's dark green (`#04331A`).
 
-> This logo settled two things that were previously inconsistent: it reads
-> **AUTOS B2**, matching `siteConfig.name`, the truck door and what the ads
-> will say — so there is no longer a name mismatch to trip up ad review or
-> the Google Business Profile check. And it is green, so the `--brand-*`
-> palette stands as-is.
+> The name still reads **AUTOS B2**, matching `siteConfig.name`, the truck door
+> and the ads, so there is no name mismatch for ad review or the Google
+> Business Profile check to trip over. "RECYCLAGE" above it is a descriptor,
+> not part of the registered name — do not copy it into `siteConfig`.
+>
+> The palette is a looser fit than it was. The logo's green is `#0F9810`,
+> noticeably brighter and yellower than `--brand-600` `#206735`, which every
+> CTA on the site uses. Nothing is broken and the contrast ratios still hold,
+> but the logo and the buttons are no longer the same green. Retuning
+> `--brand-*` to the logo is a deliberate job with its own contrast pass, not
+> a find-and-replace.
 
 ## Photography
 
@@ -238,10 +264,15 @@ not just the missing side.
 ## Lead delivery
 
 `POST /api/quote` → stored in Convex (which schedules the notification email) →
-optional webhook.
+WhatsApp ping to the owner's phone + optional webhook.
 
 Storing first means a mail or webhook outage costs a *notification*, never a
 *lead* — it still appears in `/admin` either way.
+
+The WhatsApp ping is the exception to "everything goes through Convex". The
+email can afford to ride on the store, because it is read minutes later anyway;
+the ping is what gets somebody dialling inside five minutes, so it is fired
+from the route directly and survives a Convex outage. See `lib/whatsapp.ts`.
 
 Two kinds of submission arrive:
 
@@ -279,16 +310,77 @@ NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX     # unset = no tags load at all
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=
 INGEST_SECRET=                     # optional, must match the Convex var
 LEAD_INBOX=admin@autosb2.com
-LEAD_WEBHOOK_URL=                  # Zapier/Make -> Twilio SMS or WhatsApp
+LEAD_WEBHOOK_URL=                  # optional; Zapier/Make -> Twilio SMS
+
+# WhatsApp lead ping (Meta Cloud API, direct). No-ops until Meta is wired up.
+# Only these two are required. Everything else has a committed default.
+WHATSAPP_TOKEN=                    # permanent system-user token
+WHATSAPP_PHONE_NUMBER_ID=          # the SENDER's id, not the number
+WHATSAPP_TO=                       # optional; defaults to 514 775-6790
+WHATSAPP_TEMPLATE=nouveau_lead     # optional, this is the default
+WHATSAPP_TEMPLATE_LANG=fr          # optional, this is the default
 
 # Convex deployment (`npx convex env set …`)
 RESEND_API_KEY= QUOTE_FROM= QUOTE_INBOX= ADMIN_EMAILS=
 ```
 
-`LEAD_WEBHOOK_URL` is what makes a five-minute callback possible. Point it at a
-Zapier or Make hook that fans out to Twilio or WhatsApp. It is called with a
-3-second timeout and its failure is logged, never surfaced — the lead is
-already stored by then.
+Pings go to **514 775-6790** unless `WHATSAPP_TO` says otherwise — the default
+is committed in `lib/whatsapp.ts` so that forgetting the variable cannot leave
+the ping pointed at nobody. `WHATSAPP_TO` is **comma** separated, and spaces,
+brackets and dashes inside a number are fine (`+1 (514) 623-2787` works); spaces
+*between* numbers are not.
+
+### Wiring up the WhatsApp ping
+
+Cost: Meta charges nothing for Cloud API access and about **US$0.0034** per
+utility template delivered to a Canadian number — roughly **$1/month** at a few
+hundred leads. There is no free monthly allowance any more; the old "1,000 free
+conversations" tier was replaced by per-message pricing in July 2025.
+
+1. **Use a second number as the sender.** It cannot be 514 623-2787 — that
+   number is in every `wa.me` link on this site and lives in the WhatsApp app on
+   the owner's phone, and registering a number to the Cloud API removes it from
+   the app. A spare landline or SIM works and costs nothing; Meta often rejects
+   VoIP numbers at verification, so a real line is the safe choice. The owner's
+   number is the **recipient**.
+2. In **developers.facebook.com** → create an app → add **WhatsApp** → register
+   the sender number. Copy the **Phone number ID** into
+   `WHATSAPP_PHONE_NUMBER_ID`.
+3. Create a **permanent** token: Business Settings → System users → add a system
+   user with the `whatsapp_business_messaging` permission → generate a token
+   with no expiry. The 24-hour token the dashboard hands you is for testing
+   only; leaving it in production means the ping dies silently tomorrow.
+   Copy it into `WHATSAPP_TOKEN`.
+4. Submit a **utility** template named `nouveau_lead`, language `fr`, body:
+
+   ```
+   Nouveau lead Autos B2 — {{1}}
+   Nom : {{2}}
+   Téléphone : {{3}}
+   Véhicule : {{4}}
+   Info : {{5}}
+   ```
+
+   Category **must** be Utility, not Marketing — a marketing template costs more
+   and can be throttled. Approval usually takes minutes.
+5. Set `WHATSAPP_TOKEN` and `WHATSAPP_PHONE_NUMBER_ID` in Vercel and redeploy.
+   The recipient already defaults to 514 775-6790, so nothing else is needed.
+
+**Business verification is not needed.** An unverified WhatsApp account can send
+250 business-initiated conversations per 24 hours, which is far above this
+shop's lead volume.
+
+**Testing before the template clears review:** have the owner send any message
+to the sender number. That opens a 24-hour window in which free-form text is
+deliverable, and `lib/whatsapp.ts` falls back to plain text whenever the
+template is refused — so the whole path can be proven end to end immediately.
+A fallback send logs `sent … as free text`, which in steady state means the
+template is broken and should be looked at.
+
+`LEAD_WEBHOOK_URL` is the generic alternative, kept for whatever is already
+pointed at it. Point it at a Zapier or Make hook that fans out to Twilio. It is
+called with a 3-second timeout and its failure is logged, never surfaced — the
+lead is already stored by then.
 
 ---
 
