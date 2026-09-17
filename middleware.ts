@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest, type NextFetchEvent } from "next/server";
 import { convexAuthNextjsMiddleware } from "@convex-dev/auth/nextjs/server";
-import { DEFAULT_LANG, LANGS, type Lang } from "@/config/routes";
+import { DEFAULT_LANG, LANG_HEADER, LANGS, type Lang } from "@/config/routes";
 
 const convexMiddleware = convexAuthNextjsMiddleware();
 
@@ -64,9 +64,20 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
     return NextResponse.next();
   }
 
-  // Already language-prefixed.
-  if (LANGS.some((lang) => pathname === `/${lang}` || pathname.startsWith(`/${lang}/`))) {
-    return NextResponse.next();
+  /*
+    Already language-prefixed. The language is passed on to the app in a
+    request header, for one caller: the not-found boundary. Next does not give
+    not-found.tsx the route params, so without this it cannot know which
+    language it is rendering and has to print both at once — which it did, and
+    which read as a page nobody had finished.
+  */
+  const prefixed = LANGS.find(
+    (lang) => pathname === `/${lang}` || pathname.startsWith(`/${lang}/`)
+  );
+  if (prefixed) {
+    const headers = new Headers(request.headers);
+    headers.set(LANG_HEADER, prefixed);
+    return NextResponse.next({ request: { headers } });
   }
 
   const lang = fromAcceptLanguage(request.headers.get("accept-language")) ?? DEFAULT_LANG;

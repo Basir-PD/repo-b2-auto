@@ -257,6 +257,14 @@ export const fr = {
     ],
     backHome: "Retour à l'accueil",
   },
+
+  notFound: {
+    eyebrow: "404",
+    title: "Page introuvable",
+    body: "Cette page n'existe pas ou a été déplacée. Vous cherchez à vendre un véhicule ?",
+    quoteCta: "Obtenir une estimation",
+    backHome: "Retour à l'accueil",
+  },
 };
 
 /**

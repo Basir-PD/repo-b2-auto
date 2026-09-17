@@ -164,3 +164,12 @@ export function alternatesFor(
 
   return out;
 }
+
+/**
+ * Request header the middleware stamps with the language of the current path.
+ *
+ * Exists for one caller: the not-found boundary. Next does not pass route
+ * params to not-found.tsx, so without this it cannot know which language it is
+ * rendering in and has to print both at once.
+ */
+export const LANG_HEADER = "x-lang";

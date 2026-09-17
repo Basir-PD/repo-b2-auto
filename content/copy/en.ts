@@ -199,4 +199,12 @@ export const en: Copy = {
     ],
     backHome: "Back to home",
   },
+
+  notFound: {
+    eyebrow: "404",
+    title: "Page not found",
+    body: "This page doesn't exist or has moved. Looking to sell a vehicle?",
+    quoteCta: "Get a free quote",
+    backHome: "Back to home",
+  },
 };
