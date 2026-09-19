@@ -14,18 +14,6 @@
  * ============================================================
  */
 
-/**
- * Years trading, in one place.
- *
- * Hoisted out of the object because two fields need it — `facts` for the
- * copy and `foundingYear` for the JSON-LD — and an object literal cannot
- * refer to itself. They were two independent literals, both reading 10, which
- * is a drift waiting to happen: bump one on an anniversary, miss the other,
- * and the page says eleven years while the structured data still says the
- * business opened a year later than it did.
- */
-const YEARS_IN_BUSINESS = 11;
-
 export const siteConfig = {
   /**
    * Canonical origin. No trailing slash.
@@ -168,24 +156,23 @@ export const siteConfig = {
     closes: "21:00",
   },
 
-  /** Verified business figures. Do not add to these without a source. */
+  /*
+    Verified business figures. Do not add to these without a source.
+
+    Two claims were removed on 2026-09-19: years in business (11) and
+    vehicles bought per year (7,500). Neither could be tied to Recyclage
+    Autos B2 itself rather than the yard it shares an address with, and an
+    unverifiable volume or tenure claim is the kind of thing Google Ads
+    treats as misrepresentation — a real risk on a young account, and a
+    worse one next to a Google profile showing a single review.
+
+    They were load-bearing in six places: the stat band, the about page
+    body, the about meta description, a photo caption and the LocalBusiness
+    foundingDate. Everything that referenced them now says something a
+    customer can check instead. Do not reintroduce either without a document
+    that proves it.
+  */
   facts: {
-    yearsInBusiness: YEARS_IN_BUSINESS,
-    /*
-      2 000 until 2026-09-09, then 10 000, then corrected to 7 500 by the
-      owner on 2026-09-16 — the figure the site now carries. It is stated in
-      one place because it is rendered in five — the homepage stat row, the
-      landing-page band, the about page, the meta description and a photo
-      caption — and a volume claim that disagrees with itself across a site is
-      worse than either version of it.
-
-      The prose says "around 7,500". As of 2026-09-19 it is no longer one of
-      the three figures in the stat band — the owner replaced that slot with
-      the payout range below — but it still carries the about page, the meta
-      description and a photo caption, so it stays stated here once.
-    */
-    vehiclesPerYear: 7500,
-
     /*
       Cash paid for a vehicle, low to high.
 
@@ -249,9 +236,6 @@ export const siteConfig = {
   GBP_REVIEW_LINK: "https://g.page/r/CdR6L4WXXsR5ECE/review",
 
   priceRange: "$$",
-
-  /** Derived, so it cannot disagree with the years quoted in the copy. */
-  foundingYear: new Date().getFullYear() - YEARS_IN_BUSINESS,
 
   /**
    * No social accounts exist. This stays empty and `sameAs` is omitted from

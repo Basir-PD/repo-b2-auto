@@ -68,7 +68,15 @@ export function localBusinessSchema(lang: Lang) {
     telephone: siteConfig.phone.e164,
     email: siteConfig.email,
     priceRange: siteConfig.priceRange,
-    foundingDate: String(siteConfig.foundingYear),
+    /*
+      No foundingDate. It was derived from a years-in-business figure that
+      could not be tied to this business rather than the yard it shares an
+      address with, and a date asserted in structured data is a stronger
+      claim than the same guess in prose — it is the form Google parses and
+      cross-checks. Omitted for the same reason `geo` was null and `sameAs`
+      is absent while no accounts exist: a field left out costs nothing, a
+      field filled with a guess is what gets a listing penalised.
+    */
     currenciesAccepted: "CAD",
     paymentAccepted: lang === "fr" ? "Argent comptant" : "Cash",
     address: {
