@@ -217,6 +217,29 @@ export const fr = {
     },
   },
 
+  /*
+    Consent banner copy.
+
+    Deliberately shorter than the version this replaced, which opened with a
+    full paragraph on a dark full-width bar. The categories name the actual
+    tools and cookies rather than saying "analytics" and "marketing", because
+    Law 25 asks for consent that is *enlightened* and a category label does
+    not tell anyone who receives their data. The detail lives in the labels,
+    not in a paragraph nobody reads.
+  */
+  consent: {
+    title: "Témoins (cookies)",
+    body: "Rien de non essentiel n'est déposé avant votre choix.",
+    necessary: "Essentiels (sécurité, formulaire)",
+    analytics: "Mesure d'audience (Google Analytics)",
+    marketing: "Publicité (Google Ads, Meta)",
+    alwaysOn: "Toujours actifs",
+    acceptAll: "Tout accepter",
+    rejectAll: "Refuser",
+    save: "Enregistrer mon choix",
+    policyLink: "En savoir plus.",
+  },
+
   form: {
     eyebrow: "Estimation gratuite",
     title: "Combien vaut votre auto ?",

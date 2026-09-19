@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MapPin, Clock } from "lucide-react";
 import type { Lang } from "@/config/routes";
 import { pathFor, cityPathFor } from "@/config/routes";
+import ConsentReopen from "@/components/site/ConsentReopen";
 import { siteConfig, fullAddress } from "@/config/site";
 import { citiesFor } from "@/content/cities";
 import { SERVED_CITIES } from "@/content/service-area";
@@ -196,6 +197,12 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
             <Link href={pathFor("terms", lang)} className="hover:text-white">
               {lang === "fr" ? "Conditions d'utilisation" : "Terms of use"}
             </Link>
+            {/*
+              The withdrawal half of consent. Law 25 wants taking it back to be
+              as easy as giving it, and the privacy policy promises "en tout
+              temps" — this is what makes that sentence true.
+            */}
+            <ConsentReopen label={lang === "fr" ? "Gérer les témoins" : "Manage cookies"} />
           </p>
         </div>
       </div>

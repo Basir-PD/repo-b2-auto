@@ -162,6 +162,19 @@ export const en: Copy = {
     },
   },
 
+  consent: {
+    title: "Cookies",
+    body: "Nothing non-essential is stored before you choose.",
+    necessary: "Essential (security, the form)",
+    analytics: "Audience measurement (Google Analytics)",
+    marketing: "Advertising (Google Ads, Meta)",
+    alwaysOn: "Always on",
+    acceptAll: "Accept all",
+    rejectAll: "Refuse",
+    save: "Save my choice",
+    policyLink: "Learn more.",
+  },
+
   form: {
     eyebrow: "Free quote",
     title: "What is your car worth?",

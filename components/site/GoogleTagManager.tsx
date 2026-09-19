@@ -3,18 +3,18 @@ import { GTM_ID } from "@/lib/tracking";
 /**
  * GTM plus the Consent Mode v2 default.
  *
- * The defaults are GRANTED. They used to be denied, with the cookie banner
- * as the only thing that could ever grant them. That banner was removed on
- * request, so leaving these at denied would have blocked GA4, Google Ads and
- * Meta permanently — and silently, since a blocked tag looks identical to a
- * working one from the outside. The two changes have to travel together.
+ * Everything non-essential defaults to DENIED. CookieConsent is what grants
+ * it, by pushing `gtag('consent','update',…)` when the visitor chooses.
  *
- * The signals are still declared rather than dropped, which keeps Consent
- * Mode wired up: if a banner is ever reinstated, flipping these back to
- * 'denied' is the only change required here.
+ * These were 'granted' between 2026-09-05 and 2026-09-19, while the site had
+ * no banner — deliberately, because with nothing able to grant them, denied
+ * would have blocked GA4, Google Ads and Meta permanently and silently, since
+ * a blocked tag looks identical to a working one from outside. The banner is
+ * back, so these travel back with it. The two changes must always move
+ * together, in either direction.
  *
- * The disclosure that now stands in place of the banner lives in the privacy
- * policy. See README for the Law 25 caveat that comes with that trade.
+ * `functionality_storage` and `security_storage` stay granted: they are what
+ * make the site work at all, and Law 25 does not ask consent for those.
  */
 export default function GoogleTagManager() {
   if (!GTM_ID) return null;
@@ -27,14 +27,15 @@ export default function GoogleTagManager() {
         guarantees that ordering — next/script's beforeInteractive still
         defers past it in the App Router.
 
-        `wait_for_update` is gone with the banner: nothing arrives later to
-        wait for, and leaving it would delay every tag by 500ms for no reason.
+        `wait_for_update` is back with the banner: it holds tags briefly so a
+        visitor who accepts immediately is still measured, instead of the tag
+        firing denied a few milliseconds before their yes arrives.
       */}
       <script
         id="consent-default"
         dangerouslySetInnerHTML={{
           __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted',functionality_storage:'granted',security_storage:'granted'});
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 gtag('set','url_passthrough',true);`,
         }}
       />

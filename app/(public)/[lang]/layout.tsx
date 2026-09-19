@@ -10,6 +10,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import WhatsAppFloat from "@/components/site/WhatsAppFloat";
 import MobileContactBar from "@/components/site/MobileContactBar";
+import CookieConsent from "@/components/site/CookieConsent";
 import AttributionBoot from "@/components/site/AttributionBoot";
 import MetaPixel from "@/components/site/MetaPixel";
 import SiteChrome from "@/components/site/SiteChrome";
@@ -140,6 +141,12 @@ export default async function PublicLayout({
           whatsappLabel={t.common.whatsapp}
           prefill={t.home.whatsappPrefill}
         />
+        {/*
+          After MobileContactBar so it paints above it, but positioned to sit
+          clear of it rather than over it — the call bar is the whole point of
+          the page and a consent card must never cover the phone number.
+        */}
+        <CookieConsent labels={{ ...t.consent, privacyHref: pathFor("privacy", lang) }} />
         <AttributionBoot />
         <MetaPixel />
       </body>
