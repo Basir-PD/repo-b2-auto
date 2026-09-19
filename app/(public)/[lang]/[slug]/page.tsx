@@ -295,7 +295,7 @@ export default async function SlugPage({
         />
         <JsonLd id="ld-city-faq" data={faqSchema([{ id: "city", q: copy.faqQ, a: copy.faqA }])} />
 
-        <PageHeader lang={lang} trail={crumb(city.name)} h1={h1} lede={copy.lede} />
+        <PageHeader lang={lang} trail={crumb(city.name)} h1={h1} lede={copy.lede} cta />
 
         <div className="container mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <dl className="grid gap-4 sm:grid-cols-3">

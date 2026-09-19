@@ -49,9 +49,13 @@ export function Breadcrumbs({
  * It is opt-in rather than automatic because PageHeader also sits on top of
  * the privacy policy and the terms, where a "message us on WhatsApp" button
  * is noise, and on the contact page, which already carries both buttons a
- * few hundred pixels further down. The pages that take it are the ones in
- * the header nav — the four services, about and the FAQ — where a reader has
- * arrived with a question and the answer to most of them is a phone call.
+ * few hundred pixels further down. The pages that take it are the four
+ * services, about, the FAQ and every city page — where a reader has arrived
+ * with a question and the answer to most of them is a phone call.
+ *
+ * City pages earn it most: they are the ad and organic landing pages for
+ * "vendre mon auto <ville>", and before this their first contact affordance
+ * was the quote form, below four sections, an FAQ and a map iframe.
  */
 export function PageHeader({
   lang,
