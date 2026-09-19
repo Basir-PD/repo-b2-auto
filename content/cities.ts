@@ -372,6 +372,66 @@ export const CITIES: City[] = [
     },
   },
 
+  /*
+    The island-wide page, distinct from montreal-est below.
+
+    Added 2026-09-19. The homepage title bids on Montréal and the only
+    Montréal page was Montréal-Est, so the broadest term on the site had no
+    page behind it. These two must stay genuinely different or they split the
+    same ranking: montreal-est owns the Notre-Dame / A-40 corridor and its
+    own boroughs, and this one owns the crossings onto the island, the
+    permit-parking problem and the boroughs listed here. Neither repeats the
+    other's sectors.
+
+    distanceKm and driveMinutes are a representative middle, not a single
+    truth: the northern boroughs are nearer 22 km and the west end past 45.
+    The prose says so, because the distance card alone cannot.
+  */
+  {
+    key: "montreal",
+    name: "Montréal",
+    slug: { fr: "rachat-auto-montreal", en: "scrap-car-removal-montreal" },
+    distanceKm: 30,
+    driveMinutes: 35,
+    sectors: [
+      "Ahuntsic-Cartierville",
+      "Villeray–Saint-Michel",
+      "Saint-Léonard",
+      "Rosemont–La Petite-Patrie",
+      "Le Plateau-Mont-Royal",
+      "Mercier–Hochelaga-Maisonneuve",
+    ],
+    landmark: "le pont Pie-IX et le boulevard Henri-Bourassa",
+    copy: {
+      fr: {
+        lede: "Montréal est la limite sud de notre territoire, et on y descend tous les jours. Selon le secteur, on entre par le pont Pie-IX, le pont Papineau-Leblanc ou le tunnel de la 25. Ce qui complique un enlèvement sur l'île, ça n'a jamais été la distance : c'est la vignette, la ruelle et la place de stationnement.",
+        worth:
+          "Le montant dépend du poids, de l'année, du modèle et de ce qui reste de bon sur le véhicule. À Montréal, il y a une question qu'on pose avant les autres : est-ce que le convertisseur catalytique est encore là ? Les vols de catalyseurs sont assez fréquents sur l'île pour qu'un propriétaire l'apprenne le matin où il essaie de démarrer, et la pièce vaut plusieurs centaines de dollars. Dites-nous-le si le vôtre a été coupé — ça change le prix, mais ça ne nous empêche pas d'acheter, et on préfère l'ajuster au téléphone plutôt qu'à l'arrivée.",
+        towing:
+          "On arrive par Henri-Bourassa, Papineau ou Pie-IX selon le quartier, et l'heure se planifie autour du stationnement plutôt que du trajet. Sur une rue à vignette, un véhicule immobile finit par accumuler des constats, et l'hiver les opérations de déneigement forcent la main à tout le monde. On fixe donc une heure précise, pas une plage de quatre heures : quelqu'un doit pouvoir être là, et l'espace devant l'auto doit être dégagé le temps que la remorqueuse se place. Dans une ruelle ou devant un plex sans entrée, dites-le d'avance — ça change le camion qu'on envoie.",
+        vehicles:
+          "Beaucoup de nos enlèvements à Montréal sont des autos qui dorment dans la rue depuis des mois : locataire de plex sans garage, propriétaire parti en appartement, succession, ou véhicule qui n'a pas passé l'inspection et qui coûte plus cher à réparer qu'il ne vaut. On prend aussi les accidentées, les pertes totales, les fourgonnettes commerciales et les VUS. Un véhicule sans papiers en main ne nous arrête pas : on vous dit quoi obtenir avant l'enlèvement.",
+        paperwork:
+          "On récupère la plaque, on remplit la cession de propriété et on vous remet le reçu officiel sur place, avant de partir. C'est ce papier qui met fin à votre immatriculation à la SAAQ — c'est aussi celui qui vous protège si le véhicule a déjà reçu des constats. Gardez-le.",
+        faqQ: "Vous venez vraiment chercher une auto à Montréal, et en combien de temps ?",
+        faqA: "Oui, tous les jours. Pour les quartiers du nord de l'île, comme Ahuntsic ou Saint-Léonard, c'est souvent le jour même. Plus on descend vers le centre ou vers l'ouest, plus on planifie à l'avance — non pas à cause du trajet, mais parce qu'il faut une fenêtre de stationnement qui fonctionne pour vous et pour la remorqueuse.",
+      },
+      en: {
+        lede: "Montreal is the southern edge of our territory and we come down every day. Depending on the borough we cross at the Pie-IX bridge, the Papineau-Leblanc bridge or through the A-25 tunnel. What makes a pickup on the island awkward has never been the distance — it is the permit sticker, the back alley and finding somewhere to put the truck.",
+        worth:
+          "The amount comes down to weight, year, model and whatever is still good on the vehicle. In Montreal there is one question we ask before the others: is the catalytic converter still on it? Converter theft is common enough on the island that plenty of owners find out on the morning the car will not start, and the part is worth several hundred dollars. Tell us if yours was cut off — it changes the price, it does not stop us buying, and we would far rather adjust it on the phone than at the curb.",
+        towing:
+          "We come in on Henri-Bourassa, Papineau or Pie-IX depending on the neighbourhood, and the appointment gets planned around parking rather than driving time. On a permit street a car that does not move collects tickets, and in winter snow-removal operations force everyone's hand. So we book a specific time rather than a four-hour window: someone needs to be there, and the space in front of the car has to be clear long enough for the truck to set up. If it is in a back alley or in front of a plex with no driveway, say so when you call — it changes which truck we send.",
+        vehicles:
+          "A lot of our Montreal pickups are cars that have sat on the street for months: a plex tenant with no garage, an owner who moved into an apartment, an estate, or a vehicle that failed inspection and costs more to fix than it is worth. We also take collision write-offs, insurance total losses, commercial vans and SUVs. Not having the paperwork in hand does not stop us — we tell you what to get before the pickup.",
+        paperwork:
+          "We take the plate, complete the SAAQ transfer of ownership and hand you the official receipt on the spot, before we leave. That paper is what ends your registration with the SAAQ, and it is also what protects you if the vehicle has already collected tickets. Keep it.",
+        faqQ: "Do you actually come to Montreal to collect a car, and how soon?",
+        faqA: "Yes, every day. For the northern boroughs like Ahuntsic or Saint-Léonard it is often the same day. The further down toward the centre or the west end, the more we schedule ahead — not because of the drive, but because we need a parking window that works for you and for the tow truck.",
+      },
+    },
+  },
+
   {
     key: "montreal-est",
     name: "Montréal-Est",
