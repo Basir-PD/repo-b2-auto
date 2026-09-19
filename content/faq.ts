@@ -2,7 +2,7 @@ import type { Lang } from "@/config/routes";
 import { hoursLong } from "@/config/site";
 
 /**
- * The FAQ. One source for three consumers: the full /faq/ page, the five-item
+ * The FAQ. One source for three consumers: the full /faq/ page, the `onHome`
  * block on the homepage, and the FAQPage JSON-LD on both. Because the schema
  * is generated from the same array the visitor reads, the markup can never
  * drift from the page — which is what Google's structured-data guidelines
@@ -22,6 +22,26 @@ const FR: FaqItem[] = [
     onHome: true,
     q: "Combien vaut mon auto scrap ?",
     a: "Ça dépend du poids du véhicule, de l'année, du modèle, de la présence du convertisseur catalytique et de l'état des pièces réutilisables. Appelez-nous avec l'année, la marque et le modèle et on vous donne un prix ferme en quelques minutes.",
+  },
+  /*
+    The terms behind the H1.
+
+    The homepage headline promises the best price "ou on vous paie la
+    différence" and, until this entry, attached no conditions to it. An
+    unqualified price-match promise is the kind of claim the Office de la
+    protection du consommateur treats as a représentation fausse ou
+    trompeuse if it cannot be honoured as stated, and Google Ads disapproves
+    unsubstantiated superlatives. It is also unworkable in practice: without
+    a proof requirement, "someone offered me more" is unanswerable.
+
+    onHome because the claim itself is on the homepage. Terms a visitor
+    cannot reach from the page making the promise are not terms.
+  */
+  {
+    id: "garantie-prix",
+    onHome: true,
+    q: "Comment fonctionne la garantie du meilleur prix ?",
+    a: "Montrez-nous une offre écrite plus élevée pour le même véhicule et on vous paie la différence. Trois conditions : l'offre doit dater de moins de 7 jours et venir d'un recycleur ou d'un ferrailleur enregistré au Québec ; elle doit couvrir les mêmes conditions que la nôtre, remorquage inclus et sans frais déduits ; et le véhicule doit correspondre à ce que vous nous avez décrit — année, modèle, état et présence du convertisseur catalytique. Présentez-la avant l'enlèvement : une fois le véhicule ramassé et payé, la vente est finale.",
   },
   {
     id: "remorquage",
@@ -118,6 +138,12 @@ const EN: FaqItem[] = [
     a: "It depends on the vehicle's weight, year and model, whether the catalytic converter is still on it, and the condition of any reusable parts. Call us with the year, make and model and we'll give you a firm price in minutes.",
   },
   {
+    id: "garantie-prix",
+    onHome: true,
+    q: "How does the best-price guarantee work?",
+    a: "Show us a higher written offer for the same vehicle and we'll pay you the difference. Three conditions: the offer must be less than 7 days old and come from a registered Quebec recycler or scrapyard; it must cover the same terms as ours — towing included, nothing deducted; and the vehicle must match what you described to us: year, model, condition and whether the catalytic converter is still on it. Bring it to us before pickup — once the vehicle is collected and paid for, the sale is final.",
+  },
+  {
     id: "remorquage",
     onHome: true,
     q: "Is the towing really free?",
@@ -210,7 +236,13 @@ export function faqFor(lang: Lang): FaqItem[] {
   return BY_LANG[lang];
 }
 
-/** The five shown on the homepage — schema there covers exactly these. */
+/*
+  The ones flagged `onHome` — schema there covers exactly these.
+
+  Deliberately not a fixed count. This said "the five shown on the homepage"
+  while six were flagged, and a comment that has to be edited every time an
+  entry is added is a comment that will be wrong again.
+*/
 export function homeFaqFor(lang: Lang): FaqItem[] {
   return BY_LANG[lang].filter((item) => item.onHome);
 }
