@@ -460,39 +460,48 @@ trusted.
 `sessionStorage`, first-touch wins. They ride along on the lead, which is what
 makes an offline conversion upload possible months later when a deal closes.
 
-### Law 25 — read this before running paid traffic
+### Law 25 — consent
 
-**There is no cookie banner and no consent checkbox.** Both were removed on
-request. What replaced them:
+**There is a cookie banner** (`components/site/CookieConsent.tsx`), restored on
+2026-09-19 after three weeks without one. How it works:
 
-- Google Consent Mode v2 now defaults every storage type to **granted**. It
-  had to: the defaults were `denied` and the banner was the only thing that
-  ever granted them, so deleting the banner alone would have blocked GA4,
-  Google Ads and Meta permanently — and silently, because a blocked tag looks
-  exactly like a working one from outside.
-- The Meta Pixel no longer waits for consent either, for the same reason.
-- The privacy policy now discloses every tool by name (Google Tag Manager,
-  Analytics, Ads, Meta), the cookies each sets (`_ga`, `_gcl_*`, `_fbp`),
-  their retention, and how to opt out via the browser and the providers'
-  own controls.
-- The quote form states above the submit button that sending it is the
-  consent to be contacted.
+- Google Consent Mode v2 defaults every non-essential storage type to
+  **denied** in `components/site/GoogleTagManager.tsx`, with
+  `wait_for_update: 500`. `functionality_storage` and `security_storage` stay
+  granted — Law 25 does not ask consent for what makes a site work.
+- The banner pushes `gtag('consent','update',…)` and stores the decision in a
+  `b2_consent` cookie for 180 days. The stored choice is **replayed on every
+  page load**, because Consent Mode resets to the defaults each time.
+- The **Meta Pixel is gated in code**, not by Consent Mode — Meta has no
+  equivalent signal and `_fbp` is written the instant the script initialises,
+  so the only way to honour a refusal is not to load it. It mounts on a stored
+  marketing yes, or on the `b2-consent-updated` event for a first-time one.
+- Two categories, naming the actual tools: **Mesure d'audience** (Google
+  Analytics, `_ga`) and **Publicité** (Google Ads `_gcl`, Meta `_fbp`). A
+  category label alone is not "enlightened" consent.
 
-**The caveat, plainly:** Quebec's Law 25 expects consent for non-essential
-cookies to be *manifest, free and enlightened* — in practice, opt-in before
-the tracking loads. A disclosure in a privacy policy is weaker than that, and
-advertising cookies now set on first paint. This was a deliberate product
-decision; get legal advice before spending on traffic.
+Three rules for anyone editing this:
 
-**To reverse it**, in order:
-1. Flip the six values in `components/site/GoogleTagManager.tsx` back to
-   `'denied'` and restore `wait_for_update: 500`.
-2. Restore a banner component that pushes `gtag('consent','update',…)`.
-3. Re-gate `components/site/MetaPixel.tsx` behind that choice.
-4. Re-add the checkbox in `QuoteForm.tsx` and the `if (!consent)` check in
-   `app/api/quote/route.ts`.
+1. **The defaults and the banner move together, in either direction.** With
+   the banner gone, denied defaults block GA4, Ads and Meta permanently and
+   *silently* — a blocked tag looks identical to a working one from outside.
+   That is exactly what happened between 2026-09-05 and 2026-09-19, which is
+   why the defaults were granted for those three weeks.
+2. **The optional boxes stay unchecked.** Pre-ticked consent is not consent.
+3. **Refuse stays as easy as accept** — same size, same weight, same row. In
+   Quebec that symmetry is a legal requirement, not a design preference.
 
-Git history has all four: `6cd9b44` is the last commit with the banner intact.
+**Where it sits:** offset off the bottom edge, never pinned to it. The mobile
+call/WhatsApp bar is fixed at `bottom-0`, and the previous banner sat on top
+of it — the page asked for a cookie decision by hiding the phone number. It
+now clears that bar on phones and sits bottom-left on desktop, away from the
+WhatsApp float. Measured: 7px of clearance, no overlap at any width.
+
+**Still outstanding:** the quote form has a consent *notice*, not a checkbox.
+That is a separate consent (being contacted, not cookies) and was removed on
+request at the same time. To restore it: re-add the checkbox in
+`QuoteForm.tsx` and the `if (!consent)` check in `app/api/quote/route.ts`.
+`6cd9b44` has both.
 
 ---
 

@@ -1,25 +1,45 @@
 "use client";
 
 import Script from "next/script";
+import { useEffect, useState } from "react";
+import { CONSENT_COOKIE, parseConsent } from "@/lib/consent";
 
 export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
 
 /**
- * Meta Pixel.
+ * Meta Pixel, gated on marketing consent.
  *
- * This used to wait for marketing consent from the cookie banner. The banner
- * was removed on request, so the gate had nothing left to read and the pixel
- * would simply never have loaded. It now loads wherever the ID is set, and
- * the disclosure lives in the privacy policy instead.
+ * The pixel writes `_fbp` the moment it initialises, which is exactly the
+ * non-essential storage Quebec's Law 25 expects opt-in for — so unlike the
+ * Google tags it cannot simply be declared to Consent Mode and left to load.
+ * Meta has no equivalent signal. The only way to honour a refusal is not to
+ * load the script at all, which is what this does.
  *
- * Note what that means: the pixel writes `_fbp` on init, which is precisely
- * the non-essential storage Quebec's Law 25 expects opt-in for. See README.
+ * It mounts on two triggers: a marketing yes already stored in the cookie
+ * (a returning visitor), or the `b2-consent-updated` event CookieConsent
+ * fires the moment someone accepts (a first-time one, without a reload).
  *
  * Renders nothing until NEXT_PUBLIC_META_PIXEL_ID is set, so local and
  * preview builds stay clean.
  */
 export default function MetaPixel() {
-  if (!META_PIXEL_ID) return null;
+  const [allowed, setAllowed] = useState(false);
+
+  useEffect(() => {
+    const read = () => {
+      const raw = document.cookie
+        .split("; ")
+        .find((c) => c.startsWith(`${CONSENT_COOKIE}=`))
+        ?.split("=")[1];
+      const state = parseConsent(raw ? decodeURIComponent(raw) : null);
+      if (state?.marketing) setAllowed(true);
+    };
+    read();
+    window.addEventListener("b2-consent-updated", read);
+    return () => window.removeEventListener("b2-consent-updated", read);
+  }, []);
+
+  if (!META_PIXEL_ID || !allowed) return null;
 
   return (
     <>
