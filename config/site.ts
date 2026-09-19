@@ -179,10 +179,31 @@ export const siteConfig = {
       caption — and a volume claim that disagrees with itself across a site is
       worse than either version of it.
 
-      The stat band prints it as "7,500+"; the prose says "around 7,500".
-      Same number, and neither overstates it.
+      The prose says "around 7,500". As of 2026-09-19 it is no longer one of
+      the three figures in the stat band — the owner replaced that slot with
+      the payout range below — but it still carries the about page, the meta
+      description and a photo caption, so it stays stated here once.
     */
     vehiclesPerYear: 7500,
+
+    /*
+      Cash paid for a vehicle, low to high.
+
+      History worth knowing before touching this: "$300 to $3,000" was on the
+      whole site until 2026-09-10, when the owner had it removed everywhere —
+      hero, FAQ, city and service pages, llms.txt. content/stats.ts carried a
+      note saying a price range must never come back as a stat. On 2026-09-19
+      the owner asked for it back, at a higher ceiling, specifically as the
+      stat that replaces the vehicle count. That is a deliberate reversal by
+      the person whose numbers these are, not the note being overlooked.
+
+      It is a RANGE and every rendering must read as one. "Up to $7,500" is
+      the version that gets a dealer in trouble with the Office de la
+      protection du consommateur, because almost nobody gets the ceiling —
+      that is a running vehicle with resale value, not a scrap shell. The
+      label under the figure always qualifies it ("selon le véhicule").
+    */
+    payoutRange: { min: 300, max: 7500 },
   },
 
   /**
