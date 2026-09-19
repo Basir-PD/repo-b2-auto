@@ -16,8 +16,9 @@ export const ABOUT: StaticPage = {
     en: "Auto recycler in Mascouche",
   },
   metaDescription: {
-    fr: `Recyclage Autos B2 est un recycleur automobile licencié au 340 Chemin Pincourt à Mascouche depuis ${siteConfig.facts.yearsInBusiness} ans. Environ ${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} véhicules achetés par année.`,
-    en: `Recyclage Autos B2 is a licensed auto recycler at 340 Chemin Pincourt in Mascouche, in business for ${siteConfig.facts.yearsInBusiness} years. Around ${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} vehicles bought per year.`,
+    // 140–155 characters, enforced by content/metadata.test.ts.
+    fr: "Recyclage Autos B2, recycleur automobile licencié au 340 Chemin Pincourt à Mascouche. On achète, remorque et dépollue nous-mêmes. Aucun intermédiaire.",
+    en: "Recyclage Autos B2 is a licensed auto recycler at 340 Chemin Pincourt, Mascouche. We buy, tow and depollute ourselves — no middleman, cash on pickup.",
   },
   h1: {
     fr: "Un recycleur automobile de Mascouche, pas un intermédiaire",
@@ -32,7 +33,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "Ce qu'on fait",
         body: [
-          `Recyclage Autos B2 achète des véhicules en fin de vie sur la Rive-Nord, à Laval et dans l'est de Montréal depuis ${siteConfig.facts.yearsInBusiness} ans. On en rachète environ ${siteConfig.facts.vehiclesPerYear.toLocaleString("fr-CA")} par année.`,
+          "Recyclage Autos B2 achète des véhicules en fin de vie sur la Rive-Nord, à Laval et dans l'est de Montréal. Tout se passe dans notre cour de Mascouche : l'achat, le remorquage, la dépollution et le démantèlement.",
           "La différence avec la plupart des numéros qu'on trouve en ligne, c'est qu'il n'y a personne entre vous et nous. Beaucoup d'annonces de « rachat d'auto » sont en réalité des courtiers : ils prennent votre appel, revendent votre coordonnée à un vrai recycleur, et le prix baisse d'autant. Nous, on est le recycleur.",
         ],
       },
@@ -61,7 +62,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "What we do",
         body: [
-          `Recyclage Autos B2 has been buying end-of-life vehicles across the North Shore, Laval and east-end Montreal for ${siteConfig.facts.yearsInBusiness} years. We take in around ${siteConfig.facts.vehiclesPerYear.toLocaleString("en-CA")} of them a year.`,
+          "Recyclage Autos B2 buys end-of-life vehicles across the North Shore, Laval and east-end Montreal. All of it happens at our own yard in Mascouche — buying, towing, depollution and dismantling.",
           'What separates us from most of the numbers you\'ll find online is that there is nobody between you and us. A lot of "we buy cars" ads are brokers: they take your call, sell your details on to an actual recycler, and the price drops by whatever they keep. We are the recycler.',
         ],
       },

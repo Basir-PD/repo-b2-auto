@@ -31,18 +31,25 @@ export type Stat =
  * comment on `payoutRange` in config/site.ts for why every rendering of it
  * has to stay a range.
  *
+ * The second slot used to be years in business. That went on the same day
+ * and for a harder reason: it could not be tied to this business rather than
+ * the yard it shares an address with. "0 $" replaces it because it is the
+ * one number here nobody has to take on trust — towing, the SAAQ paperwork
+ * and the quote are free, which the rest of the site already promises in
+ * words. Read across, the band is now what you get, what you pay, and when.
+ *
  * The review count is NOT a stat here and must never become one. The profile
  * has one review; "350+ reviews" shipped on an earlier build of this site and
  * was removed as unsourceable, and it does not come back by the side door.
  */
 export function businessStats(lang: Lang): { locale: string; stats: Stat[] } {
-  const { yearsInBusiness, payoutRange } = siteConfig.facts;
+  const { payoutRange } = siteConfig.facts;
   const { min, max } = payoutRange;
 
   /*
-    `value` and `unit` are separate on the counted stats because the band
+    `value` and `unit` are separate on the counted stat because the band
     counts up when it scrolls into view, and a counter needs a number, not
-    "11 ans".
+    "7 j/7".
 
     The third label says what being open seven days actually buys the seller
     — evenings, weekends, holidays — rather than restating the opening hours,
@@ -58,7 +65,10 @@ export function businessStats(lang: Lang): { locale: string; stats: Stat[] } {
             // The qualifier is part of the claim, not decoration around it.
             label: "payé comptant, selon le véhicule",
           },
-          { value: yearsInBusiness, unit: " ans", label: "d'expérience" },
+          {
+            display: "0 $",
+            label: "remorquage, paperasse et estimation",
+          },
           { value: 7, unit: " j/7", label: "Horaire flexible, fins de semaine et jours fériés" },
         ],
       }
@@ -69,7 +79,10 @@ export function businessStats(lang: Lang): { locale: string; stats: Stat[] } {
             display: `$${min}–$${max.toLocaleString("en-CA")}`,
             label: "paid in cash, depending on the vehicle",
           },
-          { value: yearsInBusiness, unit: " years", label: "of experience" },
+          {
+            display: "$0",
+            label: "towing, paperwork and the quote",
+          },
           { value: 7, unit: " days", label: "Flexible hours, weekends and holidays" },
         ],
       };
