@@ -245,7 +245,17 @@ export const SERVICES: ServicePage[] = [
           ],
         },
         {
-          h2: "Ce qu'on achète, même très abîmé",
+          /*
+            Carries the phrase people actually type. The competitor ranks on
+            "auto accidenté à vendre" and this page had no heading matching
+            it — the H1 says "Vendre son auto accidentée ou sa perte totale",
+            which is the same idea in different words, and Google was left to
+            make the leap. Written in agreeing French rather than the
+            competitor's masculine spelling: Google treats the two as
+            variants, and a heading that reads as a typo costs more trust than
+            the exact spelling wins.
+          */
+          h2: "Auto accidentée à vendre : ce qu'on rachète, même très abîmé",
           list: [
             "Impact avant, arrière ou latéral, peu importe la sévérité",
             "Véhicule déclaré perte totale par l'assureur",
@@ -278,7 +288,7 @@ export const SERVICES: ServicePage[] = [
           ],
         },
         {
-          h2: "What we buy, however bad it looks",
+          h2: "Damaged car for sale: what we buy, however bad it looks",
           list: [
             "Front, rear or side impact, at any severity",
             "Vehicles written off by the insurer",
