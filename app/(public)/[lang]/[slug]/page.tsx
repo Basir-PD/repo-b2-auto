@@ -28,7 +28,7 @@ import PhotoGrid from "@/components/site/PhotoGrid";
 import PhoneLink from "@/components/site/PhoneLink";
 import MailLink from "@/components/site/MailLink";
 import ReviewLink from "@/components/site/ReviewLink";
-import { PageHeader, Sections, CtaBand } from "@/components/pages/PageShell";
+import { CityHeader, PageHeader, Sections, CtaBand } from "@/components/pages/PageShell";
 import { CitiesForService, ServicesForCity } from "@/components/pages/CrossLinks";
 import {
   JsonLd,
@@ -295,9 +295,29 @@ export default async function SlugPage({
         />
         <JsonLd id="ld-city-faq" data={faqSchema([{ id: "city", q: copy.faqQ, a: copy.faqA }])} />
 
-        <PageHeader lang={lang} trail={crumb(city.name)} h1={h1} lede={copy.lede} cta />
+        <CityHeader
+          lang={lang}
+          trail={crumb(city.name)}
+          h1={h1}
+          /*
+            Distinct from the `city_${city.key}` form further down this
+            same page — QuoteForm derives its field ids from `source`,
+            so a shared value would emit duplicate ids and point the
+            lower form's labels at these inputs. It also keeps the two
+            apart in the funnel: above the fold is not the same intent
+            as after four sections and a map.
+          */
+          formSource={`city_hero_${city.key}`}
+        />
 
         <div className="container mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          {/*
+            The lede, moved out of the hero when the trust strip took its
+            place. It sits above the distance cards because that is what
+            it is about — the route in, and how far it is.
+          */}
+          <p className="mb-8 text-base leading-relaxed text-slate-600 sm:text-lg">{copy.lede}</p>
+
           <dl className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-xl border border-slate-200 p-5">
               <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">
