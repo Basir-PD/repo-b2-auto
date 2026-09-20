@@ -132,19 +132,20 @@ export const PRIVACY: StaticPage = {
       {
         h2: "Témoins (cookies) et outils de mesure",
         body: [
-          "Ce site utilise Google Tag Manager pour charger ses outils de mesure. Tag Manager ne dépose lui-même aucun témoin ; il sert à gérer les outils suivants :",
+          "Ce site utilise Google Tag Manager pour charger ses outils de mesure. Tag Manager ne dépose lui-même aucun témoin ; il sert à gérer les outils suivants. Les catégories ci-dessous sont celles de la fenêtre de consentement : vous pouvez changer votre choix en tout temps avec « Gérer les témoins », au bas de chaque page.",
         ],
         list: [
-          "Google Analytics — mesure d'audience. Témoins _ga et _ga_*, conservés jusqu'à 2 ans.",
-          "Google Ads — mesure de nos publicités et des conversions. Témoins _gcl_*, conservés jusqu'à 90 jours.",
-          "Meta (Facebook et Instagram) — mesure de nos publicités. Témoin _fbp, conservé jusqu'à 90 jours.",
-          "Témoins strictement nécessaires — sécurité, navigation et envoi du formulaire. Sans eux le site ne fonctionne pas.",
+          "Mesure d'audience — Google Analytics. Témoins _ga et _ga_*, conservés jusqu'à 2 ans.",
+          "Publicité — Google Ads, pour mesurer nos annonces et les conversions. Témoins _gcl_*, conservés jusqu'à 90 jours.",
+          "Publicité — Meta (Facebook et Instagram), pour mesurer nos annonces. Témoin _fbp, conservé jusqu'à 90 jours.",
+          "Essentiels — sécurité, navigation et envoi du formulaire. Aucun témoin publicitaire, et on ne peut pas les désactiver : sans eux le site ne fonctionne pas.",
         ],
       },
       {
         h2: "Comment refuser ou limiter le suivi",
         body: [
-          "Vous pouvez bloquer ou supprimer les témoins directement dans votre navigateur (Chrome, Safari, Firefox et Edge offrent tous ce réglage), ou naviguer en mode privé. Le site continue de fonctionner normalement : le formulaire, le téléphone et le remorquage ne dépendent d'aucun témoin publicitaire.",
+          "Le plus simple : « Gérer les témoins », au bas de chaque page, rouvre la fenêtre de consentement et vous laisse tout refuser ou ne garder que ce que vous voulez.",
+          "Vous pouvez aussi bloquer ou supprimer les témoins directement dans votre navigateur (Chrome, Safari, Firefox et Edge offrent tous ce réglage), ou naviguer en mode privé. Le site continue de fonctionner normalement : le formulaire, le téléphone et le remorquage ne dépendent d'aucun témoin publicitaire.",
           "Vous pouvez aussi vous désinscrire directement chez les fournisseurs : Google Analytics offre un module complémentaire de désactivation (tools.google.com/dlpage/gaoptout), les préférences publicitaires Google se règlent à myadcenter.google.com, et celles de Meta dans les paramètres de votre compte Facebook ou Instagram.",
           "Enfin, le signal « Do Not Track » ou « Global Privacy Control » de votre navigateur, s'il est activé, est transmis à ces outils.",
         ],
@@ -198,19 +199,20 @@ export const PRIVACY: StaticPage = {
       {
         h2: "Cookies and measurement tools",
         body: [
-          "This site uses Google Tag Manager to load its measurement tools. Tag Manager sets no cookies of its own; it manages the following:",
+          'This site uses Google Tag Manager to load its measurement tools. Tag Manager sets no cookies of its own; it manages the following. The categories below are the ones in the consent card — you can change your choice at any time with "Manage cookies" at the foot of every page.',
         ],
         list: [
-          "Google Analytics — audience measurement. _ga and _ga_* cookies, kept up to 2 years.",
-          "Google Ads — advertising and conversion measurement. _gcl_* cookies, kept up to 90 days.",
-          "Meta (Facebook and Instagram) — advertising measurement. _fbp cookie, kept up to 90 days.",
-          "Strictly necessary cookies — security, navigation and form submission. The site does not work without them.",
+          "Audience measurement — Google Analytics. _ga and _ga_* cookies, kept up to 2 years.",
+          "Advertising — Google Ads, to measure our ads and conversions. _gcl_* cookies, kept up to 90 days.",
+          "Advertising — Meta (Facebook and Instagram), to measure our ads. _fbp cookie, kept up to 90 days.",
+          "Essential — security, navigation and form submission. No advertising cookies, and they cannot be turned off: the site does not work without them.",
         ],
       },
       {
         h2: "How to refuse or limit tracking",
         body: [
-          "You can block or delete cookies directly in your browser — Chrome, Safari, Firefox and Edge all offer this — or browse in a private window. The site keeps working normally: the form, the phone number and the towing depend on no advertising cookie.",
+          'The simplest way: "Manage cookies" at the foot of every page reopens the consent card and lets you refuse everything, or keep only what you want.',
+          "You can also block or delete cookies directly in your browser — Chrome, Safari, Firefox and Edge all offer this — or browse in a private window. The site keeps working normally: the form, the phone number and the towing depend on no advertising cookie.",
           "You can also opt out with the providers themselves: Google Analytics offers a browser opt-out add-on (tools.google.com/dlpage/gaoptout), Google ad preferences are at myadcenter.google.com, and Meta's are in your Facebook or Instagram account settings.",
           'Your browser\'s "Do Not Track" or "Global Privacy Control" signal, if enabled, is passed on to these tools.',
         ],
