@@ -7,6 +7,7 @@ import { getCopy } from "@/content/copy";
 import type { Section } from "@/content/services";
 import PhoneLink from "@/components/site/PhoneLink";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
+import QuoteForm from "@/components/site/QuoteForm";
 
 export function Breadcrumbs({
   lang,
@@ -115,6 +116,111 @@ export function PageHeader({
             />
           </>
         )}
+      </div>
+    </section>
+  );
+}
+
+/**
+ * The city-page hero: headline and proof on the left, the quote form on the
+ * right, the same pair of buttons and the same truck as everywhere else.
+ *
+ * It exists instead of `PageHeader cta` on cities because the shapes differ
+ * more than a flag can carry — one is a single `max-w-4xl` column, this is a
+ * 12-column split — and bending PageHeader into both would put the risk on
+ * the eight pages that were fine.
+ *
+ * Two deliberate choices:
+ *
+ * THE LEDE IS NOT HERE. It moved into the body, directly above the distance
+ * cards, and the trust strip took its place. It is still on the page because
+ * it is the most locally specific writing a city page has — the route, the
+ * arteries, the neighbourhoods — and `content/cities.ts` exists to stop these
+ * pages reading as one template with the name swapped. Deleting it to make
+ * room would have traded the thing that keeps the set out of a doorway
+ * classification for six lines that are identical on all of them.
+ *
+ * `formSource` MUST differ from the form further down the page. QuoteForm
+ * builds its field ids out of `source`, so two forms sharing one would emit
+ * duplicate ids and every label in the second would point at the first form's
+ * inputs — which a keyboard or screen-reader user hits immediately and a
+ * mouse user never notices.
+ */
+export function CityHeader({
+  lang,
+  trail,
+  h1,
+  formSource,
+}: {
+  lang: Lang;
+  trail: { name: string; path: string }[];
+  h1: string;
+  formSource: string;
+}) {
+  const t = getCopy(lang);
+
+  return (
+    <section className="border-b border-slate-200 bg-slate-50 py-10 sm:py-14">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs lang={lang} trail={trail} />
+
+        <div className="mt-5 grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-7">
+            <h1 className="text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+              {h1}
+            </h1>
+
+            {/*
+              Two fixed columns rather than a wrap: six items of very
+              different widths ragged badly when they were left to flow, and
+              the point of a strip like this is that the checkmarks line up.
+            */}
+            <ul className="mt-6 grid gap-x-5 gap-y-2.5 sm:grid-cols-2">
+              {t.home.trustStrip.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-2 text-sm font-semibold text-slate-800"
+                >
+                  <Check className="h-4 w-4 shrink-0 text-brand-600" strokeWidth={3} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-7 flex max-w-md flex-col gap-3">
+              <WhatsAppLink
+                source="city_header"
+                label={t.home.whatsappCta}
+                prefill={t.home.whatsappPrefill}
+              />
+              <PhoneLink
+                source="city_header"
+                showIcon
+                label={t.home.ctaSecondary}
+                className="flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl border-2 border-slate-300 bg-white px-6 py-4 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+              />
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="mx-auto max-w-md lg:ml-auto lg:mr-0">
+              {/* The form after the page content keeps #quote-form. */}
+              <QuoteForm lang={lang} source={formSource} compact anchor={false} />
+            </div>
+          </div>
+        </div>
+
+        {/* Lazy and unprioritised: the H1 is the LCP element on every viewport. */}
+        <Image
+          src="/tow-truck-hero.webp"
+          alt=""
+          width={1600}
+          height={476}
+          loading="lazy"
+          sizes="(min-width: 1152px) 1088px, 100vw"
+          quality={72}
+          className="mt-10 h-auto w-full"
+        />
       </div>
     </section>
   );

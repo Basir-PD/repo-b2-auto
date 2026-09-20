@@ -34,10 +34,22 @@ export default function QuoteForm({
   /** Where this form instance lives — rides along on every event and the lead. */
   source = "quote_page",
   compact = false,
+  /*
+    Whether this instance owns the page's `#quote-form` anchor.
+
+    Defaults to true, so every page that renders one form is unchanged. A
+    page with TWO — the city pages, which have one in the hero and one after
+    the content — must pass false on one of them, or both wrappers carry the
+    same hardcoded id. The comment below used to claim two forms "could never
+    collide"; that was true of the <form> element, whose id is built from
+    `source`, and not of this wrapper.
+  */
+  anchor = true,
 }: {
   lang: Lang;
   source?: string;
   compact?: boolean;
+  anchor?: boolean;
 }) {
   const t = getCopy(lang).form;
   const router = useRouter();
@@ -153,7 +165,7 @@ export default function QuoteForm({
 
   return (
     <div
-      id="quote-form"
+      id={anchor ? "quote-form" : `${source}-card`}
       className={`rounded-2xl bg-white ${compact ? "p-5" : "p-5 sm:p-6"} shadow-xl ring-1 ring-slate-900/5`}
     >
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -198,7 +210,7 @@ export default function QuoteForm({
         - the wrapper carries `id="quote-form"` so anything can link to
           #quote-form and land on the card, heading included; globals.css
           already gives every [id] a scroll-margin so the sticky header does
-          not cover it.
+          not cover it. Only ONE instance per page may own it — see `anchor`.
       */}
       <form
         id={`${source}-form`}
