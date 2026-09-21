@@ -285,6 +285,57 @@ export const LANDING_CONTENT: LandingContent[] = [
       "We're the recycler, not a middleman. Our yard is at 340 Chemin Pincourt in Mascouche.",
     faq: ["valeur", "ne-demarre-pas", "prix-change", "documents", "paiement"],
   },
+  /*
+    The generic scrapyard pages, one per language, for the searches that name
+    no city: "scrapyard", "cour à scrap", "cour a scrap pres de moi".
+
+    They inherit the problem the Montreal and Laval scrap-yard pages were
+    written around, and answer it the same way. Someone typing "scrapyard" may
+    be looking to buy a used alternator, or to drive a dead car somewhere and
+    leave it. We do neither: we buy whole vehicles and we come to the car. So
+    the H1 says we buy, and says it before anything else, rather than letting
+    the visitor find out three scrolls down that the page is not a parts
+    counter. Note what the page cannot do — stop that click being bought at
+    all. That is a negative keyword list, not a landing page.
+
+    The FR slug is "cour-scrap", not "cour-a-scrap": it is what gets typed.
+  */
+  {
+    slug: "cour-scrap",
+    lang: "fr",
+    title: "Cour à scrap qui achète votre auto | Recyclage Autos B2",
+    h1: "La cour à scrap qui vient chercher votre auto et vous paie comptant",
+    sub: "Recycleur automobile licencié à Mascouche. On achète les véhicules en fin de vie, accidentés ou qui ne démarrent plus, on les remorque gratuitement et on paie à l'enlèvement.",
+    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
+    bullets: [
+      "On achète le véhicule — vous n'avez rien à remorquer jusqu'à une cour",
+      "Notre cour est au 340 Chemin Pincourt à Mascouche, ouverte 7 jours sur 7",
+      "Remorquage gratuit, jamais déduit de votre montant",
+      "Prix ferme au téléphone — il ne baisse pas à l'arrivée de la remorqueuse",
+      "Argent comptant à l'enlèvement",
+    ],
+    reassurance:
+      "On est le recycleur, pas un intermédiaire qui revend votre appel. La cour est à Mascouche et on se déplace partout sur la Rive-Nord, à Laval et dans l'est de Montréal.",
+    faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
+  },
+  {
+    slug: "scrapyard",
+    lang: "en",
+    title: "Scrapyard That Buys Your Car | Recyclage Autos B2",
+    h1: "The scrapyard that comes to your car and pays cash",
+    sub: "A licensed auto recycler in Mascouche. We buy end-of-life, wrecked and non-running vehicles, tow them away free, and pay cash at pickup — you tow nothing.",
+    beats: ["Quick offer", "Easy pickup", "Fast payment"],
+    bullets: [
+      "We buy the vehicle — you do not drive or tow anything to a yard",
+      "Our yard is at 340 Chemin Pincourt in Mascouche, open 7 days a week",
+      "Free towing, never deducted from your price",
+      "Firm price on the phone — it does not drop when the truck arrives",
+      "Cash in hand at pickup",
+    ],
+    reassurance:
+      "We are the recycler, not a broker passing your call along. The yard is in Mascouche and we cover the North Shore, Laval and east-end Montreal.",
+    faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
+  },
 ];
 
 export function landingBySlug(lang: Lang, slug: string) {

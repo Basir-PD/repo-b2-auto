@@ -85,7 +85,13 @@ export default async function LandingPage({
         </div>
       </header>
 
-      <main id="main" className="relative isolate overflow-hidden">
+      {/*
+        A div, not <main id="main">. The (public) layout already wraps
+        every page in one, so this was a second <main> nested inside the
+        first — invalid (a document gets one) and it duplicated the id
+        the skip link points at, on all eleven landing pages.
+      */}
+      <div className="relative isolate overflow-hidden">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-gradient-to-b from-brand-50 to-white"
@@ -299,7 +305,7 @@ export default async function LandingPage({
             </div>
           </div>
         </section>
-      </main>
+      </div>
 
       {/*
         Minimal footer: who we are and how to reach us, no links into the
