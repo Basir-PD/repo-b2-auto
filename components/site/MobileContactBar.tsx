@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { isHomePath } from "@/config/routes";
 import { Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { usePhone } from "@/lib/usePhone";
@@ -70,9 +71,7 @@ export default function MobileContactBar({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // "/fr/" and "/en/" — the homepage in either language.
-  const isHome = /^\/(fr|en)\/?$/.test(pathname);
-  if (isHome) return null;
+  if (isHomePath(pathname)) return null;
 
   const waHref = `${siteConfig.whatsapp.clickPath}?text=${encodeURIComponent(prefill)}`;
 
