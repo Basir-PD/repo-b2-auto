@@ -62,11 +62,19 @@ function applyConsentMode(state: ConsentState) {
  * cannot drift. On desktop it sits bottom-LEFT, away from the WhatsApp
  * float bottom-right.
  *
- * WHEN IT APPEARS. Not on load — after 150px of scroll, the same threshold
- * the call bar uses, so the two arrive together and the first screen is the
- * offer rather than a consent request. This costs nothing legally: every
- * non-essential storage type is denied until someone chooses, so nothing is
- * being set during the wait.
+ * WHEN IT APPEARS. Once the quote form has scrolled off the top, not after
+ * a fixed number of pixels. The form is the page's whole job and it sits in
+ * the hero, so any threshold short enough to be "after the fold" on a laptop
+ * still landed on the form on a tall phone. Waiting for the form itself is
+ * the rule that actually holds across every viewport and page type, because
+ * it is measured from the thing being protected rather than guessed at.
+ *
+ * Pages with no form — privacy, terms — fall back to 150px, the same
+ * threshold MobileContactBar uses.
+ *
+ * This costs nothing legally: every non-essential storage type is denied
+ * until someone chooses, so nothing is being set during the wait. The card
+ * unlocks tracking, it does not hold anything back.
  *
  * HOW BIG. One line of body copy and three compact rows, on the site's own
  * white, instead of a full-width dark slab with a paragraph. A consent
@@ -104,12 +112,31 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
     setUndecided(true);
   }, []);
 
-  // Same 150px threshold as MobileContactBar, so they slide in together.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 150);
+    /*
+      `data-quote-form` is on every QuoteForm instance and nothing else, which
+      is why it exists — GTM keys off it too. The first one in the document is
+      the hero's on every page that has one.
+    */
+    const form = document.querySelector<HTMLElement>("[data-quote-form]");
+
+    const onScroll = () => {
+      if (!form) {
+        setScrolled(window.scrollY > 150);
+        return;
+      }
+      // Past it, not merely level with it: the bottom edge has to clear the
+      // top of the viewport before the card is allowed in.
+      setScrolled(form.getBoundingClientRect().bottom < 0);
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   function decide(next: { analytics: boolean; marketing: boolean }) {
@@ -121,8 +148,13 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
 
   if (!undecided || !scrolled) return null;
 
+  /*
+    py-2 at the smallest size, not less. The card shrinks on phones but these
+    two are the only way out of it, and a control that is tiring to hit is a
+    dark pattern whichever direction it pushes someone.
+  */
   const button =
-    "flex-1 rounded-lg px-3 py-2 text-[13px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1";
+    "flex-1 rounded-lg px-3 py-2 text-xs font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 sm:text-[13px]";
 
   return (
     /*
@@ -147,11 +179,11 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
           : "bottom-[calc(4.25rem+env(safe-area-inset-bottom)+0.5rem)]"
       }`}
     >
-      <div className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-[0_8px_30px_rgba(15,23,42,0.16)]">
-        <h2 id="consent-title" className="text-[13px] font-black text-slate-900">
+      <div className="rounded-xl border border-slate-200 bg-white p-2.5 shadow-[0_8px_30px_rgba(15,23,42,0.16)] sm:p-3.5">
+        <h2 id="consent-title" className="text-xs font-black text-slate-900 sm:text-[13px]">
           {labels.title}
         </h2>
-        <p className="mt-1 text-xs leading-snug text-slate-600">
+        <p className="mt-0.5 text-[11px] leading-snug text-slate-600 sm:mt-1 sm:text-xs">
           {labels.body}{" "}
           <Link
             href={labels.privacyHref}
@@ -161,13 +193,13 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
           </Link>
         </p>
 
-        <div className="mt-2.5 space-y-1.5 rounded-lg bg-slate-50 px-2.5 py-2">
+        <div className="mt-2 space-y-1 rounded-lg bg-slate-50 px-2 py-1.5 sm:mt-2.5 sm:space-y-1.5 sm:px-2.5 sm:py-2">
           <Row label={labels.necessary} hint={labels.alwaysOn} checked disabled />
           <Row label={labels.analytics} checked={analytics} onChange={setAnalytics} />
           <Row label={labels.marketing} checked={marketing} onChange={setMarketing} />
         </div>
 
-        <div className="mt-2.5 flex gap-2">
+        <div className="mt-2 flex gap-2 sm:mt-2.5">
           <button
             type="button"
             onClick={() => decide({ analytics: true, marketing: true })}
@@ -192,7 +224,7 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
           <button
             type="button"
             onClick={() => decide({ analytics, marketing })}
-            className="mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-[13px] font-bold text-slate-700 transition-colors hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
+            className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-slate-700 transition-colors hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 sm:mt-2 sm:text-[13px]"
           >
             {labels.save}
           </button>
@@ -217,7 +249,7 @@ function Row({
 }) {
   return (
     <label
-      className={`flex items-center gap-2 text-xs ${
+      className={`flex items-center gap-2 text-[11px] sm:text-xs ${
         disabled ? "text-slate-500" : "cursor-pointer text-slate-800"
       }`}
     >
@@ -229,7 +261,11 @@ function Row({
         className="h-3.5 w-3.5 shrink-0 accent-brand-600 disabled:opacity-70"
       />
       <span className="font-semibold">{label}</span>
-      {hint && <span className="ml-auto text-[11px] font-medium text-slate-400">{hint}</span>}
+      {hint && (
+        <span className="ml-auto text-[10px] font-medium text-slate-400 sm:text-[11px]">
+          {hint}
+        </span>
+      )}
     </label>
   );
 }
