@@ -71,6 +71,18 @@ export type LandingKey = keyof typeof LANDING_PAGES;
  * Build a path. Trailing slashes throughout, matching `trailingSlash: true`
  * in next.config — one canonical shape means no redirect hop from an ad click.
  */
+/**
+ * Is this the homepage in either language?
+ *
+ * Shared because two components must agree on it: MobileContactBar renders
+ * nothing here, and CookieConsent has to know that so it does not reserve
+ * space for a bar that is absent — which floated the consent card into the
+ * middle of the hero, on the one page where the hero is the whole pitch.
+ */
+export function isHomePath(pathname: string): boolean {
+  return /^\/(fr|en)\/?$/.test(pathname);
+}
+
 export function pathFor(key: PageKey, lang: Lang): string {
   const slug = ROUTES[key][lang];
   return slug ? `/${lang}/${slug}/` : `/${lang}/`;
