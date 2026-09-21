@@ -107,9 +107,10 @@ export const LANDING_CONTENT: LandingContent[] = [
       "On s'occupe de toute la paperasse SAAQ",
     ],
     /*
-      This used to restate the ten years and the two thousand vehicles. The
-      stat band below now says both as numerals, so repeating them here was
-      the same fact twice in one screen.
+      This used to restate the years in business and the vehicles-per-year
+      figure. Both were removed from the whole site on 2026-09-19 as
+      unverifiable — see the note on `facts` in config/site.ts — so there is
+      nothing to restate. The stat band below now leads with the payout range.
     */
     reassurance: "Pas d'intermédiaire : on achète, on remorque et on paie nous-mêmes.",
     faq: ["valeur", "minoune", "prix-change", "documents", "paiement"],
@@ -230,7 +231,7 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Cash in hand at pickup, not a transfer to wait for",
     ],
     reassurance:
-      "Ten years recycling vehicles at 340 Chemin Pincourt. We are the buyer, not a broker passing your call along.",
+      "We recycle the vehicles ourselves at 340 Chemin Pincourt. We are the buyer, not a broker passing your call along.",
     faq: ["cour-pres-de-moi", "qui-achete", "valeur", "documents", "paiement"],
   },
   /*
@@ -335,6 +336,58 @@ export const LANDING_CONTENT: LandingContent[] = [
     reassurance:
       "We are the recycler, not a broker passing your call along. The yard is in Mascouche and we cover the North Shore, Laval and east-end Montreal.",
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
+  },
+  /*
+    "Recycleur auto" without a city, the counterpart to the recyclage-auto-*
+    set that only covers Laval, Terrebonne and Montreal.
+
+    It is a different search from "cour à scrap", so it gets a different
+    page rather than a synonym of one. Someone typing "cour à scrap" is
+    picturing a place to get rid of a car. Someone typing "recycleur auto"
+    has usually been told they need a *licensed* one — by an insurer, by the
+    SAAQ, or by having read that you cannot simply abandon a vehicle. They
+    are checking legitimacy, so the page leads with the credential and the
+    paperwork: depollution before dismantling, and the official transfer
+    receipt that actually ends their registration.
+
+    That is also why the FAQ opens on what recycling involves rather than on
+    what a car is worth.
+  */
+  {
+    slug: "recycleur-auto",
+    lang: "fr",
+    title: "Recycleur automobile licencié | Recyclage Autos B2",
+    h1: "Un recycleur automobile licencié qui rachète votre véhicule comptant",
+    sub: "Dépollution complète, cession SAAQ réglée sur place et argent comptant à l'enlèvement. Notre cour est au 340 Chemin Pincourt à Mascouche et le remorquage est gratuit.",
+    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
+    bullets: [
+      "Recycleur licencié : dépollution complète avant tout démontage",
+      "Reçu officiel de cession SAAQ remis sur place — c'est lui qui met fin à votre immatriculation",
+      "Remorquage gratuit, jamais déduit de votre montant",
+      "Prix ferme au téléphone — il ne baisse pas à l'arrivée de la remorqueuse",
+      "Argent comptant à l'enlèvement",
+    ],
+    reassurance:
+      "On recycle nous-mêmes, au 340 Chemin Pincourt à Mascouche. Votre véhicule n'est pas revendu à un tiers.",
+    faq: ["recyclage", "qui-achete", "documents", "saaq", "valeur"],
+  },
+  {
+    slug: "auto-recycler",
+    lang: "en",
+    title: "Licensed Auto Recycler | Recyclage Autos B2",
+    h1: "A licensed auto recycler that buys your vehicle for cash",
+    sub: "Full depollution, the SAAQ transfer handled on the spot, and cash at pickup. Our yard is at 340 Chemin Pincourt in Mascouche and the towing is free.",
+    beats: ["Quick offer", "Easy pickup", "Fast payment"],
+    bullets: [
+      "A licensed recycler: full depollution before anything is dismantled",
+      "Official SAAQ transfer receipt on the spot — that is what ends your registration",
+      "Free towing, never deducted from your price",
+      "Firm price on the phone — it does not drop when the truck arrives",
+      "Cash in hand at pickup",
+    ],
+    reassurance:
+      "We recycle the vehicles ourselves at 340 Chemin Pincourt in Mascouche. Yours is not resold to a third party.",
+    faq: ["recyclage", "qui-achete", "documents", "saaq", "valeur"],
   },
 ];
 
