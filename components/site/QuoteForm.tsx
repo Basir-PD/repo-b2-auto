@@ -201,12 +201,20 @@ export default function QuoteForm({
       </p>
 
       {/*
-        Three handles, each for a different consumer:
+        Four handles, each for a different consumer:
 
         - `id` is unique per instance, matching how the fields are named, so
           two forms on one page could never collide.
-        - `data-quote-form` is the same on every page, which is what GTM wants:
-          one trigger with a CSS selector rather than a rule per template.
+        - `data-quote-form` is on every instance and nothing else, which is
+          what GTM wants: one trigger with a CSS selector rather than a rule
+          per template. The value is the instance's `source`.
+        - `wc-quote-form` is the same hook for tools that can only match an
+          id, a class or a name. WhatConverts is one, and it was pointed at
+          `mt-4` — a Tailwind margin utility that is neither unique nor
+          stable. Restyling the form would have silently stopped lead
+          tracking, with no error and no missing markup to notice. This class
+          carries NO styles and exists only to be matched: never remove it,
+          never style it, and it can never be "cleaned up" as unused.
         - the wrapper carries `id="quote-form"` so anything can link to
           #quote-form and land on the card, heading included; globals.css
           already gives every [id] a scroll-margin so the sticky header does
@@ -217,7 +225,7 @@ export default function QuoteForm({
         data-quote-form={source}
         onSubmit={handleSubmit}
         noValidate
-        className="mt-4 flex flex-col gap-3"
+        className="wc-quote-form mt-4 flex flex-col gap-3"
       >
         {/* Honeypot — off-screen, never announced, irresistible to bots. */}
         <div className="absolute -left-[9999px]" aria-hidden="true">
