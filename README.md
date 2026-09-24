@@ -25,7 +25,8 @@ Everything below lives in **one** place. Nothing is hardcoded in components.
 | Real Google reviews | `content/reviews.ts` — see below |
 | Where lead emails go | `config/site.ts` → `siteConfig.leadInbox` (env `LEAD_INBOX`) |
 | WhatsApp lead ping | env `WHATSAPP_*` — see below |
-| SMS webhook | env `LEAD_WEBHOOK_URL` — see below |
+| SMS lead ping | env `TWILIO_*` / `SMS_TO` — see below |
+| Generic lead webhook | env `LEAD_WEBHOOK_URL` — see below |
 | Page copy | `content/copy/fr.ts` and `content/copy/en.ts` |
 | FAQ | `content/faq.ts` (one source for the FAQ page, the homepage block and the schema) |
 | Service pages | `content/services.ts` |
@@ -102,7 +103,8 @@ to `.env.local` for dev and set the same keys in Vercel for production.
 | `NEXT_PUBLIC_TRACKING_PHONE_E164` + `_DISPLAY` | Your call-tracking provider's pool number | DNI stays off; everyone sees the real number and calls cannot be attributed to a click. Both must be set. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Search Console → HTML tag method | Cannot verify the property. |
 | `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID` | Meta Cloud API — full walkthrough under **Lead delivery** | No WhatsApp ping. Leads still store and email, but 514 775-6790 never buzzes. The sender must be a second number, never 514 623-2787. |
-| `LEAD_WEBHOOK_URL` | optional Zapier/Make hook → Twilio SMS | Nothing, unless WhatsApp is also unset — then nobody gets pinged to call back within five minutes. |
+| `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_FROM` | Twilio console — see **Lead delivery** | No SMS ping. This is the channel that works without Meta, so while WhatsApp is unapproved it is the only thing that buzzes 514 775-6790. |
+| `LEAD_WEBHOOK_URL` | optional Zapier/Make hook | Nothing, unless WhatsApp and SMS are also unset — then nobody gets pinged to call back within five minutes. |
 | `NEXT_PUBLIC_CONVEX_URL`, `INGEST_SECRET` | `npx convex dev` locally; **`npx convex deploy` for production**, which prints the `https://….convex.cloud` URL to paste into Vercel | Nothing is stored and nothing reaches `/admin`. `LEAD_WEBHOOK_URL` still pages a human if it is set; with neither configured the form returns 503 and **the lead is lost**. A `local:` deployment in `.env.local` is a laptop, not a backend — it cannot be the production value. |
 
 ### Then, inside the ad platforms
@@ -332,6 +334,30 @@ is committed in `lib/whatsapp.ts` so that forgetting the variable cannot leave
 the ping pointed at nobody. `WHATSAPP_TO` is **comma** separated, and spaces,
 brackets and dashes inside a number are fine (`+1 (514) 623-2787` works); spaces
 *between* numbers are not.
+
+### Wiring up the SMS ping
+
+The channel that works without Meta. Roughly $0.008 a message, so about a
+dollar a month at any realistic lead volume, and it takes about fifteen
+minutes end to end.
+
+1. Create a **Twilio** account at twilio.com. The trial gives you credit and a
+   number, which is enough to prove the whole path.
+2. **Buy a number** (Phone Numbers → Buy a number) with SMS capability. A
+   Canadian one costs about $1.15/month. Copy it in E.164 — `+1514…` — into
+   `TWILIO_FROM`.
+3. From the console dashboard copy **Account SID** (starts with `AC`) into
+   `TWILIO_ACCOUNT_SID`, and **Auth Token** into `TWILIO_AUTH_TOKEN`.
+4. **On a trial account, verify the recipient.** Twilio refuses to text an
+   unverified number and returns error 21608. Verified Caller IDs → add
+   514 775-6790. Upgrading the account removes this restriction.
+5. Set all three in Vercel and redeploy. `SMS_TO` is optional — it defaults to
+   514 775-6790, the dispatch phone.
+
+The module no-ops while any of the three are unset, so nothing changes until
+they are all present. Failures are logged with Twilio's own error body, which
+is worth reading: 21608 is the unverified-recipient case above, 21211 is a
+malformed `To`.
 
 ### Wiring up the WhatsApp ping
 

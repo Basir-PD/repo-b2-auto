@@ -325,3 +325,83 @@ describe("POST /api/quote — the WhatsApp ping", () => {
     expect(res.status).toBe(503);
   });
 });
+
+describe("POST /api/quote — the SMS ping", () => {
+  const TWILIO = "api.twilio.com";
+
+  /** Calls the route made to Twilio, as opposed to the webhook or Meta. */
+  const smsCalls = () => webhook.mock.calls.filter(([url]) => String(url).includes(TWILIO));
+
+  /** The form-encoded body of the nth Twilio call. */
+  const smsBody = (n = 0) => new URLSearchParams(String(smsCalls()[n][1].body));
+
+  beforeEach(() => {
+    process.env.TWILIO_ACCOUNT_SID = "ACtest";
+    process.env.TWILIO_AUTH_TOKEN = "secret";
+    process.env.TWILIO_FROM = "+15145550000";
+    process.env.SMS_TO = "5147756790";
+  });
+
+  afterEach(() => {
+    process.env.TWILIO_ACCOUNT_SID = "";
+    process.env.TWILIO_AUTH_TOKEN = "";
+    process.env.TWILIO_FROM = "";
+    process.env.SMS_TO = "";
+  });
+
+  it("texts the dispatch phone with the lead", async () => {
+    await post(validLead);
+
+    expect(smsCalls()).toHaveLength(1);
+    expect(smsBody().get("To")).toBe("+15147756790");
+    const text = String(smsBody().get("Body"));
+    expect(text).toContain("Jean Tremblay");
+    expect(text).toContain("2011 Honda Civic");
+  });
+
+  it("marks an abandoned form as one, so it is not worked as a consented call", async () => {
+    await post({ phone: "(514) 623-2787", partial: true, source: "hero_form" });
+    expect(String(smsBody().get("Body"))).toContain("ABANDONNÉ");
+  });
+
+  /*
+    The whole reason this sink exists alongside WhatsApp. WhatsApp needs Meta
+    to have approved a sender and a template; SMS needs neither, so during the
+    weeks that approval is pending this is the only thing that buzzes.
+  */
+  it("still fires when WhatsApp is unconfigured and the webhook is down", async () => {
+    process.env.WHATSAPP_TOKEN = "";
+    process.env.WHATSAPP_PHONE_NUMBER_ID = "";
+    webhook.mockImplementation(async (url: string) =>
+      String(url).includes(TWILIO)
+        ? new Response("{}", { status: 201 })
+        : Promise.reject(new Error("webhook is down"))
+    );
+
+    const res = await post(validLead);
+
+    expect(res.status).toBe(200);
+    expect(smsCalls()).toHaveLength(1);
+  });
+
+  /*
+    The text is the only copy of the lead in this case, so it has to say so —
+    whoever reads it needs to know that dismissing the notification loses it.
+  */
+  it("tells the owner when the text in their hand is the only copy", async () => {
+    process.env.NEXT_PUBLIC_CONVEX_URL = "";
+    await post(validLead);
+    expect(String(smsBody().get("Body"))).toContain("seule copie");
+  });
+
+  it("does not refuse the lead when only Twilio is down", async () => {
+    webhook.mockImplementation(async (url: string) =>
+      String(url).includes(TWILIO)
+        ? Promise.reject(new Error("twilio is down"))
+        : new Response("{}", { status: 200 })
+    );
+
+    const res = await post(validLead);
+    expect(res.status).toBe(200);
+  });
+});
