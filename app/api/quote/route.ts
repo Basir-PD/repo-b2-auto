@@ -5,6 +5,7 @@ import { api } from "@/convex/_generated/api";
 import { siteConfig } from "@/config/site";
 import { phoneIsValid } from "@/lib/phone";
 import { sendLeadWhatsApp } from "@/lib/whatsapp";
+import { sendLeadSms } from "@/lib/sms";
 
 /**
  * ============================================================
@@ -32,10 +33,14 @@ import { sendLeadWhatsApp } from "@/lib/whatsapp";
  * Next app env (.env.local):
  *   NEXT_PUBLIC_CONVEX_URL   written by `npx convex dev`
  *   INGEST_SECRET            optional; must match the Convex var
- *   LEAD_WEBHOOK_URL         optional; Zapier/Make → Twilio SMS
+ *   LEAD_WEBHOOK_URL         optional; Zapier/Make → anything
  *   WHATSAPP_TOKEN           optional; see lib/whatsapp.ts
  *   WHATSAPP_PHONE_NUMBER_ID optional; the SENDER's id
  *   WHATSAPP_TO              optional; who gets paged
+ *   TWILIO_ACCOUNT_SID       optional; see lib/sms.ts
+ *   TWILIO_AUTH_TOKEN        optional
+ *   TWILIO_FROM              optional; a Twilio number you own
+ *   SMS_TO                   optional; who gets texted
  *
  * Convex deployment env (`npx convex env set …`):
  *   RESEND_API_KEY, QUOTE_FROM, QUOTE_INBOX, ADMIN_EMAILS
@@ -230,16 +235,22 @@ export async function POST(request: Request) {
    * reading is the only copy of it anywhere.
    */
   /*
-   * Two ways to reach a human, tried together and counted as one: the generic
-   * webhook (whatever is pointed at LEAD_WEBHOOK_URL — Zapier, Make, SMS) and
-   * WhatsApp straight to the owner's phone.
+   * Three ways to reach a human, tried together and counted as one: the
+   * generic webhook (whatever is pointed at LEAD_WEBHOOK_URL — Zapier, Make),
+   * WhatsApp, and an SMS.
    *
-   * In parallel, so the visitor waits for the slower of the two rather than
-   * their sum, and independent, so either one alone still pages somebody.
-   * Neither is allowed to throw out of here: a notification failure must cost
-   * the notification, never the lead.
+   * In parallel, so the visitor waits for the slowest rather than their sum,
+   * and independent, so any one alone still pages somebody. None is allowed
+   * to throw out of here: a notification failure must cost the notification,
+   * never the lead.
+   *
+   * SMS and WhatsApp both go to the same phone and that is deliberate, not
+   * redundant — WhatsApp needs Meta to have approved a template and a sender,
+   * SMS needs neither, so whichever is configured on a given day is the one
+   * that buzzes. Having both configured means a Meta outage or a rejected
+   * template does not equal silence.
    */
-  const [webhookPing, whatsappPing] = await Promise.all([
+  const [webhookPing, whatsappPing, smsPing] = await Promise.all([
     (async () => {
       if (!siteConfig.leadWebhook) return false;
       try {
@@ -276,9 +287,19 @@ export async function POST(request: Request) {
       postal: postal || undefined,
       stored,
     }),
+    /* Same contract as the WhatsApp sink: resolves false, never throws. */
+    sendLeadSms({
+      name: lead.name,
+      phone,
+      vehicle,
+      partial,
+      source,
+      postal: postal || undefined,
+      stored,
+    }),
   ]);
 
-  const notified = webhookPing || whatsappPing;
+  const notified = webhookPing || whatsappPing || smsPing;
 
   if (!stored && !notified) {
     /*
