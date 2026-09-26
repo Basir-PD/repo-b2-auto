@@ -7,7 +7,6 @@ import {
   type QueryCtx,
   type MutationCtx,
 } from "./_generated/server";
-import { internal } from "./_generated/api";
 import { getAuthUserId } from "@convex-dev/auth/server";
 import { isAdminEmail } from "./auth";
 import { sourceValidator, statusValidator } from "./schema";
@@ -97,8 +96,27 @@ export const submit = mutation({
       source: "website",
     });
 
-    // Fire-and-forget: a mail failure is recorded on the quote, not thrown.
-    await ctx.scheduler.runAfter(0, internal.emails.sendQuoteNotification, { quoteId });
+    /*
+      NO NOTIFICATION EMAIL. Switched off on 2026-09-26 on request, once
+      WhatConverts was connected and notifying on every form submit — one more
+      inbox copy of the same lead was noise rather than a second safety net.
+
+      The lead itself is unaffected: it is stored above and is in /admin
+      either way. convex/emails.ts is left intact and still deployed; turning
+      this back on is the line below, plus the import it needs —
+      `import { internal } from "./_generated/api";` — which went with it
+      because lint refuses an unused one.
+
+          await ctx.scheduler.runAfter(0, internal.emails.sendQuoteNotification, { quoteId });
+
+      Worth knowing before leaving it off: email was the only notification
+      that did not depend on the visitor's browser. WhatConverts watches the
+      form client-side, so an ad-blocker, a failed script load, or the
+      sendBeacon path a partial lead uses can all leave it with nothing to
+      report while the lead still lands in /admin. The SMS ping in
+      lib/sms.ts is the server-side replacement — until TWILIO_* is set in
+      Vercel, there is no server-side notification at all.
+    */
 
     return { quoteId };
   },
