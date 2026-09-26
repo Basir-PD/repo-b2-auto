@@ -143,14 +143,65 @@ describe("recipient parsing", () => {
 });
 
 describe("the message body", () => {
-  it("leads with the name and the number, which is what a lock screen shows", () => {
-    const body = buildSmsBody(lead);
-    expect(body.split("\n")[0]).toContain("Jean Tremblay");
-    expect(body.split("\n")[1]).toContain("514");
+  /*
+    The banner sits alone on the first line so the lock-screen preview says
+    what happened before any field competes for the space.
+  */
+  it("opens with a banner alone on its line, then a blank line", () => {
+    const lines = buildSmsBody(lead).split("\n");
+    expect(lines[0]).toBe("NEW LEAD");
+    expect(lines[1]).toBe("");
+  });
+
+  /*
+    The requested shape: label alone on one line, the value on the next, a
+    blank line between blocks. Asserted as an exact string because "contains
+    the label somewhere" would pass on the packed one-line-per-field layout
+    this replaced.
+  */
+  it("puts the label on its own line with the value beneath it", () => {
+    expect(buildSmsBody(lead)).toBe(
+      [
+        "NEW LEAD",
+        "",
+        "Name:",
+        "Jean Tremblay",
+        "",
+        "Telephone:",
+        "(514) 623-2787",
+        "",
+        "Vehicle:",
+        "2011 Honda Civic",
+        "",
+        "Code Postal/Address:",
+        "J7L 2W3",
+        "",
+        "Source:",
+        "quote_page",
+      ].join("\n")
+    );
+  });
+
+  /*
+    English labels even though the site, the lead and the reader are French:
+    the value lines still carry the customer's own words untouched.
+  */
+  it("labels in English and leaves the customer's own words alone", () => {
+    const body = buildSmsBody({ ...lead, vehicle: "Civic accidentée, très rouillée" });
+    for (const label of ["Name:", "Telephone:", "Vehicle:", "Code Postal/Address:", "Source:"]) {
+      expect(body.split("\n").filter((l) => l === label)).toHaveLength(1);
+    }
+    expect(body).toContain("Civic accidentée, très rouillée");
   });
 
   it("marks an abandoned form in the first line", () => {
-    expect(buildSmsBody({ ...lead, partial: true }).split("\n")[0]).toContain("ABANDONNÉ");
+    expect(buildSmsBody({ ...lead, partial: true }).split("\n")[0]).toBe("ABANDONED FORM");
+  });
+
+  it("omits the address block entirely when no postal code was given", () => {
+    const body = buildSmsBody({ ...lead, postal: undefined });
+    expect(body).not.toContain("Code Postal/Address:");
+    expect(body).toContain("Source:");
   });
 
   /*
@@ -158,11 +209,31 @@ describe("the message body", () => {
     has to know that closing the notification loses it.
   */
   it("warns when the lead never reached /admin", () => {
-    expect(buildSmsBody({ ...lead, stored: false })).toContain("seule copie");
+    expect(buildSmsBody({ ...lead, stored: false })).toContain("THE ONLY COPY");
   });
 
   it("says nothing about /admin when the lead is safely stored", () => {
-    expect(buildSmsBody(lead)).not.toContain("seule copie");
+    expect(buildSmsBody(lead)).not.toContain("ONLY COPY");
+  });
+
+  /*
+    The whole reason there is no emoji or em-dash in here: one character
+    outside GSM-7 re-encodes the entire message and cuts the segment from 160
+    characters to 67. Customer data can still do it; our own chrome must not.
+  */
+  it("contributes only GSM-7 characters of its own", () => {
+    const body = buildSmsBody({
+      ...lead,
+      name: "Basir",
+      phone: "514 775-6790",
+      vehicle: "Honda Civic",
+      postal: "J7L 2W3",
+      source: "quote_page",
+      partial: true,
+      stored: false,
+    });
+    // biome-ignore lint/suspicious/noControlCharactersInRegex: newline is the point
+    expect(body.replace(/[\n]/g, "")).toMatch(/^[A-Za-z0-9 .,:;!?()/'"@#$%&*+=_-]+$/);
   });
 
   it("collapses newlines out of the fields so one lead is one message", () => {
@@ -170,14 +241,23 @@ describe("the message body", () => {
     expect(body).toContain("Civic 2011 rouge");
   });
 
-  it("stays within two SMS segments", () => {
+  /*
+    The bound exists to stop an uncapped field buying segments nobody meant
+    to, not because the number is magic. In GSM-7 this worst case is 3
+    segments; a realistic lead is 1.
+  */
+  it("stays bounded no matter how long the fields are", () => {
     const body = buildSmsBody({
       ...lead,
       name: "X".repeat(200),
       vehicle: "Y".repeat(400),
       source: "Z".repeat(100),
+      postal: "P".repeat(50),
+      phone: "9".repeat(60),
+      partial: true,
+      stored: false,
     });
-    expect(body.length).toBeLessThanOrEqual(320);
+    expect(body.length).toBeLessThanOrEqual(350);
   });
 });
 
