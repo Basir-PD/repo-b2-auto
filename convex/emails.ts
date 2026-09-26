@@ -5,8 +5,17 @@ import { fullAddress, siteConfig } from "../config/site";
 
 /**
  * ============================================================
- * QUOTE NOTIFICATION EMAILS
+ * QUOTE NOTIFICATION EMAILS — CURRENTLY NOT SCHEDULED
  * ============================================================
+ * ⚠️ Nothing calls this. The scheduler line in convex/quotes.ts
+ * was removed on 2026-09-26 once WhatConverts was connected and
+ * notifying on every submit. This file is deliberately kept, not
+ * deleted: it works, it is deployed, and turning it back on is one
+ * line in `submit` — see the comment there.
+ *
+ * So if you are here because a lead did not produce an email:
+ * that is why, and it is intentional. Nothing is broken.
+ *
  * Runs after the lead is already saved, so a mail failure costs
  * a notification, never the lead itself. The outcome is written
  * back onto the quote so the admin can see what didn't send.

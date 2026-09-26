@@ -80,6 +80,25 @@ reviewer's name exactly as it appears publicly on Google.
 > and the average is 5.0. The site says "5,0 ★ sur 5 avis Google" and nothing
 > more — no "hundreds of customers", no volume language anywhere.
 
+### The notification email
+
+`convex/emails.ts` is **not scheduled**. The `ctx.scheduler.runAfter` line in
+`submit` (convex/quotes.ts) was removed on 2026-09-26, once WhatConverts was
+connected and notifying on every form submit — a second inbox copy of the same
+lead was noise, not a safety net.
+
+Nothing about the lead changed: it still stores in Convex and still appears in
+`/admin`. The file is kept rather than deleted because it works and is
+deployed; restoring it is one line plus its import, both named in the comment
+at the removal site.
+
+**Know what went with it.** Email was the only notification that did not depend
+on the visitor's browser. WhatConverts watches the form client-side, so an
+ad-blocker, a script that fails to load, or the `sendBeacon` path a partial
+lead uses can leave it with nothing to report while the lead still lands in
+`/admin`. `lib/sms.ts` is the server-side replacement — until `TWILIO_*` is set
+in Vercel there is **no** server-side notification at all.
+
 ### Map coordinates
 
 `siteConfig.geo` is `null`, so the `geo` block is omitted from the
