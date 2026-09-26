@@ -135,10 +135,17 @@ describe("recipient parsing", () => {
     expect(sent().get("To")).toBe("+15147756790");
   });
 
-  it("falls back to the dispatch phone when SMS_TO is unset", async () => {
+  /*
+    The committed default, and the one line here that production actually
+    depends on: Vercel sets no SMS_TO, so every real lead takes this path. It
+    pointed at 514 775-6790 until a customer's Mazda3 landed on that handset
+    on 2026-09-26 instead of the main line. Pinned to an exact number rather
+    than "some number" so changing the default has to be deliberate.
+  */
+  it("falls back to the main line when SMS_TO is unset, as production does", async () => {
     process.env.SMS_TO = "";
     await sendLeadSms(lead);
-    expect(sent().get("To")).toBe("+15147756790");
+    expect(sent().get("To")).toBe("+15146232787");
   });
 });
 

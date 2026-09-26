@@ -32,15 +32,22 @@ const TWILIO_HOST = "https://api.twilio.com";
 const API_VERSION = "2010-04-01";
 
 /**
- * Where lead texts go when SMS_TO is not set — the dispatch phone,
- * 514 775-6790.
+ * Where lead texts go when SMS_TO is not set — the main line, 514 623-2787.
  *
  * Committed for the same reason the WhatsApp default is: it is a fact about
  * the business rather than a secret, and a notification path that depends on
  * somebody remembering a fourth environment variable is one that will be
  * silently off. Wiring SMS up is three variables, all three from Twilio.
+ *
+ * It was 514 775-6790 until a real lead — a Mazda3 in J5M0G9 — arrived on
+ * that handset on 2026-09-26 and was meant for this one. Setting SMS_TO in
+ * `.env.local` did not change it, and that is the trap worth naming: that
+ * file is gitignored, so it steers the laptop and NEVER production. A
+ * recipient that must hold in production belongs here, in the committed
+ * default, not in an environment variable somebody has to remember to set
+ * twice.
  */
-const DEFAULT_TO = "+15147756790";
+const DEFAULT_TO = "+15146232787";
 
 /*
   Matches the webhook and WhatsApp budgets in the route. The visitor is
