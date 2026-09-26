@@ -359,9 +359,10 @@ describe("POST /api/quote — the SMS ping", () => {
     expect(text).toContain("2011 Honda Civic");
   });
 
+  /* The SMS banner is English; the WhatsApp template above stays French. */
   it("marks an abandoned form as one, so it is not worked as a consented call", async () => {
     await post({ phone: "(514) 623-2787", partial: true, source: "hero_form" });
-    expect(String(smsBody().get("Body"))).toContain("ABANDONNÉ");
+    expect(String(smsBody().get("Body")).split("\n")[0]).toBe("ABANDONED FORM");
   });
 
   /*
@@ -391,7 +392,7 @@ describe("POST /api/quote — the SMS ping", () => {
   it("tells the owner when the text in their hand is the only copy", async () => {
     process.env.NEXT_PUBLIC_CONVEX_URL = "";
     await post(validLead);
-    expect(String(smsBody().get("Body"))).toContain("seule copie");
+    expect(String(smsBody().get("Body"))).toContain("THE ONLY COPY");
   });
 
   it("does not refuse the lead when only Twilio is down", async () => {

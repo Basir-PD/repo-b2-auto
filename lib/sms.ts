@@ -107,40 +107,69 @@ export function smsIsConfigured(): boolean {
 /**
  * The text itself.
  *
- * Front-loaded on purpose: a phone's lock screen shows roughly the first
- * forty characters, and the two things worth deciding from that preview are
- * whether the form was finished and who to call. The vehicle and the rest
- * come after, for whoever opens it.
+ * One block per field: the label on its own line, the value on the next, a
+ * blank line between. It is taller than a packed message, but a text is
+ * scrolled rather than studied, and this shape survives the two things that
+ * wreck a one-line-per-field layout — a long vehicle description wrapping
+ * onto a second line, and the reader skimming for one value.
  *
- * Kept under 320 characters — two SMS segments. Twilio bills per segment, and
- * a long vehicle description is the field most likely to run away, so it is
- * the one that gets trimmed.
+ * ENGLISH, deliberately, even though the site and the leads are French. The
+ * notification is read by dispatch, not by the customer; the customer's own
+ * words still arrive verbatim in the value lines.
+ *
+ * The banner is not one of the requested fields and is kept anyway: it is
+ * the only thing distinguishing a completed form from one the visitor
+ * abandoned, which changes how fast somebody has to call back. Drop it and
+ * an abandoned form looks exactly like a finished one.
+ *
+ * SEGMENTS. Every character this function contributes is plain ASCII, which
+ * keeps the message in the GSM-7 alphabet — 160 characters a segment instead
+ * of the 67 that UCS-2 allows. That is why there is no emoji and no em-dash
+ * here: a SINGLE character outside the alphabet re-encodes the whole message
+ * and costs a segment or two. A typical lead now fits in one. Only the
+ * customer's own data can push it out — "Benoît" will, "Jérôme" will not,
+ * since é is in GSM-7 and î is not — and that is not worth mangling a name
+ * over.
  */
 export function buildSmsBody(lead: LeadSms): string {
+  /*
+    Fallback is a plain hyphen, not an em-dash: it reads the same at this size
+    and stays inside the GSM alphabet.
+  */
   const flat = (value: string, max: number) =>
-    (value || "").replace(/\s+/g, " ").trim().slice(0, max) || "—";
+    (value || "").replace(/\s+/g, " ").trim().slice(0, max) || "-";
 
-  const head = lead.partial ? "⚠️ FORMULAIRE ABANDONNÉ" : "Nouveau lead";
+  const banner = lead.partial ? "ABANDONED FORM" : "NEW LEAD";
 
   /*
-    Every field is capped, including the two in the tail. An earlier version
-    capped only the name, phone and vehicle and let `source` and `postal`
-    through whole, which meant the total was unbounded in exactly the place
-    nobody looks — `source` is machine-generated (`city_hero_laval`,
-    `lp_scrap-yard-montreal`) and grows whenever a page type is added. A spec
-    caught it at 337 characters, which is a third segment nobody meant to buy.
+    Caps on all five. `source` and `postal` are the ones that look safe and
+    are not: `source` is machine-generated (`city_hero_laval`,
+    `lp_scrap-yard-montreal`) and grows whenever a page type is added, so an
+    uncapped one silently buys another segment on every lead. The address
+    field gets the most room because it is the one a visitor may type a
+    street into rather than six characters of postal code.
   */
-  const tail = [
-    lead.postal && `Secteur: ${flat(lead.postal, 12)}`,
-    `Source: ${flat(lead.source, 24)}`,
-    lead.stored ? null : "⚠️ PAS dans /admin — seule copie",
-  ]
-    .filter(Boolean)
-    .join("\n");
+  const fields: Array<[string, string | null]> = [
+    ["Name", flat(lead.name, 50)],
+    ["Telephone", flat(lead.phone, 30)],
+    ["Vehicle", flat(lead.vehicle, 70)],
+    ["Code Postal/Address", lead.postal ? flat(lead.postal, 60) : null],
+    ["Source", flat(lead.source, 20)],
+  ];
 
-  return [`${head} — ${flat(lead.name, 60)}`, flat(lead.phone, 40), flat(lead.vehicle, 100), tail]
-    .filter(Boolean)
-    .join("\n");
+  const blocks = [banner];
+  for (const [label, value] of fields) {
+    if (value !== null) blocks.push(`${label}:\n${value}`);
+  }
+
+  /*
+    Plain "!!" rather than a warning emoji, for the GSM-7 reason above. This
+    is the one case where the text in somebody's hand is the only record the
+    lead ever existed, so closing the notification loses it.
+  */
+  if (!lead.stored) blocks.push("!! NOT IN /admin - THIS TEXT IS THE ONLY COPY");
+
+  return blocks.join("\n\n");
 }
 
 async function sendOne(to: string, body: string): Promise<void> {
