@@ -53,6 +53,48 @@ export type LandingContent = {
    * insurer's write-off, not about what a scrap car is worth.
    */
   faq: readonly string[];
+  /**
+   * The yard itself, for pages whose keyword names a place rather than an
+   * action. Optional, and set on one page so far.
+   *
+   * "Cour à scrap" is a search for a *location* — whoever types it is
+   * picturing a lot with cars in it. Answering that with a form and no
+   * address answers a different question, and the visitor leaves to go find
+   * the yard they were actually looking for. The homepage has carried an
+   * address-and-map section since launch; the landing pages simply never
+   * included it, which is why the word "cour" appeared sixteen times on the
+   * scrap-yard page without the yard ever appearing once.
+   */
+  yard?: {
+    h2: string;
+    body: string;
+    /** What happens if the visitor drives the vehicle here themselves. */
+    steps: string[];
+    /**
+     * The parts question, answered rather than ignored. A good share of
+     * "cour à scrap" traffic wants a used alternator, not a buyer. We have
+     * no counter, so the honest answer sends them to the phone — which
+     * beats letting them bounce off a form they were never going to fill,
+     * and occasionally turns into a sale.
+     */
+    parts: string;
+  };
+  /**
+   * Prose unique to this page, rendered between the photographs and the FAQ.
+   *
+   * Measured on 2026-09-28, these pages are 55–74% identical to each other
+   * sentence for sentence: the beats, three of the five bullets, the stat
+   * band, the three steps, the fleet photographs and the closing CTA are
+   * common to all eleven. That is cheap to maintain and it is precisely what
+   * Google Ads scores as "useful and original content" — /fr/lp/cour-scrap/
+   * had seven sentences of its own out of thirty-one, and a Below average
+   * landing page experience to go with them.
+   *
+   * This field is where a page earns its own content. Write for the person
+   * who typed the keyword, not for the crawler: the sections that help the
+   * score are the ones that answer what the shared boilerplate cannot.
+   */
+  sections?: { h2: string; body: string[] }[];
 };
 
 export const LANDING_CONTENT: LandingContent[] = [
@@ -318,6 +360,45 @@ export const LANDING_CONTENT: LandingContent[] = [
     reassurance:
       "On est le recycleur, pas un intermédiaire qui revend votre appel. La cour est à Mascouche et on se déplace partout sur la Rive-Nord, à Laval et dans l'est de Montréal.",
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
+    yard: {
+      h2: "Notre cour à scrap est au 340 Chemin Pincourt, à Mascouche",
+      body: "Une vraie cour, à une vraie adresse, avec nos propres remorqueuses. Vous pouvez venir porter votre véhicule vous-même ou nous demander d'aller le chercher : dans les deux cas vous êtes payé comptant et la cession SAAQ est réglée sur place.",
+      steps: [
+        "Apportez le certificat d'immatriculation et une pièce d'identité valide",
+        "Appelez avant de partir et on vous donne le prix d'avance",
+        "On règle la cession SAAQ sur place et on vous remet le reçu officiel",
+        "Vous repartez avec votre argent comptant, le jour même",
+        "Le véhicule ne roule plus ? On va le chercher gratuitement",
+      ],
+      parts:
+        "On ne tient pas de comptoir de pièces en libre-service. Si vous cherchez une pièce précise, appelez-nous : on vérifie ce qu'on a en cour.",
+    },
+    sections: [
+      {
+        h2: "Ce qu'une cour à scrap paie pour un véhicule",
+        body: [
+          "Le montant n'est pas un chiffre tiré au hasard. Il vient du poids du véhicule, de son année, de son modèle, de la présence du convertisseur catalytique et de l'état des pièces encore réutilisables.",
+          "C'est pour ça qu'une camionnette complète vaut plus qu'une sous-compacte déjà dépouillée, même si les deux sont hors d'usage. Le métal se pèse, mais un catalyseur, une transmission ou des portières en bon état se revendent — et ça se voit dans l'offre.",
+          "Donnez-nous l'année, la marque, le modèle et l'état général au téléphone : le montant qu'on vous annonce est ferme. Il ne baisse pas à l'arrivée de la remorqueuse, et il ne baisse pas davantage si vous venez porter le véhicule vous-même.",
+        ],
+      },
+      {
+        h2: "Cour à scrap ou recycleur licencié : la différence compte",
+        body: [
+          "N'importe qui peut acheter une vieille auto. Un recycleur licencié a l'obligation de la dépolluer avant de la démonter : l'huile, l'antigel, l'essence, la batterie et le liquide de climatisation sortent avant tout le reste.",
+          "L'autre différence est administrative, et c'est celle qui vous touche directement. Tant que la cession n'est pas enregistrée, le véhicule reste à votre nom — donc votre immatriculation aussi. On produit le reçu officiel de cession SAAQ sur place, et c'est lui qui met fin à vos obligations.",
+          "On achète pour notre propre cour. Votre appel n'est pas revendu à un autre ferrailleur qui vous rappellera avec un prix différent.",
+        ],
+      },
+      {
+        h2: "Pas besoin de trouver une cour près de chez vous",
+        body: [
+          "La plupart des gens qui cherchent une cour à scrap cherchent en fait comment se débarrasser d'un véhicule qui ne roule plus. Si c'est votre cas, vous n'avez rien à remorquer.",
+          "Nos remorqueuses couvrent Mascouche, Terrebonne, Repentigny, L'Assomption, Blainville, Bois-des-Filion, Laval et l'est de Montréal, souvent le jour même. Le remorquage est gratuit et il n'est jamais déduit du montant convenu — un plateau sort aussi un véhicule sans roues ou aux freins bloqués.",
+          "Entrée en pente, cour arrière, terrain non asphalté : décrivez-nous la situation au téléphone et on arrive équipés.",
+        ],
+      },
+    ],
   },
   {
     slug: "scrapyard",
