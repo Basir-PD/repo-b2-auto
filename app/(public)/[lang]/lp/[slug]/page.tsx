@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check, ChevronRight } from "lucide-react";
+import { Check, ChevronRight, Clock, MapPin } from "lucide-react";
 
 import { isLang, pathFor, type Lang } from "@/config/routes";
-import { siteConfig, fullAddress } from "@/config/site";
+import { siteConfig, fullAddress, mapsEmbedUrl, mapsUrl } from "@/config/site";
 import { getCopy } from "@/content/copy";
 import { faqByIds } from "@/content/faq";
 import { LANDING_CONTENT, landingBySlug } from "@/content/landing";
@@ -223,6 +223,129 @@ export default async function LandingPage({
           is asking for the call it does not get.
         */}
         <HowItWorks lang={lang} compact />
+
+        {/*
+          The yard, on the pages whose keyword names a place. Set here rather
+          than on every landing page because most of them answer an action —
+          "vendre mon auto", "remorquage gratuit" — and an address does
+          nothing for those. "Cour à scrap" is a search for somewhere to go.
+
+          Placed directly after the three steps and above the photographs:
+          high enough that a visitor who came looking for a yard finds one
+          before deciding this is another lead broker, and low enough that it
+          never pushes the form down the first screen on a phone.
+        */}
+        {lp.yard && (
+          <section className="bg-slate-50 py-14 sm:py-16">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+                <div>
+                  <h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+                    {lp.yard.h2}
+                  </h2>
+                  <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+                    {lp.yard.body}
+                  </p>
+
+                  {/*
+                    Set as an address, not as body copy — the homepage's
+                    treatment, and for the same reason: it is the evidence
+                    that there is a lot behind the phone number.
+                  */}
+                  <address className="mt-7 not-italic">
+                    <p className="flex items-start gap-3">
+                      <MapPin className="mt-1 h-6 w-6 shrink-0 text-brand-600" strokeWidth={2} />
+                      <span className="text-2xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl">
+                        {siteConfig.address.street}
+                        <br />
+                        {siteConfig.address.locality}, {siteConfig.address.region}{" "}
+                        {siteConfig.address.postalCode}
+                      </span>
+                    </p>
+                  </address>
+
+                  <p className="mt-5 flex items-center gap-2.5 text-sm font-bold text-slate-700">
+                    <Clock className="h-4 w-4 shrink-0 text-brand-600" />
+                    {t.common.hoursLong}
+                  </p>
+
+                  <ul className="mt-7 space-y-3">
+                    {lp.yard.steps.map((step) => (
+                      <li
+                        key={step}
+                        className="flex items-start gap-2.5 text-[15px] font-semibold text-slate-800"
+                      >
+                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" strokeWidth={3} />
+                        {step}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="mt-6 rounded-xl border border-slate-200 bg-white p-4 text-sm leading-relaxed text-slate-600">
+                    {lp.yard.parts}
+                  </p>
+
+                  {/*
+                    The one outbound link on the page that is not a legal
+                    notice, and it earns the exception: on a page that invites
+                    drop-offs, directions ARE the conversion. It opens in a new
+                    tab, so the form is still sitting here when they come back.
+                  */}
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-6 py-3.5 text-base font-bold text-white transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                  >
+                    <MapPin className="h-5 w-5" strokeWidth={2.5} />
+                    {t.home.yard.directions}
+                  </a>
+                </div>
+
+                {/*
+                  Zoom 17 reads the lot rather than the region, and lazy keeps
+                  an embedded map's scripts off the initial load of the page
+                  the clicks are paid for.
+                */}
+                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 shadow-sm">
+                  <iframe
+                    src={mapsEmbedUrl(17)}
+                    title={t.home.yard.mapAlt}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="h-[300px] w-full border-0 sm:h-[380px] lg:h-[420px]"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/*
+          Prose that belongs to this page alone. Everything above it, apart
+          from the H1, the bullets and the yard, is shared with ten sibling
+          landing pages — which is what made this one 74% identical to
+          /fr/lp/recycleur-auto/ and earned it a Below average landing page
+          experience. Narrow measure, because this is reading, not scanning.
+        */}
+        {lp.sections?.length ? (
+          <section className="bg-white py-14 sm:py-16">
+            <div className="container mx-auto max-w-3xl space-y-10 px-4 sm:px-6">
+              {lp.sections.map((section) => (
+                <div key={section.h2}>
+                  <h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+                    {section.h2}
+                  </h2>
+                  {section.body.map((paragraph) => (
+                    <p key={paragraph} className="mt-4 text-base leading-relaxed text-slate-600">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {/*
           Everything from here down is for the visitor who scrolled past the
