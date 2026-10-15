@@ -12,6 +12,7 @@ import { LANDING_CONTENT, landingBySlug } from "@/content/landing";
 import { HOME_PHOTOS } from "@/content/photos";
 import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
+import { CALL_CTA } from "@/lib/cta";
 import PhotoGrid from "@/components/site/PhotoGrid";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
 import HowItWorks from "@/components/pages/HowItWorks";
@@ -143,21 +144,22 @@ export default async function LandingPage({
               </ul>
 
               {/*
-                Stacked and equal width, same as the homepage. WhatsApp leads:
-                the form is already in this viewport, and someone standing next
-                to a dead car would rather send a photo than describe it.
+                Stacked and equal width, same as the homepage. The call button
+                leads, solid; WhatsApp sits under it for someone standing next
+                to a dead car who would rather send a photo than describe it.
               */}
               <div className="mt-8 flex max-w-md flex-col gap-3">
-                <WhatsAppLink
-                  source={`lp_${slug}`}
-                  label={t.home.whatsappCta}
-                  prefill={t.home.whatsappPrefill}
-                />
                 <PhoneLink
                   source={`lp_${slug}_hero`}
                   showIcon
                   label={t.home.ctaSecondary}
-                  className="flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl border-2 border-slate-300 bg-white px-6 py-4 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                  className={CALL_CTA}
+                />
+                <WhatsAppLink
+                  source={`lp_${slug}`}
+                  label={t.home.whatsappCta}
+                  prefill={t.home.whatsappPrefill}
+                  variant="outline"
                 />
               </div>
 
@@ -414,16 +416,17 @@ export default async function LandingPage({
               {t.home.finalCta.sub}
             </p>
             <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
-              <WhatsAppLink
-                source={`lp_${slug}_final`}
-                label={t.home.whatsappCta}
-                prefill={t.home.whatsappPrefill}
-              />
               <PhoneLink
                 source={`lp_${slug}_final`}
                 showIcon
                 label={t.home.ctaSecondary}
-                className="flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl border-2 border-white/25 px-6 py-4 text-base font-bold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                className={CALL_CTA}
+              />
+              <WhatsAppLink
+                source={`lp_${slug}_final`}
+                label={t.home.whatsappCta}
+                prefill={t.home.whatsappPrefill}
+                variant="outline-dark"
               />
             </div>
           </div>
