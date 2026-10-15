@@ -18,6 +18,7 @@ import StatBand from "@/components/pages/StatBand";
 import PhotoGrid from "@/components/site/PhotoGrid";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
 import PhoneLink from "@/components/site/PhoneLink";
+import { CALL_CTA } from "@/lib/cta";
 import { JsonLd, faqSchema, webPageSchema } from "@/components/site/JsonLd";
 
 export function generateStaticParams() {
@@ -156,10 +157,12 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               </ul>
 
               {/*
-                WhatsApp leads here rather than a second link to the quote
-                page: the form is already in this viewport, and someone
-                standing next to a dead car would rather send a photo than
-                describe it. The chat opens with the first message written.
+                The call button goes first and solid: the phone is the main
+                button on every page. WhatsApp is the second rather than a
+                link to the quote page: the form is already in this viewport,
+                and someone standing next to a dead car would rather send a
+                photo than describe it. The chat opens with the first message
+                written.
               */}
               {/*
                 Stacked and equal width. Side by side, these two labels
@@ -167,16 +170,17 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 lines — a stack that looks deliberate beats a row that wraps.
               */}
               <div className="mt-8 flex max-w-md flex-col gap-3">
-                <WhatsAppLink
-                  source="hero"
-                  label={t.home.whatsappCta}
-                  prefill={t.home.whatsappPrefill}
-                />
                 <PhoneLink
                   source="hero"
                   showIcon
                   label={t.home.ctaSecondary}
-                  className="flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl border-2 border-slate-300 bg-white px-6 py-4 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                  className={CALL_CTA}
+                />
+                <WhatsAppLink
+                  source="hero"
+                  label={t.home.whatsappCta}
+                  prefill={t.home.whatsappPrefill}
+                  variant="outline"
                 />
               </div>
 
@@ -561,18 +565,19 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             {t.home.finalCta.sub}
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link
-              href={pathFor("quote", lang)}
-              className="rounded-xl bg-brand-600 px-7 py-4 text-base font-bold text-white transition-colors hover:bg-brand-500"
-            >
-              {t.home.ctaPrimary}
-            </Link>
+            {/* The call leads here too; the quote page is the second choice. */}
             <PhoneLink
               source="final_cta"
               showIcon
               label={t.home.ctaSecondary}
-              className="flex items-center justify-center gap-2.5 rounded-xl border-2 border-white/25 px-7 py-4 text-base font-bold text-white transition-colors hover:bg-white/10"
+              className="flex items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-brand-600 px-7 py-4 text-base font-bold tabular-nums text-white shadow-lg shadow-black/30 transition-colors hover:bg-brand-500"
             />
+            <Link
+              href={pathFor("quote", lang)}
+              className="rounded-xl border-2 border-white/25 px-7 py-4 text-base font-bold text-white transition-colors hover:bg-white/10"
+            >
+              {t.home.ctaPrimary}
+            </Link>
           </div>
         </div>
       </section>

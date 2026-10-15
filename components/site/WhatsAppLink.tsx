@@ -18,16 +18,31 @@ import WhatsAppIcon from "@/components/site/WhatsAppIcon";
  *
  * `prefill` seeds the chat so the first message is already written — for
  * someone standing next to a dead car, that is one less thing to compose.
+ *
+ * Next to a call button it is the second choice: `outline` (light sections)
+ * and `outline-dark` (dark sections) keep the glyph green but leave the solid
+ * fill to the phone, which is the main button on every page.
  */
+const VARIANTS = {
+  solid:
+    "bg-[#25D366] text-white shadow-lg shadow-emerald-900/20 hover:-translate-y-0.5 hover:bg-[#1FBE5A] focus-visible:ring-slate-900",
+  outline:
+    "border-2 border-slate-300 bg-white text-slate-900 hover:border-[#25D366] focus-visible:ring-brand-600",
+  "outline-dark":
+    "border-2 border-white/25 text-white hover:bg-white/10 focus-visible:ring-white focus-visible:ring-offset-slate-950",
+} as const;
+
 export default function WhatsAppLink({
   source,
   label,
   prefill,
+  variant = "solid",
   className = "",
 }: {
   source: string;
   label: string;
   prefill?: string;
+  variant?: "solid" | "outline" | "outline-dark";
   className?: string;
 }) {
   /*
@@ -45,9 +60,9 @@ export default function WhatsAppLink({
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackWhatsApp(source)}
-      className={`${NO_SWAP} flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-6 py-4 whitespace-nowrap text-base font-bold text-white shadow-lg shadow-emerald-900/20 transition-all hover:-translate-y-0.5 hover:bg-[#1FBE5A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 ${className}`}
+      className={`${NO_SWAP} flex w-full items-center justify-center gap-2.5 rounded-xl px-6 py-4 whitespace-nowrap text-base font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${VARIANTS[variant]} ${className}`}
     >
-      <WhatsAppIcon className="h-5 w-5 shrink-0" />
+      <WhatsAppIcon className={`h-5 w-5 shrink-0 ${variant === "solid" ? "" : "text-[#25D366]"}`} />
       {label}
     </a>
   );
