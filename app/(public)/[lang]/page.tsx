@@ -517,22 +517,23 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 {t.common.hoursLong}
               </p>
 
+              {/* The call leads here as everywhere else; directions second. */}
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-6 py-3.5 text-base font-bold text-white transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
-                >
-                  <MapPin className="h-5 w-5" strokeWidth={2.5} />
-                  {t.home.yard.directions}
-                </a>
                 <PhoneLink
                   source="yard"
                   showIcon
                   label={t.home.ctaSecondary}
-                  className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-xl border-2 border-slate-300 bg-white px-6 py-3.5 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                  className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-brand-600 px-6 py-3.5 text-base font-bold tabular-nums text-white shadow-lg shadow-brand-900/20 transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
                 />
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-300 bg-white px-6 py-3.5 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                >
+                  <MapPin className="h-5 w-5 text-brand-600" strokeWidth={2.5} />
+                  {t.home.yard.directions}
+                </a>
               </div>
             </div>
 
