@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Phone } from "lucide-react";
 import { usePhone } from "@/lib/usePhone";
 import { trackCall } from "@/lib/tracking";
@@ -15,10 +16,16 @@ import { fbqTrack } from "@/components/site/MetaPixel";
  * only bright thing in it, which is the point.
  *
  * It replaced a phones-only call / WhatsApp pair that stayed hidden on the
- * homepage and until the first 150px of scroll. The phone is the main button
- * on every page now, so it is here on every page, from the first paint.
- * WhatsApp is still in the hero and the closing section of each page, and in
- * the round float on desktop.
+ * homepage. The phone is the main button on every page now, so it is here
+ * on every page. WhatsApp is still in the hero and the closing section of
+ * each page, and in the round float on desktop.
+ *
+ * It slides up once the page has been scrolled 200px. On first paint the
+ * visitor is already looking at the hero's call button and the header's
+ * number; a third copy pinned over the same screen is a duplicate. Past
+ * 200px the hero is going, and the bar takes over as the route to a call.
+ * While parked it is aria-hidden and inert, so nobody can tab to a button
+ * they cannot see.
  *
  * The number is not on the button, but the button is still a tel: link built
  * from usePhone, carrying data-phone and no NO_SWAP class, so the call
@@ -33,11 +40,26 @@ import { fbqTrack } from "@/components/site/MetaPixel";
  */
 export default function CallBar({ label }: { label: string }) {
   const phone = usePhone();
+  const [shown, setShown] = useState(false);
+
+  // Passive: it never calls preventDefault. State only flips on a crossing.
+  useEffect(() => {
+    const onScroll = () => setShown(window.scrollY > 200);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
       <div aria-hidden="true" className="h-[calc(5.125rem+env(safe-area-inset-bottom))]" />
-      <div className="fixed inset-x-0 bottom-0 z-40 flex justify-center bg-[rgba(56,54,52,0.6)] px-4 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
+      <div
+        aria-hidden={!shown}
+        inert={!shown || undefined}
+        className={`fixed inset-x-0 bottom-0 z-40 flex justify-center bg-[rgba(56,54,52,0.6)] px-4 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))] transition-transform duration-200 ease-out motion-reduce:transition-none ${
+          shown ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
         <a
           href={phone.href}
           onClick={() => {
