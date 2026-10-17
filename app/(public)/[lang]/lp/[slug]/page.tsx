@@ -386,6 +386,15 @@ export default async function LandingPage({
         */}
         <section className="bg-white py-14 sm:py-16">
           <div className="container mx-auto max-w-3xl px-4 sm:px-6">
+            {/* The city pages' yard section, directly above the FAQ. */}
+            {lp.beforeFaq && (
+              <div className="mb-14">
+                <h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+                  {lp.beforeFaq.h2}
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-slate-600">{lp.beforeFaq.body}</p>
+              </div>
+            )}
             <h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
               {t.home.faqHeading}
             </h2>
