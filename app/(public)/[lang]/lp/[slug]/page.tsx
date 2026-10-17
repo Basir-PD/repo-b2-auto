@@ -288,20 +288,30 @@ export default async function LandingPage({
                   </p>
 
                   {/*
-                    The one outbound link on the page that is not a legal
-                    notice, and it earns the exception: on a page that invites
-                    drop-offs, directions ARE the conversion. It opens in a new
-                    tab, so the form is still sitting here when they come back.
+                    The call leads, as it does everywhere on the page, and
+                    directions come second. Directions are the one outbound
+                    link on the page that is not a legal notice, and they earn
+                    the exception: on a page that invites drop-offs, they are
+                    a conversion too. They open in a new tab, so the form is
+                    still sitting here when they come back.
                   */}
-                  <a
-                    href={mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-6 py-3.5 text-base font-bold text-white transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
-                  >
-                    <MapPin className="h-5 w-5" strokeWidth={2.5} />
-                    {t.home.yard.directions}
-                  </a>
+                  <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                    <PhoneLink
+                      source={`lp_${slug}_yard`}
+                      showIcon
+                      label={t.home.ctaSecondary}
+                      className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-brand-600 px-6 py-3.5 text-base font-bold tabular-nums text-white shadow-lg shadow-brand-900/20 transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                    />
+                    <a
+                      href={mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-300 bg-white px-6 py-3.5 text-base font-bold text-slate-900 transition-colors hover:border-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                    >
+                      <MapPin className="h-5 w-5 text-brand-600" strokeWidth={2.5} />
+                      {t.home.yard.directions}
+                    </a>
+                  </div>
                 </div>
 
                 {/*
