@@ -43,6 +43,7 @@ export const fr = {
     callAria: "Appeler Recyclage Autos B2 maintenant",
     quoteCta: "Obtenir mon estimation gratuite",
     callShort: "Appeler",
+    callBar: "Appelez pour la meilleure offre",
     whatsapp: "WhatsApp",
     whatsappAria: "Écrire à Recyclage Autos B2 sur WhatsApp",
     whatsappTagline: "Écrivez-nous, on répond vite",
@@ -94,6 +95,7 @@ export const fr = {
       same reason: it opened a chat that read as unfinished until an
       attachment was added.
     */
+    slogan: "On achète toutes les autos, dans n'importe quel état !",
     whatsappCta: "Envoyer un message sur WhatsApp",
     whatsappPrefill: "Bonjour ! J'aimerais une estimation pour mon véhicule.",
     ctaPrimary: "Obtenir mon estimation gratuite",
@@ -164,7 +166,7 @@ export const fr = {
         "Auto sans moteur ou sans transmission",
         "Vendre minoune, camion, VUS ou fourgonnette",
         "Auto trop rouillée pour passer l'inspection",
-        "Véhicule sans papiers ou papiers perdus — on vous guide",
+        "Véhicule sans papiers ou papiers perdus : on vous guide",
       ],
     },
 
@@ -173,7 +175,7 @@ export const fr = {
       points: [
         {
           title: "Un vrai recycleur, pas un intermédiaire.",
-          body: "Notre cour est au 340 Chemin Pincourt à Mascouche. On ne revend pas votre appel à quelqu'un d'autre — on achète, on remorque et on paie nous-mêmes.",
+          body: "Notre cour est au 340 Chemin Pincourt à Mascouche. On ne revend pas votre appel à quelqu'un d'autre. On achète, on remorque et on paie nous-mêmes.",
         },
         {
           title: "Le prix annoncé est le prix payé.",
@@ -210,6 +212,7 @@ export const fr = {
       body: "Pas un intermédiaire avec un numéro de téléphone. Notre cour est ouverte 7 jours sur 7 et vous êtes bienvenu de passer.",
       directions: "Obtenir l'itinéraire",
       mapAlt: "Carte de la cour de Recyclage Autos B2 au 340 Chemin Pincourt, Mascouche",
+      mapOpen: "Ouvrir la carte dans Google Maps",
     },
     finalCta: {
       title: "Votre vieux char vaut de l'argent. Découvrez combien.",
@@ -266,17 +269,17 @@ export const fr = {
   },
 
   thanks: {
-    metaTitle: "Merci — votre demande est reçue | Recyclage Autos B2",
+    metaTitle: "Merci, votre demande est reçue | Recyclage Autos B2",
     metaDescription:
       "Votre demande d'estimation est reçue. Un membre de l'équipe Recyclage Autos B2 vous rappelle sous peu.",
-    h1: "Merci — on vous rappelle sous peu",
+    h1: "Merci, on vous rappelle sous peu",
     body: `Votre demande est bien reçue. Un membre de l'équipe vous téléphone généralement en moins de 30 minutes pendant nos heures d'ouverture, de ${hoursRange("fr").replace("de ", "")}, 7 jours sur 7.`,
     urgent: "Vous êtes pressé ? Appelez-nous directement :",
     whatNext: "Ce qui arrive ensuite",
     steps: [
       "On vous appelle pour confirmer l'année, la marque, le modèle et l'état du véhicule.",
       "On vous donne un prix ferme au téléphone, sans obligation.",
-      "Si vous acceptez, on planifie l'enlèvement gratuit — souvent le jour même.",
+      "Si vous acceptez, on planifie l'enlèvement gratuit, souvent le jour même.",
     ],
     backHome: "Retour à l'accueil",
   },

@@ -22,8 +22,8 @@ export const SERVICES: ServicePage[] = [
   {
     key: "scrapBuying",
     serviceName: {
-      fr: "Achat auto scrap — acheteur direct",
-      en: "Cash for scrap cars — we buy scrap cars",
+      fr: "Achat auto scrap : acheteur direct",
+      en: "Cash for scrap cars: we buy scrap cars",
     },
     /*
        Titles are budgeted at 60 characters and " | Recyclage Autos B2" eats 21 of
@@ -32,16 +32,16 @@ export const SERVICES: ServicePage[] = [
        two service titles carrying no city at all. The geography is back.
     */
     metaTitle: {
-      fr: "Auto scrap — Mascouche, Laval, Montréal",
-      en: "Scrap cars — Mascouche, Laval, Montreal",
+      fr: "Auto scrap : Mascouche, Laval, Montréal",
+      en: "Scrap cars: Mascouche, Laval, Montreal",
     },
     metaDescription: {
       fr: `On rachète votre auto scrap comptant, peu importe l'état. Remorquage gratuit et transfert SAAQ inclus. Ouvert 7 jours, ${hoursRange("fr").replace("de ", "")}.`,
       en: `Recyclage Autos B2 buys your scrap car for cash, in any condition. Free towing, SAAQ transfer included, open 7 days ${hoursRange("en")}.`,
     },
     h1: {
-      fr: "Vendre mon auto scrap — acheteur d'auto scrap, payé comptant",
-      en: "Sell my scrap car — scrap car buyer paying cash on the spot",
+      fr: "Vendre mon auto scrap : acheteur d'auto scrap, payé comptant",
+      en: "Sell my scrap car: scrap car buyer paying cash on the spot",
     },
     lede: {
       fr: "On achète les véhicules en fin de vie pour les recycler nous-mêmes, dans notre cour du 340 Chemin Pincourt à Mascouche. Vous n'avez ni transport à organiser, ni paperasse à faire, ni frais à payer.",
@@ -59,7 +59,7 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "Obtenir un prix ferme en quelques minutes",
           body: [
-            "Donnez-nous l'année, la marque, le modèle et l'état réel du véhicule — au téléphone ou avec le formulaire. On vous revient avec un montant ferme, sans obligation.",
+            "Donnez-nous l'année, la marque, le modèle et l'état réel du véhicule, au téléphone ou avec le formulaire. On vous revient avec un montant ferme, sans obligation.",
             "Ce prix ne change pas à l'arrivée de la remorqueuse, tant que le véhicule correspond à ce qui a été décrit. La renégociation sur place, c'est la tactique qui donne mauvaise réputation à l'industrie. On ne la pratique pas.",
           ],
         },
@@ -77,7 +77,7 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "Le recyclage, concrètement",
           body: [
-            "Un véhicule qui entre dans la cour est vidé de ses fluides — huile, antigel, essence, liquide de frein — avant toute autre opération. La batterie, les pneus et le climatiseur sont retirés et traités séparément, selon les normes environnementales du Québec.",
+            "Un véhicule qui entre dans la cour est vidé de ses fluides (huile, antigel, essence, liquide de frein) avant toute autre opération. La batterie, les pneus et le climatiseur sont retirés et traités séparément, selon les normes environnementales du Québec.",
             "Les pièces encore bonnes sont récupérées et remises en circulation ; la carrosserie part au broyage. C'est ce qui permet de payer comptant un véhicule que personne ne veut conduire.",
           ],
         },
@@ -86,21 +86,21 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "What determines the amount",
           body: [
-            "A scrap car isn't priced on a hunch. The amount rests on four measurable things: the vehicle's weight, which sets the metal value; the year and model, which drive demand for parts; whether the catalytic converter is still on it, the single most valuable component on an end-of-life vehicle; and the condition of anything still reusable — engine, transmission, doors, rims.",
+            "A scrap car isn't priced on a hunch. The amount rests on four measurable things: the vehicle's weight, which sets the metal value; the year and model, which drive demand for parts; whether the catalytic converter is still on it, the single most valuable component on an end-of-life vehicle; and the condition of anything still reusable (engine, transmission, doors, rims).",
             "That's why offers vary so much from one vehicle to the next. A small car stripped of its converter gets the least; a recent SUV, wrecked but complete, gets the most.",
           ],
         },
         {
           h2: "Getting a firm price in minutes",
           body: [
-            "Give us the year, make, model and honest condition — by phone or through the form. We come back with a firm amount, no obligation.",
+            "Give us the year, make, model and honest condition, by phone or through the form. We come back with a firm amount, no obligation.",
             "That price doesn't move when the tow truck arrives, as long as the vehicle matches what was described. Renegotiating in the driveway is the tactic that gives this industry its reputation. We don't do it.",
           ],
         },
         {
           h2: "What we buy",
           list: [
-            "Sell non running car — one that no longer starts",
+            "Sell non running car (one that no longer starts)",
             "Accident-damaged or written-off vehicles",
             "Cars with no engine or no transmission",
             "Vehicles too rusted to pass inspection",
@@ -111,7 +111,7 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "What recycling actually involves",
           body: [
-            "A vehicle entering the yard is drained of its fluids — oil, coolant, fuel, brake fluid — before anything else happens. The battery, the tires and the air-conditioning system are removed and handled separately, to Quebec environmental standards.",
+            "A vehicle entering the yard is drained of its fluids (oil, coolant, fuel, brake fluid) before anything else happens. The battery, the tires and the air-conditioning system are removed and handled separately, to Quebec environmental standards.",
             "Parts still worth having are pulled and put back into circulation; the shell goes to the shredder. That's what makes it possible to pay cash for a vehicle nobody wants to drive.",
           ],
         },
@@ -126,16 +126,16 @@ export const SERVICES: ServicePage[] = [
       en: "Free vehicle towing",
     },
     metaTitle: {
-      fr: "Remorquage — Laval, Montréal, Rive-Nord",
-      en: "Free car removal — Laval & Montreal",
+      fr: "Remorquage : Laval, Montréal, Rive-Nord",
+      en: "Free car removal: Laval & Montreal",
     },
     metaDescription: {
       fr: "Remorquage gratuit inclus avec chaque rachat. Enlèvement partout sur la Rive-Nord, à Laval et dans l'est de Montréal, souvent le jour même.",
       en: "Free towing included with every vehicle purchase. Pickup across the North Shore, Laval and east-end Montreal, often same day. 7 days a week.",
     },
     h1: {
-      fr: "Remorquage gratuit et enlèvement d'auto — jamais déduit",
-      en: "Free junk car removal — included, never deducted",
+      fr: "Remorquage gratuit et enlèvement d'auto, jamais déduit",
+      en: "Free junk car removal: included, never deducted",
     },
     lede: {
       fr: "Le remorquage fait partie du service. Il n'est pas facturé, pas soustrait du prix convenu, et pas conditionnel à la valeur du véhicule.",
@@ -171,7 +171,7 @@ export const SERVICES: ServicePage[] = [
           list: [
             "Le certificat d'immatriculation et une pièce d'identité",
             "Vider le véhicule de vos effets personnels",
-            "Retirer la plaque si vous l'avez déjà fait — sinon on s'en occupe",
+            "Retirer la plaque si vous l'avez déjà fait, sinon on s'en occupe",
             "Dégager l'accès si c'est possible, surtout en hiver",
           ],
         },
@@ -188,7 +188,7 @@ export const SERVICES: ServicePage[] = [
           h2: "What we can get out",
           body: [
             "We run a flatbed rather than a hook truck, which changes a lot: a vehicle with no wheels, with seized brakes, or sunk into the ground can be winched onto the deck without rolling.",
-            "Sloped driveway, back yard, underground garage, unpaved lot, a car boxed in behind another one — tell us the situation on the phone and we arrive with the right equipment the first time.",
+            "Sloped driveway, back yard, underground garage, unpaved lot, a car boxed in behind another one: tell us the situation on the phone and we arrive with the right equipment the first time.",
           ],
         },
         {
@@ -205,7 +205,7 @@ export const SERVICES: ServicePage[] = [
           list: [
             "The registration certificate and photo ID",
             "The vehicle emptied of your personal belongings",
-            "The plate removed if you've already done it — otherwise we handle it",
+            "The plate removed if you've already done it, otherwise we handle it",
             "Clear access if possible, especially in winter",
           ],
         },
@@ -221,7 +221,7 @@ export const SERVICES: ServicePage[] = [
     },
     metaTitle: {
       fr: "Vendre auto accidentée ou perte totale",
-      en: "Sell my damaged car — totaled car buyer",
+      en: "Sell my damaged car: totaled car buyer",
     },
     metaDescription: {
       fr: "Véhicule accidenté ou perte totale ? On l'achète comptant, remorquage gratuit inclus. Offre ferme au téléphone, enlèvement souvent le jour même.",
@@ -240,7 +240,7 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "Perte totale : ce que ça veut dire pour vous",
           body: [
-            "Un assureur déclare une perte totale quand le coût des réparations dépasse la valeur du véhicule. Dans plusieurs cas, vous avez le choix de conserver l'épave — c'est ce qu'on appelle garder la valeur de récupération.",
+            "Un assureur déclare une perte totale quand le coût des réparations dépasse la valeur du véhicule. Dans plusieurs cas, vous avez le choix de conserver l'épave. C'est ce qu'on appelle garder la valeur de récupération.",
             "Si vous la gardez, elle vous appartient, avec l'obligation de vous en débarrasser. Un véhicule accidenté a encore une valeur réelle : les pièces intactes, le catalyseur et le métal ne disparaissent pas parce que l'avant est enfoncé.",
           ],
         },
@@ -267,7 +267,7 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "Comment on établit l'offre",
           body: [
-            "On vous demande l'année, la marque, le modèle, l'endroit de l'impact et si le véhicule est complet — moteur, transmission, catalyseur en place. Ces informations suffisent pour donner un prix ferme au téléphone.",
+            "On vous demande l'année, la marque, le modèle, l'endroit de l'impact et si le véhicule est complet (moteur, transmission, catalyseur en place). Ces informations suffisent pour donner un prix ferme au téléphone.",
             "Des photos aident, surtout pour un dommage important. Envoyez-les par WhatsApp au même numéro : c'est souvent plus rapide que de tout décrire.",
           ],
         },
@@ -283,7 +283,7 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "What a write-off means for you",
           body: [
-            "An insurer writes a vehicle off when the cost of repairs exceeds what the vehicle is worth. In many cases you have the option of keeping the wreck — retaining the salvage value.",
+            "An insurer writes a vehicle off when the cost of repairs exceeds what the vehicle is worth. In many cases you have the option of keeping the wreck (retaining the salvage value).",
             "If you keep it, it's yours, along with the obligation to get rid of it. A wrecked vehicle still has real value: the undamaged parts, the converter and the metal don't disappear because the front end is caved in.",
           ],
         },
@@ -300,7 +300,7 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "How we work out the offer",
           body: [
-            "We'll ask for the year, make, model, where the impact is, and whether the vehicle is complete — engine, transmission, converter still in place. That's enough to give a firm price on the phone.",
+            "We'll ask for the year, make, model, where the impact is, and whether the vehicle is complete (engine, transmission, converter still in place). That's enough to give a firm price on the phone.",
             "Photos help, especially with heavy damage. Send them by WhatsApp to the same number: it's usually faster than describing it all.",
           ],
         },
@@ -322,8 +322,8 @@ export const SERVICES: ServicePage[] = [
       en: "Truck, SUV and van buying",
     },
     metaTitle: {
-      fr: "Camion, VUS, fourgonnette — Rive-Nord",
-      en: "Trucks, SUVs, vans — Laval & Montreal",
+      fr: "Camion, VUS, fourgonnette : Rive-Nord",
+      en: "Trucks, SUVs, vans: Laval & Montreal",
     },
     metaDescription: {
       fr: "On achète camionnettes, VUS, fourgonnettes et véhicules commerciaux légers, en état ou non. Argent comptant et remorquage gratuit sur la Rive-Nord.",
@@ -366,7 +366,7 @@ export const SERVICES: ServicePage[] = [
         {
           h2: "Avant l'enlèvement",
           body: [
-            "Videz la boîte et les compartiments — les outils oubliés dans un coffre latéral partent avec le véhicule et sont difficiles à récupérer ensuite. Gardez le certificat d'immatriculation et une pièce d'identité à portée de main pour la cession SAAQ.",
+            "Videz la boîte et les compartiments : les outils oubliés dans un coffre latéral partent avec le véhicule et sont difficiles à récupérer ensuite. Gardez le certificat d'immatriculation et une pièce d'identité à portée de main pour la cession SAAQ.",
           ],
         },
       ],
@@ -392,13 +392,13 @@ export const SERVICES: ServicePage[] = [
           h2: "Work vehicles and fleets",
           body: [
             "If you're replacing a fleet vehicle or clearing a contractor's yard, say so when you call. We can often load more than one vehicle in the same trip, and we'll schedule pickup outside your operating hours so we don't block your lot.",
-            "Lettering and installed equipment are not a problem — they come off at dismantling.",
+            "Lettering and installed equipment are not a problem: they come off at dismantling.",
           ],
         },
         {
           h2: "Before pickup",
           body: [
-            "Empty the box and the compartments — tools left in a side locker leave with the vehicle and are hard to get back afterwards. Keep the registration certificate and photo ID handy for the SAAQ release.",
+            "Empty the box and the compartments: tools left in a side locker leave with the vehicle and are hard to get back afterwards. Keep the registration certificate and photo ID handy for the SAAQ release.",
           ],
         },
       ],

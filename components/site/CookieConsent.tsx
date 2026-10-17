@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { isHomePath } from "@/config/routes";
 import {
   CONSENT_COOKIE,
   CONSENT_MAX_AGE,
@@ -51,16 +49,12 @@ function applyConsentMode(state: ConsentState) {
  *
  * Three things about this are deliberate and should survive a redesign.
  *
- * WHERE IT SITS. Against the bottom edge, and it clears the mobile
- * call/WhatsApp bar ONLY on the pages that have one. That bar is fixed at
- * `bottom-0` and is the most valuable element on the site — an earlier
- * banner sat on top of it, so the page asked for a cookie decision by hiding
- * the phone number. But MobileContactBar renders nothing on the homepage,
- * and reserving its height there pushed this card up into the middle of the
- * hero, over the very CTAs it was moved off the bar to protect. Hence
- * `isHomePath`: same test the bar itself uses, from one place so the two
- * cannot drift. On desktop it sits bottom-LEFT, away from the WhatsApp
- * float bottom-right.
+ * WHERE IT SITS. Just above the call bar, which is fixed at `bottom-0` on
+ * every page at every width and is the most valuable element on the site.
+ * An earlier banner sat on top of the bar, so the page asked for a cookie
+ * decision by hiding the phone number. 5.125rem is the bar's height (see
+ * CallBar). On desktop it sits bottom-LEFT, away from the WhatsApp float
+ * bottom-right.
  *
  * WHEN IT APPEARS. Once the quote form has scrolled off the top, not after
  * a fixed number of pixels. The form is the page's whole job and it sits in
@@ -69,8 +63,7 @@ function applyConsentMode(state: ConsentState) {
  * the rule that actually holds across every viewport and page type, because
  * it is measured from the thing being protected rather than guessed at.
  *
- * Pages with no form — privacy, terms — fall back to 150px, the same
- * threshold MobileContactBar uses.
+ * Pages with no form (privacy, terms) fall back to 150px of scroll.
  *
  * This costs nothing legally: every non-essential storage type is denied
  * until someone chooses, so nothing is being set during the wait. The card
@@ -90,7 +83,6 @@ function applyConsentMode(state: ConsentState) {
  * consent is not consent under Law 25, which is the whole reason this exists.
  */
 export default function CookieConsent({ labels }: { labels: Labels }) {
-  const pathname = usePathname();
   const [undecided, setUndecided] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [analytics, setAnalytics] = useState(false);
@@ -167,17 +159,11 @@ export default function CookieConsent({ labels }: { labels: Labels }) {
     <section
       aria-labelledby="consent-title"
       /*
-        On phones: against the bottom edge, plus the call bar's height only
-        where that bar exists. 4.25rem matches the spacer MobileContactBar
-        renders; the safe-area inset clears a home indicator either way.
-        On md+ the bar is hidden entirely, so a plain margin is enough and
-        `left` keeps the card off the WhatsApp float on the right.
+        Clear of the call bar at every width: its 5.125rem plus the safe
+        area, plus a gap. On md+ `left` keeps the card off the WhatsApp
+        float on the right.
       */
-      className={`fixed inset-x-3 z-50 md:inset-x-auto md:bottom-6 md:left-6 md:max-w-sm ${
-        isHomePath(pathname)
-          ? "bottom-[calc(0.75rem+env(safe-area-inset-bottom))]"
-          : "bottom-[calc(4.25rem+env(safe-area-inset-bottom)+0.5rem)]"
-      }`}
+      className="fixed inset-x-3 bottom-[calc(5.125rem+env(safe-area-inset-bottom)+0.5rem)] z-50 md:inset-x-auto md:bottom-[calc(5.125rem+1rem)] md:left-6 md:max-w-sm"
     >
       <div className="rounded-xl border border-slate-200 bg-white p-2.5 shadow-[0_8px_30px_rgba(15,23,42,0.16)] sm:p-3.5">
         <h2 id="consent-title" className="text-xs font-black text-slate-900 sm:text-[13px]">

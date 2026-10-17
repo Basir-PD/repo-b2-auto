@@ -76,8 +76,8 @@ export const PHOTOS: Photo[] = [
       en: "A Recyclage Autos B2 flatbed loaded with an SUV, ready to head back to the Mascouche yard",
     },
     caption: {
-      fr: "Notre propre plateau — pas un sous-traitant.",
-      en: "Our own flatbed — not a subcontractor.",
+      fr: "Notre propre plateau, pas un sous-traitant.",
+      en: "Our own flatbed, not a subcontractor.",
     },
   },
   {
@@ -87,8 +87,8 @@ export const PHOTOS: Photo[] = [
       en: "A forklift loaded on the Recyclage Autos B2 flatbed",
     },
     caption: {
-      fr: "Auto, camion, VUS — ou tout autre engin.",
-      en: "Car, truck, SUV — or anything else on wheels.",
+      fr: "Auto, camion, VUS ou tout autre engin.",
+      en: "Car, truck, SUV or anything else on wheels.",
     },
   },
   {

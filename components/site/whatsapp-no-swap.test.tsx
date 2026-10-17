@@ -1,10 +1,10 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { siteConfig } from "@/config/site";
 import { NO_SWAP } from "@/lib/tracking";
 import WhatsAppLink from "./WhatsAppLink";
 import WhatsAppFloat from "./WhatsAppFloat";
-import MobileContactBar from "./MobileContactBar";
+import CallBar from "./CallBar";
 
 /*
  * Every anchor whose href carries the WhatsApp number has to opt out of
@@ -20,9 +20,6 @@ import MobileContactBar from "./MobileContactBar";
  * rebuilds one of these buttons and drops the class would cost WhatsApp leads
  * silently for as long as it took somebody to click their own button.
  */
-
-// The bar hides itself on the homepage, so the specs run it on another route.
-vi.mock("next/navigation", () => ({ usePathname: () => "/fr/vendre-mon-auto/" }));
 
 const waPath = siteConfig.whatsapp.clickPath;
 
@@ -51,25 +48,15 @@ describe("WhatsApp links opt out of call-tracking number swapping", () => {
     expect(link).toHaveAttribute("href", expect.stringContaining(waPath));
   });
 
-  it("marks the WhatsApp half of the mobile bar and leaves the call half swappable", () => {
+  it("leaves the call bar's tel: link swappable", () => {
     /*
-      The bar parks itself off-screen behind aria-hidden and inert until the
-      visitor is 150px down, and a hidden element is not in the accessibility
-      tree, so it has to be scrolled into existence before it can be queried.
+      The call bar is the one button pinned to every page. It is a tel: link
+      and MUST stay swappable: if it ever picked up the class, call tracking
+      would silently measure nothing from it.
     */
-    Object.defineProperty(window, "scrollY", { value: 200, configurable: true });
+    render(<CallBar label="Appelez pour la meilleure offre" />);
 
-    render(<MobileContactBar callLabel="Appeler" whatsappLabel="WhatsApp" prefill="Bonjour" />);
-
-    const whatsapp = screen.getByRole("link", { name: /whatsapp/i });
-    expect(whatsapp).toHaveClass(NO_SWAP);
-    expect(whatsapp.getAttribute("href")).toContain(waPath);
-
-    /*
-      The other half of the bar is a tel: link and MUST stay swappable — if
-      this ever picks up the class, call tracking silently measures nothing.
-    */
-    const call = screen.getByRole("link", { name: /appeler/i });
+    const call = screen.getByRole("link", { name: /appelez pour/i });
     expect(call).not.toHaveClass(NO_SWAP);
     expect(call.getAttribute("href")).toMatch(/^tel:/);
   });
@@ -96,11 +83,8 @@ describe("the WhatsApp number never reaches the DOM", () => {
     expect(container.innerHTML).not.toContain("wa.me");
   });
 
-  it("keeps the number out of the mobile bar", () => {
-    Object.defineProperty(window, "scrollY", { value: 200, configurable: true });
-    const { container } = render(
-      <MobileContactBar callLabel="Appeler" whatsappLabel="WhatsApp" prefill="Bonjour" />
-    );
+  it("keeps the WhatsApp number out of the call bar", () => {
+    const { container } = render(<CallBar label="Appelez pour la meilleure offre" />);
     expect(container.innerHTML).not.toContain("wa.me");
   });
 });

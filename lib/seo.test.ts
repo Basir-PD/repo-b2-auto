@@ -8,13 +8,13 @@ describe("pageTitle", () => {
   });
 
   it("keeps the qualifier when it fits", () => {
-    expect(pageTitle("Cour à scrap Laval", "comptant")).toContain("— comptant");
+    expect(pageTitle("Cour à scrap Laval", "comptant")).toContain(", comptant");
   });
 
   it("drops the qualifier whole rather than cutting it mid-word", () => {
     const t = pageTitle("Rachat d'auto scrap à Saint-Lin-Laurentides", "remorquage gratuit inclus");
     expect(t.length).toBeLessThanOrEqual(TITLE_MAX);
-    expect(t).not.toContain("—");
+    expect(t).not.toContain(",");
     expect(t).toContain("Recyclage Autos B2");
   });
 

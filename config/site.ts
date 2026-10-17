@@ -263,6 +263,13 @@ export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encode
 )}`;
 
 /**
+ * Turn-by-turn directions to the yard. What the map card opens: a visitor
+ * who taps a map wants to get here, not to browse it.
+ */
+export const directionsUrl =
+  "https://www.google.com/maps/dir/?api=1&destination=340+Chemin+Pincourt+Mascouche+QC";
+
+/**
  * Embeddable map of the yard.
  *
  * The zoom is a parameter because the two uses want different things: the

@@ -40,6 +40,7 @@ export const en: Copy = {
     callAria: "Call Recyclage Autos B2 now",
     quoteCta: "Get my free quote",
     callShort: "Call",
+    callBar: "Call Now & Get the Best Offer",
     whatsapp: "WhatsApp",
     whatsappAria: "Message Recyclage Autos B2 on WhatsApp",
     whatsappTagline: "Message us, we answer fast",
@@ -66,9 +67,10 @@ export const en: Copy = {
       guarantee: "or we pay the difference.",
     },
     sub: ["Offer in 2 minutes", "Cash", "Free towing"],
+    slogan: "We buy any car, in any condition!",
     whatsappCta: "Send a message on WhatsApp",
     whatsappPrefill: "Hi! I'd like a quote for my vehicle.",
-    ctaPrimary: "Sell my scrap car — free quote",
+    ctaPrimary: "Sell my scrap car: free quote",
     ctaSecondary: `Call ${PHONE}`,
 
     trustStrip: [
@@ -104,12 +106,12 @@ export const en: Copy = {
     buyAll: {
       title: "Sell a damaged, totaled or non running car",
       items: [
-        "Sell my non running car — it does not have to start",
+        "Sell my non running car: it does not have to start",
         "Sell my totaled car after an insurance write-off",
         "Sell damaged car with no engine or transmission",
         "Sell scrap car, truck, SUV or van",
         "Too rusted to pass inspection",
-        "Missing paperwork — we walk you through it",
+        "Missing paperwork: we walk you through it",
       ],
     },
 
@@ -118,7 +120,7 @@ export const en: Copy = {
       points: [
         {
           title: "A real recycler, not a middleman.",
-          body: "Our yard is at 340 Chemin Pincourt in Mascouche. We don't sell your call to someone else — we buy, tow and pay ourselves.",
+          body: "Our yard is at 340 Chemin Pincourt in Mascouche. We don't sell your call to someone else. We buy, tow and pay ourselves.",
         },
         {
           title: "The quoted price is the price paid.",
@@ -155,6 +157,7 @@ export const en: Copy = {
       body: "Not a middleman with a phone number. Our yard is open 7 days a week and you are welcome to drop by.",
       directions: "Get directions",
       mapAlt: "Map of the Recyclage Autos B2 yard at 340 Chemin Pincourt, Mascouche",
+      mapOpen: "Open the map in Google Maps",
     },
     finalCta: {
       title: "Your old car is worth money. Find out how much.",
@@ -198,17 +201,17 @@ export const en: Copy = {
   },
 
   thanks: {
-    metaTitle: "Thank you — we've got your request | Recyclage Autos B2",
+    metaTitle: "Thank you, we've got your request | Recyclage Autos B2",
     metaDescription:
       "Your quote request has been received. A member of the Recyclage Autos B2 team will call you shortly.",
-    h1: "Thanks — we'll call you shortly",
+    h1: "Thanks, we'll call you shortly",
     body: `We've got your request. Someone on the team usually calls within 30 minutes during opening hours, ${hoursRange("en")}, 7 days a week.`,
     urgent: "In a hurry? Call us directly:",
     whatNext: "What happens next",
     steps: [
       "We call to confirm the year, make, model and condition of the vehicle.",
       "We give you a firm price on the phone, with no obligation.",
-      "If you accept, we schedule the free pickup — often the same day.",
+      "If you accept, we schedule the free pickup, often the same day.",
     ],
     backHome: "Back to home",
   },

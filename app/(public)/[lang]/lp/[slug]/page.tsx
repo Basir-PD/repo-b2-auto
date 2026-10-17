@@ -5,13 +5,14 @@ import { notFound } from "next/navigation";
 import { Check, ChevronRight, Clock, MapPin } from "lucide-react";
 
 import { isLang, pathFor, type Lang } from "@/config/routes";
-import { siteConfig, fullAddress, mapsEmbedUrl, mapsUrl } from "@/config/site";
+import { siteConfig, fullAddress, mapsUrl } from "@/config/site";
 import { getCopy } from "@/content/copy";
 import { faqByIds } from "@/content/faq";
 import { LANDING_CONTENT, landingBySlug } from "@/content/landing";
 import { HOME_PHOTOS } from "@/content/photos";
 import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
+import MapFacade from "@/components/site/MapFacade";
 import { CALL_CTA } from "@/lib/cta";
 import PhotoGrid from "@/components/site/PhotoGrid";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
@@ -111,11 +112,12 @@ export default async function LandingPage({
           <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
               {/*
-                No eyebrow above the H1. It carried the price range, which was
-                removed on request — and with the beats sitting directly under
-                the headline there is nothing for a badge to do but push the
-                form further down the phone screen.
+                The promise in one line, above the headline: any car, any condition.
+                Uppercase by CSS so screen readers read it as a sentence, not letters.
               */}
+              <p className="mb-3 text-sm font-black uppercase tracking-[0.08em] text-brand-700 sm:text-base">
+                {t.home.slogan}
+              </p>
               <h1 className="text-[2.1rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.75rem]">
                 {lp.h1}
               </h1>
@@ -315,19 +317,15 @@ export default async function LandingPage({
                 </div>
 
                 {/*
-                  Zoom 17 reads the lot rather than the region, and lazy keeps
-                  an embedded map's scripts off the initial load of the page
-                  the clicks are paid for.
+                  Not an embedded map: even lazy, the embed loaded about 455 KB
+                  of Google Maps script on PageSpeed runs of the page the clicks
+                  are paid for. The card opens directions and costs nothing
+                  until it is tapped. See MapFacade.
                 */}
-                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 shadow-sm">
-                  <iframe
-                    src={mapsEmbedUrl(17)}
-                    title={t.home.yard.mapAlt}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="h-[300px] w-full border-0 sm:h-[380px] lg:h-[420px]"
-                  />
-                </div>
+                <MapFacade
+                  label={t.home.yard.mapOpen}
+                  className="h-[300px] sm:h-[380px] lg:h-[420px]"
+                />
               </div>
             </div>
           </section>

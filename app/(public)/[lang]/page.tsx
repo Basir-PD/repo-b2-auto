@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { Check, ChevronRight, Clock, FileCheck, Lock, MapPin, Recycle } from "lucide-react";
 
 import { LANGS, isLang, pathFor, cityPathFor, type Lang } from "@/config/routes";
-import { siteConfig, fullAddress, mapsEmbedUrl, mapsUrl } from "@/config/site";
+import { siteConfig, fullAddress, mapsUrl } from "@/config/site";
 import { getCopy } from "@/content/copy";
 import { homeFaqFor } from "@/content/faq";
 import { CITIES } from "@/content/cities";
@@ -18,6 +18,7 @@ import StatBand from "@/components/pages/StatBand";
 import PhotoGrid from "@/components/site/PhotoGrid";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
 import PhoneLink from "@/components/site/PhoneLink";
+import MapFacade from "@/components/site/MapFacade";
 import { CALL_CTA } from "@/lib/cta";
 import { JsonLd, faqSchema, webPageSchema } from "@/components/site/JsonLd";
 
@@ -60,7 +61,7 @@ export async function generateMetadata({
           url: "/hero-tow-truck.jpg",
           width: 1536,
           height: 1024,
-          alt: `${siteConfig.name} — ${fullAddress}`,
+          alt: `${siteConfig.name}, ${fullAddress}`,
         },
       ],
     },
@@ -132,6 +133,13 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 lands wherever the line wraps, which holds up across both
                 languages and every width. The colour marks the seam.
               */}
+              {/*
+                The promise in one line, above the headline: any car, any condition.
+                Uppercase by CSS so screen readers read it as a sentence, not letters.
+              */}
+              <p className="mb-3 text-sm font-black uppercase tracking-[0.08em] text-brand-700 sm:text-base">
+                {t.home.slogan}
+              </p>
               <h1 className="text-balance text-[2rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.6rem] lg:text-[3rem]">
                 {t.home.h1.promise} <span className="text-brand-700">{t.home.h1.guarantee}</span>
               </h1>
@@ -538,20 +546,15 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             </div>
 
             {/*
-              Zoomed to 17, close enough to read the lot rather than the
-              region. Lazy — an embedded map pulls a lot of script, and this
-              sits well below the fold, so it must not touch the initial load
-              on a page paid clicks land on.
+              Not an embedded map. Even lazy, the embed loaded about 455 KB of
+              Google Maps script on PageSpeed runs of a page paid clicks land
+              on. The card opens directions instead and costs nothing until it
+              is tapped. See MapFacade.
             */}
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 shadow-sm">
-              <iframe
-                src={mapsEmbedUrl(17)}
-                title={t.home.yard.mapAlt}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-[300px] w-full border-0 sm:h-[380px] lg:h-[440px]"
-              />
-            </div>
+            <MapFacade
+              label={t.home.yard.mapOpen}
+              className="h-[300px] sm:h-[380px] lg:h-[440px]"
+            />
           </div>
         </div>
       </section>

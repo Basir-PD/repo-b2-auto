@@ -21,7 +21,7 @@ export const POSTS: Post[] = [
     description:
       "Ce qui fait vraiment monter ou descendre le prix d'une auto scrap au Québec : le poids, le convertisseur catalytique, l'année et les pièces récupérables.",
     date: "2026-01-15",
-    lede: "La réponse courte : ça dépend du véhicule. La réponse utile, c'est de comprendre ce qui fait monter ou descendre le prix — parce que la plupart des facteurs sont connus avant même que quiconque regarde le véhicule.",
+    lede: "La réponse courte : ça dépend du véhicule. La réponse utile, c'est de comprendre ce qui fait monter ou descendre le prix, parce que la plupart des facteurs sont connus avant même que quiconque regarde le véhicule.",
     sections: [
       {
         h2: "Le poids fixe le plancher",
@@ -34,7 +34,7 @@ export const POSTS: Post[] = [
         h2: "Le convertisseur catalytique est la pièce qui change tout",
         body: [
           "Le catalyseur contient du platine, du palladium et du rhodium. C'est, de loin, la pièce la plus valable d'un véhicule qu'on ne réparera pas, et sa présence ou son absence peut faire une différence de plusieurs centaines de dollars sur l'offre.",
-          "Si le vôtre a été volé — un problème fréquent au Québec depuis quelques années — dites-le au téléphone. Ça ne disqualifie pas le véhicule, mais un acheteur qui découvre l'absence en arrivant va vouloir renégocier, et vous perdez le contrôle de la conversation.",
+          "Si le vôtre a été volé (un problème fréquent au Québec depuis quelques années), dites-le au téléphone. Ça ne disqualifie pas le véhicule, mais un acheteur qui découvre l'absence en arrivant va vouloir renégocier, et vous perdez le contrôle de la conversation.",
         ],
       },
       {
@@ -48,7 +48,7 @@ export const POSTS: Post[] = [
         h2: "L'état, mais pas comme vous pensez",
         body: [
           "Beaucoup de gens s'excusent au téléphone : l'auto ne démarre plus, elle est rouillée, elle a été accidentée. Pour un recycleur, ce sont des informations, pas des défauts. Un véhicule accidenté mais complet vaut souvent plus qu'un véhicule roulant dont on a retiré le moteur.",
-          "Ce qui compte, c'est ce qui est encore là : moteur, transmission, catalyseur, roues, portières, sièges. Un véhicule « dépouillé » — dont on a vendu les pièces une par une avant d'appeler — est celui qui vaut le moins.",
+          "Ce qui compte, c'est ce qui est encore là : moteur, transmission, catalyseur, roues, portières, sièges. Un véhicule « dépouillé », dont on a vendu les pièces une par une avant d'appeler, est celui qui vaut le moins.",
         ],
       },
       {
@@ -78,7 +78,7 @@ export const POSTS: Post[] = [
     description:
       "Cession, plaque, remboursement d'immatriculation : les étapes exactes pour se départir d'un véhicule au Québec sans continuer à payer pour lui.",
     date: "2026-02-03",
-    lede: "Se débarrasser d'un véhicule au Québec, ce n'est pas seulement le faire remorquer. Tant que la cession n'est pas enregistrée, le véhicule reste à votre nom — et l'immatriculation continue de courir.",
+    lede: "Se débarrasser d'un véhicule au Québec, ce n'est pas seulement le faire remorquer. Tant que la cession n'est pas enregistrée, le véhicule reste à votre nom, et l'immatriculation continue de courir.",
     sections: [
       {
         h2: "Le principe : tant que c'est à votre nom, c'est votre responsabilité",
@@ -115,7 +115,7 @@ export const POSTS: Post[] = [
         h2: "Si vous avez perdu les papiers",
         body: [
           "Ça se règle. Le certificat d'immatriculation peut être remplacé auprès de la SAAQ par le propriétaire inscrit, en présentant une pièce d'identité.",
-          "La situation plus délicate est celle d'un véhicule hérité ou laissé par quelqu'un d'autre : le registre doit d'abord refléter le bon propriétaire avant qu'une cession soit possible. Appelez avant de planifier un enlèvement — c'est une démarche courante et il vaut mieux la faire dans le bon ordre.",
+          "La situation plus délicate est celle d'un véhicule hérité ou laissé par quelqu'un d'autre : le registre doit d'abord refléter le bon propriétaire avant qu'une cession soit possible. Appelez avant de planifier un enlèvement : c'est une démarche courante et il vaut mieux la faire dans le bon ordre.",
         ],
       },
       {
@@ -134,7 +134,7 @@ export const POSTS: Post[] = [
     description:
       "Ce que veut dire une perte totale, quand garder le véhicule est avantageux, et comment vendre une épave au Québec.",
     date: "2026-03-10",
-    lede: "Quand un assureur déclare une perte totale, il vous propose un montant pour le véhicule. Ce que beaucoup de gens ignorent, c'est qu'il existe souvent un deuxième choix — et qu'il peut être plus payant.",
+    lede: "Quand un assureur déclare une perte totale, il vous propose un montant pour le véhicule. Ce que beaucoup de gens ignorent, c'est qu'il existe souvent un deuxième choix, et qu'il peut être plus payant.",
     sections: [
       {
         h2: "Ce que veut dire « perte totale »",
@@ -147,7 +147,7 @@ export const POSTS: Post[] = [
         h2: "Les deux options habituelles",
         body: [
           "La première : l'assureur prend le véhicule et vous verse l'indemnité complète. C'est simple, et c'est ce que la majorité des gens choisissent.",
-          "La deuxième : vous conservez le véhicule et l'assureur retranche de l'indemnité ce qu'il aurait obtenu en le revendant — la valeur de récupération. Vous vous retrouvez avec un montant réduit, plus une épave qui vous appartient.",
+          "La deuxième : vous conservez le véhicule et l'assureur retranche de l'indemnité ce qu'il aurait obtenu en le revendant : la valeur de récupération. Vous vous retrouvez avec un montant réduit, plus une épave qui vous appartient.",
         ],
       },
       {
@@ -184,13 +184,13 @@ export const POSTS: Post[] = [
     description:
       "Comparaison honnête entre vendre son vieux véhicule à un particulier et le vendre à un recycleur : montant, délai, risques et paperasse.",
     date: "2026-04-07",
-    lede: "Sur papier, une vente privée rapporte presque toujours plus. En pratique, ça dépend entièrement de l'état du véhicule — et il existe un point de bascule assez net.",
+    lede: "Sur papier, une vente privée rapporte presque toujours plus. En pratique, ça dépend entièrement de l'état du véhicule, et il existe un point de bascule assez net.",
     sections: [
       {
         h2: "Le point de bascule",
         body: [
           "Tant qu'un véhicule roule, passe l'inspection et peut être immatriculé par un acheteur, la vente privée gagne. Quelqu'un qui cherche une auto à 2 500 $ paiera toujours plus que sa valeur en pièces et en métal.",
-          "Le calcul s'inverse dès que le véhicule ne roule plus, qu'il nécessite une réparation majeure, ou qu'il ne passerait pas une inspection mécanique. À partir de là, l'acheteur privé disparaît — et ceux qui restent négocient à la baisse en connaissant votre situation.",
+          "Le calcul s'inverse dès que le véhicule ne roule plus, qu'il nécessite une réparation majeure, ou qu'il ne passerait pas une inspection mécanique. À partir de là, l'acheteur privé disparaît, et ceux qui restent négocient à la baisse en connaissant votre situation.",
         ],
       },
       {
