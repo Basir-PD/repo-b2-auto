@@ -54,6 +54,8 @@ describe("WhatsApp links opt out of call-tracking number swapping", () => {
       and MUST stay swappable: if it ever picked up the class, call tracking
       would silently measure nothing from it.
     */
+    // Parked (and out of the accessibility tree) until 200px of scroll.
+    Object.defineProperty(window, "scrollY", { value: 300, configurable: true });
     render(<CallBar label="Appelez pour la meilleure offre" />);
 
     const call = screen.getByRole("link", { name: /appelez pour/i });
