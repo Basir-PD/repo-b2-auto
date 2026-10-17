@@ -95,6 +95,11 @@ export type LandingContent = {
    * score are the ones that answer what the shared boilerplate cannot.
    */
   sections?: { h2: string; body: string[] }[];
+  /**
+   * One short section set directly above the FAQ, for the city pages: where
+   * the yard is and how far it reaches. Unset on every other page.
+   */
+  beforeFaq?: { h2: string; body: string };
 };
 
 export const LANDING_CONTENT: LandingContent[] = [
@@ -187,6 +192,10 @@ export const LANDING_CONTENT: LandingContent[] = [
     reassurance:
       "On recycle nous-mêmes, au 340 Chemin Pincourt. Votre véhicule n'est pas revendu à un tiers.",
     faq: ["qui-achete", "recyclage", "valeur", "documents", "paiement"],
+    beforeFaq: {
+      h2: "Une cour à scrap à 24 km de Laval",
+      body: "Notre cour à scrap est au 340 Chemin Pincourt, à Mascouche, à environ 25 minutes de Laval. On vient chercher votre auto gratuitement partout à Laval et on vous paie comptant à l'enlèvement.",
+    },
   },
   {
     slug: "recyclage-auto-terrebonne",
@@ -224,6 +233,53 @@ export const LANDING_CONTENT: LandingContent[] = [
     reassurance:
       "Notre cour est au 340 Chemin Pincourt à Mascouche. On vient à vous, vous ne déplacez rien.",
     faq: ["qui-achete", "recyclage", "valeur", "documents", "paiement"],
+    beforeFaq: {
+      h2: "Une cour à scrap qui dessert tout Montréal",
+      body: "Notre cour à scrap est au 340 Chemin Pincourt, à Mascouche. On vient chercher votre auto partout sur l'île de Montréal, de Montréal-Nord à l'Ouest-de-l'Île, gratuitement, et on vous paie comptant à l'enlèvement.",
+    },
+  },
+  {
+    slug: "recyclage-auto-mascouche",
+    lang: "fr",
+    title: "Recyclage auto Mascouche | Recyclage Autos B2",
+    h1: "Recyclage auto à Mascouche : la cour est dans votre ville",
+    sub: "Notre cour est au 340 Chemin Pincourt, à Mascouche. On rachète votre véhicule en fin de vie, on le remorque gratuitement et on vous paie comptant sur place.",
+    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
+    bullets: [
+      "La remorqueuse est chez vous en une quinzaine de minutes",
+      "Vieux-Mascouche, Mascouche Heights, Domaine Bordeleau, parc industriel",
+      "Remorquage gratuit, jamais déduit de votre montant",
+      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
+      "Payé comptant à l'enlèvement",
+    ],
+    reassurance: "Vous pouvez aussi venir porter votre véhicule à la cour, ouverte 7 jours sur 7.",
+    faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
+    beforeFaq: {
+      h2: "Une cour à scrap au cœur de Mascouche",
+      body: "Notre cour à scrap est au 340 Chemin Pincourt, à Mascouche. Pas d'intermédiaire : vous parlez directement au recycleur qui achète votre auto, envoie la remorqueuse et vous paie comptant à l'enlèvement.",
+    },
+  },
+  {
+    slug: "recyclage-auto-saint-jerome",
+    lang: "fr",
+    title: "Recyclage auto Saint-Jérôme | Recyclage Autos B2",
+    h1: "Recyclage auto à Saint-Jérôme : enlèvement gratuit, payé comptant",
+    sub: "Recycleur licencié établi à Mascouche. On se déplace à Saint-Jérôme pour racheter votre auto en fin de vie, on la remorque gratuitement et on vous paie sur place.",
+    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
+    bullets: [
+      "On monte à Saint-Jérôme par la 640 et la 15",
+      "Centre-ville, Bellefeuille, Lafontaine, Saint-Antoine",
+      "Remorquage gratuit, jamais déduit de votre montant",
+      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
+      "Payé comptant à l'enlèvement",
+    ],
+    reassurance:
+      "On recycle nous-mêmes, au 340 Chemin Pincourt. Votre appel n'est pas revendu à un autre ferrailleur.",
+    faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
+    beforeFaq: {
+      h2: "Une cour à scrap qui dessert Saint-Jérôme",
+      body: "Notre cour à scrap est au 340 Chemin Pincourt, à Mascouche. On vient chercher votre auto gratuitement partout à Saint-Jérôme, de Bellefeuille à Saint-Antoine, et on vous paie comptant à l'enlèvement.",
+    },
   },
   /*
     The English "scrap yard / junkyard {city}" set.
