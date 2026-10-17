@@ -55,7 +55,7 @@ export async function generateMetadata({
           url: "/hero-tow-truck.jpg",
           width: 1536,
           height: 1024,
-          alt: `${siteConfig.name} — ${fullAddress}`,
+          alt: `${siteConfig.name}, ${fullAddress}`,
         },
       ],
     },

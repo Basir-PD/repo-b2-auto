@@ -73,7 +73,7 @@ export const CITIES: City[] = [
         worth:
           "Le montant qu'on offre dépend surtout du poids du véhicule, de son année, de la présence du convertisseur catalytique et de l'état des pièces encore réutilisables. Comme la cour est ici même, il n'y a aucun frais de déplacement à absorber sur un ramassage à Mascouche : ce que le marché du métal et des pièces vaut pour votre auto, vous le recevez au complet.",
         towing:
-          "Un ramassage à Mascouche, c'est le trajet le plus court qu'on fait. Qu'on parte vers le Vieux-Mascouche, vers Mascouche Heights, vers le Domaine Bordeleau ou vers les rues résidentielles au nord de la montée Masson, la remorqueuse est chez vous en une quinzaine de minutes. On récupère aussi les véhicules stationnés dans le parc industriel, dans les cours arrière et dans les stationnements de condos — un plateau bas passe là où une dépanneuse ordinaire ne passe pas.",
+          "Un ramassage à Mascouche, c'est le trajet le plus court qu'on fait. Qu'on parte vers le Vieux-Mascouche, vers Mascouche Heights, vers le Domaine Bordeleau ou vers les rues résidentielles au nord de la montée Masson, la remorqueuse est chez vous en une quinzaine de minutes. On récupère aussi les véhicules stationnés dans le parc industriel, dans les cours arrière et dans les stationnements de condos. Un plateau bas passe là où une dépanneuse ordinaire ne passe pas.",
         vehicles:
           "On achète tout ce qui roule et surtout tout ce qui ne roule plus : autos immobilisées depuis des années dans une entrée, véhicules déclarés perte totale par l'assureur après un accident sur la 640, camionnettes de chantier au bout de leur vie, VUS trop rouillés pour repasser l'inspection. Sans moteur, sans transmission, sans roues, sans clés : ça se ramasse pareil.",
         paperwork:
@@ -84,11 +84,11 @@ export const CITIES: City[] = [
       en: {
         lede: "Our yard is in Mascouche, at 340 Chemin Pincourt. No subcontractor, no Montreal middleman reselling your call: when you phone us, you are talking to the recycler who will buy the vehicle, send the tow truck and hand you the money. This is the city we have worked in for eleven years, and the one we know best.",
         worth:
-          "What we offer depends mostly on the vehicle's weight, its year, whether the catalytic converter is still on it, and the condition of any reusable parts. Because the yard is right here, there is no travel cost to absorb on a Mascouche pickup — whatever the metal and the parts are worth, you get all of it.",
+          "What we offer depends mostly on the vehicle's weight, its year, whether the catalytic converter is still on it, and the condition of any reusable parts. Because the yard is right here, there is no travel cost to absorb on a Mascouche pickup: whatever the metal and the parts are worth, you get all of it.",
         towing:
-          "A Mascouche pickup is the shortest run we make. Whether we are heading into Vieux-Mascouche, up to Mascouche Heights, into Domaine Bordeleau or onto the residential streets north of Montée Masson, the tow truck is at your door in about fifteen minutes. We also pull vehicles out of the industrial park, out of back yards and out of condo lots — a low flatbed gets in where a standard wrecker cannot.",
+          "A Mascouche pickup is the shortest run we make. Whether we are heading into Vieux-Mascouche, up to Mascouche Heights, into Domaine Bordeleau or onto the residential streets north of Montée Masson, the tow truck is at your door in about fifteen minutes. We also pull vehicles out of the industrial park, out of back yards and out of condo lots. A low flatbed gets in where a standard wrecker cannot.",
         vehicles:
-          "We buy anything that runs and, more to the point, everything that doesn't: cars that have sat in a driveway for years, vehicles written off by the insurer after a crash on the 640, work pickups at the end of their life, SUVs too rusted to pass inspection again. No engine, no transmission, no wheels, no keys — it still gets picked up.",
+          "We buy anything that runs and, more to the point, everything that doesn't: cars that have sat in a driveway for years, vehicles written off by the insurer after a crash on the 640, work pickups at the end of their life, SUVs too rusted to pass inspection again. No engine, no transmission, no wheels, no keys: it still gets picked up.",
         paperwork:
           "We handle the SAAQ transfer on site. We take the plate, complete the release and hand you the official receipt before the vehicle leaves. That document is what proves the car is no longer yours and lets you stop paying registration immediately.",
         faqQ: "How fast is a pickup in Mascouche?",
@@ -120,7 +120,7 @@ export const CITIES: City[] = [
         faqA: "Généralement le jour même ou le lendemain. Terrebonne est à une quinzaine de minutes de la cour, alors on l'insère facilement dans la route de la journée. Pour le Vieux-Terrebonne, on s'entend d'avance sur une heure précise, parce que le stationnement dans les rues étroites demande un peu de coordination.",
       },
       en: {
-        lede: "Terrebonne is the city next door to our yard: about nine kilometres by Montée Masson or the 640. After Mascouche it is where most of our calls come from — from Vieux-Terrebonne, from Lachenaie and from La Plaine, which are three quite different propositions when it comes to getting a dead vehicle out.",
+        lede: "Terrebonne is the city next door to our yard: about nine kilometres by Montée Masson or the 640. After Mascouche it is where most of our calls come from: Vieux-Terrebonne, Lachenaie and La Plaine, which are three quite different propositions when it comes to getting a dead vehicle out.",
         worth:
           "The price is worked out the same way everywhere: weight, year, catalytic converter, recoverable parts. Give us the year, make, model and honest condition on the phone and you get a firm price in minutes. That price does not move when the tow truck arrives, as long as what you told us was accurate.",
         towing:
@@ -147,7 +147,7 @@ export const CITIES: City[] = [
       fr: {
         lede: "Repentigny est à une vingtaine de minutes de la cour par la 640 puis la 40. On y descend plusieurs fois par semaine, autant dans le Vieux-Repentigny le long du fleuve que dans Le Gardeur et dans les quartiers résidentiels qui se sont développés autour du boulevard Brien.",
         worth:
-          "Poids, année, convertisseur catalytique, pièces réutilisables : c'est ce qui détermine le montant. On donne un prix ferme au téléphone à partir des informations que vous fournissez, et c'est ce montant-là qui vous est remis comptant au moment de l'enlèvement — pas un prix « à confirmer sur place ».",
+          "Poids, année, convertisseur catalytique, pièces réutilisables : c'est ce qui détermine le montant. On donne un prix ferme au téléphone à partir des informations que vous fournissez, et c'est ce montant-là qui vous est remis comptant au moment de l'enlèvement, pas un prix « à confirmer sur place ».",
         towing:
           "Le trajet passe par la 640 est puis la 40, ce qui rend l'accès rapide à tout le secteur Iberville et aux rues autour des Galeries Rive Nord. Dans le Vieux-Repentigny, les terrains près de la rue Notre-Dame sont souvent longs et étroits ; le plateau permet de sortir un véhicule immobilisé au fond d'une entrée sans abîmer l'asphalte ni le gazon. À Le Gardeur, on couvre jusqu'aux limites de Charlemagne.",
         vehicles:
@@ -158,9 +158,9 @@ export const CITIES: City[] = [
         faqA: "Le plus souvent dans les 24 heures. On planifie généralement les ramassages de Repentigny et du Gardeur dans le même bloc horaire pour limiter les allers-retours sur la 40, alors on vous propose une plage de deux heures plutôt qu'une heure fixe.",
       },
       en: {
-        lede: "Repentigny is about twenty minutes from the yard by the 640 and then the 40. We come down several times a week — into Vieux-Repentigny along the river, into Le Gardeur, and into the residential streets that grew up around boulevard Brien.",
+        lede: "Repentigny is about twenty minutes from the yard by the 640 and then the 40. We come down several times a week: into Vieux-Repentigny along the river, into Le Gardeur, and into the residential streets that grew up around boulevard Brien.",
         worth:
-          "Weight, year, catalytic converter, reusable parts: that is what sets the amount. We give a firm price on the phone from what you tell us, and that is the amount handed to you in cash at pickup — not a price to be confirmed on site.",
+          "Weight, year, catalytic converter, reusable parts: that is what sets the amount. We give a firm price on the phone from what you tell us, and that is the amount handed to you in cash at pickup, not a price to be confirmed on site.",
         towing:
           "The run is the 640 east then the 40, which puts the whole Iberville sector and the streets around Galeries Rive Nord within easy reach. In Vieux-Repentigny the lots near rue Notre-Dame are often long and narrow; the flatbed pulls a dead vehicle out from the back of a driveway without tearing up the asphalt or the lawn. In Le Gardeur we cover right out to the Charlemagne line.",
         vehicles:
@@ -192,30 +192,30 @@ export const CITIES: City[] = [
     landmark: "l'autoroute 440 et le boulevard des Laurentides",
     copy: {
       fr: {
-        lede: "Pour du scrap auto à Laval, on se déplace — mais notre cour reste à Mascouche, au 340 Chemin Pincourt. On traverse par la 640 ouest ou la 25, ce qui met la plupart des secteurs lavallois à environ vingt-cinq minutes. C'est un grand territoire, et l'accès n'a rien à voir entre Saint-François et Chomedey.",
+        lede: "Pour du scrap auto à Laval, on se déplace, mais notre cour reste à Mascouche, au 340 Chemin Pincourt. On traverse par la 640 ouest ou la 25, ce qui met la plupart des secteurs lavallois à environ vingt-cinq minutes. C'est un grand territoire, et l'accès n'a rien à voir entre Saint-François et Chomedey.",
         worth:
-          "Le recyclage automobile à Laval se calcule comme ailleurs : poids du véhicule, année, convertisseur catalytique, pièces encore bonnes. On confirme le montant au téléphone avant de se déplacer, pour que personne ne perde son temps — ni vous à attendre, ni nous à envoyer une remorqueuse pour un véhicule qui n'était pas celui décrit.",
+          "Le recyclage automobile à Laval se calcule comme ailleurs : poids du véhicule, année, convertisseur catalytique, pièces encore bonnes. On confirme le montant au téléphone avant de se déplacer, pour que personne ne perde son temps : ni vous à attendre, ni nous à envoyer une remorqueuse pour un véhicule qui n'était pas celui décrit.",
         towing:
-          "Dans l'est lavallois — Saint-François, Duvernay, Saint-Vincent-de-Paul — on arrive directement par la 25 et le boulevard Lévesque. Pour Vimont, Auteuil et Sainte-Rose, on passe par la 440 et le boulevard des Laurentides. Chomedey et Laval-des-Rapides, plus denses, demandent souvent un enlèvement planifié en dehors des heures de pointe : le plateau a besoin d'un espace dégagé, ce qui est plus simple en matinée dans les stationnements d'immeubles.",
+          "Dans l'est lavallois (Saint-François, Duvernay, Saint-Vincent-de-Paul), on arrive directement par la 25 et le boulevard Lévesque. Pour Vimont, Auteuil et Sainte-Rose, on passe par la 440 et le boulevard des Laurentides. Chomedey et Laval-des-Rapides, plus denses, demandent souvent un enlèvement planifié en dehors des heures de pointe : le plateau a besoin d'un espace dégagé, ce qui est plus simple en matinée dans les stationnements d'immeubles.",
         vehicles:
           "Autos qui ne démarrent plus, véhicules accidentés sur la 440 ou la 15, VUS et camionnettes, fourgonnettes commerciales, et beaucoup de véhicules laissés dans des stationnements de logements locatifs. Sans papiers en main, sans clés, trop rouillés pour l'inspection : on regarde chaque cas et on l'achète quand même dans la grande majorité des situations.",
         paperwork:
           "Même procédure qu'ailleurs : plaque récupérée, cession remplie, reçu officiel remis sur place à l'enlèvement. Vous n'avez pas à vous déplacer dans un point de service, et l'immatriculation cesse de courir à votre nom.",
         faqQ: "Vous ramassez partout à Laval, et dans quel délai ?",
-        faqA: "Oui, dans tous les secteurs, de Sainte-Rose à Saint-François — c'est notre service d'auto recyclage Laval au complet. Le délai typique est de 24 à 48 heures parce qu'on regroupe les ramassages lavallois par secteur plutôt que de traverser la ville plusieurs fois dans la journée. Si c'est urgent, dites-le en appelant : il reste souvent une place le jour même.",
+        faqA: "Oui, dans tous les secteurs, de Sainte-Rose à Saint-François. C'est notre service d'auto recyclage Laval au complet. Le délai typique est de 24 à 48 heures parce qu'on regroupe les ramassages lavallois par secteur plutôt que de traverser la ville plusieurs fois dans la journée. Si c'est urgent, dites-le en appelant : il reste souvent une place le jour même.",
       },
       en: {
         lede: "Laval is a service area for us, not our address: the yard stays in Mascouche, at 340 Chemin Pincourt, and we are the junk car buyer that drives to you. We cross by the 640 west or the 25, which puts most Laval sectors about twenty-five minutes out. It is a large territory, and access is nothing alike between Saint-François and Chomedey.",
         worth:
-          "The maths does not change from one city to the next: vehicle weight, year, catalytic converter, parts still worth pulling. We confirm the amount on the phone before we drive out, so nobody wastes a trip — not you waiting, and not us sending a tow truck for a vehicle that wasn't the one described.",
+          "The maths does not change from one city to the next: vehicle weight, year, catalytic converter, parts still worth pulling. We confirm the amount on the phone before we drive out, so nobody wastes a trip: not you waiting, and not us sending a tow truck for a vehicle that wasn't the one described.",
         towing:
-          "Scrap car removal in east Laval — Saint-François, Duvernay, Saint-Vincent-de-Paul — comes straight in on the 25 and boulevard Lévesque. For Vimont, Auteuil and Sainte-Rose we take the 440 and boulevard des Laurentides. Chomedey and Laval-des-Rapides are denser and often need a pickup scheduled outside rush hour: the flatbed needs clear space, which is easier to find mid-morning in apartment lots.",
+          "Scrap car removal in east Laval (Saint-François, Duvernay, Saint-Vincent-de-Paul) comes straight in on the 25 and boulevard Lévesque. For Vimont, Auteuil and Sainte-Rose we take the 440 and boulevard des Laurentides. Chomedey and Laval-des-Rapides are denser and often need a pickup scheduled outside rush hour: the flatbed needs clear space, which is easier to find mid-morning in apartment lots.",
         vehicles:
-          "Cars that no longer start, vehicles wrecked on the 440 or the 15, SUVs and pickups, commercial vans, and a lot of vehicles abandoned in rental-building parking lots. No paperwork in hand, no keys, too rusted for inspection — we look at each case and in the large majority of them we still buy it.",
+          "Cars that no longer start, vehicles wrecked on the 440 or the 15, SUVs and pickups, commercial vans, and a lot of vehicles abandoned in rental-building parking lots. No paperwork in hand, no keys, too rusted for inspection: we look at each case and in the large majority of them we still buy it.",
         paperwork:
           "Same procedure as everywhere: plate taken, release completed, official receipt handed over at pickup. You make no trip to a service point, and the registration stops running in your name.",
         faqQ: "Do you pick up everywhere in Laval, and how quickly?",
-        faqA: "Yes, every sector, from Sainte-Rose to Saint-François. The typical window is 24 to 48 hours because we group Laval pickups by sector rather than crossing the city several times in a day. If it is urgent, say so when you call — there is often still a slot the same day.",
+        faqA: "Yes, every sector, from Sainte-Rose to Saint-François. The typical window is 24 to 48 hours because we group Laval pickups by sector rather than crossing the city several times in a day. If it is urgent, say so when you call: there is often still a slot the same day.",
       },
     },
   },
@@ -232,7 +232,7 @@ export const CITIES: City[] = [
       fr: {
         lede: "L'Assomption est à environ vingt-cinq minutes de la cour, par la 640 puis la 40 ou par la route 343. C'est un secteur où les terrains sont plus grands qu'en banlieue dense, et où on retrouve souvent des véhicules remisés depuis longtemps derrière une maison ou dans une grange.",
         worth:
-          "Le montant dépend du poids, de l'année, du convertisseur catalytique et des pièces récupérables. Un véhicule remisé depuis dix ans vaut encore quelque chose — le métal a une valeur peu importe depuis combien de temps l'auto ne bouge plus. Appelez avec l'année, la marque et le modèle et on vous donne un prix ferme.",
+          "Le montant dépend du poids, de l'année, du convertisseur catalytique et des pièces récupérables. Un véhicule remisé depuis dix ans vaut encore quelque chose : le métal a une valeur peu importe depuis combien de temps l'auto ne bouge plus. Appelez avec l'année, la marque et le modèle et on vous donne un prix ferme.",
         towing:
           "On entre par le boulevard L'Ange-Gardien pour le secteur du Vieux L'Assomption et par la route 343 pour Saint-Gérard-Majella et les rangs. Sur les grands terrains, la difficulté n'est pas la distance mais le sol : un véhicule enfoncé dans la terre ou entouré de végétation demande un treuil et un peu plus de temps. Dites-le nous au téléphone pour qu'on prévoie l'équipement en conséquence.",
         vehicles:
@@ -316,7 +316,7 @@ export const CITIES: City[] = [
         paperwork:
           "On remplit la cession SAAQ avec vous sur place, on récupère la plaque et on vous laisse le reçu officiel. Pour un véhicule remisé depuis longtemps ou hérité, appelez avant : il y a parfois une étape à faire de votre côté et on vous explique laquelle.",
         faqQ: "Vous montez jusqu'à Saint-Lin-Laurentides pour un seul véhicule ?",
-        faqA: "Oui. Le délai est généralement de 48 heures parce qu'on planifie la montée vers Saint-Lin sur des journées précises plutôt qu'à la demande. Si vous avez deux véhicules ou plus, on s'organise plus vite — un déplacement qui charge deux autos se justifie tout seul.",
+        faqA: "Oui. Le délai est généralement de 48 heures parce qu'on planifie la montée vers Saint-Lin sur des journées précises plutôt qu'à la demande. Si vous avez deux véhicules ou plus, on s'organise plus vite : un déplacement qui charge deux autos se justifie tout seul.",
       },
       en: {
         lede: "Saint-Lin-Laurentides is about thirty minutes north of the yard, by the 25 and then route 335. It is the most rural area we serve regularly, and it works differently: many vehicles here have been sitting on large properties for a very long time, sometimes several on the same lot.",
@@ -325,11 +325,11 @@ export const CITIES: City[] = [
         towing:
           "We come up route 335 and take rue Saint-Isidore for the middle of the village, then the rangs for the addresses further out. On unpaved ground a vehicle that has not moved in years usually has its wheels sunk or seized; that is a winch job, not a straight load. Mention it on the phone and we arrive equipped the first time.",
         vehicles:
-          "Work pickups, light farm vehicles, SUVs, stored cars, wrecked vehicles. No engine, no wheels, no keys, or no paperwork in hand — we look at each case and almost always find a way to buy it.",
+          "Work pickups, light farm vehicles, SUVs, stored cars, wrecked vehicles. No engine, no wheels, no keys, or no paperwork in hand: we look at each case and almost always find a way to buy it.",
         paperwork:
           "We complete the SAAQ release with you on site, take the plate and leave you the official receipt. For a vehicle stored a long time or inherited, call first: there is sometimes one step to take on your side, and we will tell you which one.",
         faqQ: "Will you come up to Saint-Lin-Laurentides for a single vehicle?",
-        faqA: "Yes. The window is generally 48 hours, because we plan the run up to Saint-Lin on set days rather than on demand. With two vehicles or more we move faster — a trip that loads two cars pays for itself.",
+        faqA: "Yes. The window is generally 48 hours, because we plan the run up to Saint-Lin on set days rather than on demand. With two vehicles or more we move faster: a trip that loads two cars pays for itself.",
       },
     },
   },
@@ -353,7 +353,7 @@ export const CITIES: City[] = [
           "Autos qui ne démarrent plus, deuxièmes véhicules laissés à l'abandon, VUS, camionnettes, véhicules accidentés et pertes totales. Trop rouillé pour l'inspection, sans moteur ou sans clés : ça se ramasse pareil.",
         paperwork:
           "Plaque récupérée, cession signée, reçu officiel SAAQ remis à l'enlèvement. Vous cessez de payer l'immatriculation dès que le véhicule quitte votre entrée.",
-        faqQ: "Bois-des-Filion est une petite ville — vous vous déplacez quand même ?",
+        faqQ: "Bois-des-Filion est une petite ville. Vous vous déplacez quand même ?",
         faqA: "Oui, régulièrement. Bois-des-Filion est sur notre trajet vers l'ouest de la 640, alors le délai est court : souvent le jour même, sinon le lendemain. C'est un des secteurs où on peut le plus facilement s'ajuster à votre horaire.",
       },
       en: {
@@ -363,10 +363,10 @@ export const CITIES: City[] = [
         towing:
           "We come off the 640 exit and take boulevard Adolphe-Chapleau. The residential streets near the river are narrow and several driveways slope down toward the house, which makes a flatbed more practical than a hook truck: we pull the vehicle out to the street rather than manoeuvring on a slope. If the vehicle is near the Athanase-David bridge, we schedule mid-day rather than at rush hour.",
         vehicles:
-          "Cars that no longer start, second vehicles left to sit, SUVs, pickups, wrecked vehicles and total losses. Too rusted for inspection, no engine or no keys — it still gets picked up.",
+          "Cars that no longer start, second vehicles left to sit, SUVs, pickups, wrecked vehicles and total losses. Too rusted for inspection, no engine or no keys: it still gets picked up.",
         paperwork:
           "Plate taken, release signed, official SAAQ receipt handed over at pickup. You stop paying registration the moment the vehicle leaves your driveway.",
-        faqQ: "Bois-des-Filion is a small town — do you still come out?",
+        faqQ: "Bois-des-Filion is a small town. Do you still come out?",
         faqA: "Yes, regularly. Bois-des-Filion is on our way west along the 640, so the wait is short: often the same day, otherwise the next. It is one of the areas where we can most easily fit your schedule.",
       },
     },
@@ -406,28 +406,28 @@ export const CITIES: City[] = [
       fr: {
         lede: "Montréal est la limite sud de notre territoire, et on y descend tous les jours. Selon le secteur, on entre par le pont Pie-IX, le pont Papineau-Leblanc ou le tunnel de la 25. Ce qui complique un enlèvement sur l'île, ça n'a jamais été la distance : c'est la vignette, la ruelle et la place de stationnement.",
         worth:
-          "Le montant dépend du poids, de l'année, du modèle et de ce qui reste de bon sur le véhicule. À Montréal, il y a une question qu'on pose avant les autres : est-ce que le convertisseur catalytique est encore là ? Les vols de catalyseurs sont assez fréquents sur l'île pour qu'un propriétaire l'apprenne le matin où il essaie de démarrer, et la pièce vaut plusieurs centaines de dollars. Dites-nous-le si le vôtre a été coupé — ça change le prix, mais ça ne nous empêche pas d'acheter, et on préfère l'ajuster au téléphone plutôt qu'à l'arrivée.",
+          "Le montant dépend du poids, de l'année, du modèle et de ce qui reste de bon sur le véhicule. À Montréal, il y a une question qu'on pose avant les autres : est-ce que le convertisseur catalytique est encore là ? Les vols de catalyseurs sont assez fréquents sur l'île pour qu'un propriétaire l'apprenne le matin où il essaie de démarrer, et la pièce vaut plusieurs centaines de dollars. Dites-nous-le si le vôtre a été coupé : ça change le prix, mais ça ne nous empêche pas d'acheter, et on préfère l'ajuster au téléphone plutôt qu'à l'arrivée.",
         towing:
-          "On arrive par Henri-Bourassa, Papineau ou Pie-IX selon le quartier, et l'heure se planifie autour du stationnement plutôt que du trajet. Sur une rue à vignette, un véhicule immobile finit par accumuler des constats, et l'hiver les opérations de déneigement forcent la main à tout le monde. On fixe donc une heure précise, pas une plage de quatre heures : quelqu'un doit pouvoir être là, et l'espace devant l'auto doit être dégagé le temps que la remorqueuse se place. Dans une ruelle ou devant un plex sans entrée, dites-le d'avance — ça change le camion qu'on envoie.",
+          "On arrive par Henri-Bourassa, Papineau ou Pie-IX selon le quartier, et l'heure se planifie autour du stationnement plutôt que du trajet. Sur une rue à vignette, un véhicule immobile finit par accumuler des constats, et l'hiver les opérations de déneigement forcent la main à tout le monde. On fixe donc une heure précise, pas une plage de quatre heures : quelqu'un doit pouvoir être là, et l'espace devant l'auto doit être dégagé le temps que la remorqueuse se place. Dans une ruelle ou devant un plex sans entrée, dites-le d'avance : ça change le camion qu'on envoie.",
         vehicles:
           "Beaucoup de nos enlèvements à Montréal sont des autos qui dorment dans la rue depuis des mois : locataire de plex sans garage, propriétaire parti en appartement, succession, ou véhicule qui n'a pas passé l'inspection et qui coûte plus cher à réparer qu'il ne vaut. On prend aussi les accidentées, les pertes totales, les fourgonnettes commerciales et les VUS. Un véhicule sans papiers en main ne nous arrête pas : on vous dit quoi obtenir avant l'enlèvement.",
         paperwork:
-          "On récupère la plaque, on remplit la cession de propriété et on vous remet le reçu officiel sur place, avant de partir. C'est ce papier qui met fin à votre immatriculation à la SAAQ — c'est aussi celui qui vous protège si le véhicule a déjà reçu des constats. Gardez-le.",
+          "On récupère la plaque, on remplit la cession de propriété et on vous remet le reçu officiel sur place, avant de partir. C'est ce papier qui met fin à votre immatriculation à la SAAQ. C'est aussi celui qui vous protège si le véhicule a déjà reçu des constats. Gardez-le.",
         faqQ: "Vous venez vraiment chercher une auto à Montréal, et en combien de temps ?",
-        faqA: "Oui, tous les jours. Pour les quartiers du nord de l'île, comme Ahuntsic ou Saint-Léonard, c'est souvent le jour même. Plus on descend vers le centre ou vers l'ouest, plus on planifie à l'avance — non pas à cause du trajet, mais parce qu'il faut une fenêtre de stationnement qui fonctionne pour vous et pour la remorqueuse.",
+        faqA: "Oui, tous les jours. Pour les quartiers du nord de l'île, comme Ahuntsic ou Saint-Léonard, c'est souvent le jour même. Plus on descend vers le centre ou vers l'ouest, plus on planifie à l'avance, non pas à cause du trajet, mais parce qu'il faut une fenêtre de stationnement qui fonctionne pour vous et pour la remorqueuse.",
       },
       en: {
-        lede: "Montreal is the southern edge of our territory and we come down every day. Depending on the borough we cross at the Pie-IX bridge, the Papineau-Leblanc bridge or through the A-25 tunnel. What makes a pickup on the island awkward has never been the distance — it is the permit sticker, the back alley and finding somewhere to put the truck.",
+        lede: "Montreal is the southern edge of our territory and we come down every day. Depending on the borough we cross at the Pie-IX bridge, the Papineau-Leblanc bridge or through the A-25 tunnel. What makes a pickup on the island awkward has never been the distance: it is the permit sticker, the back alley and finding somewhere to put the truck.",
         worth:
-          "The amount comes down to weight, year, model and whatever is still good on the vehicle. In Montreal there is one question we ask before the others: is the catalytic converter still on it? Converter theft is common enough on the island that plenty of owners find out on the morning the car will not start, and the part is worth several hundred dollars. Tell us if yours was cut off — it changes the price, it does not stop us buying, and we would far rather adjust it on the phone than at the curb.",
+          "The amount comes down to weight, year, model and whatever is still good on the vehicle. In Montreal there is one question we ask before the others: is the catalytic converter still on it? Converter theft is common enough on the island that plenty of owners find out on the morning the car will not start, and the part is worth several hundred dollars. Tell us if yours was cut off: it changes the price, it does not stop us buying, and we would far rather adjust it on the phone than at the curb.",
         towing:
-          "We come in on Henri-Bourassa, Papineau or Pie-IX depending on the neighbourhood, and the appointment gets planned around parking rather than driving time. On a permit street a car that does not move collects tickets, and in winter snow-removal operations force everyone's hand. So we book a specific time rather than a four-hour window: someone needs to be there, and the space in front of the car has to be clear long enough for the truck to set up. If it is in a back alley or in front of a plex with no driveway, say so when you call — it changes which truck we send.",
+          "We come in on Henri-Bourassa, Papineau or Pie-IX depending on the neighbourhood, and the appointment gets planned around parking rather than driving time. On a permit street a car that does not move collects tickets, and in winter snow-removal operations force everyone's hand. So we book a specific time rather than a four-hour window: someone needs to be there, and the space in front of the car has to be clear long enough for the truck to set up. If it is in a back alley or in front of a plex with no driveway, say so when you call: it changes which truck we send.",
         vehicles:
-          "A lot of our Montreal pickups are cars that have sat on the street for months: a plex tenant with no garage, an owner who moved into an apartment, an estate, or a vehicle that failed inspection and costs more to fix than it is worth. We also take collision write-offs, insurance total losses, commercial vans and SUVs. Not having the paperwork in hand does not stop us — we tell you what to get before the pickup.",
+          "A lot of our Montreal pickups are cars that have sat on the street for months: a plex tenant with no garage, an owner who moved into an apartment, an estate, or a vehicle that failed inspection and costs more to fix than it is worth. We also take collision write-offs, insurance total losses, commercial vans and SUVs. Not having the paperwork in hand does not stop us: we tell you what to get before the pickup.",
         paperwork:
           "We take the plate, complete the SAAQ transfer of ownership and hand you the official receipt on the spot, before we leave. That paper is what ends your registration with the SAAQ, and it is also what protects you if the vehicle has already collected tickets. Keep it.",
         faqQ: "Do you actually come to Montreal to collect a car, and how soon?",
-        faqA: "Yes, every day. For the northern boroughs like Ahuntsic or Saint-Léonard it is often the same day. The further down toward the centre or the west end, the more we schedule ahead — not because of the drive, but because we need a parking window that works for you and for the tow truck.",
+        faqA: "Yes, every day. For the northern boroughs like Ahuntsic or Saint-Léonard it is often the same day. The further down toward the centre or the west end, the more we schedule ahead, not because of the drive, but because we need a parking window that works for you and for the tow truck.",
       },
     },
   },
@@ -456,7 +456,7 @@ export const CITIES: City[] = [
         vehicles:
           "Autos immobilisées en rue ou en ruelle, véhicules accidentés sur la 40 ou la 25, fourgonnettes commerciales, camionnettes, VUS. On achète aussi les véhicules sans papiers en main, en vous guidant sur ce qu'il faut obtenir avant l'enlèvement.",
         paperwork:
-          "On récupère la plaque, on remplit la cession et on vous remet le reçu officiel sur place. C'est ce document qui met fin à votre immatriculation — gardez-le.",
+          "On récupère la plaque, on remplit la cession et on vous remet le reçu officiel sur place. C'est ce document qui met fin à votre immatriculation. Gardez-le.",
         faqQ: "Vous descendez vraiment jusqu'à Montréal-Est et Pointe-aux-Trembles ?",
         faqA: "Oui, c'est notre limite sud et on y va plusieurs fois par semaine. Le délai est généralement de 24 à 48 heures, avec une heure d'arrivée fixée d'avance plutôt qu'une plage : dans l'est de l'île, le stationnement se planifie, sinon la remorqueuse tourne en rond.",
       },
@@ -469,7 +469,7 @@ export const CITIES: City[] = [
         vehicles:
           "Cars stranded on the street or in a lane, vehicles wrecked on the 40 or the 25, commercial vans, pickups, SUVs. We also buy vehicles with no paperwork in hand, walking you through what has to be obtained before the pickup.",
         paperwork:
-          "We take the plate, complete the release and hand you the official receipt on the spot. That document is what ends your registration — keep it.",
+          "We take the plate, complete the release and hand you the official receipt on the spot. That document is what ends your registration. Keep it.",
         faqQ: "Do you really come all the way down to Montréal-Est and Pointe-aux-Trembles?",
         faqA: "Yes, it is our southern limit and we are there several times a week. The window is generally 24 to 48 hours, with an arrival time fixed in advance rather than a range: in the east end, parking has to be planned or the tow truck ends up circling.",
       },

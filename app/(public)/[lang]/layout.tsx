@@ -9,7 +9,7 @@ import { getCopy } from "@/content/copy";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import WhatsAppFloat from "@/components/site/WhatsAppFloat";
-import MobileContactBar from "@/components/site/MobileContactBar";
+import CallBar from "@/components/site/CallBar";
 import CookieConsent from "@/components/site/CookieConsent";
 import AttributionBoot from "@/components/site/AttributionBoot";
 import MetaPixel from "@/components/site/MetaPixel";
@@ -134,15 +134,11 @@ export default async function PublicLayout({
         {/*
           Outside SiteChrome on purpose: the landing pages strip the header
           and footer, but they are exactly where paid traffic lands, so they
-          need the call and chat bar most.
+          need the call bar most.
         */}
-        <MobileContactBar
-          callLabel={t.common.callShort}
-          whatsappLabel={t.common.whatsapp}
-          prefill={t.home.whatsappPrefill}
-        />
+        <CallBar label={t.common.callBar} />
         {/*
-          After MobileContactBar so it paints above it, but positioned to sit
+          After CallBar so it paints above it, but positioned to sit
           clear of it rather than over it — the call bar is the whole point of
           the page and a consent card must never cover the phone number.
         */}

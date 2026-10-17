@@ -26,7 +26,7 @@ const SUFFIX = ` | ${siteConfig.name}`;
  * dropped whole if the result would overflow, rather than being cut mid-word.
  */
 export function pageTitle(main: string, extra?: string): string {
-  const withExtra = extra ? `${main} — ${extra}${SUFFIX}` : `${main}${SUFFIX}`;
+  const withExtra = extra ? `${main}, ${extra}${SUFFIX}` : `${main}${SUFFIX}`;
   if (withExtra.length <= TITLE_MAX) return withExtra;
 
   const withoutExtra = `${main}${SUFFIX}`;

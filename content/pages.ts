@@ -18,7 +18,7 @@ export const ABOUT: StaticPage = {
   metaDescription: {
     // 140–155 characters, enforced by content/metadata.test.ts.
     fr: "Recyclage Autos B2, recycleur automobile licencié au 340 Chemin Pincourt à Mascouche. On achète, remorque et dépollue nous-mêmes. Aucun intermédiaire.",
-    en: "Recyclage Autos B2 is a licensed auto recycler at 340 Chemin Pincourt, Mascouche. We buy, tow and depollute ourselves — no middleman, cash on pickup.",
+    en: "Recyclage Autos B2 is a licensed auto recycler at 340 Chemin Pincourt, Mascouche. We buy, tow and depollute ourselves. No middleman, cash on pickup.",
   },
   h1: {
     fr: "Un recycleur automobile de Mascouche, pas un intermédiaire",
@@ -54,7 +54,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "Nos heures",
         body: [
-          `On répond au téléphone 7 jours sur 7, ${hoursRange("fr")} — incluant les fins de semaine et les jours fériés. Un véhicule mort dans une entrée ne choisit pas le moment, et on ne voit pas pourquoi il faudrait attendre au lundi.`,
+          `On répond au téléphone 7 jours sur 7, ${hoursRange("fr")}, incluant les fins de semaine et les jours fériés. Un véhicule mort dans une entrée ne choisit pas le moment, et on ne voit pas pourquoi il faudrait attendre au lundi.`,
         ],
       },
     ],
@@ -62,7 +62,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "What we do",
         body: [
-          "Recyclage Autos B2 buys end-of-life vehicles across the North Shore, Laval and east-end Montreal. All of it happens at our own yard in Mascouche — buying, towing, depollution and dismantling.",
+          "Recyclage Autos B2 buys end-of-life vehicles across the North Shore, Laval and east-end Montreal. All of it happens at our own yard in Mascouche: buying, towing, depollution and dismantling.",
           'What separates us from most of the numbers you\'ll find online is that there is nobody between you and us. A lot of "we buy cars" ads are brokers: they take your call, sell your details on to an actual recycler, and the price drops by whatever they keep. We are the recycler.',
         ],
       },
@@ -83,7 +83,7 @@ export const ABOUT: StaticPage = {
       {
         h2: "Our hours",
         body: [
-          `We answer the phone 7 days a week, ${hoursRange("en")} — weekends and holidays included. A dead car in a driveway doesn't pick its moment, and we see no reason it should have to wait for Monday.`,
+          `We answer the phone 7 days a week, ${hoursRange("en")}, weekends and holidays included. A dead car in a driveway doesn't pick its moment, and we see no reason it should have to wait for Monday.`,
         ],
       },
     ],
@@ -123,7 +123,7 @@ export const PRIVACY: StaticPage = {
       {
         h2: "Pourquoi on les recueille",
         list: [
-          "Vous rappeler et vous donner un prix pour votre véhicule — c'est la raison principale.",
+          "Vous rappeler et vous donner un prix pour votre véhicule. C'est la raison principale.",
           "Organiser le remorquage et produire les documents de cession SAAQ.",
           "Mesurer la performance de nos publicités Google et Meta.",
           "Comprendre quelles pages sont utiles et où les visiteurs abandonnent.",
@@ -135,10 +135,10 @@ export const PRIVACY: StaticPage = {
           "Ce site utilise Google Tag Manager pour charger ses outils de mesure. Tag Manager ne dépose lui-même aucun témoin ; il sert à gérer les outils suivants. Les catégories ci-dessous sont celles de la fenêtre de consentement : vous pouvez changer votre choix en tout temps avec « Gérer les témoins », au bas de chaque page.",
         ],
         list: [
-          "Mesure d'audience — Google Analytics. Témoins _ga et _ga_*, conservés jusqu'à 2 ans.",
-          "Publicité — Google Ads, pour mesurer nos annonces et les conversions. Témoins _gcl_*, conservés jusqu'à 90 jours.",
-          "Publicité — Meta (Facebook et Instagram), pour mesurer nos annonces. Témoin _fbp, conservé jusqu'à 90 jours.",
-          "Essentiels — sécurité, navigation et envoi du formulaire. Aucun témoin publicitaire, et on ne peut pas les désactiver : sans eux le site ne fonctionne pas.",
+          "Mesure d'audience : Google Analytics. Témoins _ga et _ga_*, conservés jusqu'à 2 ans.",
+          "Publicité : Google Ads, pour mesurer nos annonces et les conversions. Témoins _gcl_*, conservés jusqu'à 90 jours.",
+          "Publicité : Meta (Facebook et Instagram), pour mesurer nos annonces. Témoin _fbp, conservé jusqu'à 90 jours.",
+          "Essentiels : sécurité, navigation et envoi du formulaire. Aucun témoin publicitaire, et on ne peut pas les désactiver : sans eux le site ne fonctionne pas.",
         ],
       },
       {
@@ -190,7 +190,7 @@ export const PRIVACY: StaticPage = {
       {
         h2: "Why we collect it",
         list: [
-          "To call you back and give you a price for your vehicle — that is the main reason.",
+          "To call you back and give you a price for your vehicle. That is the main reason.",
           "To arrange towing and produce the SAAQ release documents.",
           "To measure how our Google and Meta advertising performs.",
           "To understand which pages are useful and where visitors drop off.",
@@ -199,20 +199,20 @@ export const PRIVACY: StaticPage = {
       {
         h2: "Cookies and measurement tools",
         body: [
-          'This site uses Google Tag Manager to load its measurement tools. Tag Manager sets no cookies of its own; it manages the following. The categories below are the ones in the consent card — you can change your choice at any time with "Manage cookies" at the foot of every page.',
+          'This site uses Google Tag Manager to load its measurement tools. Tag Manager sets no cookies of its own; it manages the following. The categories below are the ones in the consent card. You can change your choice at any time with "Manage cookies" at the foot of every page.',
         ],
         list: [
-          "Audience measurement — Google Analytics. _ga and _ga_* cookies, kept up to 2 years.",
-          "Advertising — Google Ads, to measure our ads and conversions. _gcl_* cookies, kept up to 90 days.",
-          "Advertising — Meta (Facebook and Instagram), to measure our ads. _fbp cookie, kept up to 90 days.",
-          "Essential — security, navigation and form submission. No advertising cookies, and they cannot be turned off: the site does not work without them.",
+          "Audience measurement: Google Analytics. _ga and _ga_* cookies, kept up to 2 years.",
+          "Advertising: Google Ads, to measure our ads and conversions. _gcl_* cookies, kept up to 90 days.",
+          "Advertising: Meta (Facebook and Instagram), to measure our ads. _fbp cookie, kept up to 90 days.",
+          "Essential: security, navigation and form submission. No advertising cookies, and they cannot be turned off: the site does not work without them.",
         ],
       },
       {
         h2: "How to refuse or limit tracking",
         body: [
           'The simplest way: "Manage cookies" at the foot of every page reopens the consent card and lets you refuse everything, or keep only what you want.',
-          "You can also block or delete cookies directly in your browser — Chrome, Safari, Firefox and Edge all offer this — or browse in a private window. The site keeps working normally: the form, the phone number and the towing depend on no advertising cookie.",
+          "You can also block or delete cookies directly in your browser (Chrome, Safari, Firefox and Edge all offer this) or browse in a private window. The site keeps working normally: the form, the phone number and the towing depend on no advertising cookie.",
           "You can also opt out with the providers themselves: Google Analytics offers a browser opt-out add-on (tools.google.com/dlpage/gaoptout), Google ad preferences are at myadcenter.google.com, and Meta's are in your Facebook or Instagram account settings.",
           'Your browser\'s "Do Not Track" or "Global Privacy Control" signal, if enabled, is passed on to these tools.',
         ],
@@ -262,7 +262,7 @@ export const TERMS: StaticPage = {
         h2: "La valeur d'une estimation",
         body: [
           "Une estimation donnée en ligne ou au téléphone repose entièrement sur les informations que vous fournissez : année, marque, modèle, état, présence du moteur, de la transmission et du convertisseur catalytique.",
-          "Si ces informations sont exactes, le montant confirmé est celui qui vous est payé à l'enlèvement. Si le véhicule diffère de façon importante de ce qui a été décrit — pièces majeures manquantes, dommages non mentionnés — le montant est réévalué et vous restez libre de refuser sans frais.",
+          "Si ces informations sont exactes, le montant confirmé est celui qui vous est payé à l'enlèvement. Si le véhicule diffère de façon importante de ce qui a été décrit (pièces majeures manquantes, dommages non mentionnés), le montant est réévalué et vous restez libre de refuser sans frais.",
         ],
       },
       {
@@ -291,7 +291,7 @@ export const TERMS: StaticPage = {
         h2: "What a quote is worth",
         body: [
           "A quote given online or by phone rests entirely on the information you provide: year, make, model, condition, and whether the engine, transmission and catalytic converter are present.",
-          "If that information is accurate, the confirmed amount is what you are paid at pickup. If the vehicle differs materially from what was described — major parts missing, damage not mentioned — the amount is reassessed and you remain free to decline at no cost.",
+          "If that information is accurate, the confirmed amount is what you are paid at pickup. If the vehicle differs materially from what was described (major parts missing, damage not mentioned), the amount is reassessed and you remain free to decline at no cost.",
         ],
       },
       {

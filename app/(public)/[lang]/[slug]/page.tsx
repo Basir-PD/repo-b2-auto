@@ -207,7 +207,7 @@ export async function generateMetadata({
           url: "/hero-tow-truck.jpg",
           width: 1536,
           height: 1024,
-          alt: `${siteConfig.name} — ${fullAddress}`,
+          alt: `${siteConfig.name}, ${fullAddress}`,
         },
       ],
     },
@@ -259,8 +259,8 @@ export default async function SlugPage({
     const copy = city.copy[lang]!;
     const h1 =
       lang === "fr"
-        ? `Rachat d'auto scrap à ${city.name} — argent comptant, remorquage gratuit`
-        : `Cash for scrap cars in ${city.name} — free towing, paid on pickup`;
+        ? `Rachat d'auto scrap à ${city.name} : argent comptant, remorquage gratuit`
+        : `Cash for scrap cars in ${city.name}: free towing, paid on pickup`;
 
     const h2 =
       lang === "fr"
@@ -269,7 +269,7 @@ export default async function SlugPage({
             towing: `Notre service de remorquage à ${city.name}`,
             vehicles: `Quels véhicules on achète à ${city.name}`,
             paperwork: "La paperasse SAAQ, expliquée simplement",
-            faq: `Questions fréquentes — ${city.name}`,
+            faq: `Questions fréquentes : ${city.name}`,
             sectors: "Secteurs desservis",
             distance: "Distance depuis notre cour",
           }
@@ -278,7 +278,7 @@ export default async function SlugPage({
             towing: `Our towing service in ${city.name}`,
             vehicles: `What we buy in ${city.name}`,
             paperwork: "SAAQ paperwork, explained simply",
-            faq: `Frequently asked questions — ${city.name}`,
+            faq: `Frequently asked questions: ${city.name}`,
             sectors: "Sectors we cover",
             distance: "Distance from our yard",
           };
@@ -743,8 +743,8 @@ export default async function SlugPage({
                     src={mapsEmbedUrl()}
                     title={
                       lang === "fr"
-                        ? `Carte — ${siteConfig.name}, ${fullAddress}`
-                        : `Map — ${siteConfig.name}, ${fullAddress}`
+                        ? `Carte de ${siteConfig.name}, ${fullAddress}`
+                        : `Map of ${siteConfig.name}, ${fullAddress}`
                     }
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"

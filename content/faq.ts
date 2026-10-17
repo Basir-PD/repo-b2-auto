@@ -41,7 +41,7 @@ const FR: FaqItem[] = [
     id: "garantie-prix",
     onHome: true,
     q: "Comment fonctionne la garantie du meilleur prix ?",
-    a: "Montrez-nous une offre écrite plus élevée pour le même véhicule et on vous paie la différence. Trois conditions : l'offre doit dater de moins de 7 jours et venir d'un recycleur ou d'un ferrailleur enregistré au Québec ; elle doit couvrir les mêmes conditions que la nôtre, remorquage inclus et sans frais déduits ; et le véhicule doit correspondre à ce que vous nous avez décrit — année, modèle, état et présence du convertisseur catalytique. Présentez-la avant l'enlèvement : une fois le véhicule ramassé et payé, la vente est finale.",
+    a: "Montrez-nous une offre écrite plus élevée pour le même véhicule et on vous paie la différence. Trois conditions : l'offre doit dater de moins de 7 jours et venir d'un recycleur ou d'un ferrailleur enregistré au Québec ; elle doit couvrir les mêmes conditions que la nôtre, remorquage inclus et sans frais déduits ; et le véhicule doit correspondre à ce que vous nous avez décrit (année, modèle, état et présence du convertisseur catalytique). Présentez-la avant l'enlèvement : une fois le véhicule ramassé et payé, la vente est finale.",
   },
   {
     id: "remorquage",
@@ -53,7 +53,7 @@ const FR: FaqItem[] = [
     id: "ne-demarre-pas",
     onHome: true,
     q: "Vous achetez une auto qui ne démarre pas ?",
-    a: "Oui. En panne, sans moteur, accidentée ou déclarée perte totale — on l'achète quand même.",
+    a: "Oui. En panne, sans moteur, accidentée ou déclarée perte totale : on l'achète quand même.",
   },
   {
     id: "cour-pres-de-moi",
@@ -64,7 +64,7 @@ const FR: FaqItem[] = [
     id: "qui-achete",
     onHome: true,
     q: "Qui achète une auto scrap à Laval et à Montréal ?",
-    a: "Nous. Recyclage Autos B2 est un acheteur d'auto scrap établi au 340 Chemin Pincourt à Mascouche, et on se déplace à Laval, à Montréal et partout sur la Rive-Nord. On achète directement — on n'est pas un intermédiaire qui revend votre appel à un autre ferrailleur.",
+    a: "Nous. Recyclage Autos B2 est un acheteur d'auto scrap établi au 340 Chemin Pincourt à Mascouche, et on se déplace à Laval, à Montréal et partout sur la Rive-Nord. On achète directement. On n'est pas un intermédiaire qui revend votre appel à un autre ferrailleur.",
   },
   {
     id: "vendre-char-scrap",
@@ -84,7 +84,7 @@ const FR: FaqItem[] = [
   {
     id: "auto-accidentee",
     q: "Comment vendre une auto accidentée ou déclarée perte totale ?",
-    a: "De la même façon qu'une autre : on l'achète comptant et on la remorque gratuitement. Un véhicule accidenté garde de la valeur — les pièces intactes, le catalyseur et le métal ne disparaissent pas parce que l'avant est enfoncé. Dites-nous où est l'impact et si le véhicule est complet.",
+    a: "De la même façon qu'une autre : on l'achète comptant et on la remorque gratuitement. Un véhicule accidenté garde de la valeur : les pièces intactes, le catalyseur et le métal ne disparaissent pas parce que l'avant est enfoncé. Dites-nous où est l'impact et si le véhicule est complet.",
   },
   {
     id: "documents",
@@ -141,7 +141,7 @@ const EN: FaqItem[] = [
     id: "garantie-prix",
     onHome: true,
     q: "How does the best-price guarantee work?",
-    a: "Show us a higher written offer for the same vehicle and we'll pay you the difference. Three conditions: the offer must be less than 7 days old and come from a registered Quebec recycler or scrapyard; it must cover the same terms as ours — towing included, nothing deducted; and the vehicle must match what you described to us: year, model, condition and whether the catalytic converter is still on it. Bring it to us before pickup — once the vehicle is collected and paid for, the sale is final.",
+    a: "Show us a higher written offer for the same vehicle and we'll pay you the difference. Three conditions: the offer must be less than 7 days old and come from a registered Quebec recycler or scrapyard; it must cover the same terms as ours (towing included, nothing deducted); and the vehicle must match what you described to us: year, model, condition and whether the catalytic converter is still on it. Bring it to us before pickup: once the vehicle is collected and paid for, the sale is final.",
   },
   {
     id: "remorquage",
@@ -153,22 +153,22 @@ const EN: FaqItem[] = [
     id: "ne-demarre-pas",
     onHome: true,
     q: "Do you buy a car that won't start?",
-    a: "Yes. Broken down, no engine, wrecked or written off — we buy it anyway.",
+    a: "Yes. Broken down, no engine, wrecked or written off: we buy it anyway.",
   },
   {
     id: "cour-pres-de-moi",
     q: "Is there a scrap yard near me?",
-    a: "Our yard is at 340 Chemin Pincourt in Mascouche, and as a scrap car buyer we drive to you for free across Laval, Montreal, Terrebonne and the whole North Shore. You do not need a scrap yard near you — we come to you.",
+    a: "Our yard is at 340 Chemin Pincourt in Mascouche, and as a scrap car buyer we drive to you for free across Laval, Montreal, Terrebonne and the whole North Shore. You do not need a scrap yard near you. We come to you.",
   },
   {
     id: "qui-achete",
     onHome: true,
     q: "Who buys junk cars in Laval and Montreal?",
-    a: "We do. Recyclage Autos B2 is a junk car buyer based at 340 Chemin Pincourt in Mascouche, and we travel to Laval, Montreal and across the North Shore. We buy directly — we are not a middleman reselling your call to another scrap yard.",
+    a: "We do. Recyclage Autos B2 is a junk car buyer based at 340 Chemin Pincourt in Mascouche, and we travel to Laval, Montreal and across the North Shore. We buy directly. We are not a middleman reselling your call to another scrap yard.",
   },
   {
     id: "vendre-char-scrap",
-    q: "How do I sell junk car fast — what is the process?",
+    q: "How do I sell junk car fast? What is the process?",
     a: "Call us with the year, make and model, or fill in the form. You get a firm price in minutes, we schedule the free scrap car removal, and you are paid cash on pickup. Most sales are done inside 24 hours.",
   },
   {
@@ -184,7 +184,7 @@ const EN: FaqItem[] = [
   {
     id: "auto-accidentee",
     q: "Can I sell my damaged or totaled car?",
-    a: "Yes, the same way as any other — we buy it for cash and tow it free. A wrecked vehicle keeps its value: the undamaged parts, the converter and the metal do not disappear because the front end is caved in. Tell us where the impact is and whether the car is complete.",
+    a: "Yes, the same way as any other: we buy it for cash and tow it free. A wrecked vehicle keeps its value: the undamaged parts, the converter and the metal do not disappear because the front end is caved in. Tell us where the impact is and whether the car is complete.",
   },
   {
     id: "documents",
