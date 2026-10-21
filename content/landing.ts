@@ -45,7 +45,6 @@ export type LandingContent = {
    * does not change at the door is the promise these sellers actually want.
    */
   bullets: string[];
-  reassurance: string;
   /**
    * Ids from content/faq.ts, in display order. Chosen per page for the
    * questions this searcher has left once they have scrolled past the form,
@@ -117,8 +116,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "En panne, accidentée ou perte totale : on achète pareil",
       "Transfert SAAQ réglé sur place",
     ],
-    reassurance:
-      "On est le recycleur, pas un intermédiaire. Notre cour est au 340 Chemin Pincourt à Mascouche.",
     faq: ["valeur", "prix-change", "documents", "saaq", "paiement"],
   },
   {
@@ -135,8 +132,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
       "Payé comptant à l'enlèvement",
     ],
-    reassurance:
-      "Entrée en pente, cour arrière, terrain non asphalté : dites-nous la situation et on arrive équipés.",
     faq: ["remorquage", "delai", "ne-demarre-pas", "documents", "saaq"],
   },
   {
@@ -159,7 +154,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       unverifiable — see the note on `facts` in config/site.ts — so there is
       nothing to restate. The stat band below now leads with the payout range.
     */
-    reassurance: "Pas d'intermédiaire : on achète, on remorque et on paie nous-mêmes.",
     faq: ["valeur", "minoune", "prix-change", "documents", "paiement"],
   },
   /*
@@ -189,8 +183,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
       "Payé comptant à l'enlèvement",
     ],
-    reassurance:
-      "On recycle nous-mêmes, au 340 Chemin Pincourt. Votre véhicule n'est pas revendu à un tiers.",
     faq: ["qui-achete", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap à 24 km de Laval",
@@ -211,8 +203,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
       "Argent comptant à l'enlèvement, pas de virement à attendre",
     ],
-    reassurance:
-      "Vous pouvez aussi passer à la cour. On est ouvert 7 jours et voisin de chez vous.",
     // `cour-pres-de-moi`, not `qui-achete`: that one names Laval and Montréal.
     faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
   },
@@ -230,8 +220,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
       "Payé comptant à l'enlèvement",
     ],
-    reassurance:
-      "Notre cour est au 340 Chemin Pincourt à Mascouche. On vient à vous, vous ne déplacez rien.",
     faq: ["qui-achete", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap qui dessert tout Montréal",
@@ -252,7 +240,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
       "Payé comptant à l'enlèvement",
     ],
-    reassurance: "Vous pouvez aussi venir porter votre véhicule à la cour, ouverte 7 jours sur 7.",
     faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap au cœur de Mascouche",
@@ -273,8 +260,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
       "Payé comptant à l'enlèvement",
     ],
-    reassurance:
-      "On recycle nous-mêmes, au 340 Chemin Pincourt. Votre appel n'est pas revendu à un autre ferrailleur.",
     faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap qui dessert Saint-Jérôme",
@@ -310,8 +295,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Firm price on the phone: it does not drop when the truck arrives",
       "Cash in hand at pickup",
     ],
-    reassurance:
-      "Our yard is at 340 Chemin Pincourt in Mascouche. We come to you, and the tow costs you nothing.",
     faq: ["cour-pres-de-moi", "qui-achete", "valeur", "documents", "paiement"],
   },
   {
@@ -328,8 +311,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Firm price on the phone: it does not drop when the truck arrives",
       "Cash in hand at pickup, not a transfer to wait for",
     ],
-    reassurance:
-      "We recycle the vehicles ourselves at 340 Chemin Pincourt. We are the buyer, not a broker passing your call along.",
     faq: ["cour-pres-de-moi", "qui-achete", "valeur", "documents", "paiement"],
   },
   /*
@@ -357,8 +338,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Firm price on the phone: it does not drop when the truck arrives",
       "Cash in hand at pickup",
     ],
-    reassurance:
-      "The undamaged half of a wrecked car still has real value. That is what you are being paid for.",
     /*
       No `valeur`: its question is "what is my scrap car worth?", and calling
       a car that was on the road last week scrap is the mismatch this page
@@ -380,8 +359,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Not running, wrecked or written off: we buy it anyway",
       "SAAQ transfer handled on site",
     ],
-    reassurance:
-      "We're the recycler, not a middleman. Our yard is at 340 Chemin Pincourt in Mascouche.",
     faq: ["valeur", "ne-demarre-pas", "prix-change", "documents", "paiement"],
   },
   /*
@@ -413,8 +390,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
       "Argent comptant à l'enlèvement",
     ],
-    reassurance:
-      "On est le recycleur, pas un intermédiaire qui revend votre appel. La cour est à Mascouche et on se déplace partout sur la Rive-Nord, à Laval et dans l'est de Montréal.",
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
     yard: {
       h2: "Notre cour à scrap est au 340 Chemin Pincourt, à Mascouche",
@@ -468,8 +443,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Firm price on the phone: it does not drop when the truck arrives",
       "Cash in hand at pickup",
     ],
-    reassurance:
-      "We are the recycler, not a broker passing your call along. The yard is in Mascouche and we cover the North Shore, Laval and east-end Montreal.",
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
   },
   /*
@@ -502,8 +475,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
       "Argent comptant à l'enlèvement",
     ],
-    reassurance:
-      "On recycle nous-mêmes, au 340 Chemin Pincourt à Mascouche. Votre véhicule n'est pas revendu à un tiers.",
     faq: ["recyclage", "qui-achete", "documents", "saaq", "valeur"],
   },
   {
@@ -520,8 +491,6 @@ export const LANDING_CONTENT: LandingContent[] = [
       "Firm price on the phone: it does not drop when the truck arrives",
       "Cash in hand at pickup",
     ],
-    reassurance:
-      "We recycle the vehicles ourselves at 340 Chemin Pincourt in Mascouche. Yours is not resold to a third party.",
     faq: ["recyclage", "qui-achete", "documents", "saaq", "valeur"],
   },
 ];

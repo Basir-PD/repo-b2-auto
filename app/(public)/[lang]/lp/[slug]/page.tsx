@@ -176,10 +176,6 @@ export default async function LandingPage({
                   </li>
                 ))}
               </ul>
-
-              <p className="mt-8 border-t border-slate-200 pt-6 text-sm leading-relaxed text-slate-500">
-                {lp.reassurance}
-              </p>
             </div>
 
             <div className="mx-auto w-full max-w-md lg:ml-auto lg:mr-0">
