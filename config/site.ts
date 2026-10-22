@@ -194,30 +194,26 @@ export const siteConfig = {
     payoutRange: { min: 300, max: 7500 },
   },
 
-  /**
-   * Google reviews. reviewCount is 5 — a real, small number.
-   *
-   * NEVER round this up, and never write "hundreds of customers" or any
-   * volume language anywhere on the site. AggregateRating JSON-LD is emitted
-   * only when `reviews` in content/reviews.ts actually holds these 5 reviews;
-   * an empty array means no rating markup and no reviews section.
-   */
   /*
-    Google reviews. The profile currently has NONE.
+    Google rating straight off the Business Profile, per the owner on
+    2026-10-14: 5.0 stars from 2 reviews. Real numbers only bro, never round
+    up, never "hundreds of happy customers".
 
-    This said 5 reviews at 5.0, which was never true — nothing on the site
-    ever showed it, because the heading and the AggregateRating markup are
-    both gated on content/reviews.ts actually holding reviews, and it is
-    empty. But a wrong number sitting in config is a wrong number waiting to
-    be rendered, so it reads zero until there is something to count.
-
-    Update BOTH when reviews arrive: the count here and the texts in
-    content/reviews.ts. The section and the schema turn on together.
+    The hero badge (GoogleRatingBadge) shows the 5,0 but NOT the count,
+    owner's call. JSON-LD ignores all of this until REVIEWS in
+    content/reviews.ts gets filled, and that stays empty on purpose: no
+    AggregateRating/Review schema, also the owner's call.
   */
   reviews: {
-    ratingValue: 0,
-    reviewCount: 0,
+    ratingValue: 5,
+    reviewCount: 2,
   },
+
+  /*
+    Where the rating badge sends people: the profile's reviews list, NOT the
+    write-a-review dialog below. Same place ID as GBP_REVIEW_LINK.
+  */
+  GBP_REVIEWS_URL: "https://search.google.com/local/reviews?placeid=ChIJewxBfUzdyEwR1HovhZdexHk",
 
   /**
    * Public "leave a review" link from the Google Business Profile.

@@ -17,6 +17,7 @@ import HowItWorks from "@/components/pages/HowItWorks";
 import StatBand from "@/components/pages/StatBand";
 import PhotoGrid from "@/components/site/PhotoGrid";
 import WhatsAppLink from "@/components/site/WhatsAppLink";
+import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
 import { CALL_CTA } from "@/lib/cta";
@@ -191,6 +192,9 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                   variant="outline"
                 />
               </div>
+
+              {/* 5 stars under the whatsapp button, left-aligned with it. links to the GBP reviews */}
+              <GoogleRatingBadge lang={lang} className="mt-4" />
 
               {/*
                 A grid, not a flex-wrap. At three items the wrap produced tidy

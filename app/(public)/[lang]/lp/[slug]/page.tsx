@@ -10,12 +10,14 @@ import { getCopy } from "@/content/copy";
 import { faqByIds } from "@/content/faq";
 import { LANDING_CONTENT, landingBySlug } from "@/content/landing";
 import { HOME_PHOTOS } from "@/content/photos";
+import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
 import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
 import { CALL_CTA } from "@/lib/cta";
 import PhotoGrid from "@/components/site/PhotoGrid";
-import WhatsAppLink from "@/components/site/WhatsAppLink";
+// parked with both LP whatsapp buttons below
+// import WhatsAppLink from "@/components/site/WhatsAppLink";
 import HowItWorks from "@/components/pages/HowItWorks";
 import StatBand from "@/components/pages/StatBand";
 
@@ -157,13 +159,18 @@ export default async function LandingPage({
                   label={t.home.ctaSecondary}
                   className={CALL_CTA}
                 />
+                {/* whatsapp parked on the LPs for now, owner's call. uncomment to bring it back bro
                 <WhatsAppLink
                   source={`lp_${slug}`}
                   label={t.home.whatsappCta}
                   prefill={t.home.whatsappPrefill}
                   variant="outline"
                 />
+                */}
               </div>
+
+              {/* 5 stars under the hero buttons, left-aligned with them. links to the GBP reviews */}
+              <GoogleRatingBadge lang={lang} className="mt-4" />
 
               {/*
                 Same checkmarks as the homepage hero, same markup. Short
@@ -440,13 +447,17 @@ export default async function LandingPage({
                 label={t.home.ctaSecondary}
                 className={CALL_CTA}
               />
+              {/* whatsapp parked on the LPs for now, owner's call. uncomment to bring it back
               <WhatsAppLink
                 source={`lp_${slug}_final`}
                 label={t.home.whatsappCta}
                 prefill={t.home.whatsappPrefill}
                 variant="outline-dark"
               />
+              */}
             </div>
+            {/* same 5 stars as the hero, centered like the rest of this section */}
+            <GoogleRatingBadge lang={lang} className="mt-5" />
           </div>
         </section>
       </div>
