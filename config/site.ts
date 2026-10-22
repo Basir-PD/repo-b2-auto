@@ -64,7 +64,8 @@ export const siteConfig = {
   phone: {
     /** E.164 — required by schema.org and tel: links. */
     e164: "+15146232787",
-    display: "+1 (514) 623-2787",
+    // no +1 on screen, owner's call. href still dials +1 so the phone sorts it out, bro
+    display: "(514) 623-2787",
     href: "tel:+15146232787",
   },
 
@@ -73,7 +74,7 @@ export const siteConfig = {
    * variable rather than a code change:
    *
    *   NEXT_PUBLIC_TRACKING_PHONE_E164     +15145550123
-   *   NEXT_PUBLIC_TRACKING_PHONE_DISPLAY  +1 (514) 555-0123
+   *   NEXT_PUBLIC_TRACKING_PHONE_DISPLAY  (514) 555-0123
    *
    * `usePhone()` swaps this in for visitors arriving with a gclid, wbraid,
    * gbraid or fbclid, and falls back to the real number for everyone else.
