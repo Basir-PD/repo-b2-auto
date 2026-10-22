@@ -16,7 +16,8 @@ import QuoteForm from "@/components/site/QuoteForm";
 import HowItWorks from "@/components/pages/HowItWorks";
 import StatBand from "@/components/pages/StatBand";
 import PhotoGrid from "@/components/site/PhotoGrid";
-import WhatsAppLink from "@/components/site/WhatsAppLink";
+// parked with the hero whatsapp button below
+// import WhatsAppLink from "@/components/site/WhatsAppLink";
 import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
@@ -185,15 +186,17 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                   label={t.home.ctaSecondary}
                   className={CALL_CTA}
                 />
+                {/* whatsapp parked in the heroes for now, owner's call. uncomment to bring it back bro
                 <WhatsAppLink
                   source="hero"
                   label={t.home.whatsappCta}
                   prefill={t.home.whatsappPrefill}
                   variant="outline"
                 />
+                */}
               </div>
 
-              {/* 5 stars under the whatsapp button, left-aligned with it. links to the GBP reviews */}
+              {/* 5 stars under the call button, left-aligned with it. links to the GBP reviews */}
               <GoogleRatingBadge lang={lang} className="mt-4" />
 
               {/*

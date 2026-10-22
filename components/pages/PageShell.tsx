@@ -7,7 +7,9 @@ import { getCopy } from "@/content/copy";
 import type { Section } from "@/content/services";
 import PhoneLink from "@/components/site/PhoneLink";
 import { CALL_CTA } from "@/lib/cta";
-import WhatsAppLink from "@/components/site/WhatsAppLink";
+// parked with both hero whatsapp buttons below
+// import WhatsAppLink from "@/components/site/WhatsAppLink";
+import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
 import QuoteForm from "@/components/site/QuoteForm";
 
 export function Breadcrumbs({
@@ -93,13 +95,18 @@ export function PageHeader({
                 label={t.home.ctaSecondary}
                 className={CALL_CTA}
               />
+              {/* whatsapp parked in the heroes for now, owner's call. uncomment to bring it back bro
               <WhatsAppLink
                 source="page_header"
                 label={t.home.whatsappCta}
                 prefill={t.home.whatsappPrefill}
                 variant="outline"
               />
+              */}
             </div>
+
+            {/* 5 stars under the call button, same as the homepage. links to the GBP reviews */}
+            <GoogleRatingBadge lang={lang} className="mt-4" />
 
             {/*
               Intrinsic 1600x476 so the box is reserved before the file
@@ -196,13 +203,18 @@ export function CityHeader({
                 label={t.home.ctaSecondary}
                 className={CALL_CTA}
               />
+              {/* whatsapp parked in the heroes for now, owner's call. uncomment to bring it back bro
               <WhatsAppLink
                 source="city_header"
                 label={t.home.whatsappCta}
                 prefill={t.home.whatsappPrefill}
                 variant="outline"
               />
+              */}
             </div>
+
+            {/* 5 stars under the call button, same as the homepage. links to the GBP reviews */}
+            <GoogleRatingBadge lang={lang} className="mt-4" />
           </div>
 
           <div className="lg:col-span-5">
