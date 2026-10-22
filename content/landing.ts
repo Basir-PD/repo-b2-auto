@@ -28,23 +28,11 @@ export type LandingContent = {
    * H1, the same device the homepage hero uses, because a paid visitor scans
    * before they read. Identical across every page in a language on purpose:
    * these three are true of every job we do, and the per-page promise is
-   * carried by the H1 and the bullets, which is where message match belongs.
+   * carried by the H1, which is where message match belongs. The checkmarks
+   * under the buttons aren't here either: every page shows the homepage's
+   * `trustStrip` (the Google Ads callouts), same list, same look.
    */
   beats: string[];
-  /**
-   * Five, because on a phone they sit between the buttons and the form and
-   * every extra line pushes the form down.
-   *
-   * Every page carries the same three money facts — free towing that is
-   * never deducted, a firm price that does not drop when the truck arrives,
-   * cash at pickup — because those are the three things a scrap seller fears
-   * being cheated on, whatever they typed. The other two are the page's own.
-   *
-   * No "best price in town". It is a claim nobody can check, the Consumer
-   * Protection Act treats an unfounded one as misleading, and a price that
-   * does not change at the door is the promise these sellers actually want.
-   */
-  bullets: string[];
   /**
    * Ids from content/faq.ts, in display order. Chosen per page for the
    * questions this searcher has left once they have scrolled past the form,
@@ -109,13 +97,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Vendez votre auto aujourd'hui : argent comptant, sur place",
     sub: "Peu importe l'état : en panne, accidentée, sans moteur ou déclarée perte totale. On vient la chercher gratuitement et on vous paie à l'enlèvement.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "Remorquage gratuit, jamais déduit de votre montant",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Argent comptant à l'enlèvement",
-      "En panne, accidentée ou perte totale : on achète pareil",
-      "Transfert SAAQ réglé sur place",
-    ],
     faq: ["valeur", "prix-change", "documents", "saaq", "paiement"],
   },
   {
@@ -125,13 +106,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Faites enlever votre véhicule gratuitement et repartez avec de l'argent",
     sub: "On remorque sans frais partout sur la Rive-Nord, à Laval et dans l'est de Montréal, souvent le jour même. Et on vous paie comptant pour le véhicule.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "Remorquage gratuit, jamais déduit de votre montant",
-      "Enlèvement souvent le jour même",
-      "Plateau : on sort un véhicule sans roues ou aux freins bloqués",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Payé comptant à l'enlèvement",
-    ],
     faq: ["remorquage", "delai", "ne-demarre-pas", "documents", "saaq"],
   },
   {
@@ -141,13 +115,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Votre vieux char dort dans l'entrée ? Il vaut de l'argent.",
     sub: "Donnez-nous l'année, la marque et le modèle. On vous rappelle avec un prix ferme en quelques minutes, et si ça vous convient, on vient le chercher gratuitement.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "Estimation en 2 minutes, sans obligation",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Remorquage gratuit, jamais déduit de votre montant",
-      "Payé comptant à l'enlèvement",
-      "On s'occupe de toute la paperasse SAAQ",
-    ],
     /*
       This used to restate the years in business and the vehicles-per-year
       figure. Both were removed from the whole site on 2026-09-19 as
@@ -176,13 +143,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Recyclage auto à Laval : on rachète votre véhicule comptant",
     sub: "Recycleur licencié établi à Mascouche, à 24 km de Laval. On rachète votre auto en fin de vie, on la remorque gratuitement et on vous paie sur place.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "24 km de notre cour, environ 25 minutes de route",
-      "Chomedey, Sainte-Rose, Vimont, Laval-des-Rapides, Duvernay",
-      "Remorquage gratuit, jamais déduit de votre montant",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Payé comptant à l'enlèvement",
-    ],
     faq: ["qui-achete", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap à 24 km de Laval",
@@ -196,13 +156,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Recyclage auto à Terrebonne : la cour est à 9 km",
     sub: "Notre cour du 340 Chemin Pincourt est le recycleur le plus proche de Terrebonne : 9 km, environ 15 minutes. Enlèvement souvent le jour même.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "9 km de votre porte : le ramassage part de Mascouche",
-      "Lachenaie, La Plaine, Vieux-Terrebonne, secteur des Seigneurs",
-      "Remorquage gratuit, souvent le jour même de l'appel",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Argent comptant à l'enlèvement, pas de virement à attendre",
-    ],
     // `cour-pres-de-moi`, not `qui-achete`: that one names Laval and Montréal.
     faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
   },
@@ -213,13 +166,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Recyclage auto à Montréal : enlèvement gratuit, payé comptant",
     sub: "On se déplace sur l'île de Montréal pour racheter et recycler les véhicules en fin de vie. Le remorquage est gratuit et vous êtes payé au moment de l'enlèvement.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "Montréal-Nord, Anjou, Rivière-des-Prairies, Pointe-aux-Trembles, jusqu'au West Island",
-      "Ruelle étroite ou stationnement intérieur : dites-le-nous d'avance",
-      "Remorquage gratuit, jamais déduit de votre montant",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Payé comptant à l'enlèvement",
-    ],
     faq: ["qui-achete", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap qui dessert tout Montréal",
@@ -233,13 +179,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Recyclage auto à Mascouche : la cour est dans votre ville",
     sub: "Notre cour est au 340 Chemin Pincourt, à Mascouche. On rachète votre véhicule en fin de vie, on le remorque gratuitement et on vous paie comptant sur place.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "La remorqueuse est chez vous en une quinzaine de minutes",
-      "Vieux-Mascouche, Mascouche Heights, Domaine Bordeleau, parc industriel",
-      "Remorquage gratuit, jamais déduit de votre montant",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Payé comptant à l'enlèvement",
-    ],
     faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap au cœur de Mascouche",
@@ -253,13 +192,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Recyclage auto à Saint-Jérôme : enlèvement gratuit, payé comptant",
     sub: "Recycleur licencié établi à Mascouche. On se déplace à Saint-Jérôme pour racheter votre auto en fin de vie, on la remorque gratuitement et on vous paie sur place.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "On monte à Saint-Jérôme par la 640 et la 15",
-      "Centre-ville, Bellefeuille, Lafontaine, Saint-Antoine",
-      "Remorquage gratuit, jamais déduit de votre montant",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Payé comptant à l'enlèvement",
-    ],
     faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap qui dessert Saint-Jérôme",
@@ -288,13 +220,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "The scrap yard that buys your car in Montreal",
     sub: "A licensed auto recycler covering the island of Montreal. We buy end-of-life, wrecked and non-running vehicles, tow them away free, and pay cash at pickup.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
-    bullets: [
-      "We buy vehicles: you do not drive anything to a yard",
-      "Montreal-Nord, Anjou, Rivière-des-Prairies, Pointe-aux-Trembles, out to the West Island",
-      "Free towing, never deducted from your price",
-      "Firm price on the phone: it does not drop when the truck arrives",
-      "Cash in hand at pickup",
-    ],
     faq: ["cour-pres-de-moi", "qui-achete", "valeur", "documents", "paiement"],
   },
   {
@@ -304,13 +229,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "A scrap yard 24 km from Laval that pays cash for your car",
     sub: "We are a licensed recycler in Mascouche, about 25 minutes from Laval. Give us the year, make and model and we come back with a firm price, then collect it free.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
-    bullets: [
-      "We buy vehicles: you do not drive anything to a yard",
-      "Chomedey, Sainte-Rose, Vimont, Laval-des-Rapides, Duvernay",
-      "Free towing, never deducted from your price",
-      "Firm price on the phone: it does not drop when the truck arrives",
-      "Cash in hand at pickup, not a transfer to wait for",
-    ],
     faq: ["cour-pres-de-moi", "qui-achete", "valeur", "documents", "paiement"],
   },
   /*
@@ -331,13 +249,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Cash for a damaged car: wrecked, written off, or after a collision",
     sub: "If the insurer declared it a total loss, or the repair quote came back higher than the car is worth, we buy it as it stands. Free towing, cash at pickup.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
-    bullets: [
-      "Total loss, write-off, or a repair bill that is not worth paying",
-      "Front, rear or rollover damage: it does not need to drive",
-      "Towed free from the body shop, the yard or your driveway",
-      "Firm price on the phone: it does not drop when the truck arrives",
-      "Cash in hand at pickup",
-    ],
     /*
       No `valeur`: its question is "what is my scrap car worth?", and calling
       a car that was on the road last week scrap is the mismatch this page
@@ -352,13 +263,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Cash for junk cars and scrap cars, paid on the spot",
     sub: "Junk car, scrap car, end-of-life vehicle: different words for the same thing, and we buy all of them. Any condition. Free pickup, cash at the door.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
-    bullets: [
-      "Free towing, never deducted from your price",
-      "Firm price on the phone: it does not drop when the truck arrives",
-      "Cash in hand at pickup",
-      "Not running, wrecked or written off: we buy it anyway",
-      "SAAQ transfer handled on site",
-    ],
     faq: ["valeur", "ne-demarre-pas", "prix-change", "documents", "paiement"],
   },
   /*
@@ -383,13 +287,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "La cour à scrap qui vient chercher votre auto et vous paie comptant",
     sub: "Recycleur automobile licencié à Mascouche. On achète les véhicules en fin de vie, accidentés ou qui ne démarrent plus, on les remorque gratuitement et on paie à l'enlèvement.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "On achète le véhicule : vous n'avez rien à remorquer jusqu'à une cour",
-      "Notre cour est au 340 Chemin Pincourt à Mascouche, ouverte 7 jours sur 7",
-      "Remorquage gratuit, jamais déduit de votre montant",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Argent comptant à l'enlèvement",
-    ],
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
     yard: {
       h2: "Notre cour à scrap est au 340 Chemin Pincourt, à Mascouche",
@@ -436,13 +333,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "The scrapyard that comes to your car and pays cash",
     sub: "A licensed auto recycler in Mascouche. We buy end-of-life, wrecked and non-running vehicles, tow them away free, and pay cash at pickup. You tow nothing.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
-    bullets: [
-      "We buy the vehicle: you do not drive or tow anything to a yard",
-      "Our yard is at 340 Chemin Pincourt in Mascouche, open 7 days a week",
-      "Free towing, never deducted from your price",
-      "Firm price on the phone: it does not drop when the truck arrives",
-      "Cash in hand at pickup",
-    ],
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
   },
   /*
@@ -468,13 +358,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "Un recycleur automobile licencié qui rachète votre véhicule comptant",
     sub: "Dépollution complète, cession SAAQ réglée sur place et argent comptant à l'enlèvement. Notre cour est au 340 Chemin Pincourt à Mascouche et le remorquage est gratuit.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
-    bullets: [
-      "Recycleur licencié : dépollution complète avant tout démontage",
-      "Reçu officiel de cession SAAQ remis sur place : c'est lui qui met fin à votre immatriculation",
-      "Remorquage gratuit, jamais déduit de votre montant",
-      "Prix ferme au téléphone : il ne baisse pas à l'arrivée de la remorqueuse",
-      "Argent comptant à l'enlèvement",
-    ],
     faq: ["recyclage", "qui-achete", "documents", "saaq", "valeur"],
   },
   {
@@ -484,13 +367,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     h1: "A licensed auto recycler that buys your vehicle for cash",
     sub: "Full depollution, the SAAQ transfer handled on the spot, and cash at pickup. Our yard is at 340 Chemin Pincourt in Mascouche and the towing is free.",
     beats: ["Quick offer", "Easy pickup", "Fast payment"],
-    bullets: [
-      "A licensed recycler: full depollution before anything is dismantled",
-      "Official SAAQ transfer receipt on the spot: that is what ends your registration",
-      "Free towing, never deducted from your price",
-      "Firm price on the phone: it does not drop when the truck arrives",
-      "Cash in hand at pickup",
-    ],
     faq: ["recyclage", "qui-achete", "documents", "saaq", "valeur"],
   },
 ];

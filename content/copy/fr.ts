@@ -95,7 +95,7 @@ export const fr = {
       same reason: it opened a chat that read as unfinished until an
       attachment was added.
     */
-    slogan: "On achète toutes les autos, dans n'importe quel état !",
+    slogan: "On achète toutes les autos, dans n'importe quel état",
     whatsappCta: "Envoyer un message sur WhatsApp",
     whatsappPrefill: "Bonjour ! J'aimerais une estimation pour mon véhicule.",
     ctaPrimary: "Obtenir mon estimation gratuite",

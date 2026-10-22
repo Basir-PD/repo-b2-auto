@@ -165,14 +165,19 @@ export default async function LandingPage({
                 />
               </div>
 
-              <ul className="mt-8 space-y-3">
-                {lp.bullets.map((bullet) => (
+              {/*
+                Same checkmarks as the homepage hero, same markup. Short
+                callouts instead of the old 5 long per-page sentences, so
+                every LP reads the same at a glance, bro.
+              */}
+              <ul className="mt-8 grid gap-x-5 gap-y-3 sm:grid-cols-2">
+                {t.home.trustStrip.map((item) => (
                   <li
-                    key={bullet}
-                    className="flex items-start gap-2.5 text-[15px] font-semibold text-slate-800"
+                    key={item}
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-800"
                   >
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" strokeWidth={3} />
-                    {bullet}
+                    <Check className="h-4 w-4 shrink-0 text-brand-600" strokeWidth={3} />
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -329,7 +334,7 @@ export default async function LandingPage({
 
         {/*
           Prose that belongs to this page alone. Everything above it, apart
-          from the H1, the bullets and the yard, is shared with ten sibling
+          from the H1 and the yard, is shared with the sibling
           landing pages — which is what made this one 74% identical to
           /fr/lp/recycleur-auto/ and earned it a Below average landing page
           experience. Narrow measure, because this is reading, not scanning.
