@@ -284,7 +284,7 @@ export const LANDING_CONTENT: LandingContent[] = [
     slug: "cour-scrap",
     lang: "fr",
     title: "Cour à scrap qui achète votre auto | Recyclage Autos B2",
-    h1: "La cour à scrap qui vient chercher votre auto et vous paie comptant",
+    h1: "La cour à scrap: On achète toutes les autos, dans n'importe quel état!",
     sub: "Recycleur automobile licencié à Mascouche. On achète les véhicules en fin de vie, accidentés ou qui ne démarrent plus, on les remorque gratuitement et on paie à l'enlèvement.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
