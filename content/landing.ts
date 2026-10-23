@@ -17,6 +17,12 @@ export type LandingContent = {
   title: string;
   h1: string;
   /**
+   * The green line above the headline. Unset, it is the site's slogan ("On
+   * achète toutes les autos…"); set it on a page whose headline already says
+   * the slogan, so the hero does not repeat itself.
+   */
+  eyebrow?: string;
+  /**
    * Not rendered. This is the meta description and the og:description — the
    * text that shows when the URL is pasted into Messenger or a text message,
    * which is how a Facebook ad's landing page actually gets shared onward.
@@ -285,6 +291,9 @@ export const LANDING_CONTENT: LandingContent[] = [
     lang: "fr",
     title: "Cour à scrap qui achète votre auto | Recyclage Autos B2",
     h1: "La cour à scrap: On achète toutes les autos, dans n'importe quel état!",
+    // The headline already says "toutes les autos"; the line above it says where the yard is and when it is open.
+    // Non-breaking spaces keep "Ouverte 7 jours sur 7" on one line when the eyebrow wraps on a phone.
+    eyebrow: "Cour à scrap à Mascouche · Ouverte\u00A07\u00A0jours\u00A0sur\u00A07",
     sub: "Recycleur automobile licencié à Mascouche. On achète les véhicules en fin de vie, accidentés ou qui ne démarrent plus, on les remorque gratuitement et on paie à l'enlèvement.",
     beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],

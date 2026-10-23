@@ -2,16 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  Check,
-  ChevronRight,
-  Clock,
-  FileCheck,
-  Lock,
-  MapPin,
-  Recycle,
-  ShieldCheck,
-} from "lucide-react";
+import { Check, ChevronRight, Clock, FileCheck, Lock, MapPin, Recycle } from "lucide-react";
 
 import { LANGS, isLang, pathFor, cityPathFor, type Lang } from "@/config/routes";
 import { siteConfig, fullAddress, mapsUrl } from "@/config/site";
@@ -30,6 +21,7 @@ import PhotoGrid from "@/components/site/PhotoGrid";
 import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
+import GuaranteeLine from "@/components/site/GuaranteeLine";
 import { CALL_CTA } from "@/lib/cta";
 import { JsonLd, faqSchema, webPageSchema } from "@/components/site/JsonLd";
 
@@ -156,19 +148,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 {t.home.h1.after}
               </h1>
 
-              {/*
-                The guarantee, as a badge between the headline and the beats:
-                seen at once, but quieter than the headline. Uppercase by CSS
-                so a screen reader reads words, not letters.
-              */}
-              <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3.5 py-1.5 text-sm font-black uppercase tracking-[0.08em] text-brand-800 sm:text-[15px]">
-                <ShieldCheck
-                  className="h-5 w-5 shrink-0 text-brand-600"
-                  strokeWidth={2.5}
-                  aria-hidden="true"
-                />
-                {t.home.guaranteeBadge}
-              </p>
+              <GuaranteeLine text={t.home.guaranteeBadge} />
 
               {/*
                 Three beats, set as a row rather than a sentence. Written as

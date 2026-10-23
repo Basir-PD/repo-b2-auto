@@ -88,6 +88,12 @@
     100% { transform: scale(1.3);  opacity: 0; }
   }
 
+  /* The typing cursor in TypedText: on, then off, no fade. */
+  @keyframes caret-blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+  }
+
 }
 
 @layer utilities {

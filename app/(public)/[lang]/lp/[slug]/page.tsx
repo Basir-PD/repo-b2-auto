@@ -14,6 +14,7 @@ import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
 import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
+import GuaranteeLine from "@/components/site/GuaranteeLine";
 import { CALL_CTA } from "@/lib/cta";
 import PhotoGrid from "@/components/site/PhotoGrid";
 // parked with both LP whatsapp buttons below
@@ -115,14 +116,17 @@ export default async function LandingPage({
             <div>
               {/*
                 The promise in one line, above the headline: any car, any condition.
+                A page whose headline already says it sets its own line instead.
                 Uppercase by CSS so screen readers read it as a sentence, not letters.
               */}
               <p className="mb-3 text-sm font-black uppercase tracking-[0.08em] text-brand-700 sm:text-base">
-                {t.home.slogan}
+                {lp.eyebrow ?? t.home.slogan}
               </p>
               <h1 className="text-[2.1rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.75rem]">
                 {lp.h1}
               </h1>
+
+              <GuaranteeLine text={t.home.guaranteeBadge} />
 
               {/*
                 The homepage hero's beats treatment, not a variant of it: the
@@ -133,7 +137,7 @@ export default async function LandingPage({
                 description, which is what shows when someone pastes the link
                 into Messenger.
               */}
-              <ul className="mt-6 flex max-w-xl flex-wrap items-center gap-x-3.5 gap-y-2 text-lg font-bold text-slate-800 sm:text-xl">
+              <ul className="mt-5 flex max-w-xl flex-wrap items-center gap-x-3.5 gap-y-2 text-lg font-bold text-slate-800 sm:text-xl">
                 {lp.beats.map((beat, index) => (
                   <li key={beat} className="flex items-center gap-3.5">
                     {index > 0 && (

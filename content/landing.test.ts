@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { faqByIds } from "@/content/faq";
+import { getCopy } from "@/content/copy";
 import { LANDING_CONTENT } from "@/content/landing";
 
 describe("landing page FAQs", () => {
@@ -85,4 +86,26 @@ describe("landing page prose", () => {
     // half of "cour à scrap" wants a used alternator, not a buyer.
     expect(yard.parts.trim()).not.toBe("");
   });
+});
+
+describe("landing page heroes", () => {
+  /*
+    The green line above the headline is the site slogan unless a page sets
+    its own. A headline that says the slogan again reads as the hero
+    repeating itself, which is what /fr/lp/cour-scrap/ did.
+  */
+  const words = (text: string) =>
+    text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[^a-z]+/g, " ")
+      .trim();
+
+  it.each(LANDING_CONTENT.map((lp) => [`${lp.lang}/${lp.slug}`, lp] as const))(
+    "%s does not say the line above its headline again in the headline",
+    (_, lp) => {
+      const eyebrow = lp.eyebrow ?? getCopy(lp.lang).home.slogan;
+      expect(words(lp.h1)).not.toContain(words(eyebrow));
+    }
+  );
 });
