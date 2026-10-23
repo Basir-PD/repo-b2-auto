@@ -183,7 +183,28 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 overflow a 576px column and the phone number breaks across
                 lines — a stack that looks deliberate beats a row that wraps.
               */}
-              <div className="mt-8 flex max-w-md flex-col gap-3">
+              {/*
+                The tow truck sits right above the call button: the picture of
+                what happens after the call. It used to be full width under
+                both columns, below the fold on a phone. Wide and short
+                (1600x476), so on a phone it costs about 110px and the button
+                stays on the first screen. Above the fold now, so it loads
+                eagerly, but with no preload and no high fetch priority: both
+                compete with the font for the H1 and measured worse (LCP 2.8s
+                eager, 3.2s with fetchPriority="high").
+              */}
+              <Image
+                src="/tow-truck-hero.webp"
+                alt=""
+                width={1600}
+                height={476}
+                loading="eager"
+                sizes="(min-width: 640px) 448px, calc(100vw - 2rem)"
+                quality={72}
+                className="mt-7 h-auto w-full max-w-md"
+              />
+
+              <div className="mt-6 flex max-w-md flex-col gap-3">
                 <PhoneLink
                   source="hero"
                   showIcon
@@ -230,38 +251,14 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           </div>
 
           {/*
-            Full width beneath both columns, where it has room to be read. The
-            explicit width/height reserve the box so it cannot shift the page.
-
-            It used to carry `priority` + fetchPriority="high" on the theory
-            that it was the LCP element on a wide screen. Measured, it was not
-            the bottleneck: dropping the preload took desktop LCP from 0.8s to
-            0.6s, because the preload was competing with the font for the
-            H1 — which is the real LCP element on every viewport. On mobile
-            this sits well below the fold, so preloading it was pure cost.
-          */}
-          <div className="mt-12 lg:mt-16">
-            <Image
-              src="/tow-truck-hero.webp"
-              alt=""
-              width={1600}
-              height={476}
-              loading="lazy"
-              sizes="(min-width: 1088px) 1024px, 100vw"
-              quality={72}
-              className="mx-auto h-auto w-full max-w-5xl"
-            />
-          </div>
-
-          {/*
-            The three figures, directly under the photograph and rendered by
+            The three figures, directly under the hero and rendered by
             the same component the landing pages use — so the homepage and the
             paid pages state the same claims in the same shape. They used to
             live much further down, set as three green blocks of sentence
             text, which is why the two page types disagreed on what a
             statistic looks like here.
           */}
-          <div className="mx-auto mt-8 max-w-5xl">
+          <div className="mx-auto mt-12 max-w-5xl lg:mt-16">
             <StatBand lang={lang} />
           </div>
         </div>
