@@ -12,7 +12,7 @@ export type Slide = {
 };
 
 /** How long each slide stays before the next slides in. */
-const HOLD_MS = 4500;
+const HOLD_MS = 3500;
 /** Full rounds before it stops on the first slide for good. */
 const ROUNDS = 2;
 
@@ -78,7 +78,7 @@ export default function HeroSlideshow({
     >
       <div className="relative aspect-[2/1] w-full overflow-hidden">
         <div
-          className="flex h-full transition-transform duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] motion-reduce:transition-none"
+          className="flex h-full transition-transform duration-[550ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] motion-reduce:transition-none"
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {slides.map((slide, n) => (

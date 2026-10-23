@@ -75,7 +75,6 @@ export const en: Copy = {
       vehiclesAlt:
         "A wrecked car, a broken-down car, a rusted car, an SUV, a van and a pickup truck",
     },
-    sub: ["Offer in 2 minutes", "Cash", "Free towing"],
     slogan: "We buy any car, in any condition!",
     whatsappCta: "Send a message on WhatsApp",
     whatsappPrefill: "Hi! I'd like a quote for my vehicle.",

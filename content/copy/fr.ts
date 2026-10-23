@@ -91,8 +91,6 @@ export const fr = {
       vehiclesAlt:
         "Une auto accidentée, une auto en panne, une auto rouillée, un VUS, une fourgonnette et une camionnette",
     },
-    /* Three beats, not a paragraph. Rendered as a row with green dots. */
-    sub: ["Offre en 2 minutes", "Cash", "Remorquage gratuit"],
     /*
       "Envoyer un message", not "Envoyer une photo". The photo framing asked
       for something before the conversation had started — a seller standing in

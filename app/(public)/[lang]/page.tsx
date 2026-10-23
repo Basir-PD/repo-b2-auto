@@ -151,26 +151,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <GuaranteeLine text={t.home.guaranteeBadge} />
 
               {/*
-                Three beats, set as a row rather than a sentence. Written as
-                "Offre en 2 minutes. Cash. Remorquage gratuit." — the periods
-                are doing the work of separators, so they are rendered as
-                separators.
-              */}
-              <ul className="mt-5 flex max-w-xl flex-wrap items-center gap-x-3.5 gap-y-2 text-lg font-bold text-slate-800 sm:text-xl">
-                {t.home.sub.map((beat, index) => (
-                  <li key={beat} className="flex items-center gap-3.5">
-                    {index > 0 && (
-                      <span
-                        aria-hidden="true"
-                        className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"
-                      />
-                    )}
-                    {beat}
-                  </li>
-                ))}
-              </ul>
-
-              {/*
                 The call button goes first and solid: the phone is the main
                 button on every page. WhatsApp is the second rather than a
                 link to the quote page: the form is already in this viewport,
