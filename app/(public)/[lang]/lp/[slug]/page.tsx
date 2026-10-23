@@ -15,6 +15,8 @@ import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
 import GuaranteeLine from "@/components/site/GuaranteeLine";
+import HeroSlideshow from "@/components/site/HeroSlideshow";
+import { heroSlides } from "@/content/heroSlides";
 import { CALL_CTA } from "@/lib/cta";
 import PhotoGrid from "@/components/site/PhotoGrid";
 // parked with both LP whatsapp buttons below
@@ -129,34 +131,29 @@ export default async function LandingPage({
               <GuaranteeLine text={t.home.guaranteeBadge} />
 
               {/*
-                The homepage hero's beats treatment, not a variant of it: the
-                dot is a separator between beats, so the first one does not get
-                one — a leading dot turns a rhythm into a bullet list.
+                The homepage's slideshow, right above the call button, with
+                the same pictures (content/heroSlides.ts). No beats row: the
+                guarantee and the slideshow say it, and the row only pushed the
+                button and the form further down the phone screen.
 
                 `lp.sub` is deliberately not rendered. It is the meta and og
                 description, which is what shows when someone pastes the link
                 into Messenger.
               */}
-              <ul className="mt-5 flex max-w-xl flex-wrap items-center gap-x-3.5 gap-y-2 text-lg font-bold text-slate-800 sm:text-xl">
-                {lp.beats.map((beat, index) => (
-                  <li key={beat} className="flex items-center gap-3.5">
-                    {index > 0 && (
-                      <span
-                        aria-hidden="true"
-                        className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"
-                      />
-                    )}
-                    {beat}
-                  </li>
-                ))}
-              </ul>
+              <HeroSlideshow
+                label={t.home.slideshow.label}
+                slideLabel={t.home.slideshow.slide}
+                sizes="(min-width: 640px) 448px, calc(100vw - 2rem)"
+                className="mt-7 w-full max-w-md"
+                slides={heroSlides(lang)}
+              />
 
               {/*
                 Stacked and equal width, same as the homepage. The call button
                 leads, solid; WhatsApp sits under it for someone standing next
                 to a dead car who would rather send a photo than describe it.
               */}
-              <div className="mt-8 flex max-w-md flex-col gap-3">
+              <div className="mt-6 flex max-w-md flex-col gap-3">
                 <PhoneLink
                   source={`lp_${slug}_hero`}
                   showIcon

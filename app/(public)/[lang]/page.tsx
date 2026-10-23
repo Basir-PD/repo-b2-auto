@@ -9,7 +9,7 @@ import { getCopy } from "@/content/copy";
 import { homeFaqFor } from "@/content/faq";
 import { CITIES } from "@/content/cities";
 import { SERVICE_AREA } from "@/content/service-area";
-import { HOME_PHOTOS, PHOTOS } from "@/content/photos";
+import { HOME_PHOTOS } from "@/content/photos";
 import { hasReviews, REVIEWS } from "@/content/reviews";
 import QuoteForm from "@/components/site/QuoteForm";
 import HowItWorks from "@/components/pages/HowItWorks";
@@ -22,6 +22,7 @@ import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
 import GuaranteeLine from "@/components/site/GuaranteeLine";
 import HeroSlideshow from "@/components/site/HeroSlideshow";
+import { heroSlides } from "@/content/heroSlides";
 import { CALL_CTA } from "@/lib/cta";
 import { JsonLd, faqSchema, webPageSchema } from "@/components/site/JsonLd";
 
@@ -174,26 +175,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 slideLabel={t.home.slideshow.slide}
                 sizes="(min-width: 640px) 448px, calc(100vw - 2rem)"
                 className="mt-7 w-full max-w-md"
-                slides={[
-                  { src: "/tow-truck-hero.webp", alt: "" },
-                  {
-                    src: "/photos/all-vehicles.webp",
-                    alt: t.home.slideshow.vehiclesAlt,
-                    caption: t.home.slideshow.vehiclesCaption,
-                  },
-                  {
-                    src: "/photos/flatbed-damaged-car.webp",
-                    alt: t.home.slideshow.towAlt,
-                    fit: "cover",
-                  },
-                  // Our own photographs, the three the fleet section further down does not show.
-                  ...PHOTOS.filter((photo) => !HOME_PHOTOS.includes(photo)).map((photo) => ({
-                    src: `/photos/${photo.file}`,
-                    alt: photo.alt[lang],
-                    caption: photo.caption[lang],
-                    fit: "cover" as const,
-                  })),
-                ]}
+                slides={heroSlides(lang)}
               />
 
               <div className="mt-6 flex max-w-md flex-col gap-3">

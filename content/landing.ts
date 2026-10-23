@@ -26,19 +26,10 @@ export type LandingContent = {
    * Not rendered. This is the meta description and the og:description — the
    * text that shows when the URL is pasted into Messenger or a text message,
    * which is how a Facebook ad's landing page actually gets shared onward.
-   * The visible subtitle is `beats`.
+   * The hero has no visible subtitle: under the H1 come the guarantee and
+   * the slideshow.
    */
   sub: string;
-  /**
-   * Three beats, not a sentence. Rendered as a dotted row directly under the
-   * H1, the same device the homepage hero uses, because a paid visitor scans
-   * before they read. Identical across every page in a language on purpose:
-   * these three are true of every job we do, and the per-page promise is
-   * carried by the H1, which is where message match belongs. The checkmarks
-   * under the buttons aren't here either: every page shows the homepage's
-   * `trustStrip` (the Google Ads callouts), same list, same look.
-   */
-  beats: string[];
   /**
    * Ids from content/faq.ts, in display order. Chosen per page for the
    * questions this searcher has left once they have scrolled past the form,
@@ -102,7 +93,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Vendre mon auto comptant | Recyclage Autos B2",
     h1: "Vendez votre auto aujourd'hui : argent comptant, sur place",
     sub: "Peu importe l'état : en panne, accidentée, sans moteur ou déclarée perte totale. On vient la chercher gratuitement et on vous paie à l'enlèvement.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["valeur", "prix-change", "documents", "saaq", "paiement"],
   },
   {
@@ -111,7 +101,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Remorquage gratuit de votre véhicule | Recyclage Autos B2",
     h1: "Faites enlever votre véhicule gratuitement et repartez avec de l'argent",
     sub: "On remorque sans frais partout sur la Rive-Nord, à Laval et dans l'est de Montréal, souvent le jour même. Et on vous paie comptant pour le véhicule.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["remorquage", "delai", "ne-demarre-pas", "documents", "saaq"],
   },
   {
@@ -120,7 +109,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Votre vieux char vaut de l'argent | Recyclage Autos B2",
     h1: "Votre vieux char dort dans l'entrée ? Il vaut de l'argent.",
     sub: "Donnez-nous l'année, la marque et le modèle. On vous rappelle avec un prix ferme en quelques minutes, et si ça vous convient, on vient le chercher gratuitement.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     /*
       This used to restate the years in business and the vehicles-per-year
       figure. Both were removed from the whole site on 2026-09-19 as
@@ -148,7 +136,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Recyclage auto Laval | Recyclage Autos B2",
     h1: "Recyclage auto à Laval : on rachète votre véhicule comptant",
     sub: "Recycleur licencié établi à Mascouche, à 24 km de Laval. On rachète votre auto en fin de vie, on la remorque gratuitement et on vous paie sur place.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["qui-achete", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap à 24 km de Laval",
@@ -161,7 +148,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Recyclage auto Terrebonne | Recyclage Autos B2",
     h1: "Recyclage auto à Terrebonne : la cour est à 9 km",
     sub: "Notre cour du 340 Chemin Pincourt est le recycleur le plus proche de Terrebonne : 9 km, environ 15 minutes. Enlèvement souvent le jour même.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     // `cour-pres-de-moi`, not `qui-achete`: that one names Laval and Montréal.
     faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
   },
@@ -171,7 +157,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Recyclage auto Montréal | Recyclage Autos B2",
     h1: "Recyclage auto à Montréal : enlèvement gratuit, payé comptant",
     sub: "On se déplace sur l'île de Montréal pour racheter et recycler les véhicules en fin de vie. Le remorquage est gratuit et vous êtes payé au moment de l'enlèvement.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["qui-achete", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap qui dessert tout Montréal",
@@ -184,7 +169,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Recyclage auto Mascouche | Recyclage Autos B2",
     h1: "Recyclage auto à Mascouche : la cour est dans votre ville",
     sub: "Notre cour est au 340 Chemin Pincourt, à Mascouche. On rachète votre véhicule en fin de vie, on le remorque gratuitement et on vous paie comptant sur place.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap au cœur de Mascouche",
@@ -197,7 +181,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Recyclage auto Saint-Jérôme | Recyclage Autos B2",
     h1: "Recyclage auto à Saint-Jérôme : enlèvement gratuit, payé comptant",
     sub: "Recycleur licencié établi à Mascouche. On se déplace à Saint-Jérôme pour racheter votre auto en fin de vie, on la remorque gratuitement et on vous paie sur place.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["cour-pres-de-moi", "recyclage", "valeur", "documents", "paiement"],
     beforeFaq: {
       h2: "Une cour à scrap qui dessert Saint-Jérôme",
@@ -225,7 +208,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Scrap Yard Montreal: We Buy Your Car | Recyclage Autos B2",
     h1: "The scrap yard that buys your car in Montreal",
     sub: "A licensed auto recycler covering the island of Montreal. We buy end-of-life, wrecked and non-running vehicles, tow them away free, and pay cash at pickup.",
-    beats: ["Quick offer", "Easy pickup", "Fast payment"],
     faq: ["cour-pres-de-moi", "qui-achete", "valeur", "documents", "paiement"],
   },
   {
@@ -234,7 +216,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Scrap Yard Laval: We Buy Your Car | Recyclage Autos B2",
     h1: "A scrap yard 24 km from Laval that pays cash for your car",
     sub: "We are a licensed recycler in Mascouche, about 25 minutes from Laval. Give us the year, make and model and we come back with a firm price, then collect it free.",
-    beats: ["Quick offer", "Easy pickup", "Fast payment"],
     faq: ["cour-pres-de-moi", "qui-achete", "valeur", "documents", "paiement"],
   },
   /*
@@ -254,7 +235,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Cash for Damaged Cars | Recyclage Autos B2",
     h1: "Cash for a damaged car: wrecked, written off, or after a collision",
     sub: "If the insurer declared it a total loss, or the repair quote came back higher than the car is worth, we buy it as it stands. Free towing, cash at pickup.",
-    beats: ["Quick offer", "Easy pickup", "Fast payment"],
     /*
       No `valeur`: its question is "what is my scrap car worth?", and calling
       a car that was on the road last week scrap is the mismatch this page
@@ -268,7 +248,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Cash for Junk Cars & Scrap Cars | Recyclage Autos B2",
     h1: "Cash for junk cars and scrap cars, paid on the spot",
     sub: "Junk car, scrap car, end-of-life vehicle: different words for the same thing, and we buy all of them. Any condition. Free pickup, cash at the door.",
-    beats: ["Quick offer", "Easy pickup", "Fast payment"],
     faq: ["valeur", "ne-demarre-pas", "prix-change", "documents", "paiement"],
   },
   /*
@@ -295,7 +274,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     // Non-breaking spaces keep "Ouverte 7 jours sur 7" on one line when the eyebrow wraps on a phone.
     eyebrow: "Cour à scrap à Mascouche · Ouverte\u00A07\u00A0jours\u00A0sur\u00A07",
     sub: "Recycleur automobile licencié à Mascouche. On achète les véhicules en fin de vie, accidentés ou qui ne démarrent plus, on les remorque gratuitement et on paie à l'enlèvement.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
     yard: {
       h2: "Notre cour à scrap est au 340 Chemin Pincourt, à Mascouche",
@@ -341,7 +319,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Scrapyard That Buys Your Car | Recyclage Autos B2",
     h1: "The scrapyard that comes to your car and pays cash",
     sub: "A licensed auto recycler in Mascouche. We buy end-of-life, wrecked and non-running vehicles, tow them away free, and pay cash at pickup. You tow nothing.",
-    beats: ["Quick offer", "Easy pickup", "Fast payment"],
     faq: ["cour-pres-de-moi", "adresse", "qui-achete", "valeur", "paiement"],
   },
   /*
@@ -366,7 +343,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Recycleur automobile licencié | Recyclage Autos B2",
     h1: "Un recycleur automobile licencié qui rachète votre véhicule comptant",
     sub: "Dépollution complète, cession SAAQ réglée sur place et argent comptant à l'enlèvement. Notre cour est au 340 Chemin Pincourt à Mascouche et le remorquage est gratuit.",
-    beats: ["Offre rapide", "Enlèvement facile", "Paiement immédiat"],
     faq: ["recyclage", "qui-achete", "documents", "saaq", "valeur"],
   },
   {
@@ -375,7 +351,6 @@ export const LANDING_CONTENT: LandingContent[] = [
     title: "Licensed Auto Recycler | Recyclage Autos B2",
     h1: "A licensed auto recycler that buys your vehicle for cash",
     sub: "Full depollution, the SAAQ transfer handled on the spot, and cash at pickup. Our yard is at 340 Chemin Pincourt in Mascouche and the towing is free.",
-    beats: ["Quick offer", "Easy pickup", "Fast payment"],
     faq: ["recyclage", "qui-achete", "documents", "saaq", "valeur"],
   },
 ];
