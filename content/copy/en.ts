@@ -75,7 +75,7 @@ export const en: Copy = {
     ctaPrimary: "Sell my scrap car: free quote",
     ctaSecondary: `Call ${PHONE}`,
 
-    trustStrip: ["Official SAAQ receipt", "Free towing", "Cash payment", "Fast service"],
+    trustStrip: ["Official SAAQ receipt provided", "Free towing", "Cash payment", "Fast service"],
 
     howItWorks: {
       title: "Sell your scrap car in 3 steps, under 24 hours",

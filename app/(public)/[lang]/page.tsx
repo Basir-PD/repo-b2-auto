@@ -142,7 +142,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <p className="mb-3 text-sm font-black uppercase tracking-[0.08em] text-brand-700 sm:text-base">
                 {t.home.slogan}
               </p>
-              <h1 className="text-balance text-[2rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.6rem] lg:text-[3rem]">
+              <h1 className="text-balance text-[2rem] font-black leading-[1.18] tracking-tight text-slate-900 sm:text-[2.6rem] lg:text-[3rem]">
                 {t.home.h1.before}
                 <span className="text-brand-700">{t.home.h1.accent}</span>
                 {t.home.h1.after}

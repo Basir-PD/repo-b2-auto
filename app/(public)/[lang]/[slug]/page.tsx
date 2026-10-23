@@ -680,55 +680,59 @@ export default async function SlugPage({
             <div className="grid gap-10 lg:grid-cols-2">
               <div>
                 <dl className="space-y-6">
-                  <div className="flex gap-3">
-                    <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
-                    <div>
-                      <dt className="text-sm font-bold uppercase tracking-wide text-slate-500">
-                        {t.common.phoneLabel}
-                      </dt>
-                      <dd className="mt-1">
-                        <PhoneLink
-                          source="contact_page"
-                          className="text-xl font-black tabular-nums text-slate-900 hover:text-brand-600"
-                        />
-                      </dd>
-                    </div>
+                  <div className="relative pl-8">
+                    <dt className="text-sm font-bold uppercase tracking-wide text-slate-500">
+                      <Phone
+                        className="absolute left-0 top-0.5 h-5 w-5 text-brand-600"
+                        aria-hidden="true"
+                      />
+                      {t.common.phoneLabel}
+                    </dt>
+                    <dd className="mt-1">
+                      <PhoneLink
+                        source="contact_page"
+                        className="text-xl font-black tabular-nums text-slate-900 hover:text-brand-600"
+                      />
+                    </dd>
                   </div>
-                  <div className="flex gap-3">
-                    <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
-                    <div>
-                      <dt className="text-sm font-bold uppercase tracking-wide text-slate-500">
-                        {t.common.emailLabel}
-                      </dt>
-                      <dd className="mt-1">
-                        <MailLink
-                          source="contact_page"
-                          className="text-base font-semibold text-slate-900 hover:text-brand-600"
-                        />
-                      </dd>
-                    </div>
+                  <div className="relative pl-8">
+                    <dt className="text-sm font-bold uppercase tracking-wide text-slate-500">
+                      <Mail
+                        className="absolute left-0 top-0.5 h-5 w-5 text-brand-600"
+                        aria-hidden="true"
+                      />
+                      {t.common.emailLabel}
+                    </dt>
+                    <dd className="mt-1">
+                      <MailLink
+                        source="contact_page"
+                        className="text-base font-semibold text-slate-900 hover:text-brand-600"
+                      />
+                    </dd>
                   </div>
-                  <div className="flex gap-3">
-                    <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
-                    <div>
-                      <dt className="text-sm font-bold uppercase tracking-wide text-slate-500">
-                        {t.common.addressLabel}
-                      </dt>
-                      <dd className="mt-1 text-base font-semibold not-italic text-slate-900">
-                        <address className="not-italic">{fullAddress}</address>
-                      </dd>
-                    </div>
+                  <div className="relative pl-8">
+                    <dt className="text-sm font-bold uppercase tracking-wide text-slate-500">
+                      <MapPin
+                        className="absolute left-0 top-0.5 h-5 w-5 text-brand-600"
+                        aria-hidden="true"
+                      />
+                      {t.common.addressLabel}
+                    </dt>
+                    <dd className="mt-1 text-base font-semibold not-italic text-slate-900">
+                      <address className="not-italic">{fullAddress}</address>
+                    </dd>
                   </div>
-                  <div className="flex gap-3">
-                    <Clock className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
-                    <div>
-                      <dt className="text-sm font-bold uppercase tracking-wide text-slate-500">
-                        {lang === "fr" ? "Heures d'ouverture" : "Opening hours"}
-                      </dt>
-                      <dd className="mt-1 text-base font-semibold text-slate-900">
-                        {t.common.hoursLong}
-                      </dd>
-                    </div>
+                  <div className="relative pl-8">
+                    <dt className="text-sm font-bold uppercase tracking-wide text-slate-500">
+                      <Clock
+                        className="absolute left-0 top-0.5 h-5 w-5 text-brand-600"
+                        aria-hidden="true"
+                      />
+                      {lang === "fr" ? "Heures d'ouverture" : "Opening hours"}
+                    </dt>
+                    <dd className="mt-1 text-base font-semibold text-slate-900">
+                      {t.common.hoursLong}
+                    </dd>
                   </div>
                 </dl>
 

@@ -122,7 +122,7 @@ export default async function LandingPage({
               <p className="mb-3 text-sm font-black uppercase tracking-[0.08em] text-brand-700 sm:text-base">
                 {lp.eyebrow ?? t.home.slogan}
               </p>
-              <h1 className="text-[2.1rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.75rem]">
+              <h1 className="text-[2.1rem] font-black leading-[1.18] tracking-tight text-slate-900 sm:text-[2.75rem]">
                 {lp.h1}
               </h1>
 

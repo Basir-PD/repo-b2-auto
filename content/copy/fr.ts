@@ -122,7 +122,12 @@ export const fr = {
       left out — the price claim is weaker than the guarantee already in the
       H1, and the hours are in the footer, the schema and the contact page.
     */
-    trustStrip: ["Reçu SAAQ officiel", "Remorquage gratuit", "Paiement comptant", "Service rapide"],
+    trustStrip: [
+      "Reçu SAAQ officiel fourni",
+      "Remorquage gratuit",
+      "Paiement comptant",
+      "Service rapide",
+    ],
 
     howItWorks: {
       title: "Vendre son char scrap en 3 étapes, moins de 24 heures",
