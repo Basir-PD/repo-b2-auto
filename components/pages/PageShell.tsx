@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ChevronRight, Check } from "lucide-react";
 import type { Lang } from "@/config/routes";
 import { pathFor } from "@/config/routes";
@@ -11,6 +10,7 @@ import { CALL_CTA } from "@/lib/cta";
 // import WhatsAppLink from "@/components/site/WhatsAppLink";
 import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
 import QuoteForm from "@/components/site/QuoteForm";
+import PlacedSlideshow from "@/components/site/PlacedSlideshow";
 
 export function Breadcrumbs({
   lang,
@@ -108,21 +108,8 @@ export function PageHeader({
             {/* 5 stars under the call button, same as the homepage. links to the GBP reviews */}
             <GoogleRatingBadge lang={lang} className="mt-4" />
 
-            {/*
-              Intrinsic 1600x476 so the box is reserved before the file
-              arrives. Lazy and unprioritised: the H1 above is the LCP element
-              on every viewport, and preloading this only competes with it.
-            */}
-            <Image
-              src="/tow-truck-hero.webp"
-              alt=""
-              width={1600}
-              height={476}
-              loading="lazy"
-              sizes="(min-width: 896px) 832px, 100vw"
-              quality={72}
-              className="mt-8 h-auto w-full"
-            />
+            {/* A single column, so one slideshow at every width, where the tow truck was. */}
+            <PlacedSlideshow lang={lang} place="always" className="mt-8" />
           </>
         )}
       </div>
@@ -196,7 +183,9 @@ export function CityHeader({
               ))}
             </ul>
 
-            <div className="mt-7 flex max-w-md flex-col gap-3">
+            <PlacedSlideshow lang={lang} place="phone" className="mt-7" />
+
+            <div className="mt-6 flex max-w-md flex-col gap-3">
               <PhoneLink
                 source="city_header"
                 showIcon
@@ -225,17 +214,8 @@ export function CityHeader({
           </div>
         </div>
 
-        {/* Lazy and unprioritised: the H1 is the LCP element on every viewport. */}
-        <Image
-          src="/tow-truck-hero.webp"
-          alt=""
-          width={1600}
-          height={476}
-          loading="lazy"
-          sizes="(min-width: 1152px) 1088px, 100vw"
-          quality={72}
-          className="mt-10 h-auto w-full"
-        />
+        {/* Laptop and desktop: the slideshow at full width, where the big tow truck was. */}
+        <PlacedSlideshow lang={lang} place="wide" className="mt-10" />
       </div>
     </section>
   );

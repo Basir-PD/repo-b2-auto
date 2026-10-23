@@ -15,8 +15,7 @@ import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
 import GuaranteeLine from "@/components/site/GuaranteeLine";
-import HeroSlideshow from "@/components/site/HeroSlideshow";
-import { heroSlides } from "@/content/heroSlides";
+import PlacedSlideshow from "@/components/site/PlacedSlideshow";
 import { CALL_CTA } from "@/lib/cta";
 import PhotoGrid from "@/components/site/PhotoGrid";
 // parked with both LP whatsapp buttons below
@@ -131,8 +130,9 @@ export default async function LandingPage({
               <GuaranteeLine text={t.home.guaranteeBadge} />
 
               {/*
-                The homepage's slideshow, right above the call button, with
-                the same pictures (content/heroSlides.ts). No beats row: the
+                The homepage's slideshow, right above the call button on a
+                phone, with the same pictures (content/heroSlides.ts); from
+                `lg` up it is the full-width one under the hero instead. No beats row: the
                 guarantee and the slideshow say it, and the row only pushed the
                 button and the form further down the phone screen.
 
@@ -140,13 +140,7 @@ export default async function LandingPage({
                 description, which is what shows when someone pastes the link
                 into Messenger.
               */}
-              <HeroSlideshow
-                label={t.home.slideshow.label}
-                slideLabel={t.home.slideshow.slide}
-                sizes="(min-width: 640px) 448px, calc(100vw - 2rem)"
-                className="mt-7 w-full max-w-md"
-                slides={heroSlides(lang)}
-              />
+              <PlacedSlideshow lang={lang} place="phone" className="mt-7" />
 
               {/*
                 Stacked and equal width, same as the homepage. The call button
@@ -197,28 +191,9 @@ export default async function LandingPage({
           </div>
         </div>
 
-        {/*
-          The homepage's treatment of the same asset: full width beneath the
-          hero, intrinsic 1600x476 so the box is reserved and it cannot shift
-          the page. It used to be a fixed-height crop under a mask, which is
-          how a 3:2 photo was made to behave like a banner — unnecessary now
-          that the banner is the actual image.
-        */}
+        {/* Laptop and desktop: the slideshow at full width, where the big tow truck was. */}
         <div className="container mx-auto px-4 pb-14 sm:px-6 sm:pb-16">
-          <Image
-            src="/tow-truck-hero.webp"
-            alt={
-              lang === "fr"
-                ? "Remorqueuse à plateau de Recyclage Autos B2 chargée d'un véhicule, à Mascouche"
-                : "Recyclage Autos B2 flatbed tow truck loaded with a vehicle, in Mascouche"
-            }
-            width={1600}
-            height={476}
-            loading="lazy"
-            sizes="(min-width: 1088px) 1024px, 100vw"
-            quality={72}
-            className="mx-auto h-auto w-full max-w-5xl"
-          />
+          <PlacedSlideshow lang={lang} place="wide" />
         </div>
 
         {/*

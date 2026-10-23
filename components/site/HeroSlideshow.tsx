@@ -54,6 +54,8 @@ export default function HeroSlideshow({
   label,
   slideLabel,
   sizes,
+  aspect = "aspect-[2/1]",
+  onlyFrom,
   className = "",
 }: {
   slides: Slide[];
@@ -62,6 +64,14 @@ export default function HeroSlideshow({
   /** "{n} of {total}" in the page's language; the numbers are filled in here. */
   slideLabel: string;
   sizes: string;
+  /** The box's shape, as a Tailwind class; it never changes, so slides never move the page. */
+  aspect?: string;
+  /**
+   * Only come alive from this viewport width up (px). Below it the slideshow
+   * loads no pictures and does not move, so a copy kept for wide screens
+   * (and hidden by its parent on a phone) costs a phone nothing.
+   */
+  onlyFrom?: number;
   className?: string;
 }) {
   const [index, setIndex] = useState(0);
@@ -71,13 +81,23 @@ export default function HeroSlideshow({
   const [dragging, setDragging] = useState(false);
   // The furthest slide shown so far; pictures up to one past it are on the page.
   const [reach, setReach] = useState(0);
+  const [awake, setAwake] = useState(onlyFrom === undefined);
   const gesture = useRef<{ x: number; y: number; axis: "x" | "y" | null } | null>(null);
   const total = slides.length;
   const nameOf = (n: number) =>
     slideLabel.replace("{n}", String(n)).replace("{total}", String(total));
 
   useEffect(() => {
-    if (finished || held || total < 2) return;
+    if (onlyFrom === undefined) return;
+    const wide = window.matchMedia(`(min-width: ${onlyFrom}px)`);
+    const update = () => setAwake(wide.matches);
+    update();
+    wide.addEventListener("change", update);
+    return () => wide.removeEventListener("change", update);
+  }, [onlyFrom]);
+
+  useEffect(() => {
+    if (!awake || finished || held || total < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let moves = 0;
     const timer = setInterval(() => {
@@ -89,7 +109,7 @@ export default function HeroSlideshow({
       }
     }, HOLD_MS);
     return () => clearInterval(timer);
-  }, [finished, held, total]);
+  }, [awake, finished, held, total]);
 
   useEffect(() => setReach((r) => Math.max(r, index)), [index]);
 
@@ -147,7 +167,7 @@ export default function HeroSlideshow({
       onBlur={() => setHeld(false)}
     >
       <div
-        className="relative aspect-[2/1] w-full cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing"
+        className={`relative ${aspect} w-full cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerEnd}
@@ -176,7 +196,7 @@ export default function HeroSlideshow({
               <div
                 className={`relative w-full flex-1 ${slide.fit === "cover" ? "overflow-hidden rounded-xl" : ""}`}
               >
-                {n <= reach + 1 && (
+                {awake && n <= reach + 1 && (
                   <Image
                     src={slide.src}
                     alt={slide.alt}

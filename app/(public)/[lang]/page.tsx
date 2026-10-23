@@ -21,8 +21,7 @@ import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
 import GuaranteeLine from "@/components/site/GuaranteeLine";
-import HeroSlideshow from "@/components/site/HeroSlideshow";
-import { heroSlides } from "@/content/heroSlides";
+import PlacedSlideshow from "@/components/site/PlacedSlideshow";
 import { CALL_CTA } from "@/lib/cta";
 import { JsonLd, faqSchema, webPageSchema } from "@/components/site/JsonLd";
 
@@ -165,18 +164,12 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 lines — a stack that looks deliberate beats a row that wraps.
               */}
               {/*
-                Right above the call button: the tow truck, then every kind of
-                vehicle we take, sliding one to the next. A fixed 2:1 box, so
-                the button never moves; on a phone it costs about 180px and the
-                button stays on the first screen. See HeroSlideshow.
+                On a phone, right above the call button: the tow truck, then
+                every kind of vehicle we take, sliding one to the next. From
+                `lg` up it moves under the hero at full width (below). A fixed
+                box, so the button never moves. See PlacedSlideshow.
               */}
-              <HeroSlideshow
-                label={t.home.slideshow.label}
-                slideLabel={t.home.slideshow.slide}
-                sizes="(min-width: 640px) 448px, calc(100vw - 2rem)"
-                className="mt-7 w-full max-w-md"
-                slides={heroSlides(lang)}
-              />
+              <PlacedSlideshow lang={lang} place="phone" className="mt-7" />
 
               <div className="mt-6 flex max-w-md flex-col gap-3">
                 <PhoneLink
@@ -224,6 +217,9 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             </div>
           </div>
 
+          {/* Laptop and desktop: the slideshow at full width under the hero. */}
+          <PlacedSlideshow lang={lang} place="wide" className="mt-14" />
+
           {/*
             The three figures, directly under the hero and rendered by
             the same component the landing pages use — so the homepage and the
@@ -232,7 +228,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             text, which is why the two page types disagreed on what a
             statistic looks like here.
           */}
-          <div className="mx-auto mt-12 max-w-5xl lg:mt-16">
+          <div className="mx-auto mt-12 max-w-5xl lg:mt-10">
             <StatBand lang={lang} />
           </div>
         </div>
