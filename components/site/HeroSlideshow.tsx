@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { type PointerEvent, useEffect, useRef, useState } from "react";
 
 export type Slide = {
   src: string;
@@ -9,12 +9,22 @@ export type Slide = {
   alt: string;
   /** A short line set above the picture, inside the slide. */
   caption?: string;
+  /**
+   * "contain" (the default) fits a cut-out picture inside the box whole;
+   * "cover" fills the box edge to edge, for a photo with its own background,
+   * trimming a little off the sides rather than leaving empty bands.
+   */
+  fit?: "contain" | "cover";
 };
 
 /** How long each slide stays before the next slides in. */
 const HOLD_MS = 3500;
 /** Full rounds before it stops on the first slide for good. */
 const ROUNDS = 2;
+/** How far a finger has to travel before the gesture counts as a swipe or a scroll. */
+const DECIDE_PX = 8;
+/** Share of the width a swipe has to cover to change slide on release. */
+const SWIPE_SHARE = 0.18;
 
 /**
  * The hero's pictures, sliding one to the next.
@@ -24,6 +34,13 @@ const ROUNDS = 2;
  * button competes with it. It also holds still while someone points at it
  * or tabs into it, and the dots under it move it by hand. With "reduce
  * motion" it does not move by itself at all.
+ *
+ * A finger can drag it: the pictures follow the finger, and on release it
+ * moves on a slide if the drag went far enough, otherwise it springs back.
+ * A mostly vertical drag is left to the page (touch-action: pan-y), so the
+ * slideshow never gets in the way of scrolling. Past the first or last
+ * slide the drag only gives a little, so it is clear there is nothing there.
+ * Once someone swipes or taps a dot, it stops moving on its own.
  *
  * The box has a fixed 2:1 shape and every picture is fitted inside it, so
  * changing slides can never move the page. The first slide loads eagerly,
@@ -47,6 +64,9 @@ export default function HeroSlideshow({
   const [index, setIndex] = useState(0);
   const [held, setHeld] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [dragX, setDragX] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const gesture = useRef<{ x: number; y: number; axis: "x" | "y" | null } | null>(null);
   const total = slides.length;
   const nameOf = (n: number) =>
     slideLabel.replace("{n}", String(n)).replace("{total}", String(total));
@@ -66,6 +86,49 @@ export default function HeroSlideshow({
     return () => clearInterval(timer);
   }, [finished, held, total]);
 
+  const go = (n: number) => {
+    setIndex(Math.max(0, Math.min(total - 1, n)));
+    setFinished(true);
+  };
+
+  const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (total < 2 || (event.pointerType === "mouse" && event.button !== 0)) return;
+    gesture.current = { x: event.clientX, y: event.clientY, axis: null };
+  };
+
+  const onPointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    const start = gesture.current;
+    if (!start) return;
+    const dx = event.clientX - start.x;
+    const dy = event.clientY - start.y;
+    if (start.axis === null) {
+      if (Math.abs(dx) < DECIDE_PX && Math.abs(dy) < DECIDE_PX) return;
+      start.axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      if (start.axis === "y") return;
+      event.currentTarget.setPointerCapture(event.pointerId);
+      setDragging(true);
+      setHeld(true);
+    }
+    if (start.axis !== "x") return;
+    // Nothing before the first slide or after the last: the drag only gives a little.
+    const atEdge = (index === 0 && dx > 0) || (index === total - 1 && dx < 0);
+    setDragX(atEdge ? dx / 3 : dx);
+  };
+
+  const onPointerEnd = (event: PointerEvent<HTMLDivElement>) => {
+    const start = gesture.current;
+    gesture.current = null;
+    if (!start || start.axis !== "x") return;
+    const width = event.currentTarget.clientWidth || 1;
+    const dx = event.clientX - start.x;
+    if (dx < -width * SWIPE_SHARE) go(index + 1);
+    else if (dx > width * SWIPE_SHARE) go(index - 1);
+    else setFinished(true);
+    setDragX(0);
+    setDragging(false);
+    if (event.pointerType !== "mouse") setHeld(false);
+  };
+
   return (
     <section
       aria-roledescription="carousel"
@@ -76,10 +139,20 @@ export default function HeroSlideshow({
       onFocus={() => setHeld(true)}
       onBlur={() => setHeld(false)}
     >
-      <div className="relative aspect-[2/1] w-full overflow-hidden">
+      <div
+        className="relative aspect-[2/1] w-full cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerEnd}
+        onPointerCancel={onPointerEnd}
+      >
         <div
-          className="flex h-full transition-transform duration-[550ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] motion-reduce:transition-none"
-          style={{ transform: `translateX(-${index * 100}%)` }}
+          className={`flex h-full ${
+            dragging
+              ? ""
+              : "transition-transform duration-[550ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] motion-reduce:transition-none"
+          }`}
+          style={{ transform: `translateX(calc(${-index * 100}% + ${dragX}px))` }}
         >
           {slides.map((slide, n) => (
             <div
@@ -93,15 +166,18 @@ export default function HeroSlideshow({
                   {slide.caption}
                 </p>
               )}
-              <div className="relative w-full flex-1">
+              <div
+                className={`relative w-full flex-1 ${slide.fit === "cover" ? "overflow-hidden rounded-xl" : ""}`}
+              >
                 <Image
                   src={slide.src}
                   alt={slide.alt}
                   fill
                   loading="eager"
+                  draggable={false}
                   sizes={sizes}
                   quality={72}
-                  className="object-contain"
+                  className={slide.fit === "cover" ? "object-cover" : "object-contain"}
                 />
               </div>
             </div>
@@ -118,10 +194,7 @@ export default function HeroSlideshow({
               type="button"
               aria-label={nameOf(n + 1)}
               aria-current={n === index}
-              onClick={() => {
-                setIndex(n);
-                setFinished(true);
-              }}
+              onClick={() => go(n)}
               className="group flex h-6 min-w-6 cursor-pointer items-center justify-center rounded-full px-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
             >
               <span

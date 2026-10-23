@@ -181,6 +181,11 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                     alt: t.home.slideshow.vehiclesAlt,
                     caption: t.home.slideshow.vehiclesCaption,
                   },
+                  {
+                    src: "/photos/tow-truck-damaged-car.webp",
+                    alt: t.home.slideshow.towAlt,
+                    fit: "cover",
+                  },
                 ]}
               />
 

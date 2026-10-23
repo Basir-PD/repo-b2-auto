@@ -90,6 +90,7 @@ export const fr = {
       vehiclesCaption: "Autos, VUS, fourgonnettes, camions : on achète tout.",
       vehiclesAlt:
         "Une auto accidentée, une auto en panne, une auto rouillée, un VUS, une fourgonnette et une camionnette",
+      towAlt: "Une remorqueuse à plateau transportant une auto à l'avant défoncé",
     },
     /*
       "Envoyer un message", not "Envoyer une photo". The photo framing asked
