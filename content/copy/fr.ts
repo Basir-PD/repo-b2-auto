@@ -102,13 +102,14 @@ export const fr = {
     ctaSecondary: `Appeler ${PHONE}`,
 
     /*
-      These are the eight callout assets from the Google Ads account, word for
-      word, because someone who clicks an ad promising "Aucuns frais cachés"
-      has to land on a page that says "Aucuns frais cachés". Message match is
+      These are callout assets from the Google Ads account, word for word,
+      because someone who clicks an ad promising "Remorquage gratuit" has to
+      land on a page that says "Remorquage gratuit". Message match is
       the cheapest conversion win there is, and Google scores the landing page
       against the ad for Quality Score on top of that.
 
-      Six of the eight, ordered on request. The SAAQ receipt leads because it
+      Four of the eight, ordered on request ("Aucuns frais cachés" and
+      "Recyclage responsable" were taken off the page on request too). The SAAQ receipt leads because it
       is the one item on the list a seller does not know they need until
       somebody tells them, and it is the reason the registration stops costing
       them money.
@@ -121,14 +122,7 @@ export const fr = {
       left out — the price claim is weaker than the guarantee already in the
       H1, and the hours are in the footer, the schema and the contact page.
     */
-    trustStrip: [
-      "Reçu SAAQ officiel",
-      "Aucuns frais cachés",
-      "Remorquage gratuit",
-      "Paiement comptant",
-      "Service rapide",
-      "Recyclage responsable",
-    ],
+    trustStrip: ["Reçu SAAQ officiel", "Remorquage gratuit", "Paiement comptant", "Service rapide"],
 
     howItWorks: {
       title: "Vendre son char scrap en 3 étapes, moins de 24 heures",
