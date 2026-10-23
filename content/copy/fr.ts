@@ -74,16 +74,16 @@ export const fr = {
       "Scrap auto à Laval, Montréal et la Rive-Nord : on rachète comptant. Accidentée, en panne ou perte totale. Remorquage gratuit et reçu SAAQ inclus.",
 
     /*
-      Two halves, deliberately. `promise` is the claim every scrap buyer
-      makes; `guarantee` is the one none of them will put in writing, and it
-      is rendered in brand green so the eye lands on the half that is
-      actually different. Splitting it in the data rather than slicing the
-      string at "ou" keeps the two languages independent.
+      Three parts so the price can be set in brand green on its own, in
+      either language, without slicing a sentence at a word. The guarantee
+      itself is the badge under the headline (guaranteeBadge).
     */
     h1: {
-      promise: "Le meilleur prix pour votre auto scrap,",
-      guarantee: "ou on vous paie la différence.",
+      before: "Obtenez le ",
+      accent: "meilleur prix",
+      after: " pour votre auto scrap.",
     },
+    guaranteeBadge: "Meilleur prix garanti",
     /* Three beats, not a paragraph. Rendered as a row with green dots. */
     sub: ["Offre en 2 minutes", "Cash", "Remorquage gratuit"],
     /*

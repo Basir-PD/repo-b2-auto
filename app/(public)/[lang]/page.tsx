@@ -2,7 +2,16 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check, ChevronRight, Clock, FileCheck, Lock, MapPin, Recycle } from "lucide-react";
+import {
+  Check,
+  ChevronRight,
+  Clock,
+  FileCheck,
+  Lock,
+  MapPin,
+  Recycle,
+  ShieldCheck,
+} from "lucide-react";
 
 import { LANGS, isLang, pathFor, cityPathFor, type Lang } from "@/config/routes";
 import { siteConfig, fullAddress, mapsUrl } from "@/config/site";
@@ -125,15 +134,14 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 own city. Put it back if the Laval and Montreal pages stall.
               */}
               {/*
-                Set in sentence case, not the caps it was written in. At
-                3.25rem in font-black, caps across three lines reads as
-                shouting — which is precisely what the competitor's hero does.
-                The guarantee is the differentiator, so it gets the brand
-                green and lets the colour do the emphasis instead.
+                Not in caps: at this size in font-black, caps across three
+                lines reads as shouting. The price is what the visitor came
+                for, so it gets the brand green and lets the colour do the
+                emphasis instead.
 
-                The two halves are inline rather than force-broken: the split
-                lands wherever the line wraps, which holds up across both
-                languages and every width. The colour marks the seam.
+                The three parts are inline rather than force-broken: the line
+                wraps wherever it needs to, in both languages and at every
+                width.
               */}
               {/*
                 The promise in one line, above the headline: any car, any condition.
@@ -143,8 +151,24 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 {t.home.slogan}
               </p>
               <h1 className="text-balance text-[2rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-[2.6rem] lg:text-[3rem]">
-                {t.home.h1.promise} <span className="text-brand-700">{t.home.h1.guarantee}</span>
+                {t.home.h1.before}
+                <span className="text-brand-700">{t.home.h1.accent}</span>
+                {t.home.h1.after}
               </h1>
+
+              {/*
+                The guarantee, as a badge between the headline and the beats:
+                seen at once, but quieter than the headline. Uppercase by CSS
+                so a screen reader reads words, not letters.
+              */}
+              <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3.5 py-1.5 text-sm font-black uppercase tracking-[0.08em] text-brand-800 sm:text-[15px]">
+                <ShieldCheck
+                  className="h-5 w-5 shrink-0 text-brand-600"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
+                {t.home.guaranteeBadge}
+              </p>
 
               {/*
                 Three beats, set as a row rather than a sentence. Written as
@@ -152,7 +176,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 are doing the work of separators, so they are rendered as
                 separators.
               */}
-              <ul className="mt-6 flex max-w-xl flex-wrap items-center gap-x-3.5 gap-y-2 text-lg font-bold text-slate-800 sm:text-xl">
+              <ul className="mt-5 flex max-w-xl flex-wrap items-center gap-x-3.5 gap-y-2 text-lg font-bold text-slate-800 sm:text-xl">
                 {t.home.sub.map((beat, index) => (
                   <li key={beat} className="flex items-center gap-3.5">
                     {index > 0 && (

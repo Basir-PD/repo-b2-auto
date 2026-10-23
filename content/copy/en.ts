@@ -63,9 +63,11 @@ export const en: Copy = {
       "Junk car buyer in Laval, Montreal and the North Shore. We buy damaged, totaled and non running cars. Free scrap car removal, cash on pickup.",
 
     h1: {
-      promise: "Best price for your scrap car,",
-      guarantee: "or we pay the difference.",
+      before: "Get the ",
+      accent: "Best Price",
+      after: " for Your Scrap Car.",
     },
+    guaranteeBadge: "Best price guaranteed",
     sub: ["Offer in 2 minutes", "Cash", "Free towing"],
     slogan: "We buy any car, in any condition!",
     whatsappCta: "Send a message on WhatsApp",
