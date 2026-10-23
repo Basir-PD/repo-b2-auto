@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check, ChevronRight, Clock, FileCheck, Lock, MapPin, Recycle } from "lucide-react";
@@ -22,6 +21,7 @@ import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
 import GuaranteeLine from "@/components/site/GuaranteeLine";
+import HeroSlideshow from "@/components/site/HeroSlideshow";
 import { CALL_CTA } from "@/lib/cta";
 import { JsonLd, faqSchema, webPageSchema } from "@/components/site/JsonLd";
 
@@ -184,24 +184,24 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 lines — a stack that looks deliberate beats a row that wraps.
               */}
               {/*
-                The tow truck sits right above the call button: the picture of
-                what happens after the call. It used to be full width under
-                both columns, below the fold on a phone. Wide and short
-                (1600x476), so on a phone it costs about 110px and the button
-                stays on the first screen. Above the fold now, so it loads
-                eagerly, but with no preload and no high fetch priority: both
-                compete with the font for the H1 and measured worse (LCP 2.8s
-                eager, 3.2s with fetchPriority="high").
+                Right above the call button: the tow truck, then every kind of
+                vehicle we take, sliding one to the next. A fixed 2:1 box, so
+                the button never moves; on a phone it costs about 180px and the
+                button stays on the first screen. See HeroSlideshow.
               */}
-              <Image
-                src="/tow-truck-hero.webp"
-                alt=""
-                width={1600}
-                height={476}
-                loading="eager"
+              <HeroSlideshow
+                label={t.home.slideshow.label}
+                slideLabel={t.home.slideshow.slide}
                 sizes="(min-width: 640px) 448px, calc(100vw - 2rem)"
-                quality={72}
-                className="mt-7 h-auto w-full max-w-md"
+                className="mt-7 w-full max-w-md"
+                slides={[
+                  { src: "/tow-truck-hero.webp", alt: "" },
+                  {
+                    src: "/photos/all-vehicles.webp",
+                    alt: t.home.slideshow.vehiclesAlt,
+                    caption: t.home.slideshow.vehiclesCaption,
+                  },
+                ]}
               />
 
               <div className="mt-6 flex max-w-md flex-col gap-3">

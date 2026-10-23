@@ -68,6 +68,13 @@ export const en: Copy = {
       after: " for Your Scrap Car.",
     },
     guaranteeBadge: "Best price guaranteed",
+    slideshow: {
+      label: "Vehicles we buy",
+      slide: "{n} of {total}",
+      vehiclesCaption: "Cars, SUVs, vans, trucks: we buy them all.",
+      vehiclesAlt:
+        "A wrecked car, a broken-down car, a rusted car, an SUV, a van and a pickup truck",
+    },
     sub: ["Offer in 2 minutes", "Cash", "Free towing"],
     slogan: "We buy any car, in any condition!",
     whatsappCta: "Send a message on WhatsApp",

@@ -84,6 +84,13 @@ export const fr = {
       after: " pour votre auto scrap.",
     },
     guaranteeBadge: "Meilleur prix garanti",
+    slideshow: {
+      label: "Les véhicules qu'on achète",
+      slide: "{n} sur {total}",
+      vehiclesCaption: "Autos, VUS, fourgonnettes, camions : on achète tout.",
+      vehiclesAlt:
+        "Une auto accidentée, une auto en panne, une auto rouillée, un VUS, une fourgonnette et une camionnette",
+    },
     /* Three beats, not a paragraph. Rendered as a row with green dots. */
     sub: ["Offre en 2 minutes", "Cash", "Remorquage gratuit"],
     /*
