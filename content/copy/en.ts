@@ -74,6 +74,7 @@ export const en: Copy = {
       vehiclesCaption: "Cars, SUVs, vans, trucks: we buy them all.",
       vehiclesAlt:
         "A wrecked car, a broken-down car, a rusted car, an SUV, a van and a pickup truck",
+      towAlt: "A flatbed tow truck carrying a car with a smashed front end",
     },
     slogan: "We buy any car, in any condition!",
     whatsappCta: "Send a message on WhatsApp",

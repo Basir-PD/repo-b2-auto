@@ -19,8 +19,8 @@ export type Slide = {
 
 /** How long each slide stays before the next slides in. */
 const HOLD_MS = 3500;
-/** Full rounds before it stops on the first slide for good. */
-const ROUNDS = 2;
+/** Full rounds before it stops on the first slide for good: two for a short set, one for a long one. */
+const roundsFor = (total: number) => (total >= 4 ? 1 : 2);
 /** How far a finger has to travel before the gesture counts as a swipe or a scroll. */
 const DECIDE_PX = 8;
 /** Share of the width a swipe has to cover to change slide on release. */
@@ -29,7 +29,8 @@ const SWIPE_SHARE = 0.18;
 /**
  * The hero's pictures, sliding one to the next.
  *
- * It stops after two rounds, back on the first slide: it is there to show
+ * It stops after two rounds (one, with four slides or more), back on the
+ * first slide: it is there to show
  * what we take on arrival, and a picture that keeps moving beside the call
  * button competes with it. It also holds still while someone points at it
  * or tabs into it, and the dots under it move it by hand. With "reduce
@@ -44,7 +45,9 @@ const SWIPE_SHARE = 0.18;
  *
  * The box has a fixed 2:1 shape and every picture is fitted inside it, so
  * changing slides can never move the page. The first slide loads eagerly,
- * since on a phone it is the largest thing on the first screen.
+ * since on a phone it is the largest thing on the first screen. Each later
+ * picture is only put on the page once the slide before it is showing, so it
+ * has loaded by its turn without every photo being fetched on arrival.
  */
 export default function HeroSlideshow({
   slides,
@@ -66,6 +69,8 @@ export default function HeroSlideshow({
   const [finished, setFinished] = useState(false);
   const [dragX, setDragX] = useState(0);
   const [dragging, setDragging] = useState(false);
+  // The furthest slide shown so far; pictures up to one past it are on the page.
+  const [reach, setReach] = useState(0);
   const gesture = useRef<{ x: number; y: number; axis: "x" | "y" | null } | null>(null);
   const total = slides.length;
   const nameOf = (n: number) =>
@@ -78,13 +83,15 @@ export default function HeroSlideshow({
     const timer = setInterval(() => {
       moves += 1;
       setIndex((current) => (current + 1) % total);
-      if (moves >= total * ROUNDS) {
+      if (moves >= total * roundsFor(total)) {
         clearInterval(timer);
         setFinished(true);
       }
     }, HOLD_MS);
     return () => clearInterval(timer);
   }, [finished, held, total]);
+
+  useEffect(() => setReach((r) => Math.max(r, index)), [index]);
 
   const go = (n: number) => {
     setIndex(Math.max(0, Math.min(total - 1, n)));
@@ -169,16 +176,18 @@ export default function HeroSlideshow({
               <div
                 className={`relative w-full flex-1 ${slide.fit === "cover" ? "overflow-hidden rounded-xl" : ""}`}
               >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  loading="eager"
-                  draggable={false}
-                  sizes={sizes}
-                  quality={72}
-                  className={slide.fit === "cover" ? "object-cover" : "object-contain"}
-                />
+                {n <= reach + 1 && (
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    loading="eager"
+                    draggable={false}
+                    sizes={sizes}
+                    quality={72}
+                    className={slide.fit === "cover" ? "object-cover" : "object-contain"}
+                  />
+                )}
               </div>
             </div>
           ))}
