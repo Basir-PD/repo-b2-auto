@@ -8,7 +8,7 @@ import PhoneLink from "@/components/site/PhoneLink";
 import { CALL_CTA } from "@/lib/cta";
 // parked with both hero whatsapp buttons below
 // import WhatsAppLink from "@/components/site/WhatsAppLink";
-import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
+import TrustBadges from "@/components/site/TrustBadges";
 import QuoteForm from "@/components/site/QuoteForm";
 import PlacedSlideshow from "@/components/site/PlacedSlideshow";
 
@@ -106,7 +106,7 @@ export function PageHeader({
             </div>
 
             {/* 5 stars under the call button, same as the homepage. links to the GBP reviews */}
-            <GoogleRatingBadge lang={lang} className="mt-4" />
+            <TrustBadges lang={lang} className="mt-4" />
 
             {/* A single column, so one slideshow at every width, where the tow truck was. */}
             <PlacedSlideshow lang={lang} place="always" className="mt-8" />
@@ -203,7 +203,7 @@ export function CityHeader({
             </div>
 
             {/* 5 stars under the call button, same as the homepage. links to the GBP reviews */}
-            <GoogleRatingBadge lang={lang} className="mt-4" />
+            <TrustBadges lang={lang} className="mt-4" />
           </div>
 
           <div className="lg:col-span-5">

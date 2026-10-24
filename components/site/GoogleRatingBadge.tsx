@@ -44,7 +44,8 @@ function FiveStars({ size }: { size: string }) {
 }
 
 /**
- * "G ★★★★★ 5,0 sur Google", linking to the reviews in a new tab.
+ * "G ★★★★★ 5,0 sur Google", linking to the reviews in a new tab. A little
+ * smaller on phones, so it fits beside the SAAQ badge (see TrustBadges).
  *
  * No review count on purpose, owner's call. Don't add it back without asking.
  */
@@ -66,10 +67,10 @@ export default function GoogleRatingBadge({
       href={siteConfig.GBP_REVIEWS_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2.5 text-[15px] font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition-colors hover:ring-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 ${className}`}
+      className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-white px-2.5 py-2 text-[12px] font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition-colors hover:ring-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 sm:gap-2 sm:px-3.5 sm:py-2.5 sm:text-[15px] ${className}`}
     >
-      <GoogleG className="h-[18px] w-[18px] shrink-0" />
-      <FiveStars size="h-4 w-4" />
+      <GoogleG className="h-4 w-4 shrink-0 sm:h-[18px] sm:w-[18px]" />
+      <FiveStars size="h-3 w-3 sm:h-4 sm:w-4" />
       <span>
         <span className="font-black tabular-nums text-slate-900">{rating}</span>{" "}
         {lang === "fr" ? "sur Google" : "on Google"}

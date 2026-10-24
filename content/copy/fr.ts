@@ -44,6 +44,7 @@ export const fr = {
     quoteCta: "Obtenir mon estimation gratuite",
     callShort: "Appeler",
     callBar: "Appelez pour la meilleure offre",
+    saaqBadge: { short: "Reconnu SAAQ", full: "Recycleur reconnu SAAQ" },
     whatsapp: "WhatsApp",
     whatsappAria: "Écrire à Recyclage Autos B2 sur WhatsApp",
     whatsappTagline: "Écrivez-nous, on répond vite",

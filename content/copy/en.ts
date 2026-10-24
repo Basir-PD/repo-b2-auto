@@ -41,6 +41,7 @@ export const en: Copy = {
     quoteCta: "Get my free quote",
     callShort: "Call",
     callBar: "Call Now & Get the Best Offer",
+    saaqBadge: { short: "SAAQ-licensed", full: "SAAQ-licensed recycler" },
     whatsapp: "WhatsApp",
     whatsappAria: "Message Recyclage Autos B2 on WhatsApp",
     whatsappTagline: "Message us, we answer fast",

@@ -10,7 +10,7 @@ import { getCopy } from "@/content/copy";
 import { faqByIds } from "@/content/faq";
 import { LANDING_CONTENT, landingBySlug } from "@/content/landing";
 import { HOME_PHOTOS } from "@/content/photos";
-import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
+import TrustBadges from "@/components/site/TrustBadges";
 import QuoteForm from "@/components/site/QuoteForm";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
@@ -165,7 +165,7 @@ export default async function LandingPage({
               </div>
 
               {/* 5 stars under the hero buttons, left-aligned with them. links to the GBP reviews */}
-              <GoogleRatingBadge lang={lang} className="mt-4" />
+              <TrustBadges lang={lang} className="mt-4" />
 
               {/*
                 Same checkmarks as the homepage hero, same markup. Short
@@ -433,7 +433,7 @@ export default async function LandingPage({
               */}
             </div>
             {/* same 5 stars as the hero, centered like the rest of this section */}
-            <GoogleRatingBadge lang={lang} className="mt-5" />
+            <TrustBadges lang={lang} className="mt-5" />
           </div>
         </section>
       </div>

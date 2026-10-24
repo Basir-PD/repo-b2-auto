@@ -17,7 +17,7 @@ import StatBand from "@/components/pages/StatBand";
 import PhotoGrid from "@/components/site/PhotoGrid";
 // parked with the hero whatsapp button below
 // import WhatsAppLink from "@/components/site/WhatsAppLink";
-import GoogleRatingBadge from "@/components/site/GoogleRatingBadge";
+import TrustBadges from "@/components/site/TrustBadges";
 import PhoneLink from "@/components/site/PhoneLink";
 import MapFacade from "@/components/site/MapFacade";
 import GuaranteeLine from "@/components/site/GuaranteeLine";
@@ -189,7 +189,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               </div>
 
               {/* 5 stars under the call button, left-aligned with it. links to the GBP reviews */}
-              <GoogleRatingBadge lang={lang} className="mt-4" />
+              <TrustBadges lang={lang} className="mt-4" />
 
               {/*
                 A grid, not a flex-wrap. At three items the wrap produced tidy
