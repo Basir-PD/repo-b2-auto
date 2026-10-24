@@ -6,7 +6,9 @@ import { getCopy } from "@/content/copy";
 /**
  * The SAAQ badge: authority, beside the Google rating's social proof.
  *
- * Gold, so it reads as a seal rather than another button. Not a link: on a
+ * Styled exactly like the Google badge beside it (white pill, slate ring and
+ * text, same sizes), so the two read as a pair; the green shield is its only
+ * colour, as the "G" and stars are the Google one's. Not a link: on a
  * landing page every exit costs a paid click, and a badge only has to be
  * believed. No SAAQ logo either; that is a government mark. On a phone it
  * says "Reconnu SAAQ" so it fits beside the Google badge on one line; the
@@ -15,13 +17,12 @@ import { getCopy } from "@/content/copy";
 function SaaqBadge({ lang }: { lang: Lang }) {
   const { short, full } = getCopy(lang).common.saaqBadge;
   return (
-    <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-b from-amber-50 to-amber-100 px-2.5 py-2 text-[12px] font-bold text-amber-900 shadow-sm ring-1 ring-amber-300 sm:gap-2 sm:px-3.5 sm:py-2.5 sm:text-[15px]">
-      <span
+    <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-white px-2.5 py-2 text-[12px] font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 sm:gap-2 sm:px-3.5 sm:py-2.5 sm:text-[15px]">
+      <ShieldCheck
         aria-hidden="true"
-        className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 sm:h-[18px] sm:w-[18px]"
-      >
-        <ShieldCheck className="h-3 w-3 text-white sm:h-3.5 sm:w-3.5" strokeWidth={2.75} />
-      </span>
+        className="h-4 w-4 shrink-0 text-brand-600 sm:h-[18px] sm:w-[18px]"
+        strokeWidth={2.5}
+      />
       <span className="sm:hidden">{short}</span>
       <span className="hidden sm:inline">{full}</span>
     </span>
