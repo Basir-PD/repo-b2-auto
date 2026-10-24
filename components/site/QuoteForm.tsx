@@ -12,12 +12,15 @@ import { readAttribution } from "@/lib/attribution";
 import { formatPhone, phoneIsValid } from "@/lib/phone";
 import PhoneLink from "@/components/site/PhoneLink";
 
-type Values = { vehicle: string; name: string; phone: string; postal: string };
+type Values = { vehicle: string; name: string; phone: string; postal: string; note: string };
 
-const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "" };
+const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "", note: "" };
+
+/** Long enough for "no keys, parked behind the garage, call after 5", short enough to stay a note. */
+const NOTE_MAX = 500;
 
 /**
- * The quote form. Four inputs, one step.
+ * The quote form. Four required inputs and an optional note, one step.
  *
  * Every field here earns its place: the vehicle is what a price is calculated
  * from, the phone is the only way to deliver that price, the name is what we
@@ -25,6 +28,11 @@ const EMPTY: Values = { vehicle: "", name: "", phone: "", postal: "" };
  * free-tow radius. Anything else — email, condition, paperwork, whether it
  * runs — is a question for the callback, where it costs nothing, instead of a
  * field on the page, where it costs leads.
+ *
+ * The note is the one exception, and it is optional on purpose: it asks
+ * nothing, so it cannot cost a lead, but it gives the seller somewhere to say
+ * what they would otherwise only say on the callback ("no keys", "parked in
+ * the back", "call after 5"). It is never validated and never required.
  *
  * There is no consent checkbox: it was removed on request, and the line
  * above the submit button carries the consent wording instead.
@@ -291,6 +299,19 @@ export default function QuoteForm({
           </Field>
         </div>
 
+        {/* Optional. A little taller than the others, so it reads as room to write. */}
+        <Field id={`${source}-note`} label={t.note} multiline>
+          <textarea
+            id={`${source}-note`}
+            value={values.note}
+            onChange={(e) => set("note", e.target.value)}
+            placeholder=" "
+            rows={2}
+            maxLength={NOTE_MAX}
+            className={`${fieldClass(false)} min-h-[5.25rem] resize-y`}
+          />
+        </Field>
+
         {failed && (
           <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm font-semibold text-red-800">
             {failed === "throttled" ? t.tooManyBody : t.errorBody}{" "}
@@ -361,12 +382,15 @@ function Field({
   label,
   error,
   className = "",
+  multiline = false,
   children,
 }: {
   id: string;
   label: string;
   error?: string;
   className?: string;
+  /** A textarea: the empty label rests near the top, not mid-height, where the first line goes. */
+  multiline?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -377,8 +401,10 @@ function Field({
           htmlFor={id}
           className={[
             "pointer-events-none absolute left-3.5 top-1.5 origin-left text-[11px] font-semibold uppercase tracking-wide transition-all",
-            // Sits mid-field while empty and unfocused, floats up otherwise.
-            "peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2",
+            // Sits mid-field while empty and unfocused (on a textarea, on its first line), floats up otherwise.
+            multiline
+              ? "peer-placeholder-shown:top-[1.15rem]"
+              : "peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2",
             "peer-placeholder-shown:text-[15px] peer-placeholder-shown:normal-case",
             "peer-placeholder-shown:font-medium peer-placeholder-shown:tracking-normal",
             "peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[11px]",

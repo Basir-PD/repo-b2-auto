@@ -65,6 +65,8 @@ export type LeadSms = {
   partial: boolean;
   source: string;
   postal?: string;
+  /** The seller's optional note from the form, in their own words. */
+  note?: string;
   /** Whether the lead also reached Convex, i.e. whether /admin has a copy. */
   stored: boolean;
 };
@@ -149,7 +151,7 @@ export function buildSmsBody(lead: LeadSms): string {
   const banner = lead.partial ? "ABANDONED FORM" : "NEW LEAD";
 
   /*
-    Caps on all five. `source` and `postal` are the ones that look safe and
+    Caps on every field. `source` and `postal` are the ones that look safe and
     are not: `source` is machine-generated (`city_hero_laval`,
     `lp_scrap-yard-montreal`) and grows whenever a page type is added, so an
     uncapped one silently buys another segment on every lead. The address
@@ -161,6 +163,8 @@ export function buildSmsBody(lead: LeadSms): string {
     ["Telephone", flat(lead.phone, 30)],
     ["Vehicle", flat(lead.vehicle, 70)],
     ["Code Postal/Address", lead.postal ? flat(lead.postal, 60) : null],
+    // Optional, and capped: a long note would otherwise buy several segments per lead.
+    ["Note", lead.note ? flat(lead.note, 160) : null],
     ["Source", flat(lead.source, 20)],
   ];
 

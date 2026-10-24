@@ -87,6 +87,35 @@ describe("POST /api/quote — accepting a real lead", () => {
   });
 });
 
+describe("POST /api/quote — the seller's note", () => {
+  it("puts the note in the stored lead, so the email and /admin show it", async () => {
+    await post({ ...validLead, note: "Pas de clés, stationnée derrière le garage" });
+    expect(submit.mock.calls[0][1].message).toContain(
+      "Note du client : Pas de clés, stationnée derrière le garage"
+    );
+  });
+
+  it("leaves the note line out when there is none", async () => {
+    await post(validLead);
+    expect(submit.mock.calls[0][1].message).not.toContain("Note du client");
+  });
+
+  it("never refuses a lead over the note, and caps a very long one", async () => {
+    const res = await post({ ...validLead, note: "x".repeat(5000) });
+    expect(res.status).toBe(200);
+    const line = submit.mock.calls[0][1].message
+      .split("\n")
+      .find((l) => l.startsWith("Note du client"));
+    expect(line?.length).toBeLessThanOrEqual("Note du client : ".length + 1000);
+  });
+
+  it("sends the note to the webhook too", async () => {
+    await post({ ...validLead, note: "Appelez après 17 h" });
+    const hook = webhook.mock.calls.find(([url]) => String(url).includes("hooks.example"));
+    expect(JSON.parse(String(hook?.[1].body)).note).toBe("Appelez après 17 h");
+  });
+});
+
 describe("POST /api/quote — rejecting what cannot be called back", () => {
   it("requires a phone number", async () => {
     const res = await post({ ...validLead, phone: "" });
@@ -357,6 +386,11 @@ describe("POST /api/quote — the SMS ping", () => {
     const text = String(smsBody().get("Body"));
     expect(text).toContain("Jean Tremblay");
     expect(text).toContain("2011 Honda Civic");
+  });
+
+  it("puts the seller's note in the text when there is one", async () => {
+    await post({ ...validLead, note: "No keys" });
+    expect(String(smsBody().get("Body"))).toContain("Note:\nNo keys");
   });
 
   /* The SMS banner is English; the WhatsApp template above stays French. */

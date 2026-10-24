@@ -35,6 +35,7 @@ describe("QuoteForm — accessibility", () => {
       /first and last name/i,
       /^phone$/i,
       /postal code or city/i,
+      /note \(optional\)/i,
     ]) {
       expect(screen.getByLabelText(name)).toBeInTheDocument();
     }
@@ -188,6 +189,46 @@ describe("QuoteForm — successful submission", () => {
       (e) => (e as { event?: string }).event === "form_start"
     );
     expect(starts).toHaveLength(1);
+  });
+});
+
+describe("QuoteForm — the optional note", () => {
+  it("is a taller text box than the other fields", () => {
+    render(<QuoteForm lang="en" />);
+    const note = screen.getByLabelText(/note \(optional\)/i);
+    expect(note.tagName).toBe("TEXTAREA");
+    expect(note).toHaveClass("min-h-[5.25rem]");
+  });
+
+  it("posts the seller's note with the lead", async () => {
+    const user = userEvent.setup();
+    render(<QuoteForm lang="en" source="quote_page" />);
+    await fillValid(user);
+    await user.type(
+      screen.getByLabelText(/note \(optional\)/i),
+      "No keys, parked behind the garage"
+    );
+    await user.click(submit());
+
+    await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
+    const body = JSON.parse(
+      ((fetch as ReturnType<typeof vi.fn>).mock.calls[0][1] as RequestInit).body as string
+    );
+    expect(body.note).toBe("No keys, parked behind the garage");
+  });
+
+  it("never blocks a submission when it is left empty", async () => {
+    const user = userEvent.setup();
+    render(<QuoteForm lang="en" />);
+    await fillValid(user);
+    await user.click(submit());
+    await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/en/thank-you/"));
+  });
+
+  it("is labelled in French on the French form", () => {
+    render(<QuoteForm lang="fr" />);
+    expect(screen.getByLabelText(/note \(facultatif\)/i)).toBeInTheDocument();
   });
 });
 

@@ -201,6 +201,19 @@ describe("the message body", () => {
     expect(body).toContain("Civic accidentée, très rouillée");
   });
 
+  it("adds the seller's note as its own block, after the address and before the source", () => {
+    const body = buildSmsBody({ ...lead, note: "No keys, call after 5" });
+    expect(body).toContain(
+      "Code Postal/Address:\nJ7L 2W3\n\nNote:\nNo keys, call after 5\n\nSource:"
+    );
+  });
+
+  it("caps a long note so one lead cannot run to many segments", () => {
+    const body = buildSmsBody({ ...lead, note: "a".repeat(400) });
+    const note = body.split("\n\n").find((b) => b.startsWith("Note:"));
+    expect(note?.length).toBeLessThanOrEqual("Note:\n".length + 160);
+  });
+
   it("marks an abandoned form in the first line", () => {
     expect(buildSmsBody({ ...lead, partial: true }).split("\n")[0]).toBe("ABANDONED FORM");
   });

@@ -50,6 +50,8 @@ import { sendLeadSms } from "@/lib/sms";
 export const runtime = "nodejs";
 
 const MAX_LEN = 2000;
+/** The form caps the note at 500; this is the server's own limit, for anything else posting here. */
+const NOTE_MAX = 1000;
 
 /**
  * Throttle. Resets on cold start, which is fine for spam control.
@@ -103,6 +105,8 @@ export async function POST(request: Request) {
   const phone = clean(body.phone);
   const postal = clean(body.postal);
   const vehicleInput = clean(body.vehicle);
+  // Optional, free text. Never required, so it can never be why a lead is refused.
+  const note = clean(body.note).slice(0, NOTE_MAX);
   const source = clean(body.source) || "unknown";
   const locale = clean(body.locale) === "en" ? "en" : "fr";
   const attribution = describeAttribution(body.attribution);
@@ -175,6 +179,7 @@ export async function POST(request: Request) {
     partial ? "⚠️ FORMULAIRE ABANDONNÉ" : null,
     consentLine,
     postal && `Code postal / ville : ${postal}`,
+    note && `Note du client : ${note}`,
     `Source : ${source}`,
     attribution && `Attribution : ${attribution}`,
   ]
@@ -257,7 +262,14 @@ export async function POST(request: Request) {
         await fetch(siteConfig.leadWebhook, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...lead, partial, source, attribution, stored }),
+          body: JSON.stringify({
+            ...lead,
+            note: note || undefined,
+            partial,
+            source,
+            attribution,
+            stored,
+          }),
           signal: AbortSignal.timeout(3000),
         });
         return true;
@@ -287,7 +299,13 @@ export async function POST(request: Request) {
       postal: postal || undefined,
       stored,
     }),
-    /* Same contract as the WhatsApp sink: resolves false, never throws. */
+    /*
+     * Same contract as the WhatsApp sink: resolves false, never throws. The
+     * note goes in the text but not the WhatsApp ping: that one is a
+     * Meta-approved template with a fixed set of variables, and adding one
+     * would need the template re-approved. The note is still in the stored
+     * lead, the notification email and the webhook.
+     */
     sendLeadSms({
       name: lead.name,
       phone,
@@ -295,6 +313,7 @@ export async function POST(request: Request) {
       partial,
       source,
       postal: postal || undefined,
+      note: note || undefined,
       stored,
     }),
   ]);

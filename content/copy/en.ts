@@ -191,6 +191,7 @@ export const en: Copy = {
     name: "First and last name",
     phone: "Phone",
     postal: "Postal code or city",
+    note: "Note (optional)",
 
     submit: "Get my quote",
     submitting: "Sending…",

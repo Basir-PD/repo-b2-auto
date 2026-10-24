@@ -261,6 +261,7 @@ export const fr = {
     name: "Prénom et nom",
     phone: "Téléphone",
     postal: "Code postal ou ville",
+    note: "Note (facultatif)",
 
     submit: "Obtenir mon estimation",
     submitting: "Envoi en cours…",
